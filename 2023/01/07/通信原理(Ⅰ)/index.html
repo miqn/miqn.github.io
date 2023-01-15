@@ -26,8 +26,20 @@
 <meta property="og:image" content="http://example.com/img/%E9%A6%99%E5%86%9C%E6%A8%A1%E5%9E%8B.png">
 <meta property="og:image" content="http://example.com/img/%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%A8%A1%E5%9E%8B.jpg">
 <meta property="og:image" content="http://example.com/img/%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="http://example.com/img/%E5%8F%8C%E8%BE%B9%E8%B0%B1%E5%AF%86%E5%BA%A6.png">
+<meta property="og:image" content="http://example.com/img/%E5%8D%95%E8%BE%B9%E8%B0%B1%E5%AF%86%E5%BA%A6.png">
+<meta property="og:image" content="http://example.com/img/%E7%BB%9D%E5%AF%B9%E5%B8%A6%E5%AE%BD.png">
+<meta property="og:image" content="http://example.com/img/%E4%B8%BB%E7%93%A3%E5%B8%A6%E5%AE%BD.png">
+<meta property="og:image" content="http://example.com/img/3dB%E5%B8%A6%E5%AE%BD.png">
+<meta property="og:image" content="http://example.com/img/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E5%8F%98%E6%8D%A2.png">
+<meta property="og:image" content="http://example.com/img/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E5%8F%98%E6%8D%A2%E5%AF%B9.jpg">
+<meta property="og:image" content="http://example.com/img/%E5%B8%A6%E9%80%9A%E4%BF%A1%E5%8F%B7.png">
+<meta property="og:image" content="http://example.com/img/%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E3%80%81%E8%A7%A3%E6%9E%90%E4%BF%A1%E5%8F%B7%E3%80%81%E5%B8%A6%E9%80%9A%E4%BF%A1%E5%8F%B7.png">
+<meta property="og:image" content="http://example.com/img/%E5%B8%A6%E9%80%9A%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%AD%89%E6%95%88%E5%9F%BA%E5%B8%A6%E5%88%86%E6%9E%90.png">
+<meta property="og:image" content="http://example.com/img/%E7%AD%89%E6%95%88%E5%9F%BA%E5%B8%A6%E5%88%86%E6%9E%90%E4%BE%8B%E9%A2%98.jpg">
+<meta property="og:image" content="http://example.com/img/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0.png">
 <meta property="article:published_time" content="2023-01-07T08:09:15.000Z">
-<meta property="article:modified_time" content="2023-01-08T10:27:37.764Z">
+<meta property="article:modified_time" content="2023-01-15T09:34:49.481Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信原理">
 <meta property="article:tag" content="专业课程">
@@ -225,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          9.3k 字
         
       </span>
     
@@ -236,7 +248,7 @@
         
         
         
-          25 分钟
+          78 分钟
         
       </span>
     
@@ -358,7 +370,7 @@
 <li><p>信息传输速率（R<sub>b</sub>）：信息传输速率简称传信率，又称信息速率。它被定义为单位时间（s<sup>-1</sup>）内传递的信息量（bit数），单位是比特/秒，也记为bit / s或bps。</p></li>
 </ul>
 <h1 id="二确定信号分析">二、确定信号分析</h1>
-<h2 id="傅里叶变换">1、傅里叶变换</h2>
+<h2 id="傅里叶变换">1.傅里叶变换</h2>
 <h3 id="傅里叶变换与反变换">1.1 傅里叶变换与反变换</h3>
 <p><span class="math display">\[
 傅里叶变换:F(f)=\int_{-\infty}^{+\infty}{f(t)e^{-j2\pi ft}}dt
@@ -481,6 +493,369 @@ sinacosβ=\frac{1}{2}[sin(a+β)+sin(a-β)]
 <p><span class="math display">\[
 cosasinβ=\frac{1}{2}[sin(a+β)-sin(a-β)]
 \]</span></p>
+<h2 id="能量谱密度与功率谱密度及相关函数">2.能量谱密度与功率谱密度及相关函数</h2>
+<h3 id="能量信号与功率信号">2.1 能量信号与功率信号</h3>
+<ul>
+<li>能量信号：</li>
+</ul>
+<p><span class="math display">\[
+E_f=\int_{-\infty}^{\infty}{f^{2}(t)}dt&lt;\infty(能量有限)
+\]</span></p>
+<ul>
+<li>功率信号：</li>
+</ul>
+<p><span class="math display">\[
+P_f=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}{f^{2}(t)}dt&lt;\infty(能量无限，功率有限)
+\]</span></p>
+<h3 id="能量信号的相关函数">2.2 能量信号的相关函数</h3>
+<ul>
+<li>能量信号x(t)与y(t)的互相关函数</li>
+</ul>
+<p><span class="math display">\[
+R_{xy}(\tau)=\int_{-\infty}^{\infty}{x(t+\tau)y^{*}(t)}dt
+\]</span></p>
+<p><span class="math display">\[
+R_{yx}(\tau)=\int_{-\infty}^{\infty}{y(t+\tau)x^{*}(t)}dt
+\]</span></p>
+<ul>
+<li>能量信号x(t)的自相关函数：</li>
+</ul>
+<p><span class="math display">\[
+R_x(\tau)=\int_{-\infty}^{\infty}{x(t+\tau)x^{*}(t)}dt
+\]</span></p>
+<blockquote>
+<p>实信号不需要共轭</p>
+</blockquote>
+<ul>
+<li>相关函数的性质：</li>
+</ul>
+<p><span class="math display">\[
+共轭对称性:R_{xy}(\tau)=R^{*}_{yx}(-\tau)
+\]</span></p>
+<p><span class="math display">\[
+R_{x}(\tau)=R^{*}_{x}(-\tau)
+\]</span></p>
+<p><span class="math display">\[
+x(t)的能量是自相关函数在\tau=0处的值
+\]</span></p>
+<ul>
+<li><p>许瓦兹不等式： <span class="math display">\[
+许瓦兹不等式:\vert \int_{-\infty}^{\infty}{s_1(t)s_2^{*}(t)}dt\vert\leq\sqrt{E_1E_2}
+\]</span></p>
+<p><span class="math display">\[
+互相关函数满足:|R_{xy}(\tau)|=|\int_{-\infty}^{\infty}{x(t+\tau)y^{*}(t)}dt|\leq\sqrt{E_xE_y}
+\]</span></p>
+<p><span class="math display">\[
+自相关函数在\tau=0时最大:R_x(\tau)\leq R_x(0)=E_x
+\]</span></p></li>
+</ul>
+<h3 id="能量谱密度">2.3 能量谱密度</h3>
+<p><span class="math display">\[
+互能量谱密度:E_{xy}(f)=X(f)Y^*(f)
+\]</span></p>
+<p><span class="math display">\[
+能量谱密度:E_{x}(f)=X(f)X^*(f)=|X(f)|^2
+\]</span></p>
+<p><span class="math display">\[
+能量（帕塞瓦尔定理）:E_x=\int_{-\infty}^{\infty}{|x(t)|^2}dt=\int_{-\infty}^{\infty}{|X(f)|^2}df
+\]</span></p>
+<p><span class="math display">\[
+自相关函数的傅里叶变换是能量谱密度:R_x(\tau)\Leftrightarrow|X(f)|^2
+\]</span></p>
+<h3 id="功率信号的相关函数">2.4 功率信号的相关函数</h3>
+<p><span class="math display">\[
+R_x(\tau)=\overline{[x(t+\tau)x^{*}(t)]}
+\]</span></p>
+<p><span class="math display">\[
+自相关函数在\tau=0的值是功率:R_x(0)=\overline{[x(t)x^{*}(t)]}=P_x
+\]</span></p>
+<blockquote>
+<p>其他性质可类比能量信号</p>
+</blockquote>
+<h3 id="功率谱密度">2.5 功率谱密度</h3>
+<p><span class="math display">\[
+功率:P_x=R_x(0)=\overline{|x(t)|^2}=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}{|x_T(t)|^2}dt\bigg)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\infty}^{\infty}{|x_T(t)|^2}dt\bigg)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\infty}^{\infty}{|X_T(f)|^2}df\bigg)=\int_{-\infty}^{\infty}{\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|X_T(f)|^2\bigg)}df
+\]</span></p>
+<p><span class="math display">\[
+功率谱密度:P_x(f)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|X_T(f)|^2\bigg)
+\]</span></p>
+<p><span class="math display">\[
+自相关函数的傅里叶变换是功率谱密度:R_x(\tau)\Leftrightarrow P_x(f)
+\]</span></p>
+<h2 id="带宽">3.带宽</h2>
+<h3 id="单边功率谱">3.1 单边功率谱</h3>
+<p>从数学上来说，当我们对一个信号作傅里叶变换时，f的定义域是(-∞，+∞)，频率可正可负。</p>
+<p>但在物理测量当中，负频率是没有意义的，f的定义域是[0，+∞)。实信号的功率谱密度或能量谱密度是对称的，故在工程中常用单边谱密度。 <span class="math display">\[
+P_x^单(f)=P_x(f)+P_x(-f)=2P_x(f)\qquad f\geq0
+\]</span></p>
+<p><span class="math display">\[
+P_x=\int_{0}^{\infty}{P_x^单(f)}df
+\]</span></p>
+<figure>
+<img src="/img/双边谱密度.png" srcset="/img/loading.gif" lazyload alt="双边谱密度" /><figcaption aria-hidden="true">双边谱密度</figcaption>
+</figure>
+<figure>
+<img src="/img/单边谱密度.png" srcset="/img/loading.gif" lazyload alt="单边谱密度" /><figcaption aria-hidden="true">单边谱密度</figcaption>
+</figure>
+<h3 id="基带信号与频带信号">3.2 基带信号与频带信号</h3>
+<p>基带信号：信号的功率或能量主要集中在零频附近。</p>
+<p>频带信号（带通信号）：信号的功率或能量集中在某个载频附近。</p>
+<h3 id="带宽-1">3.3 带宽</h3>
+<p>带宽：信号的带宽指单边谱密度的宽度。</p>
+<ul>
+<li><p>绝对带宽：频谱在某个区间之外为零，该区间的宽度就是绝对带宽。</p>
+<blockquote>
+<p>只是一种模型，一个信号若频域有限，则其时域无限，现实中的信号不可能时域无限。</p>
+</blockquote></li>
+</ul>
+<figure>
+<img src="/img/绝对带宽.png" srcset="/img/loading.gif" lazyload alt="绝对带宽" /><figcaption aria-hidden="true">绝对带宽</figcaption>
+</figure>
+<ul>
+<li>主瓣带宽：有些信号频谱呈现出主瓣、旁瓣的特征，其带宽可采用主瓣宽度衡量。</li>
+</ul>
+<figure>
+<img src="/img/主瓣带宽.png" srcset="/img/loading.gif" lazyload alt="主瓣带宽" /><figcaption aria-hidden="true">主瓣带宽</figcaption>
+</figure>
+<ul>
+<li>3dB带宽：功率谱密度从峰值下降一半（3dB)的宽度。</li>
+</ul>
+<figure>
+<img src="/img/3dB带宽.png" srcset="/img/loading.gif" lazyload alt="3dB带宽" /><figcaption aria-hidden="true">3dB带宽</figcaption>
+</figure>
+<ul>
+<li><p>等效矩形带宽：功率谱同高同面积的矩形的宽度。</p></li>
+<li><p>按能量占比定义的带宽</p></li>
+</ul>
+<blockquote>
+<p>信号平方的带宽：x(t)的绝对带宽是W，x<sup>2</sup>(t)的绝对带宽是2W。</p>
+<p>正弦调制的带宽：x(t)的绝对带宽是W，是s(t)=x(t)cos2πf<sub>c</sub>t的绝对带宽是2W。</p>
+</blockquote>
+<h2 id="线性时不变系统">4.线性时不变系统</h2>
+<h3 id="线性时不变系统-1">4.1 线性时不变系统</h3>
+<p>复单频信号通过滤波器后还是复单频信号： <span class="math display">\[
+x(t)=e^{j2\pi vt},\quad y(t)=e^{j2\pi vt}H(v)
+\]</span> 能量（功率）谱密度： <span class="math display">\[
+E_y(f)=|H(f)|^2E_x(f),\quad P_y(f)=|H(f)|^2P_x(f)
+\]</span></p>
+<h3 id="希尔伯特变换与解析信号">4.2 希尔伯特变换与解析信号</h3>
+<ul>
+<li>希尔伯特变换： <span class="math display">\[
+实信号x(t)的希尔波特变换\widehat{x}(t)是将x(t)通过一个特定滤波器的输出。
+\]</span></li>
+</ul>
+<figure>
+<img src="/img/希尔伯特变换.png" srcset="/img/loading.gif" lazyload alt="希尔伯特变换" /><figcaption aria-hidden="true">希尔伯特变换</figcaption>
+</figure>
+<p><span class="math display">\[
+H(f)=-j*sgn(f)=\begin{cases} -j，f&gt;0\\ j，f&lt;0\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+h(t)=\frac{1}{\pi t}
+\]</span></p>
+<p>​ 由于|H(f)|<sup>2</sup>=1，故希尔伯特变换不改变能量（功率）谱密度，不改变自相关函数。</p>
+<p>​ 偶函数的希尔伯特变换是奇函数，奇函数的希尔伯特变换是偶函数。</p>
+<p><span class="math display">\[
+x(t)与\widehat{x}(t)正交：\int_{-\infty}^{\infty} {\widehat{x}(t)x(t)}dt=0
+\]</span> ​ 常用希尔伯特变换对：</p>
+<figure>
+<img src="/img/希尔伯特变换对.jpg" srcset="/img/loading.gif" lazyload alt="希尔伯特变换对" /><figcaption aria-hidden="true">希尔伯特变换对</figcaption>
+</figure>
+<ul>
+<li><p>解析信号</p>
+<p>实信号x(t)的解析信号z(t)定义为如下复信号：<span class="math display">\[z(t)=x(t)+j\widehat{x}(t)\]</span></p></li>
+</ul>
+<p><span class="math display">\[
+H(f)=1+j·[-j·sgn(f)]=1+sgn(f)=\begin{cases} 2，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+Z(f)=H(f)X(f)=\begin{cases} 2X(f)，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<p>​ 功率谱密度： <span class="math display">\[
+P_Z(f)=|1+sgn(f)|^2P_x(f)=\begin{cases} 4P_x(f)，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<h2 id="带通信号">5.带通信号</h2>
+<h3 id="带通信号的复包络">5.1 带通信号的复包络</h3>
+<p>带通信号：频谱集中在某个载频f<sub>c</sub>附近，默认假设最高频率不超过2f<sub>c</sub></p>
+<figure>
+<img src="/img/带通信号.png" srcset="/img/loading.gif" lazyload alt="带通信号" /><figcaption aria-hidden="true">带通信号</figcaption>
+</figure>
+<p>复包络： <span class="math display">\[
+实带通信号x(t)的复包络定义为:x_L(t)=z(t)e^{-j2\pi f_ct},其中z(t)=x(t)+j·\widehat{x}(t)
+\]</span></p>
+<p><span class="math display">\[
+x_L(t)=[x(t)+j·\widehat{x}(t)]e^{-j2\pi f_ct}
+\]</span></p>
+<ul>
+<li>频谱关系</li>
+</ul>
+<figure>
+<img src="/img/基带信号、解析信号、带通信号.png" srcset="/img/loading.gif" lazyload alt="基带信号、解析信号、带通信号" /><figcaption aria-hidden="true">基带信号、解析信号、带通信号</figcaption>
+</figure>
+<ul>
+<li><p>功率谱密度关系 <span class="math display">\[
+解析信号的功率谱密度:P_Z(f)=\begin{cases} 4P_x(f)，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+复包络的功率谱密度:P_L(f)=P_Z(f+f_c)=\begin{cases} 4P_x(f+f_c)，|f|&lt;f_c\\ 0，else\end{cases}
+\]</span></p></li>
+</ul>
+<h3 id="带通信号的三种表示方法">5.2 带通信号的三种表示方法</h3>
+<ul>
+<li><p><span class="math display">\[
+x(t)=Re\{x_L(t)e^{j2\pi fct}\}
+\]</span></p></li>
+<li><p><span class="math display">\[
+x(t)=x_c(t)cos2\pi f_ct-x_s(t)sin2\pi f_ct
+\]</span></p>
+<p><span class="math display">\[
+x_c(t)=Re\{x_L(t)\}\quad同相分量
+\]</span></p>
+<p><span class="math display">\[
+x_s(t)=Im\{x_L(t)\}\quad正交分量
+\]</span></p>
+<p><span class="math display">\[
+x_L(t)=x_c(t)+j·x_s(t)
+\]</span></p></li>
+<li><p><span class="math display">\[
+x(t)=A(t)cos[2\pi f_ct+\varphi(t)]
+\]</span></p>
+<p><span class="math display">\[
+A(t)=|x_L(t)|\quad包络
+\]</span></p>
+<p><span class="math display">\[
+\varphi(t)=\angle x_L(t)\quad相位
+\]</span></p>
+<p><span class="math display">\[
+x_L(t)=A(t)e^{j\varphi(t)}
+\]</span></p></li>
+</ul>
+<h3 id="带通系统的等效基带分析">5.3 带通系统的等效基带分析</h3>
+<p><img src="/img/带通系统的等效基带分析.png" srcset="/img/loading.gif" lazyload alt="带通系统的等效基带分析" /> <span class="math display">\[
+H_e(f)=\frac{1}{2}H_L(f)=H(f+f_c),\quad h_e(t)=\frac{1}{2}h_L(t)
+\]</span></p>
+<blockquote>
+<p>例题：</p>
+<p><img src="/img/等效基带分析例题.jpg" srcset="/img/loading.gif" lazyload /></p>
+</blockquote>
+<h1 id="三随机过程">三、随机过程</h1>
+<h2 id="随机过程">1.随机过程</h2>
+<p>随机变量X：随机实验的结果是确定实数，X∈{x<sub>1</sub>,x<sub>2</sub>,…}</p>
+<p>随机过程X(t)：随机实验的结果是确定的函数，X(t)∈{x<sub>1</sub>(t),x<sub>2</sub>(t),…}</p>
+<p>随机过程X(t)是沿时间轴-∞&lt;t&lt;∞排列的无数个随机变量。</p>
+<h3 id="随机过程的统计特性">1.1 随机过程的统计特性</h3>
+<p>随机过程的数学期望： <span class="math display">\[
+E[X(t)]=m_X(t)
+\]</span> 任意随机过程可以看成是零均值随机过程与确定函数的和。</p>
+<p>X(t)，Y(t)的互相关函数： <span class="math display">\[
+R_{XY}(t_1,t_2)=E[X(t_1)Y(t_2)]
+\]</span></p>
+<blockquote>
+<p>X(t)，Y(t)是两个随机过程，随便在两个过程上取两个时间，这样得到两个随机变量。</p>
+<p>确定信号的互相关函数取平均是时间平均，随机信号的互相关函数取平均是统计平均。</p>
+</blockquote>
+<p>X(t)的自相关函数： <span class="math display">\[
+R_{X}(t_1,t_2)=E[X(t_1)X(t_2)]
+\]</span></p>
+<p><span class="math display">\[
+\tau=t_1-t_2
+\]</span></p>
+<p>平均自相关函数：对t做时间平均： <span class="math display">\[
+\overline{R}_X(\tau)=\overline{E[X(t+\tau)X(t)]}=E[\overline{X(t+\tau)X(t)}]
+\]</span></p>
+<h3 id="随机过程的功率谱密度">1.2 随机过程的功率谱密度</h3>
+<p>随机过程X(t)是从样本空间中随机抽出一个确定的样本函数x(t)。 <span class="math display">\[
+P_x(f)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|F[x_T(t)]|^2\bigg)
+\]</span> 每个样函数x(t)都有各自的功率谱密度。</p>
+<p>随机抽出的不同样函数的功率谱密度可能不同。随机过程的功率谱密度定义为<strong>所有样本函数的功率谱密度的统计平均</strong>： <span class="math display">\[
+\overline{P}_x(f)=E[\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|F[x_T(t)]|^2\bigg)]=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}E[|F[x_T(t)]|^2]\bigg)
+\]</span> 随机过程的功率谱密度是<strong>平均</strong>自相关函数的傅氏变换。</p>
+<h2 id="平稳随机过程">2.平稳随机过程</h2>
+<h3 id="狭义严平稳随机过程">2.1 狭义（严）平稳随机过程</h3>
+<p>对于任意n和t<sub>1</sub>,t<sub>2</sub>,...,t<sub>n</sub>以及τ有分布函数： <span class="math display">\[
+F_n(x_1,x_2,...,x_n;t_1.t_2,...,t_n)=F_n(x_1,x_2,...,x_n,t_1+\tau,t_2+\tau,...,t_n+\tau)
+\]</span> 称X(t)为狭义（严）平稳随机过程。</p>
+<h3 id="广义宽平稳随机过程">2.2 广义（宽）平稳随机过程</h3>
+<p><span class="math display">\[
+满足E[X(t)]=m_X,R_X(t+\tau,t)=R_X(\tau),称X(t)为宽平稳随机过程。
+\]</span></p>
+<blockquote>
+<p>均值和自相关满足遍历性的平稳过程叫做广义遍历过程。</p>
+<p>遍历：每个样本函数的时间平均等于随机过程（所有样本函数）的统计平均。 <span class="math display">\[
+例如X(t)=cos(2\pi f_0t+\theta),X(t)就是随机过程，其中\theta可以取不同的值，求m_X也就是求X(t)的统计平均，一般是对\theta根据其所属分布求平均；而样本函数x(t)也就是确定了一个X(t)，\theta值固定，对其求时间平均就是对t求平均，\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}{x_T(t)}dt\bigg)这样去求
+\]</span></p>
+</blockquote>
+<ul>
+<li><p>功率谱密度 <span class="math display">\[
+随机过程的功率谱密度是平均自相关函数的傅氏变换。
+\]</span></p>
+<p><span class="math display">\[
+因为平稳过程的自相关函数与t无关，故\overline{R}_X(\tau)=R_X(\tau)
+\]</span></p>
+<p><span class="math display">\[
+P_X(f)=\int_{-\infty}^{\infty}{R_X(\tau)e^{-j2\pi f\tau}}d\tau
+\]</span></p></li>
+</ul>
+<h3 id="联合平稳">2.3 联合平稳</h3>
+<p>X(t)、Y(t)联合平稳：除X(t)、Y(t)各自平稳外，还满足： <span class="math display">\[
+E[X(t+\tau)Y(t)]=R_{XY}(\tau)
+\]</span></p>
+<blockquote>
+<p>随机变量的不相关和独立： <span class="math display">\[
+不相关:E[XY]=E[X]E[Y]
+\]</span></p>
+<p><span class="math display">\[
+独立:Pr\{A,B\}=Pr\{A\}Pr\{B\},f_{XY}(x,y)=f_X(x)f_Y(y)
+\]</span></p>
+<p>若独立，则不相关。反之不一定。</p>
+</blockquote>
+<p>两个随机过程不相关：X(t<sub>1</sub>)，Y(t<sub>2</sub>) <span class="math display">\[
+E[X(t_1)Y(t_2)]=E[X(t_1)]E[Y(t_2)]
+\]</span></p>
+<p><span class="math display">\[
+R_{XY}(t_1,t_2)=m_X(t_1)m_Y(t_2)
+\]</span></p>
+<p>两个随机过程在同一时刻不相关： <span class="math display">\[
+t_1=t_2=t,E[X(t)Y(t)]=E[X(t)]E[Y(t)]
+\]</span></p>
+<p><span class="math display">\[
+R_{XY}(t,t)=m_X(t)m_Y(t)
+\]</span></p>
+<p>零均值平稳过程的相关系数：</p>
+<p><img src="/img/相关系数.png" srcset="/img/loading.gif" lazyload /></p>
+<blockquote>
+<p>看互相关函数，为零则不相关（因为是零均值平稳过程）</p>
+</blockquote>
+<h3 id="平稳过程通过线性系统">2.4 平稳过程通过线性系统</h3>
+<p>平稳过程通过线性系统后还是平稳过程，且输入输出联合平稳。 <span class="math display">\[
+m_Y=m_XH(0)\quad P_Y(f)=|H(f)|^2P_X(f)
+\]</span> 零均值平稳过程X(t)的希尔伯特变换是零均值平稳过程。希尔伯特变换不改变功率谱密度、自相关函数。 <span class="math display">\[
+X(t)与\widehat{X}(t)在同一时刻不相关
+\]</span></p>
+<h3 id="复平稳过程">2.5 复平稳过程</h3>
+<ul>
+<li><p>一种判断方法：Z(t)的实部X(t)、虚部Y(t)联合平稳。即X(t)、Y(t)各自平稳且互相关函数与t无关。</p></li>
+<li><p>另一种判断方法：如果复过程的均值、自相关函数、共轭相关函数与t无关，则它是复平稳过程 <span class="math display">\[
+E[Z(t)]=m_Z\quad 均值与t无关
+\]</span></p>
+<p><span class="math display">\[
+E[Z(t+\tau)Z^*(t)]=R_Z(\tau)\quad 自相关函数与t无关
+\]</span></p>
+<p><span class="math display">\[
+E[Z(t+\tau)Z(t)]=R_{ZZ^*}(\tau)\quad 共轭相关函数与t无关
+\]</span></p></li>
+</ul>
+<h3 id="平稳带通过程的解析信号及复包络">2.6 平稳带通过程的解析信号及复包络</h3>
+<p>零均值平稳过程X(t)的解析信号是零均值复平稳过程，且共轭不相关。 <span class="math display">\[
+解析信号的自相关函数是R_X(\tau)的解析信号的2倍；功率谱密度是P_X(f)正频率部分的4倍。
+\]</span></p>
+<p><span class="math display">\[
+R_Z(\tau)=2[R_X(\tau)+j·\widehat{R}_X(\tau)]
+\]</span></p>
+<p>零均值平稳带通过程X(t)的复包络X<sub>L(</sub>t)=Z(t)e<sup>-j2πf_<sub>c</sub>t</sup>是零均值复平稳过程，且共轭不相关。</p>
+<p>复包络的功率谱密度是P<sub>X</sub>(f)正频率部分的4倍向下搬移。</p>
+<p>X(t)的同相分量X<sub>c</sub>(t)和正交分量X<sub>s</sub>(t)是零均值联合平稳，且有相同的功率谱密度及自相关函数。</p>
+<p>X(t)的同相分量X<sub>c</sub>(t)和正交分量X<sub>s</sub>(t)在同一时刻不相关。</p>
 
                 
               </div>
