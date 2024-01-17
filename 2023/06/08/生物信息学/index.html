@@ -1,0 +1,2872 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Faceless-person">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="介绍生物信息学中的基本问题、对应的数学模型及其分析与处理算法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生物信息学">
+<meta property="og:url" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/index.html">
+<meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="介绍生物信息学中的基本问题、对应的数学模型及其分析与处理算法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608114003804.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608180444466.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608180557387.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608180956992.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608181834815.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608182752593.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608195505891.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608195559054.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608195946697.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608202753737.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203000442.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203043267.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203832883.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221708590.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221811317.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221842345.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221912089.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609103503859.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609164801077.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609164946161.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609165100296.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609170226299.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609171158162.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609171928801.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609172302785.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609192717156.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609194833195.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609231106118.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230610093206887.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230610093843123.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611110107270.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611110150024.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614120605011.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614120633023.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614121258299.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611221237122.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222054188.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222309737.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222638711.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223144654.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223708792.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611233724121.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201442420.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201549550.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201712875.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201747559.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201825651.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201951538.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202054031.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202212962.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202320043.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202350905.png">
+<meta property="og:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612215417920.png">
+<meta property="article:published_time" content="2023-06-08T03:04:39.000Z">
+<meta property="article:modified_time" content="2024-01-17T03:45:34.771Z">
+<meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="信息，生物，专业课程，马尔可夫，贝叶斯，动态规划，进化树">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608114003804.png">
+  
+  
+  
+  <title>生物信息学 - Faceless_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Faceless_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="生物信息学"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-08 11:04" pubdate>
+          2023年6月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          32k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          270 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">生物信息学</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2023/6/14 12:15 昨天结束了生物信息基础的期末考试，而在今天终于把生物信息学的知识整理完毕，历时一个星期，收工！</p>
+<h1 id="一序列分析">一、序列分析</h1>
+<h2 id="序列的相似性">1.序列的相似性</h2>
+<h3 id="序列比较">1.1 序列比较</h3>
+<p>序列比较是生物信息学中最基本、最重要的操作。通过序列比较可以发现生物序列中的结构、功能和进化的信息。找出具有生物学意义的相似性或差异，研究序列的同源性。</p>
+<ul>
+<li>同源（homology）: 两个序列有共同的祖先。</li>
+<li>垂直同源序列：来自于不同种属的的同源序列，也叫直系同源</li>
+<li>横向同源序列：来自于同一种属的序列，由进化过程中的序列复制而产生，也叫旁系同源。</li>
+</ul>
+<p>同源序列一般是相似的，相似序列不一定是同源的。</p>
+<p>序列比较的基本任务：</p>
+<ul>
+<li>计算序列之间的<strong>相似性</strong></li>
+<li>找出序列之间的<strong>共同区域</strong></li>
+<li>辨别序列之间的<strong>差异</strong></li>
+</ul>
+<h3 id="子序列和字串">1.2 子序列和字串</h3>
+<p>子序列的描述</p>
+<ul>
+<li>子序列 <sub>0</sub>:s:<sub>i</sub> 称为前缀，即prefix(s,i)</li>
+<li>子序列 <sub>i</sub>:s:<sub>|s|</sub>称为后缀，即suffix(s, |s|-i)</li>
+<li><sub>i</sub>:s: <sub>i</sub> — 为空序列</li>
+<li><sub>j-1</sub>:s:<sub>j</sub> —表示s 中的第j 个字符，简记为s<sub>j</sub></li>
+</ul>
+<p>子序列：选取s中的某些字符或删除s中的某些字符而形成s的一部分。</p>
+<p>子串： 由s中相继的字符所组成</p>
+<blockquote>
+<p>子串是子序列，子序列不一定是字串</p>
+</blockquote>
+<h3 id="序列相似性比较">1.3 序列相似性比较</h3>
+<p>相似程度的刻画：</p>
+<ol type="1">
+<li>两个序列的相似度: 它是两个序列的函数，其值越大，表示两个序列越相似</li>
+<li>两个序列的距离：距离越大，则两个序列的相似度就越小。</li>
+</ol>
+<blockquote>
+<p>汉明(Hamming)距离：对于两条长度相等的序列，汉明距离等于对应位点 上字符不同的数目</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608114003804.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>序列比对(Alignment)是序列比较的基本操作。是关于序列相似性的定性描述。</p>
+<p>两个序列的比对是指这两个序列中各个字符的一种一一对应关系(或各个字符的对比排列)。反映出两条序列在什么部位相同，什么部位存在差异。</p>
+<blockquote>
+<p>两个序列可以有多种不同的比对方式。</p>
+</blockquote>
+<h3 id="编辑距离">1.4 编辑距离</h3>
+<p>度量两个字符串之间的距离的主要困难？</p>
+<ul>
+<li>两个字符串之间可能具有不同的长度，各自位置上的字符并不一定是真正的对应关系，直接计算汉明距离未必适当。</li>
+</ul>
+<p>如何合理度量？</p>
+<ul>
+<li>通过字符的插入、删除和替换等<strong>编辑操作</strong>把一个字符串变为另一个字符串</li>
+</ul>
+<ol type="1">
+<li>Match (a，a)：字符匹配</li>
+<li>Delete (a，-) ：从第一条序列删除字符a (或在第二条序列相应的位置插入空位字符)</li>
+<li>Insert (-，b)：在第一条序列插入空位字符(或删除第二条序列中的对应字符b)</li>
+<li>Replace (a，b)：以第二条序列中的字符b替换第一条序列中的字符a，且a和b不相同</li>
+</ol>
+<p>编辑距离的定义：两个字符串之间，由一个字符串转换成另一个字符串所需要进行的<strong>最少</strong>编辑操作次数；其中的编辑操作包括把一个字符替换成另一个字符、插入一个字符和删除一个字符。</p>
+<blockquote>
+<p>编辑距离是所有可能的把s转换为t的<strong>编辑总代价的最小值</strong>。</p>
+</blockquote>
+<h3 id="序列比对的量化评价">1.5 序列比对的量化评价</h3>
+<h4 id="代价函数法">1.5.1 代价函数法</h4>
+<ul>
+<li>首先定义一个<strong>代价函数</strong></li>
+<li>然后定义序列比对的<strong>总代价</strong>等于各列的代价之和</li>
+<li>其中，每一列考虑3种情况，其代价定义如下：
+<ul>
+<li>匹配：0</li>
+<li>替换：1</li>
+<li>空位：1</li>
+</ul></li>
+</ul>
+<h4 id="打分函数法">1.5.2 打分函数法</h4>
+<ul>
+<li>首先定义一个<strong>打分函数</strong></li>
+<li>然后定义<strong>序列比对的打分值</strong>等于各列的打分之和</li>
+<li>其中，每一列考虑3种情况，其打分定义如下：
+<ul>
+<li>匹配：+1</li>
+<li>替换：-1</li>
+<li>空位：-1</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>对于核酸序列或蛋白质序列的比对，打分函数 的定义需要考虑其生物学意义。</p>
+</blockquote>
+<h4 id="序列比对与最优序列比对">1.5.3 序列比对与最优序列比对</h4>
+<p>序列比对：通过字符匹配、替换、插入或删除，使两个序列的长度相等；但不能出现两者全为空位的列，且每一列只能出现匹配、失配和出现1个空位这3种可能情形之一。</p>
+<p>两条序列比对的得分：将序列s转化为序列t所用的所有编辑操作的得分总和。</p>
+<p>最优序列比对：在所有可能比对中得分最高或者编辑代价最小的比对。</p>
+<p>如何寻找最优比对？</p>
+<ul>
+<li>寻找得分最高或代价最小的比对
+<ul>
+<li>需要设计算法，求解组合优化问题</li>
+</ul></li>
+</ul>
+<h3 id="编辑距离的应用">1.6 编辑距离的应用</h3>
+<ul>
+<li>自然语言处理</li>
+<li>机器翻译的自动评测</li>
+<li>识别平行网页对</li>
+<li>字符串核函数 (String Kernel)</li>
+<li>歌曲的哼唱检索 (Query by Humming: QbH）</li>
+</ul>
+<h3 id="矩阵作图法">1.7 矩阵作图法</h3>
+<p>矩阵作图法（对角线作图法）基本步骤：</p>
+<ol type="1">
+<li>将两条待比较的序列分别放在坐标系的两个轴上：s序列放在Y轴上，自下而上；t序列放在X轴上，从左到右。</li>
+<li>当对应的行与列的序列字符匹配时，则在矩阵对应的位置作出“点”标记。</li>
+<li>逐个比较所有字符对，最终形成点矩阵。</li>
+</ol>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608180444466.png" srcset="/img/loading.gif" lazyload></p>
+<p>把点矩阵中非重叠的与对角线平行的斜线组合起来，可以形成两条序列的一种比对：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608180557387.png" srcset="/img/loading.gif" lazyload></p>
+<p>矩阵作图法找最佳比对:寻找对应位点的相同字符最多的比对——相当于在点矩阵中找<strong>非重叠的最长的平行斜线的组合</strong>。</p>
+<p>除非已知待比较序列非常相似，一般先用矩阵作图法进行比较。</p>
+<p>矩阵作图法的缺陷：当两条序列中存在很多匹配的位点对时，点矩阵中会形成很多点标记。当比较长的序列进行比较时，这样的点阵图会变得非常复杂和模糊。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608180956992.png" srcset="/img/loading.gif" lazyload></p>
+<p>改进策略：滑动窗口技术</p>
+<p>使用滑动窗口之间的比较去代替单个位点之间的比较。</p>
+<ul>
+<li>比如设窗口大小(window size)为10，相似度阈值为8，则每次比较取10个连续的字符，若相同字符数超过8个，则进行标记为窗口相似。</li>
+</ul>
+<p>优点：基于滑动窗口的点矩阵方法可以明显地降低点阵图的噪声，且明确无误的指示出两条序列具有显著相似性的区域。</p>
+<p>滑动窗口法的效果比较：</p>
+<ul>
+<li>下图的(b)为人类(Homosapiens)与黑猩猩(Pongo pygmaeus)的β球蛋白基因序列进行比较的完整点阵图。</li>
+<li>(c)为利用滑动窗口对以上的两种球蛋白基因序列进行比较的点阵图，其中窗口大小为10个核苷酸，相似度阈值(threshold)为8。</li>
+</ul>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608181834815.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="两条序列的比较">2.两条序列的比较</h2>
+<h3 id="序列比对打分矩阵">2.1 序列比对打分矩阵</h3>
+<p>两条序列 s 和 t 的比对得分等于将 s 转化为 t 所用的所有编辑操作的得分总和。</p>
+<p>详细列出各种字符替换的得分，并排列成表格(或矩阵)，即为打分矩阵。</p>
+<blockquote>
+<p>定义打分矩阵是进行序列比较的基础。</p>
+</blockquote>
+<p>选择不同的打分矩阵将得到不同的比较结果。</p>
+<p>打分矩阵的定义需要依据其实际应用中生物学意义。</p>
+<p>打分矩阵分为：</p>
+<ul>
+<li>核酸打分矩阵： 单位矩阵, BLAST矩阵, 转移矩阵
+<ul>
+<li>单位矩阵 ：相同的核苷酸匹配得分为1，不同核苷酸替换为0。</li>
+<li>BLAST矩阵 ：相同匹配得分为+5，反之为-4。</li>
+<li>转移矩阵（transition）：相同匹配得分为+1，反之为-5。</li>
+</ul></li>
+</ul>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608182752593.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>蛋白质打分矩阵：单位矩阵, 氨基酸突变代价矩阵GCM, 疏水矩阵…</li>
+</ul>
+<h3 id="最优序列比对">2.2 最优序列比对</h3>
+<p>最优比对：在所有可能的比对中，得分最高(或编辑代价最小)的比对，把最优比对的得分值称为s和t的相似度，记作sim(s,t)。</p>
+<ul>
+<li>最高得分(相似度)是唯一的，但最佳比对方式不一定唯一。</li>
+</ul>
+<p>寻找最优比对：</p>
+<ul>
+<li>寻找得分最高(或代价最小)的比对</li>
+<li>需要设计有效的最优化算法</li>
+</ul>
+<p>穷举法：穷举所有可能比对，选取最高得分者。</p>
+<ul>
+<li>穷举所有可能比对</li>
+<li>分别计分</li>
+<li>选取最高得分者</li>
+</ul>
+<p>两条序列可能的比对数目是<strong>序列长度的指数函数</strong>；随着序列长度的增长，计算量呈指数增长。穷举法不可行！ <span class="math display">\[
+比对数目=\sum_{k=0}^{min(m,n)}\frac{(m+n-k)!}{(n-k)!(m-k)!k!}
+\]</span></p>
+<h3 id="动态规划dynamic-programming全局序列比对">2.3 动态规划（Dynamic Programming）—全局序列比对</h3>
+<h4 id="认识动态规划算法">2.3.1 认识动态规划算法</h4>
+<p>动态规划算法是寻找最优比对的一个方法。</p>
+<p>利用同一问题已计算出的局部解求解<strong>全局解</strong>。</p>
+<ul>
+<li>一般是通过把一个问题分解成计算量合理的子问题，并使用这些子问题的结果来计算最终解。</li>
+</ul>
+<p>应用场景举例：用于在一个复杂空间中寻找一条最优路径。</p>
+<ul>
+<li>如果该问题可以描述为一个对应的图论问题，且问题的解对应于图中从起点到终点的最短距离，那么就可以通过动态规划算法解决这个问题。</li>
+</ul>
+<p>动态规划是<strong>求解最优化问题的一种途径或框架</strong>：</p>
+<ul>
+<li>并不是某一个特殊算法。</li>
+<li>不像搜索或数值计算那样，具有一个标准的数学表达式和明确清晰的解题方法。</li>
+<li>动态规划算法往往是针对某一种特定最优化问题设计。</li>
+<li>不存在一种可以解决各类最优化问题万能的动态规划算法。</li>
+</ul>
+<p>动态规划的<strong>基本思想</strong>：将待求解问题分解成若干个子问题，先求解子问题，再从子问题的解得到原问题的解。</p>
+<ul>
+<li>经分解得到子问题往往不是互相独立的。</li>
+<li><strong>保存已解决的子问题的答案</strong>，而在需要时再找出已求得的答案，以避免大量的重复计算。
+<ul>
+<li>在穷举法中存在大量重复计算</li>
+</ul></li>
+<li>用一个表来记录所有已解的子问题的答案
+<ul>
+<li>具体的动态规划算法多种多样，但它们具有相同的填表格式。</li>
+</ul></li>
+</ul>
+<h4 id="动态规划算法基本步骤">2.3.2 动态规划算法基本步骤</h4>
+<p>设计动态规划算法的五个<strong>基本步骤</strong>：</p>
+<ol type="1">
+<li>确定问题的决策对象</li>
+<li>对决策过程划分阶段</li>
+<li>对各阶段确定状态变量</li>
+<li>根据状态变量确定代价函数和总的目标函数</li>
+<li>建立各阶段状态变量的转移过程，确定状态转移方程</li>
+</ol>
+<p>利用<strong>动态规划算法寻找最优序列比对的基本建模步骤</strong>：</p>
+<ol type="1">
+<li>确定问题的决策对象：
+<ul>
+<li>确定各个位点上应采用何种编辑操作: 匹配/失配/空位</li>
+</ul></li>
+<li>对决策过程划分阶段：
+<ul>
+<li>一个位点对应一个阶段</li>
+</ul></li>
+<li>对各阶段确定状态变量：
+<ul>
+<li>序列前缀串的比对结果和当前位置的编辑操作是当前阶段的状态变量</li>
+</ul></li>
+<li>根据状态变量确定得分函数和总的目标函数：
+<ul>
+<li>序列前缀串的得分作为各阶段的得分函数，完整 序列的得分函数即构成总的目标函数</li>
+</ul></li>
+<li>建立各阶段状态变量的转移过程，确定状态转移方程：
+<ul>
+<li>顺推方式：使用状态S<sub>k-1</sub>推导状态S<sub>k</sub> 的得分</li>
+</ul></li>
+</ol>
+<h4 id="动态规划辅助矩阵">2.3.3 动态规划辅助矩阵</h4>
+<p>在开始算法之前，我们还要理解一个概念是<strong>动态规划辅助矩阵</strong>：考虑两个序列s与t</p>
+<ul>
+<li><p>设 m = |s|, n= |t|, 则s共有m + 1个前缀串, t共有n + 1个前缀(包括空串)</p></li>
+<li><p>动态规划辅助矩阵A为：(m + 1) × (n + 1)</p></li>
+<li><p>矩阵A的(i,j)元素为前缀的最优比对得分: <span class="math display">\[
+A(i,j)=sim(prefix(s,j),prefix(t,j))或A(i,j)=sim(s[0..i],t[0..j])
+\]</span></p></li>
+<li><p><strong>算法的核心步骤</strong>：通过状态转移方程，维护一个动态规划辅助矩阵A用以存放这些得分。</p>
+<ul>
+<li>算法从最短的前缀开始，递推地得到更长的前缀串的相似度，并不直接计算 sim(s,t)</li>
+</ul></li>
+<li><p>全局序列比对也称为Needleman-Wunsch(NW)算法。</p></li>
+</ul>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png" srcset="/img/loading.gif" lazyload alt="动态规划辅助矩阵A"><figcaption aria-hidden="true">动态规划辅助矩阵A</figcaption>
+</figure>
+<p><strong>计算A(i,j)的方法</strong>：</p>
+<ul>
+<li><p>已知序列<sub>0</sub>:s:<sub>i</sub>和<sub>0</sub>:t:<sub>j</sub>的前缀最优比对，即是已知3种子序列的最优比对</p>
+<ul>
+<li><sub>0</sub>:s:<sub>(i-1)</sub>和<sub>0</sub>:t:<sub>(j-1)</sub>的最优比对</li>
+<li><sub>0</sub>:s:<sub>(i-1)</sub>和<sub>0</sub>:t:<sub>j</sub>的最优比对</li>
+<li><sub>0</sub>:s:<sub>i</sub>和<sub>0</sub>:t:<sub>(j-1)</sub>的最优比对</li>
+</ul></li>
+<li><p>则序列<sub>0</sub>:s:<sub>i</sub>和<sub>0</sub>:t:<sub>j</sub>的最优比对必是上述3种情况之一的扩展，即</p>
+<ul>
+<li><p>替换或匹配(s<sub>i</sub> ,t<sub>j</sub> )</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608195505891.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p></li>
+<li><p>删除(s<sub>i</sub> ,-)</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608195559054.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p></li>
+<li><p>插入(-,t<sub>j</sub> )</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608195946697.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p></li>
+</ul></li>
+<li><p>状态转移方程： <span class="math display">\[
+A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\end{cases}
+\]</span></p></li>
+</ul>
+<h4 id="辅助矩阵的初始化">2.3.4 辅助矩阵的初始化</h4>
+<ul>
+<li>假设给定打分函数：
+<ul>
+<li>匹配：1</li>
+<li>失配：-1</li>
+<li>空位：-2</li>
+</ul></li>
+<li>初始化辅助矩阵A：
+<ul>
+<li>矩阵的纵轴方向自上而下对应于第1条序列(s)，横轴方向自左向右对应于第2条序列(t)</li>
+<li>矩阵横向的移动表示在纵轴序列中加入一个空位</li>
+<li>纵向的移动表示在横轴序列中加入了一个空位</li>
+<li>而斜对角向的移动表示两序列各自相应的字符进行比对</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>注意：各轴第一个元素的索引下标为0, 且初始化A(0,0)=0。</p>
+</blockquote>
+<h4 id="动态规划辅助矩阵的维护过程">2.3.5 动态规划辅助矩阵的维护过程</h4>
+<p>计算顺序：</p>
+<ol type="1">
+<li>计算过程从A(0,0)开始，到A(m, n)结束。</li>
+<li>计算A(i,j)时，只要已知A(i-1,j), A(i-1,j-1), A(i,j-1)即可使用递推公式计算。
+<ul>
+<li>可按行计算——每行从左到右，也可按列计算—— 每列从上到下。</li>
+<li>第一行第一列可以单纯的-2来计算，因为矩阵横向的移动表示在纵轴序列中加入一个空位，纵向的移动表示在横轴序列中加入了一个空位。</li>
+</ul></li>
+<li>在计算A(i,j)后，需要<strong>保存</strong>A(i,j)是从(i − 1,j), (i − 1,j − 1), (i,j − 1) 中的哪一个位置推进的。
+<ul>
+<li>保存计算路径，以便于后续处理</li>
+</ul></li>
+</ol>
+<h4 id="用序列比对的动态规划求解问题的实例">2.3.6 用序列比对的动态规划求解问题的实例</h4>
+<p>给定序列s和t，打分函数定义如下。请使用NW算法找出最优比对：s=AAAC，t=AGC</p>
+<p>打分函数：<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608202753737.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>基本求解步骤：</strong></p>
+<ul>
+<li><p>建立动态规划辅助矩阵</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png" srcset="/img/loading.gif" lazyload alt="动态规划辅助矩阵A"><figcaption aria-hidden="true">动态规划辅助矩阵A</figcaption>
+</figure></li>
+<li><p>初始化动态规划辅助矩阵</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203000442.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p></li>
+<li><p>根据状态转移方程不断维护辅助矩阵A</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203043267.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<ul>
+<li>最终得到的A(m,n)即为s与t的最佳比对得分(相似度)为-1。</li>
+</ul></li>
+<li><p>回溯计算的路径，以找到最优比对</p>
+<ul>
+<li><p>从A(m,n)开始，反推</p></li>
+<li><p>假设在反推到达A(i,j)时，根据保存的计算路径判断A(i,j)究竟是利用A(i-1,j), A(i-1,j-1), A(i,j-1)中的哪一个计算而得到的</p></li>
+<li><p>找到这个点后，由从此点出发，一直到A(0,0)为止</p></li>
+<li><p>矩阵横向的移动表示在纵轴序列中加入一个空位，纵向的移动表示在横轴序列中加入了一个空位；而斜对角向的移动表示两序列各自相应的字符进行比对。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203832883.png" srcset="/img/loading.gif" lazyload></p></li>
+<li><p>图中路径对应的最佳比对（有多种最佳比对方式）为：</p>
+<ul>
+<li>AAAC与AG-C</li>
+<li>AAAC与A-GC</li>
+<li>AAAC与-AGC</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="最优局部比对子序列与完整序列的比对">2.4 最优局部比对—子序列与完整序列的比对</h3>
+<h4 id="认识最优局部比对">2.4.1 认识最优局部比对</h4>
+<p>最优全局比对：两条长度相近的序列进行比对。</p>
+<p>最优局部比对：</p>
+<ul>
+<li><p>子序列与完整序列的比对；</p></li>
+<li><p>寻找最大的相似子序列。</p></li>
+</ul>
+<p>基于动态规划的最优全局序列比对可以找出两条序列的最佳比对，但未必总是具有生物学意义。</p>
+<ul>
+<li>有些同源序列虽然全序列的相似性很小，但是存在高度相似的局部区域。</li>
+<li>如果在进行比对时，注重序列的局部相似性，则可能会发现重要的比对。</li>
+<li>Smith和Waterman在Needleman-Wunsch算法的基础上提出了序列最优局部比对算法。</li>
+<li>最优局部比对算法叫做Smith-Waterman算法。</li>
+</ul>
+<p>把一个较短的序列与一个较长的完整序列进行比对，试图找出<strong>最优的局部匹配</strong>。</p>
+<ul>
+<li>给定两条序列 <sub>0</sub>:s:<sub>m</sub>和<sub>0</sub>:t:<sub>n</sub> ，<strong>从<sub>0</sub>:t:<sub>n</sub>中寻找一个子序列</strong>，使得两条序列 sim(s, <sub>i</sub>:t:<sub>j</sub>)最大</li>
+</ul>
+<h4 id="最优局部序列比对的实现">2.4.2 最优局部序列比对的实现</h4>
+<p>寻找最优的局部比对时，需要避免对序列一端或者两端出现的空位进行罚分。</p>
+<p>由于不计删除序列t前缀的得分，因此在对动态规划辅助矩阵初始化时，按照下述方式处理： <span class="math display">\[
+A(_0:s:_0,_0:t:_j)=0
+\]</span> 局部比对也不计删除序列t后缀的得分，因此: <span class="math display">\[
+A(i,j)=max\begin{cases} A(i,j-1)\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\end{cases}
+\]</span> 动态规划辅助矩阵最后一行的更新公式: <span class="math display">\[
+A(m,j)=max\begin{cases} A(m,j-1)+0\\ A(m-1,j-1)+p(s[m],t[j])\\A(m-1,j)+p(s[m],-)\end{cases}
+\]</span> 局部最优序列比对路径：</p>
+<ul>
+<li>从最后一行(第m行)中寻找最大值，反推最优路径到达第一行
+<ul>
+<li>由位置(m, j) 出发，反推最优比对路径，最终通过<strong>斜线</strong>(非空位)到达(1, i)，其中 j 是第 m 行中取得最大分值的最小列下标。</li>
+</ul></li>
+</ul>
+<h3 id="最优局部比对寻找最大的相似子序列">2.5 最优局部比对——寻找最大的相似子序列</h3>
+<p>对两条序列都进行部分比对，以寻找最大的相似子串。</p>
+<ul>
+<li>初始化
+<ul>
+<li>由于不计删除或插入序列前缀的得分，因此边界条件(即初始化)修改为：A(0,j)=0，A(i,0)=</li>
+<li>即动态规划辅助矩阵A的第0行和第0列初始化为0</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>相当于忽略前缀</p>
+</blockquote>
+<ul>
+<li><p>状态转移方程 <span class="math display">\[
+A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\\0\end{cases}
+\]</span></p>
+<ul>
+<li>对于每个A(i,j)，一定存在一个得分为“0”的空后缀比对，因此矩阵A中的所有元素大于或等于“0”</li>
+<li>阈值为0意味着矩阵中的0元素分布区域对应于不相似的子序列，而正数区域则是局部相似的区域。</li>
+</ul></li>
+<li><p>在矩阵A中寻找最大值</p>
+<ul>
+<li>该值是最优局部比对得分</li>
+<li>该值对应的位置为序列局部比对的末点</li>
+<li>反向推演前面的最优路径，直到局部比对的起点——局部比对的起点取值为0</li>
+<li>矩阵A中元素的含义与基本算法有所不同：A(i,j)中每个元素的值代表序列<sub>0</sub>:s:<sub>i</sub> 某个后缀和序列<sub>0</sub>:t:<sub>j</sub> 某个后缀的最佳比对</li>
+</ul></li>
+</ul>
+<h3 id="准全局比对">2.6 准全局比对</h3>
+<p>准全局序列比对的四种常见情况对应于两个序列终端空位的四种可能：</p>
+<ul>
+<li>子序列与完整序列的比对</li>
+<li>寻找最大的相似子序列</li>
+<li>判断一条序列的前缀与另一条序列的后缀相似</li>
+<li>判断一条序列的后缀与另一条序列的前缀相似</li>
+</ul>
+<p>准全局序列比对：在评价序列比对时，不计算序列终端出现“空位”情况的罚分。</p>
+<p>所谓的序列终端空位包括：</p>
+<ul>
+<li>出现在序列第一个字符之前的空位</li>
+<li>出现在序列最后一个字符之后的空位</li>
+</ul>
+<p>不计前端空位:</p>
+<ul>
+<li>不计s的前端空位：第0行初始值为“0”</li>
+<li>不计t的前端空位：第0列初始值为“0”</li>
+</ul>
+<p>不计末端空位:：</p>
+<ul>
+<li>不计s的末端空位：在最后一行中寻找最大值</li>
+<li>不计t的末端空位：在最后一列中寻找最大值</li>
+</ul>
+<p><strong>以上4条可任意组合</strong></p>
+<h3 id="总结">2.7 总结</h3>
+<p>全局序列比对：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221708590.png" srcset="/img/loading.gif" lazyload></p>
+<p>局部序列比对—子序列与完整序列的比对：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221811317.png" srcset="/img/loading.gif" lazyload></p>
+<p>局部序列比对——寻找最大的相似子序列：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221842345.png" srcset="/img/loading.gif" lazyload></p>
+<p>准全局序列比对：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608221912089.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="多序列比对">3.多序列比对</h2>
+<h3 id="多条序列比对的提出">3.1 多条序列比对的提出</h3>
+<p>序列序列两两比对主要用于建立两条序列的同源关系和推测它们的结构、功能。</p>
+<p>多条序列比对对于研究分子结构、功能及进化关系更为有用。</p>
+<ul>
+<li>在实际蛋白质研究中，并不是仅仅分析单个蛋白质，而是更着重于研究蛋白质之间的关系，研究一个家族中的相关蛋白质及序列中与结构域或功能相关的保守区域，进而分析蛋白质的结构和功能。
+<ul>
+<li>序列两两比对不能满足这样的需要，难以发现多个序列的共性。</li>
+<li>要得到一个序列家族的序列特征，需要同时比对多条同源序列。</li>
+<li>当给定一个新序列时，根据序列特征，可以判断这个序列是否属于该家族。</li>
+</ul></li>
+</ul>
+<p>多序列比对定义：有k ( &gt; 2 ) 个序列s<sub>1</sub> , s<sub>2</sub> , ... ,s<sub>k</sub>，每个序列由同一个字母表中的字符组成。通过插入字符操作，使得各序列达到一样的长度，从而形成这些序列的多重比对。</p>
+<p>目标：</p>
+<p>发现多个序列的共性</p>
+<p>发现与结构和功能相关的保守序列片段</p>
+<p>推测各个序列的进化历史</p>
+<h4 id="打分函数">3.1.1 打分函数</h4>
+<p>具有k个变量, 可用一个k维数组来表示。</p>
+<p>所期望的打分函数：</p>
+<ul>
+<li>函数在形式上应该简单，具有统一的形式。</li>
+<li>不随序列的个数而发生形式变化。</li>
+<li>函数值应独立于各参数的顺序，与比较的序列先后次序无关。</li>
+<li>对相同或相似字符的比对，得分值高。</li>
+</ul>
+<h5 id="spsum-of-pairs模型">SP(Sum-of-Pairs)模型</h5>
+<p>SP模型的思路：按照每个比对的列进行打分，然后求和。</p>
+<p>SP打分函数： <span class="math display">\[
+SP(c_1,c_2,...,c_k)=\sum_{i=1}^{k-1}\sum_{j=i+1}^{k}p(c_i,c_j)
+\]</span></p>
+<ul>
+<li><p>其中c<sub>1</sub> ,c<sub>2</sub> ,…,c<sub>k</sub>是一列中的k个字符，p(. , . )是关于一对字符相似性的打分函数。</p>
+<p>总得分基于字符两两比较得分。</p>
+<p>把一个多重比对所有列的得分全部加起来，其和即为该多重序列比对的得分。</p></li>
+</ul>
+<p>多重序列比对的空位：</p>
+<ul>
+<li>进行多重序列比对时，可能<strong>会出现两个空位字符的比对</strong>，因此我们扩充打分函数p的定义域。
+<ul>
+<li>即增加p(-,-)=0</li>
+<li>在分析这两条序列时，可以同时去掉这些空位。这个结果称之为多重序列比对在两条特定序列上的投影(projection)。</li>
+</ul></li>
+</ul>
+<p>基于SP打分函数的逐对比对：</p>
+<ul>
+<li><p>引入打分函数的定义域扩充p(−,−) = 0后,则可以先对每一对序列进行两两比对，再求和： <span class="math display">\[
+SP(s_1,s_2,...,s_k)=\sum_{i&lt;j}^{k}sim(s_i,s_j)
+\]</span></p>
+<ul>
+<li>等价于对多重序列的每一列进行计算，然后将每一列的得分值相加。</li>
+</ul></li>
+</ul>
+<p>穷举出所有可能的比对，取得分最高者！</p>
+<h3 id="多条序列比对的方法">3.2 多条序列比对的方法</h3>
+<p>精确比对：多重比对的动态规划算法</p>
+<p>渐进比对：星形比对、树形比对</p>
+<h4 id="多重序列比对的动态规划算法">3.2.1 多重序列比对的动态规划算法</h4>
+<p>对于3条序列，每1种可能的比对可以用3维晶格中的1条路径来表示，每1维对应于1条序列。</p>
+<ul>
+<li>路径的起点为晶格的<strong>左上后角</strong>，终点为晶格的<strong>右下前角</strong>。</li>
+<li>对于多条序列，则形成超晶格(hyper-lattice)。</li>
+<li>对于两条序列比对，其得分矩阵相当于2维晶格(平面)。</li>
+</ul>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609103503859.png" srcset="/img/loading.gif" lazyload alt="三条序列比对"><figcaption aria-hidden="true">三条序列比对</figcaption>
+</figure>
+<h5 id="多重比对的动态规划的基本原理">（1）多重比对的动态规划的<strong>基本原理</strong>：</h5>
+<ul>
+<li>在超晶格中，序列比对的计算是从左上后角坐标点(0,0,…,0)开始，按<strong>节点之间的依赖关系</strong>向右下前方推进，直至计算完最后一个节点。
+<ul>
+<li>实际计算时可按先低维再高维(对应于先行后列)。</li>
+<li>二重序列比对时，可将动态规划算法的计算过程看成是在二维平面上按照一定顺序访问每个节点，每个节点的得分代表两个序列前缀的最优比对的得分。</li>
+</ul></li>
+<li>当前位点的得分计算取决于与它相邻的(2k – 1)条边，分别对应于匹配、替换或引入空位等3种编辑操作。</li>
+<li>计算各操作的得分时，选择一个得分最大的操作，将得分和存放于该节点。</li>
+</ul>
+<h5 id="状态转移方程">（2）状态转移方程：</h5>
+<p><span class="math display">\[
+s_{i,j,k}=max\begin{cases} s_{i-1,j,k} \enspace +\delta(\upsilon_i,-,-) \\ s_{i,j-1,k} \enspace +\delta(-,\omega_j,-)\\s_{i,j,k-1} \enspace +\delta(-,-,\mu_k)\\s_{i-1,j-1,k}  +\delta(\upsilon_i,\omega_j,-)\\s_{i-1,j,k-1}  +\delta(\upsilon_i,-,\mu_k)\\s_{i,j-1,k-1}  +\delta(-,\omega_j,\mu_k)\\s_{i-1,j-1,k-1}  +\delta(\upsilon_i,\omega_j,\mu_k)\end{cases}
+\]</span></p>
+<h5 id="dp算法的计算过程">（3）DP算法的计算过程：</h5>
+<p>动态规划的计算过程是一个递推更新动态规划辅助矩阵的过程。</p>
+<ul>
+<li>在计算每个节点得分时，将其<strong>各前趋节点</strong>的值分别加上从前趋节点到当前点的SP得分，取最大值作为当前节点的值。
+<ul>
+<li>一般在3维(k=3)情况下，考虑7个前趋节点。</li>
+<li>在k维情况下，前趋节点的个数等于2k –1。</li>
+</ul></li>
+</ul>
+<p>多重比对的DP算法的计算复杂度：</p>
+<ul>
+<li>对于k条序列，动态算法需要处理k维空间的每个节点，计算量与节点数成正比（与各序列长度的乘积的乘积）。
+<ul>
+<li>注意到前趋节点的个数为2<sup>k</sup> – 1，因此动态规划算法复杂度为O(2<sup>k</sup> N<sup>k</sup>)。</li>
+<li>随着待比对的序列数目k的增加，动态规划的计算量和所要求的计算空间呈<strong>指数</strong>形式猛增。</li>
+</ul></li>
+</ul>
+<p>多重比对的动态规划的空间复杂度：</p>
+<ul>
+<li>动态规划辅助矩阵的大小 = N<sup>k</sup> 个元素
+<ul>
+<li>N为序列长度</li>
+<li>k为序列条数</li>
+</ul></li>
+<li>每个元素需要处理2<sup>k</sup> – 1个相邻元素
+<ul>
+<li>时间复杂度: O(2<sup>k</sup> N<sup>k</sup>)</li>
+</ul></li>
+</ul>
+<p>如果采用标准的动态规划算法计算最优的多重序列比对，k较大时所需要的时间和空间复杂度均是难以满足的。</p>
+<h4 id="渐进方法星形比对">3.2.2 渐进方法—星形比对</h4>
+<p><strong>渐进法</strong>的基本过程：</p>
+<ul>
+<li>把多重序列比对转化为两两序列比对。</li>
+<li>再将两两比对聚合起来，最终形成完整的多序列比对。</li>
+</ul>
+<p><strong>渐进法</strong>的特点：</p>
+<ul>
+<li>属于启发式近似方法，能够大大减少所需的计算时间。</li>
+<li>虽然无法保证最终得到最优解，但在大多数情况下，其计算结果接近最优结果。</li>
+</ul>
+<h5 id="星形比对的基本思路">（1）星形比对的基本思路：</h5>
+<ol type="1">
+<li>在给定若干序列中，首先选出一个<strong>核心序列</strong>。</li>
+<li>把该序列与其它序列进行两两比对。</li>
+<li>最后聚合形成所有序列的多重比对。
+<ul>
+<li>使得该多重比对在核心序列和任何一个其它序列方向的投影均为最优的两两比对。</li>
+</ul></li>
+</ol>
+<blockquote>
+<p>基本过程：</p>
+</blockquote>
+<ul>
+<li>假设k条待比对的序列中核心序列是s<sub>c</sub>，那么：
+<ul>
+<li>先利用标准的动态规划方法求出所有s<sub>i</sub>和s<sub>c</sub>的最优两两比对。</li>
+<li>把得到的两两比对按一定规则<strong>聚合</strong>起来。</li>
+</ul></li>
+</ul>
+<p>时间复杂度为 O(k N<sup>2</sup>)</p>
+<h5 id="如何选择核心序列">（2）如何选择核心序列？</h5>
+<ul>
+<li><p>第一种方法是尝试将每一个序列分别作为核心序列，进行星形多重序列比对，取比对结果最好的一个。</p></li>
+<li><p>另一种方法是计算所有的两两比对，取下式值最大的一个： <span class="math display">\[
+sim(s_j,s_c)
+\]</span></p></li>
+</ul>
+<h5 id="星形比对的基本过程">（3）星形比对的基本过程：</h5>
+<ol type="1">
+<li>选定一个核心序列。</li>
+<li>把多重比对转化为k个两两比对。</li>
+<li>聚合过程：从某一个两两比对开始，比如sc和s1，然后逐步加上其他的两两比对。
+<ul>
+<li>对于空位采用”一次加入空白，次次保留空白”原则: 逐增加 s<sub>c</sub>中的空位字符，以适应其他的比对，但不删除s<sub>c</sub>中已经存在的空位字符。</li>
+</ul></li>
+</ol>
+<h4 id="渐进方法树形比对">3.2.3 渐进方法—树形比对</h4>
+<p>树形比对一般过程：</p>
+<ol type="1">
+<li>先将多个序列进行两两比对，基于这些比对得到相似性矩阵。
+<ul>
+<li>该矩阵反映逐对序列之间的关系。</li>
+</ul></li>
+<li>利用该相似性矩阵，构建一棵“<strong>指导树(guide tree)</strong>”。</li>
+<li>从<strong>最接近的一对序列出发</strong>，根据指导树逐步填加序列，聚合成多重比对；直到所有序列处理完毕为止。</li>
+</ol>
+<h2 id="在数据库中进行序列同源搜索">4.在数据库中进行序列同源搜索</h2>
+<h3 id="问题的提出">4.1 问题的提出</h3>
+<p>在数据库中搜索相似的序列：</p>
+<ul>
+<li>查询序列（待查询的序列）</li>
+<li>目标序列（数据库中的每条被搜索的序列）</li>
+</ul>
+<p>直接用两序列比对进行数据库搜索存在的问题：</p>
+<ul>
+<li>目标序列太长、数量巨大，穷举式搜索耗时过长。</li>
+<li>解决办法：索引技术、启发式方法。</li>
+<li>实用的数据库搜索算法：“最佳”→“较佳”。</li>
+</ul>
+<p>两大主要搜索算法：</p>
+<ul>
+<li>BLAST及其相关算法</li>
+<li>FASTA及其相关算法</li>
+</ul>
+<h3 id="常用的搜索方法blast搜索算法">4.2 常用的搜索方法—BLAST搜索算法</h3>
+<p>主要特征：原始的BLAST算法是<strong>不带空位的局部比对方法</strong>。</p>
+<p>给定一个查询序列，BLAST返回所有查询序列与数据库序列得分<strong>超过某个阈值S</strong>的片段对。</p>
+<blockquote>
+<p>阈值S可以由用户设置，但程序有一个默认的推荐值。</p>
+</blockquote>
+<ul>
+<li><p>选择S的<strong>基本原则</strong>是：一条随机序列与查询序列比较的得分不会超过S。</p></li>
+<li><p>由于在序列比对过程中不考虑空位的操作(没有插入和删除)，则对于二维平面上各点的计算问题可转化为一维点的计算问题，计算速度得以大幅提高。</p></li>
+</ul>
+<p>通过搜索序列数据库来找出<strong>最优的无空位局部比对</strong>。</p>
+<ul>
+<li>从数据库中找出与<strong>查询序列的某些子序列</strong>相似的子序列。</li>
+<li>在进行数据库查询时，BLAST返回一个<strong>高得分的相似片段对列表</strong>，每个片段对包括查找序列的一个片段和数据库中待比较序列的一个片段。</li>
+</ul>
+<blockquote>
+<p>BLAST算法把数据库搜索建立在严格的统计学基础上。</p>
+</blockquote>
+<h5 id="基本步骤">基本步骤：</h5>
+<ol type="1">
+<li><p>利用<strong>滑动窗口</strong>将查询序列分解为定长的“单词”串(默认长度为4)。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609164801077.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p></li>
+<li><p>舍弃那些由最常见的残基组成的“单词”串，在数据库中精确匹配剩余“单词”串。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609164946161.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p></li>
+<li><p>对匹配上的单词串，逐步向两端延伸该匹配，直到得分低于某个阈值为止。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609165100296.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p></li>
+</ol>
+<h3 id="常用的搜索方法fasta搜索算法">4.3 常用的搜索方法—FASTA搜索算法</h3>
+<p>FASTA是另一种常用的序列比对及搜索工具：</p>
+<ul>
+<li>能够进行<strong>带空位的局部比对</strong>。</li>
+<li>由于FASTA搜索时会将<strong>查询序列与数据库中每条序列进行细致比较</strong>，故通常比BLAST搜索要慢些。</li>
+</ul>
+<h5 id="基本步骤-1">基本步骤：</h5>
+<ol type="1">
+<li><p>用滑动窗口将查询序列分隔成“单词”串：</p>
+<ul>
+<li>对于核苷酸序列， “单词”串长为4~6</li>
+<li>对于氨基酸序列， “单词”串长为1~2</li>
+</ul></li>
+<li><p>为查询序列建立一个表格，记录下各个“单词”串在序列中出现的位置。</p>
+<p>例：“单词”长度为1的序列如下：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609170226299.png" srcset="/img/loading.gif" lazyload alt="查询序列" style="zoom:67%;"></p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609171158162.png" srcset="/img/loading.gif" lazyload alt="查询序列表格"><figcaption aria-hidden="true">查询序列表格</figcaption>
+</figure></li>
+<li><p>对目标序列建立另一个表格，用于比较目标序列与查询序列中各残基的位置之差。</p>
+<p>查询序列：<strong>FAMLGFIKYLPGCM</strong></p>
+<p>目标序列：<strong>TGFIKYLPGACT</strong></p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609171928801.png" srcset="/img/loading.gif" lazyload></p></li>
+<li><p>从第二个表中发现有很多距离为3的位置，这表明：如果对目标序列<strong>偏移3个位置</strong>，则可得到一个较好的比对。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609172302785.png" srcset="/img/loading.gif" lazyload></p></li>
+</ol>
+<p>通过比较两条序列的<strong>偏移表</strong>，可以很快地发现相同的区域，并将这些区域连接起来形成更长的序列，然后利用Smith-Waterman算法比对。</p>
+<blockquote>
+<p>由于FASTA是对已知区域进行比对，较原始算法(即用动态规划算法进行查询序列与所有目标序列间的比对)要快得多。</p>
+</blockquote>
+<h3 id="数据库搜索结果得分及统计显著性">4.4 数据库搜索结果得分及统计显著性</h3>
+<p>提出原因：</p>
+<ul>
+<li>数据库搜索总会产生结果，<strong>但找到的序列未必真与查询序列相关</strong>。</li>
+<li>比对得分可以说明搜索的结果与查询序列之间的相似程度，但由于数据库搜索算法不同、比对打分标准不统一 ，因此<strong>比对得分值</strong>本身并不能充分指明两序列间的关系。</li>
+</ul>
+<p>设某个数据库搜索结果的比对得分为S，我们可以提出一个<strong>基本问题</strong>：</p>
+<ul>
+<li>若有一组与查询序列不相关的序列(<strong>如随机序列</strong>)，则在这些序列中随机找到一个得分同样为S的比对的概率有多大？</li>
+</ul>
+<p>为回答这个基本问题，数据库搜索引擎通常会为每个搜索结果提供P得分与E得分。</p>
+<p>P得分：对于随机找出的一条或多条序列，其比对得分大于等于S的<strong>可能性</strong>(概率)。</p>
+<p>E得分：随机找出的、与查询序列进行比对的<strong>得分大于等于S的目标序列的期望数目</strong>。</p>
+<ul>
+<li>如果E得分与P得分均<strong>较低</strong>，则说明搜索结果与查询序列<strong>具有进化上的关系</strong>，并不是由于<strong>随机因素</strong>得到的结果。</li>
+</ul>
+<blockquote>
+<p>当E值&lt; 10<sup>-3</sup>时，通常认为搜索结果具有统计上的显著性；</p>
+<p>–搜索得到的匹配序列在E值上可以低到<strong>10<sup>-50</sup></strong> ，表明查询序列与搜索结果间<strong>具有进化关系的可能性极大</strong>。</p>
+</blockquote>
+<h2 id="dna片段组装">5.DNA片段组装</h2>
+<h3 id="问题提出与定义">5.1 问题提出与定义</h3>
+<p>问题描述：给定一组取自特定字母表的字符串集合F，寻找一个最短的字符串s，使得F中的每一个字符串均为s的一个连续子串。</p>
+<ul>
+<li>其中，集合F中的字符串是待组装的序列片段，s 是序列片段组装的结果。</li>
+</ul>
+<p>DNA片段组装任务的提出：大规模基因组测序时，得到待测序列的<strong>一系列片段</strong>，这些序列片段<strong>覆盖待测序列</strong>，且序列片段之间存在相互覆盖或重叠；根据这些存在相互覆盖或重叠的序列片段，<strong>重建</strong>目标DNA序列。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609192717156.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="序列片段组装的基本原理">序列片段组装的基本原理：</h5>
+<p>将输入的序列片段进行<strong>两两比对</strong>；</p>
+<ul>
+<li>与基本的序列两两比对算法不同，此时需要寻找一个序列的后缀与另一个序列的前缀相同或相似的部分。</li>
+<li>通过准全局序列比对(忽略某一端的空白字符)，相当于各个片段之间进行相对定位；</li>
+<li>由各个片段之间的相对定位，逐步确定目标序列。</li>
+</ul>
+<p>指导片段组装的因素是<strong>片段之间的覆盖</strong>。</p>
+<ul>
+<li>通过各个片段之间的覆盖，对片段实现<strong>相对定位</strong>，进而把所有片段连接起来。
+<ul>
+<li>也可以看成是序列片段的特定多重比对。</li>
+</ul></li>
+<li>对于每一列，提取<strong>出现频率最大</strong>的一个字符。</li>
+</ul>
+<h3 id="dna片断组装的主要困难">5.2 DNA片断组装的主要困难</h3>
+<h4 id="碱基标识错误">5.2.1 碱基标识错误</h4>
+<p>在序列片段中存在碱基替换、插入和删除。</p>
+<p>解决方案:</p>
+<ul>
+<li>考虑到序列的检测误差，序列片段组装的一个更准确定义为：给定一组取自特定字母表的字符串集合F，其中的字符串具有一定的误差，寻找一个<strong>最短的字符串s</strong>，使得在s中观察到F的可能性最大。</li>
+</ul>
+<blockquote>
+<p>最大似然 (Maximum Likelihood)准则：以可能性最高为判断标准。</p>
+</blockquote>
+<h4 id="未知片段方向">5.2.2 未知片段方向</h4>
+<p>如果一个片段是一条链的子串， 根据互补原则，该片段的反向互补片段是另一条链的子串。</p>
+<p>对于一条输入的片段，在进行组装时，既可以用其本身，也可以用其<strong>反向互补片段</strong>。</p>
+<p>解决方案：按两个方向分别尝试。</p>
+<h4 id="存在重复区域">5.2.3 存在重复区域</h4>
+<p>重复区域是目标序列中多次出现的子序列。有的重复区域太长，超过片段的边界，造成无法给出确切相对定位，使片段组装变得不确定。</p>
+<h4 id="缺少覆盖">5.2.4 缺少覆盖</h4>
+<p>覆盖强度：定义为目标序列上某个位点上覆盖此位点的片段个数。</p>
+<blockquote>
+<p>平均覆盖强度: 计算求所有覆盖片段的长度和，再除以目标序列长度的估计值。</p>
+</blockquote>
+<p>如果对于目标序列上的某个位点，覆盖该点的序列片段个数为零，则没有相关的序列信息来重建该点附近的目标序列。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609194833195.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="dna片段组装的基本过程与组装模型">5.3 DNA片段组装的基本过程与组装模型</h3>
+<h4 id="dna片段组装的基本过程">5.3.1 DNA片段组装的基本过程</h4>
+<ol type="1">
+<li>首先进行序列片段的两两比对，确定可能的片段之间的覆盖（或者重叠）。</li>
+<li>确定所有片段统一的覆盖模式，即确定各个序列片段的相对位置（最关键一步）。</li>
+<li>最后确定片段组装结果，即确定目标序列。</li>
+</ol>
+<h4 id="最短公共超串模型">5.3.2 最短公共超串模型</h4>
+<p>给定一个字符串集合F，求出一个<strong>最短</strong>的字符串S，使得对于所有属于F 的字符串<em>f</em>，S是<em>f</em>的超串(或者<em>f</em>是S的子串)。</p>
+<p>设F={ACT,CTA,AGT}，则S=ACTAGT是F的超串。</p>
+<p>其中，S要求是各片段的严格超串，不允许片段中存在实验误差，而且<strong>各片段的方向必须已知</strong>。</p>
+<h4 id="重建模型">5.3.3 重建模型</h4>
+<h5 id="近似子串">（1）近似子串</h5>
+<p>考虑到片段的误差和未知方向的问题，对于判别子串的序列比较不需要完全匹配，而是根据相似程度进行处理，需要引入“近似子串”的概念。</p>
+<p>假设 <em>f</em>, <em>g</em>是代表两条序列的字符串，<em>f</em>作为<em>g</em>近似子串的代价为： <span class="math display">\[
+d_s(f,g)=\min_{s\in S(g)}d(f,s)
+\]</span></p>
+<ul>
+<li>其中，S(<em>g</em>)代表<em>g</em>的所有子串的集合，<em>d</em>(⋅ , ⋅)为一般编辑距离。</li>
+</ul>
+<p>设0 &lt; ε &lt; 1，如果<em>d<sub>s</sub>(f,g)</em> ≤ ε|<em>f</em>| , 则称字符串 <em>f</em>是误差 ε 下 <em>S</em> 的近似子串。</p>
+<h5 id="重建模型的定义">（2）重建模型的定义</h5>
+<p>给定一个字符串集合<em>F</em>，求一个最短的字符串<em>S</em>，使得对于所有字符串<em>f∈F</em>，有: <span class="math display">\[
+d_s(f,S)\le \epsilon|f|
+\]</span> 或者 <span class="math display">\[
+d_s(f^{&#39;},S)\le \epsilon|f|
+\]</span> 其中 <em>f′</em> 是 <em>f</em> 的反向互补串。</p>
+<p>主要思路: 寻找一个尽可能短的字符串<em>S</em>，使得每一个<em>f</em>或其反向 互补串<em>f′</em>成为<em>S</em>的近似子串。</p>
+<p>该模型可同时处理序列误差、未知序列方向的问题，但不能处理目标序列中的重复区域和缺少覆盖问题。</p>
+<h4 id="多重连续区模型">5.3.4 多重连续区模型</h4>
+<p>t-contig：在多重序列比对中，如果其<strong>最弱连接的交叠长度至少为t</strong>，则称为一个t-contig。</p>
+<p><em>F</em> 允许一个t-contig：在多重序列比对中，如果能够根据序列片段集合<em>F</em>构造一个t-contig，则称<em>F</em>允许1个t-contig。</p>
+<p>多重连续区模型：</p>
+<ul>
+<li>通过构造t-contig来定义具体不同覆盖强度的序列组装结果。</li>
+<li>给定一个片段集合<em>F</em>和一个整数 t ≥ 0, 将<em>F</em>分割为最小数目的片段子集C<sub>i</sub>，其中1 ≤ i ≤ k，且 每个C<sub>i</sub>允许一个t-contig。</li>
+</ul>
+<blockquote>
+<p>把F分割为k个子集C<sub>i</sub>，根据序列片段子集C<sub>i</sub>构造出一个t-contig，进而完成最小覆盖强度为t的组装结果。</p>
+</blockquote>
+<h1 id="二基因组学与基因识别">二、基因组学与基因识别</h1>
+<h2 id="基因与基因组">1.基因与基因组</h2>
+<p>基因(Gene) ：编码一条多肽链或功能RNA所必需的全部核苷酸序列。</p>
+<blockquote>
+<p>DNA分子链上的特定区域。</p>
+</blockquote>
+<p>基因组(Genome)：一个细胞或者生物体所携带的一套完整的染色体单倍体序列。</p>
+<blockquote>
+<p>包括编码序列和非编码序列在内的全部DNA分子，包含全套基因序列和间隔序列。</p>
+</blockquote>
+<p>基因表达：利用存储在DNA中的遗传信息合成RNA分子，然后再合成相应蛋白质的过程，称为基因表达。</p>
+<blockquote>
+<p>基因表达包括转录与翻译两个子过程。</p>
+</blockquote>
+<h3 id="生物分子中的信息传递">1.1 生物分子中的信息传递</h3>
+<p>在生物生长发育过程中，生物信息传递有两种方式：</p>
+<ol type="1">
+<li>自我复制——在繁衍过程中传递遗传信息。</li>
+<li>基因通过转录和翻译，使遗传信息在生物个体 中表达，使后代表现出与亲代相似的生物性状。
+<ul>
+<li>DNA→RNA→蛋白质</li>
+<li>基因控制着蛋白质的合成，基因的DNA序列到蛋白质序列存在着一种明确的对应关系——遗传密码。</li>
+</ul></li>
+</ol>
+<blockquote>
+<p>遗传密码又称三联体密码，即DNA序列3个连续的碱基对应编码1个蛋白质的氨基酸，且对应关系具有通用性。</p>
+<p>自然界中天然存在20种氨基酸(标准氨基酸)→21种或22种。</p>
+<p>第21: 硒代半胱氨酸(Sec, U), 由终止密码子UGA有义编码Sec；</p>
+<p>第22：吡咯赖氨酸(Pyl, O), 由终止密码子UAG的有义编码Pyl。</p>
+</blockquote>
+<h3 id="人类基因组">1.2 人类基因组</h3>
+<p>人类基因组计划（Human Genome Project / HGP）：测定组成人类染色体（指单倍体）中所包含的30亿个碱基对组成的核苷酸序列，绘制人类基因组图谱， 辨识其载有的基因及其序列，破译人类遗传信息。</p>
+<blockquote>
+<p>截止到2005年，人类基因组计划的测序工作已经完成。</p>
+</blockquote>
+<p>人类基因组：科学家研究的第一个脊椎动物染色体基因组，已成为其他脊椎动物中的代表。</p>
+<blockquote>
+<p>人类基因组约有3万多个基因，分布在染色体的DNA序列中。</p>
+<p>目前已明确定位的基因仅占3万多个基因的一部分。</p>
+</blockquote>
+<p>基因识别：从序列中找到基因及其表达调控信息。</p>
+<blockquote>
+<p>通过识别特殊的序列功能位点、分析序列的组成特征来识别基因，发现与基因表达调控相关的信息。</p>
+</blockquote>
+<h4 id="人类基因组图谱">1.2.1 人类基因组图谱</h4>
+<p>序列图谱：通过测序得到基因组的序列图谱。</p>
+<p>遗传图谱（genetic map）：也叫连锁图谱(linkage map)，它是以具有遗传多态性的遗传标记为“路标” ，以遗传学距离为图距的基因组图。</p>
+<p>物理图谱（physical map）：是指有关构成基因组的全部基因的排列和间距的信息，通过对构成基因组的DNA分子进行测定而绘制。</p>
+<ul>
+<li>DNA物理图谱是指DNA链的限制性酶切片段的排列顺序，即酶切片段在DNA链上的定位。</li>
+<li>目的是把有关基因的遗传信息及其在每条染色体上的相对位置线性而系统地排列出来。</li>
+</ul>
+<p>基因图谱：在识别基因组所包含的蛋白质编码序列的基础上所绘制的、结合有关基因序列、位置及表达模式等信息的图谱；其任务是在人类基因组中鉴别出占2%~5%的全部基因的位置、结构与功能。</p>
+<blockquote>
+<p>最主要的方法是通过基因表达产物mRNA反向追溯到染色体位置</p>
+</blockquote>
+<h4 id="人类基因组中的编码规律">1.2.2 人类基因组中的编码规律</h4>
+<p>编码区域在人类基因组所占比例不超过3%。</p>
+<p>97%是非编码序列：主要包括启动子、增强子、内含子、简单重复序列、移动元件及其遗留物、伪基因等。</p>
+<p>对于非编码序列，目前了解得比较少，尚不完全清楚其含义或功能。</p>
+<ul>
+<li>从生物进化的观点来看，这部分序列具有重要的生物学功能；目前普遍认为: 它们与基因在四维时空的表达调控有关。</li>
+</ul>
+<h4 id="遗传语言">1.2.3 遗传语言</h4>
+<p>科学家认为：基因组DNA序列并非是一种简单的生物分子序列，而是一种<strong>遗传语言</strong>, 用于描述遗传信息、控制生物体的性状、甚至规定生物体的生老病死。</p>
+<ul>
+<li>科学家们开始测序人类及其他模式生物基因组，希望解读和破译遗传信息。</li>
+<li>迄今为止，用于理解DNA翻译成蛋白质的编码规律的<strong>遗传密码</strong>是人们对于生物体遗传语言了解最多的部分。</li>
+</ul>
+<p>把基因组DNA序列当作遗传语言，那么可用语言学的方法进行研究，以发现遗传语言的规律。</p>
+<p>自然语言 vs. 程序语言 vs. 遗传语言：</p>
+<ul>
+<li>人类自然语言，用于人类之间描述、记录和交流思想，可以被转换成二进制序列，存放在数字图书馆中。</li>
+<li>计算机高级程序语言经编译被转换成二进制机器指令，形成可执行程序。</li>
+<li>遗传语言的代码实际上就是DNA序列，是由A/C/G/T(U) 4种字符组成的一种四进制代码。</li>
+</ul>
+<h3 id="生物体的信息加工">1.3 生物体的信息加工</h3>
+<p>从信息工程的角度来看：</p>
+<p>蛋白质编码区域所包含的信息相当于待加工的“数据” ，经加工处理后产生对应的氨基酸序列；非编码区域相当于“程序” ，确定如何对数据进行处理，控制基因的表达和蛋白质的合成。</p>
+<p>计算机中数据与程序是相对分立；在染色体上，数据与程序相互嵌套，染色体上的基因经过调控程序的转录和翻译，产生蛋白质的氨基酸序列，从而发挥生物学功能。</p>
+<blockquote>
+<p>一维线性的DNA分子在特定环境下，通过复杂而准确的信息程序处理，拓展为一个四维时空生命体。</p>
+</blockquote>
+<h2 id="原核生物基因组">2. 原核生物基因组</h2>
+<p>原核生物基因组的许多信息仅是为维持细胞最基本的功能。</p>
+<ul>
+<li>构造和复制DNA(至多需要32种基因)。</li>
+<li>产生蛋白质(需要100-150个基因)。</li>
+<li>获得和存储能量(至少需要30个基因)。</li>
+</ul>
+<p>原核生物基因组中的基因密度高：一些非常简单的原核生物，如流感嗜血杆菌，其基因组仅包含由256-300个基因组成的最小集合。</p>
+<ul>
+<li>完全测序的细菌基因组数据表明：其中85%～88%的核酸序列与基因的编码直接相关。</li>
+</ul>
+<h3 id="原核基因的典型结构">2.1 原核基因的典型结构</h3>
+<p>原核基因结构非常简单</p>
+<ul>
+<li><p>完整的基因结构从基因的5’ -端启动子区域开始，到3’ -端终止区结束。</p></li>
+<li><p>基因的转录开始位置由转录起始位点确定，转录过程直至遇到转录终止位点。</p></li>
+<li><p>转录的内容包括5’-端不翻译区（UTR）、开放阅读框及3’-端不翻译区。</p></li>
+<li><p>基因翻译的准确起止位置由起始密码子和终止密码子决定，翻译的对象即为介于这两者之间的开放阅读框。</p></li>
+</ul>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609231106118.png" srcset="/img/loading.gif" lazyload></p>
+<p>原核基因作为连续基因，其编码区是一个完整的DNA片段。</p>
+<ul>
+<li>负责基因表达的蛋白质可以识别各种调控信号。</li>
+<li>调控信号是一些相对较短的核苷酸序列, 这些信号的微妙差别可以影响到: 基因表达与否、基因的表达水平。</li>
+</ul>
+<p>启动子位点：长度为<strong>13个</strong>核苷酸的特定序列</p>
+<ul>
+<li>1个为转录起始位点(+1)</li>
+<li>6个位于转录起始位点上游10个碱基处(-10)</li>
+<li>6个位于转录起始位点上游35个碱基处(-35)</li>
+</ul>
+<p>这13个位点的核苷酸作为一个整体，称为启动子序列；它们之间的相对位置固定。</p>
+<h3 id="开放阅读框orf">2.2 开放阅读框/ORF</h3>
+<p>对于任何给定的核酸序列(单链DNA或mRNA)，根据密码子的起始位置，可以按照3种方式将其翻译成氨基酸肽链。</p>
+<ul>
+<li><p>例如：序列ATTCGATAACAA</p>
+<p>—ATT CGA TAA CAA</p>
+<p>—(A)TTC GAT AAC AA</p>
+<p>—(AT)TCG ATA ACA A</p></li>
+<li><p>这3种阅读顺序称为阅读框(reading frames)</p></li>
+<li><p>不含终止密码子且有比较多的三联密码子的长序列被称为开放阅读框(Open Reading Frame: ORF)</p></li>
+</ul>
+<blockquote>
+<p>存在ORF表明该区域可能对应于一个原核生物基因的编码序列。</p>
+</blockquote>
+<h3 id="原核基因组中的gc含量">2.3 原核基因组中的GC含量</h3>
+<p>GC含量：GC含量是在DNA4种碱基中，鸟嘌呤和胞嘧啶所占的比率称为GC含量。</p>
+<blockquote>
+<p>在双链DNA中，腺嘌呤与胸腺嘧啶（A/T）之比，以及鸟嘌呤与胞嘧啶（G/C）之比都是1。但是，（A+T）/（G+C）之比则随DNA的种类不同而异。GC含量愈高，DNA的密度也愈高，同时热及碱不易使之变性，因此利用这一特性便可进行DNA的分离或测定。</p>
+</blockquote>
+<p>不同的原核生物中，GC含量在25%到75%之间变化。</p>
+<ul>
+<li>许多细菌基因组表现为具有不同GC含量区域的组合，这些区域反映了细菌的进化历史。</li>
+<li>在原核生物中，双链DNA组成的基因组的GC含量是区分不同物种的特征之一。
+<ul>
+<li>基于这种事实，测量基因组的GC含量被证明是一种识别细菌种类的有效方法。</li>
+</ul></li>
+</ul>
+<h3 id="总结原核生物基因的特征">2.4 总结：原核生物基因的特征</h3>
+<p>编码区是连续的，具有较长的开放阅读框。</p>
+<ul>
+<li>60+个密码子。</li>
+</ul>
+<p>较简单的启动子序列。</p>
+<ul>
+<li>+1/-10/-35处一共13个位点。</li>
+</ul>
+<p>转录终止信号。</p>
+<ul>
+<li>转录终止位点。</li>
+</ul>
+<p>原核生物基因组密度高，很少有空间浪费。</p>
+<ul>
+<li>随机选择一段原核生物基因组核苷酸序列，其中包含重要基因的编码序列或启动子的概率很大。</li>
+</ul>
+<h2 id="真核生物基因组">3.真核生物基因组</h2>
+<h3 id="真核生物基因组的挑战">3.1 真核生物基因组的挑战</h3>
+<p>真核生物的<strong>复杂性与灵活性</strong>：</p>
+<ul>
+<li>细胞的内部膜系统允许在细胞内维持各种变化较大的化学环境。</li>
+<li>几乎全为多细胞生物，虽然每个细胞有相同的遗传“指令” ，但其表达方式与表达水平可以有显著差异。</li>
+<li>存在有大量的不表达区域（也被称为junk DNA区域）。</li>
+</ul>
+<blockquote>
+<p>复杂性与灵活性导致对真核基因组的分析与注释成为目前极具挑战性的难题之一。</p>
+</blockquote>
+<p>基因组规模较大，真核生物基因组序列测定比原核生物更为困难：</p>
+<ul>
+<li>细胞核中一般包含多条线性染色体，且通常包含每条染色体的双拷贝。</li>
+</ul>
+<blockquote>
+<p>比如：人类22条常染色体的双拷贝+2条性染色体，最短的为5500万个bp,最长有2.5亿个bp；全基因组长约32亿个bp。</p>
+</blockquote>
+<ul>
+<li>真核生物基因数量不容易准确估计。</li>
+</ul>
+<p>真核生物基因编码区域是<strong>不连续</strong>的：</p>
+<ul>
+<li>能够编码蛋白质的序列被不能够编码蛋白质的序列分隔开来，成为一种不连续的形式。
+<ul>
+<li>能够编码蛋白质的序列叫做外显子，不能够编码蛋白质的序列叫做内含子。</li>
+</ul></li>
+<li>在编码区域插入了不编码的内含子，大量内含子的存在，使得真核生物不存在像原核基因那样具有显著长度的ORF标志。</li>
+</ul>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230610093206887.png" srcset="/img/loading.gif" lazyload alt="内含子和外显子" style="zoom: 33%;"></p>
+<h3 id="真核生物基因的结构特征">3.2 真核生物基因的结构特征</h3>
+<p>完整的真核生物基因一般包含以下部分：</p>
+<ol type="1">
+<li>转录起始区：含有对DNA序列转录起调控作用的启动子(Promoter)以及增强子(enhancer)等。</li>
+<li>转录起始位点(TSS)</li>
+<li>5‘- 非翻译区</li>
+<li>翻译起始位点(TLSS)</li>
+<li>外显子(exon), E-I剪切位点(doner),内含子(intron),I-E剪切位(acceptor),外显子, …</li>
+<li>翻译终止位点TLSTOP</li>
+<li>3 ‘- 非翻译区</li>
+<li>转录终止位点</li>
+</ol>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230610093843123.png" srcset="/img/loading.gif" lazyload alt="真核生物基因的结构"><figcaption aria-hidden="true">真核生物基因的结构</figcaption>
+</figure>
+<blockquote>
+<p>各部分的序列形态和长度并不确定，不同物种间的基因差别很大。</p>
+</blockquote>
+<h3 id="复杂的基因转录调控方式">3.3 复杂的基因转录调控方式</h3>
+<p>真核生物基因的<strong>调控机制</strong>比原核生物复杂：</p>
+<ul>
+<li>真核基因的启动子序列更加分散，且距起始密码子较远；</li>
+<li>启动子区域的信息提取比较困难；</li>
+<li>在真核生物DNA序列中寻找基因相当于大海捞针。</li>
+</ul>
+<p>真核生物的细胞具有<strong>复杂的转录起始调控机制</strong>：</p>
+<ul>
+<li>真核生物的基因表达涉及多种RNA聚合酶。</li>
+<li>真核生物至少使用由8～12个蛋白组成的3种不同类型的RNA聚合酶。
+<ul>
+<li>原核生物只用一种由多个蛋白聚合而成的RNA聚合酶。</li>
+</ul></li>
+<li>每个真核生物的基因有自己的启动子。
+<ul>
+<li>原核生物中多个基因共享一个启动子。</li>
+</ul></li>
+</ul>
+<h3 id="剪切加工的方式">3.4 剪切加工的方式</h3>
+<p>在把RNA聚合酶的转录产物运出细胞核之前，需要进行大量剪切加工过程。</p>
+<ul>
+<li>加工前的RNA聚合酶II转录物称为hnRNA。</li>
+<li>加帽(capping)：在hnRNA的5’端发生的化学改变。</li>
+<li>剪切(splicing)：切除其中的<strong>内含子</strong>片段。</li>
+<li>多聚腺苷酸化(Poly-A): 在3’端连接多个(约250个)A。</li>
+</ul>
+<blockquote>
+<p>这些加工过程，特别是剪切加工，具有组织特异性，这给基因识别带来了巨大挑战。</p>
+</blockquote>
+<h3 id="真核基因组gc含量">3.5 真核基因组GC含量</h3>
+<p>真核生物基因组的GC含量差别没有原核生物明显，但GC含量对于识别真核基因仍有重要作用。</p>
+<p>真核生物的ORF更难以识别。</p>
+<p>真核基因组中GC含量的显著性变化是基因与上游启动子区域、密码子选择、基因长度以及基因密度之间相关性的基础。</p>
+<h3 id="cpg岛">3.6 CpG岛</h3>
+<p>CpG岛（CpG island）：</p>
+<ul>
+<li>CpG双核苷酸在人类基因组中的分布很不均匀，在基因组的某些区段，CpG保持或高于正常概率，这些区段被称作<strong>CpG岛</strong>。</li>
+<li>CpG：胞嘧啶C—磷酸p—鸟嘌呤G</li>
+<li>CG出现的频率远低于随机出现的概率, 但也有部分例外：</li>
+<li>在许多基因的-1500~+500区域上往往形成<strong>CpG岛，其CG频率达到随机出现的水平</strong>。</li>
+<li>人类基因组中大约有45000个CpG岛。</li>
+</ul>
+<p>CpG岛多与管家基因有关联，也与组织特异性基因的启动子有关。</p>
+<ul>
+<li>CpG岛很少出现在非基因区域或发生多次突变的基因中。
+<ul>
+<li>管家基因：在所有组织和在发育的所有阶段都具有高水平表达的基因。</li>
+</ul></li>
+</ul>
+<h3 id="遗传密码的使用偏性">3.7 遗传密码的使用偏性</h3>
+<p>遗传密码的使用具有一定的统计规律，并不是完全随机的。</p>
+<ul>
+<li>如果密码子的第一、第二位碱基分别是A和U，则第三位尽可能使用G或C。</li>
+<li>基因对同义密码子的使用也存在偏爱。
+<ul>
+<li>不同种属所偏爱的密码子不同：
+<ul>
+<li>人类基因组中，密码子第三位取A、U的情况占90%。</li>
+<li>酵母基因组中的精氨酸：密码子AGA占48%，其它密码子CGT, CGC, CGA, CGG和AGG各约占10%。</li>
+<li>果蝇基因组中的精氨酸CGC约占33%。</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="真核生物的基因识别">3.8 真核生物的基因识别</h3>
+<p>真核生物基因识别主要考虑：</p>
+<ul>
+<li>已知的启动子元件(即TATA盒和CAAT盒)。</li>
+<li>CpG岛</li>
+<li>与内含子相关的剪接信号。</li>
+<li>具有特定密码子使用偏好的开放阅读框。</li>
+<li>与其它生物体EST或基因序列的相似程度。</li>
+</ul>
+<p>真核生物基因识别的解决方案: 通过寻找已经注释的序列数据集的统计特性，来预测相关、但未经注释的序列数据的特性。</p>
+<h2 id="基因组序列分析基因识别">4. 基因组序列分析—基因识别</h2>
+<p>基因识别：也被称为基因组注释(genome annotation)。</p>
+<ul>
+<li>从基因组序列之中找到基因及其表达调控信息， 包括识别基因编码区域(即外显子所在区域)和功能位点。</li>
+</ul>
+<blockquote>
+<p>功能位点：存放基因表达调控信息的DNA片段，比如基因的启动子、剪切位点等。</p>
+</blockquote>
+<p>基因识别问题：对给定的DNA序列，确定出所有<strong>编码区域</strong>和<strong>基因结构</strong>。</p>
+<ul>
+<li>包含两个问题：
+<ul>
+<li>确定出可能的编码区域</li>
+<li>确定出编码和非编码区域的分界点</li>
+</ul></li>
+</ul>
+<h4 id="基因识别与定位的方法">基因识别与定位的方法</h4>
+<p>方法一：通过分子生物学实验确定基因的位置和序列。</p>
+<p>方法二：通过信息分析寻找基因。</p>
+<blockquote>
+<p>方法二基本依据：</p>
+<ul>
+<li>在基因的前后两端存在一些特殊信号。</li>
+<li>基因的蛋白质编码区域与非编码区域在序列的统计特征上有明显的差异。</li>
+<li>可以使用模式识别方法识别DNA序列上与基因相关的信息，区分统计特性，从而识别基因。</li>
+</ul>
+</blockquote>
+<p>根据是否利用同源序列的信息，把基因识别方法分为两类：</p>
+<ul>
+<li>基于同源序列比较的方法
+<ul>
+<li>利用数据库中现有与基因有关的信息(如EST序列、cDNA、蛋白质序列)，借助同源序列比对去识别可能的基因序列。</li>
+</ul></li>
+<li>基于统计信息的方法
+<ul>
+<li>从编码蛋白质基因的一般统计规律出发，利用基因序列和非基因序列以及外显子与内含子的统计信息差异性去识别可能的基因序列。</li>
+</ul></li>
+</ul>
+<h4 id="基因编码区识别">基因编码区识别</h4>
+<p>基因的编码区：一般是指预测DNA序列中编码蛋白质的部分(即基因的外显子部分)。</p>
+<blockquote>
+<p>预测编码区域是基因识别中的一个关键问题。</p>
+</blockquote>
+<p>基本依据：真核生物基因外显子(编码区域)具有特别的序列信号，根据这些特征信号可确定外显子的边界，从而识别编码区域。</p>
+<blockquote>
+<p>缺点: 特征信号强度弱，缺乏统计显著性，无法单独使用。</p>
+</blockquote>
+<p>对编码区域进行统计特性分析，可以确定编码区的粗略位置。</p>
+<blockquote>
+<p>DNA中密码子的使用频率不是平均分布的，使得编码区的序列呈现出一定的统计特异性(即密码子偏好性)。</p>
+</blockquote>
+<h3 id="模式识别问题">4.1 模式识别问题</h3>
+<p>模式：观测数据中的某种规则性(regularities)，称为模式(patterns)。</p>
+<p>模式识别：把给定观测数据中的某种规则性(regularities)识别出来(或确认出来)，并应用到新的观测数据上。</p>
+<blockquote>
+<p>给定的观测数据：训练数据集。</p>
+<p>新的观测数据：测试数据集。</p>
+</blockquote>
+<h4 id="一个典型的模式识别问题分成下面4个步骤">4.1.1 一个典型的模式识别问题分成下面4个步骤：</h4>
+<ol type="1">
+<li>收集待解决问题的观测数据，进行特征抽取。
+<ul>
+<li>把数据分成训练集和测试集两部分。</li>
+</ul></li>
+<li>选定或设计一个用于解决分类问题的数学模型。
+<ul>
+<li>称为分类器设计；从数学上，即构造一个从数据到类别的映射。</li>
+</ul></li>
+<li>基于给定训练数据，确定分类模型中的参数。
+<ul>
+<li>称为模型训练，或参数学习。</li>
+</ul></li>
+<li>在测试数据集上进行性能评价。</li>
+</ol>
+<h4 id="影响模式识别性能的因素">4.1.2 影响模式识别性能的因素：</h4>
+<ul>
+<li>特征表达或特征抽取方式
+<ul>
+<li>对于一个特定模式分类问题，选定好的特征表达或抽取方式至关重要。</li>
+</ul></li>
+<li>分类器模型复杂度
+<ul>
+<li>模型过于简单或过于复杂都不能获得好的性能。</li>
+</ul></li>
+<li>模型中参数的学习方法
+<ul>
+<li>最大似然估计 /最大后验概率估计 /贝叶斯估计。</li>
+</ul></li>
+<li>训练样本数量
+<ul>
+<li>在不考虑计算成本的情况下, 希望样本尽量多。</li>
+</ul></li>
+<li>训练样本的分布
+<ul>
+<li>期望训练样本的分布体现数据的真实分布。</li>
+</ul></li>
+</ul>
+<h4 id="模式识别问题举例">4.1.3 模式识别问题举例</h4>
+<p>医生对患者进行疾病诊断的过程是一个典型的模式识别过程。</p>
+<ul>
+<li>医生的诊断过程是通过观察病人表现出的症状和各种化验检测数据来推断病情。</li>
+<li>诊断过程是一个分类过程。
+<ul>
+<li>医生就好比一个分类器</li>
+<li>医生诊断的准确率与下列因素有密切关系：
+<ul>
+<li>诊断方式(中医/西医)</li>
+<li>病人的症状是否突出(待分类数据的特性)</li>
+<li>诊断专长(训练样本的分布)</li>
+<li>诊断经验(训练样本数量)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="推理与决策">4.2 推理与决策</h3>
+<p>推理的基本定义：</p>
+<ul>
+<li>从已知前提(或假设是正确的前提)出发，得出符合逻辑的结论的过程。</li>
+<li>通过事实的模式的观测，间接地看到用于理解的某种新意义或上下文联系。</li>
+</ul>
+<p>对于模式分类来说，推理就是基于给定的数据，确定联合分布密度或者后验分布密度的过程。 <span class="math display">\[
+D=\{(x_i,t_i)\}\to p(x,t)或p(t|x)
+\]</span> 决策：给定输入数据 x, 确定最优的输出 t。</p>
+<p>贝叶斯决策：根据平均错误率最小的准则进行决策。</p>
+<ul>
+<li>贝叶斯决策是一种理想的判别规则，需要借助<mark>先验概率</mark>和<mark>似然度</mark>。</li>
+<li>贝叶斯错误率是理论上可获得的最小错误率。</li>
+</ul>
+<p><span class="math display">\[
+P(mistake)=P(x\in R_1,C_2)+P(x\in R_2,C_1)=\int_{R_1}^{}p(x,C_2)dx+\int_{R_2}^{}p(x,C_1)dx
+\]</span></p>
+<p>贝叶斯公式：贝叶斯公式用于把先验概率转化为后验概率。 <span class="math display">\[
+P(M|D)=\frac{P(D|M)P(M)}{P(D)}\qquad 后验概率=\frac{似然度×先验概率}{边缘概率}
+\]</span> 贝叶斯公式的意义：通过贝叶斯公式，我们把先验概率和从观测数据上得到的似然度相结合，从而得到后验概率。</p>
+<blockquote>
+<p>先验概率: 在获得观测数据之前对判别结果的认识。</p>
+<p>后验概率: 基于观测数据而对判别结果的更新认识。</p>
+</blockquote>
+<p>计算后验概率的过程，也被称为推理；基于所计算的后验概率，可以进行决策。</p>
+<h3 id="朴素贝叶斯方法">4.3 朴素贝叶斯方法</h3>
+<p>在基因编码区，三联密码子出现的频率具有一定统计规律。</p>
+<ul>
+<li>在随机序列中 ，三联密码子出现的频率是相同的——可认为每个密码子出现的频率均为1/64。</li>
+<li>在基因编码区域 ，三联密码子出现的频率并不是均匀的。</li>
+</ul>
+<p>根据这个差异，可以计算不同的阅读框属于基因编码序列的概率，并由此判断是否为基因编码区域。</p>
+<h4 id="基于密码子的出现频率区分编码区">4.3.1 基于密码子的出现频率区分编码区</h4>
+<ul>
+<li><p>基本原理：在DNA序列的编码区和非编码区，三联密码子出现的频率不同；因此基于三联密码子出现频率的差异，可以建立概率模型完成区分。</p></li>
+<li><p>基本步骤：</p>
+<ol type="1">
+<li><p>对基因编码区和非编码区域分别估计三联密码子的出现概率。</p>
+<p>用C<sub>1</sub>表示非编码区， C<sub>2</sub>表示编码。</p></li>
+<li><p><mark>建立概率模型</mark>，根据后验概率判别该序列否属于基因编码区域。</p></li>
+</ol></li>
+</ul>
+<h4 id="朴素贝叶斯方法-1">4.3.2 朴素贝叶斯方法</h4>
+<p>基本思路：假设各个特征相互条件独立，我们把联合分布或联合概率转化为各个边缘分布或边缘概率的乘积。 <span class="math display">\[
+P(C_j|S)=\frac{P(S|C_j)P(C_j)}{P(S)}\xrightarrow{S=s_1s_2...s_m} P(C_j|S)=\frac{P(C_j)\prod_{i=1}^{m}P(s_i|C_j)}{P(S)}
+\]</span> 判别规则：基于最大后验概率准则确定出序列S所属于的类别k <span class="math display">\[
+k=arg\thinspace \max_{j}\{P(C_j|S,j=1,...K\},其中C_j为类别j
+\]</span></p>
+<ul>
+<li>设计分类器，即构造一个从给定的数据S到各个类别的映射规则。</li>
+</ul>
+<h4 id="基于序列s建立概率模型">4.3.3 基于序列S建立概率模型</h4>
+<p>考虑2个类别C<sub>1</sub> 和 C<sub>2</sub>：其中用C<sub>1</sub>表示非编码区，C<sub>2</sub>表示编码区。</p>
+<p>对于给定序列S，要判断S属于编码区还是非编码区，可以计算P(C<sub>1</sub>|S)和P(C<sub>2</sub>|S)。</p>
+<ul>
+<li>根据贝叶斯公式： <span class="math display">\[
+  P(C_1|S)=\frac{P(C_1,S)}{P(S)}∝P(S|C_1)P(C_1)\\\\P(C_2|S)=\frac{P(C_2,S)}{P(S)}∝P(S|C_2)P(C_2)
+  \]</span></li>
+</ul>
+<p>对于给定序列S，把S表示成 A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>（A<sub>i</sub>为三联密码子），则序列S的出现概率为：P(S) =P(A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>)。</p>
+<p>假设序列中的3联密码子相互独立(且忽略3联密码子的顺序)，则序列S的出现概率可以转化为：P(S) = P(A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>) = P(A<sub>1</sub>)P(A<sub>2</sub> )…P(A<sub>L</sub>）</p>
+<blockquote>
+<p>若要计算P(S)，则需要估计出P(A<sub>1</sub>)，P(A<sub>2</sub>), …, P(A<sub>L</sub>）</p>
+</blockquote>
+<p>计算条件概率P(S|C<sub>2</sub>)：</p>
+<p>在编码区(C<sub>2</sub>)观测到序列S的概率，把S表示成三联密码子序列 A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>，则 P(S|C<sub>2</sub>)表达为: <span class="math display">\[
+P(S|C_2)=P(A_1A_2...A_L|C_2)=P(A_1|C_2)P(A_2|C_2)...P(A_L|C_2)
+\]</span></p>
+<blockquote>
+<p>这里假设了编码区的序列中的3联密码子相互独立(且忽略3联密码子的顺序)。</p>
+</blockquote>
+<p>则计算P(S|C<sub>2</sub>)需要估计出P(A<sub>1</sub>|C<sub>2</sub>) , P(A<sub>2</sub>|C<sub>2</sub>) , …, P(A<sub>L</sub>|C<sub>2</sub>) 。</p>
+<blockquote>
+<p>也就是基于编码区的序列去估计各个三联密码子的出现概率。</p>
+</blockquote>
+<p>计算条件概率P(S|C<sub>1</sub>)方法同理。</p>
+<p>最后，利用贝叶斯公式： <span class="math display">\[
+P(C_j|S)=\frac{P(S|C_j)P(C_j)}{P(S)}∝P(S|C_j)P(C_j)
+\]</span> <mark>分类规则：</mark></p>
+<ul>
+<li>如果P(C<sub>2</sub>|S) &gt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>2</sub></li>
+<li>如果P(C<sub>2</sub>|S) &lt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>1</sub></li>
+</ul>
+<h4 id="基于朴素贝叶斯方法识别编码区与非编码区4.3.3的总结">4.3.4 基于朴素贝叶斯方法识别编码区与非编码区（4.3.3的总结）</h4>
+<p>具体步骤：</p>
+<ol type="1">
+<li><p>基于训练数据集, 估计各个三联密码子的出现概率 <span class="math display">\[
+P(C_j|S)∝P(C_j)P(A_1A_2...A_L|C_j)=P(C_j)P(A_1|C_j)P(A_2|C_j)...P(A_L|C_j)
+\]</span> 其中, P(A<sub>i</sub>|C<sub>j</sub>)为类别C<sub>j</sub>中3联密码子A<sub>i</sub>的出现概率，需要基于给定的训练样本序列去估计。</p>
+<ul>
+<li>计算每个三联体密码子出现的频率f<sub>AAA,</sub> f<sub>AAC</sub>, f<sub>AAG</sub>…, 用频率去估计三联密码子在当前序列中的出现概率。</li>
+</ul></li>
+<li><p>利用三联密码子出现频率，对于基因序列样本集中的每条序列S，计算S的出现概率 P(S|C<sub>1</sub>)和P(S|C<sub>2</sub>）。 <span class="math display">\[
+P(S|C_j)=P(A_1A_2...A_L|C_j)=P(A_1|C_j)P(A_2|C_j)...P(A_L|C_j)
+\]</span></p></li>
+<li><p>估计非编码区和编码区的先验概率P(C<sub>1</sub>)和P(C<sub>2</sub>)，计算后验概率P(S|C<sub>1</sub>)P(C<sub>1</sub>)和P(S|C<sub>2</sub>)P(C<sub>2</sub>)。</p>
+<ul>
+<li>先验概率P(C<sub>1</sub>)和P(C<sub>2</sub>)可根据训练集里两种类型的序列的比例去估计。</li>
+</ul></li>
+</ol>
+<p>测试阶段：</p>
+<p>给定序列S，计算P(C<sub>1</sub>|S)和P(C<sub>2</sub>|S)</p>
+<ul>
+<li>如果P(C<sub>2</sub>|S) &gt;P(C<sub>1</sub>|S)，则判断序列S属于<mark>编码区</mark>。</li>
+<li>如果P(C<sub>2</sub>|S) &lt;P(C<sub>1</sub>|S)，则判断序列S属于<mark>非编码区</mark>。</li>
+</ul>
+<p>该方法优点：模型简便，易于实现。</p>
+<p>该方法缺点：识别率较低。</p>
+<p>改进的方向：</p>
+<ul>
+<li>考虑相邻密码子之间依存关系，建立一阶或高阶马尔科夫模型。</li>
+<li>考虑描述序列的高维向量。</li>
+</ul>
+<h3 id="马尔科夫链markov-chain">4.4 马尔科夫链(Markov Chain）</h3>
+<p>考虑一个具有多个状态的系统S，令O<sub>1</sub>, O<sub>2</sub>, ⋯, O<sub>n</sub>为系统在各个时刻的状态变量，即<mark>状态链</mark>。</p>
+<p>无后效性：</p>
+<ul>
+<li><p>1阶马氏链: 系统在时间步 t 处于哪个状态, 仅与时间t-1时系统所处的状态有关。 <span class="math display">\[
+P(O_1O_2O_3...O_n)=P(O_1)P(O_2|O_1)P(O_3|O_2)...P(O_n|O_n-1)
+\]</span></p>
+<ul>
+<li>系统未来的状态仅依赖于当前状态。</li>
+<li>一条马尔可夫链完全决定于初始分布和状态转换概率。</li>
+</ul></li>
+<li><p>k阶马氏链：时间步t的状态仅与时间t-1, t-2, … , t-k时刻的历史状态有关。</p></li>
+</ul>
+<h4 id="考虑三联密码子的1阶马尔科夫性">考虑三联密码子的1阶马尔科夫性：</h4>
+<ul>
+<li><p>给定DNA序列片段S =A<sub>1</sub>A<sub>2</sub> …A<sub>n</sub> ，其中A<sub>i</sub>为3联密码子。</p></li>
+<li><p>在计算P(A<sub>1</sub>A<sub>2</sub> …A<sub>n</sub>)时，我们<mark>引入1阶马尔可夫模型</mark>，把P(A<sub>1</sub>A<sub>2</sub> …A<sub>n</sub>)转化为: <span class="math display">\[
+P(A_1A_2...A_n)=P(A_1)P(A_2|A_1)...P(A_n|A_{n-1})
+\]</span></p>
+<ul>
+<li>需要估计出三联密码子之间的转移概率P(A<sub>j</sub>|A<sub>j-1</sub>)和P(A<sub>1</sub>)</li>
+</ul></li>
+</ul>
+<p>状态转移概率P(A<sub>j</sub>|A<sub>i</sub>)的估计:</p>
+<ul>
+<li><p>以编码区为例:A<sub>i</sub>到A<sub>j</sub>的转移概率，需要统计A<sub>i</sub>到A<sub>j</sub>的转移次数，除以所有以A<sub>i</sub>为起始状态转变为A<sub>k</sub>的转移次数: <span class="math display">\[
+\widetilde{P} (A_j|A_i)=\frac{T_{A_i\to A_j}}{\sum_{k=1}^{64}T_{A_i\to A_k}}
+\]</span></p>
+<ul>
+<li>其中T<sub>Ai→Aj</sub>表示从状态A<sub>i</sub>转移到状态A<sub>j</sub>的次数。</li>
+</ul></li>
+<li><p>第1个密码子和最后1个密码子需要单独统计: <span class="math display">\[
+开头:\widetilde{P} (A_i)=\widetilde{P} (A_i|[])=\frac{T_{[]\to A_i}}{\sum_{k=1}^{64}T_{[]\to A_k}}
+\]</span></p>
+<p><span class="math display">\[
+结尾:\widetilde{P} (A_j)=\widetilde{P} ([]|A_j)=\frac{T_{A_j\to []}}{\sum_{k=1}^{64}T_{A_k\to []}}
+\]</span></p>
+<ul>
+<li>即从训练样本序列中统计密码子A<sub>i</sub>出现在开始位置的频率和密码子A<sub>j</sub>出现在末尾的频率。</li>
+</ul></li>
+</ul>
+<p>最后，利用贝叶斯公式计算后验概率： <span class="math display">\[
+P(C_j|A_1A_2...A_n)=\frac{P(A_1A_2...A_n|C_j)P(C_j)}{P(A_1A_2...A_n)}
+\]</span> 分类规则：</p>
+<ul>
+<li>如果P(C<sub>2</sub>|S) &gt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>2</sub></li>
+<li>如果P(C<sub>2</sub>|S) &lt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>1</sub></li>
+</ul>
+<p>在计算P(C<sub>1</sub>|A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub> ) 和 P(C<sub>2</sub>|A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub> )时，引入<mark>1 阶马尔可夫链</mark>考虑三联密码子之间的依赖关系，即： <span class="math display">\[
+P(A_1A_2...A_n|C_j)=P(A_1|C_j)P(A_2|A_1,C_j)...P(A_n|A_{n-1},C_j)
+\]</span></p>
+<ul>
+<li>需要在编码区和非编码区分别估计出三联密码子的转移概率。</li>
+</ul>
+<p>如果S是编码区，那么序列<mark>S=A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub>出现的概率P(S)用马氏链</mark>来刻画如下： <span class="math display">\[
+P(S|C_2)=P(A_1|C_2)\prod_{i=2}^{n}P(A_i|A_{i-1},C_2)
+\]</span></p>
+<ul>
+<li>若已知或给定从训练样本序列中估计的先验概率和状态转移概率，那么可直接带入公式计算序列S的似然度。
+<ul>
+<li>P(A<sub>1</sub>|C<sub>2</sub>)是C<sub>2</sub>中以A<sub>1</sub>为第一个密码子的概率P(A<sub>1</sub>|[])</li>
+<li>若考虑末尾A<sub>n</sub>转换为结束态，则还需再乘以P([]|A<sub>n</sub>)或P(A<sub>n</sub>)</li>
+</ul></li>
+</ul>
+<h4 id="马尔科夫链模型的参数估计">马尔科夫链模型的参数估计：</h4>
+<p>先验概率:</p>
+<ul>
+<li>序列属于编码区的先验概率P(C<sub>2</sub>)</li>
+<li>序列属于非编码区的先验概率P(C<sub>1</sub>)</li>
+</ul>
+<p>状态转移概率：</p>
+<p>需要根据训练数据, 分别估计编码区C<sub>2</sub>和非编码区C<sub>1</sub>中各个3联密码子A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub>之间的状态转移概率矩阵。</p>
+<h3 id="基于同源序列比对的方法">4.5 基于同源序列比对的方法</h3>
+<p>基本动机：</p>
+<ul>
+<li>部分物种的基因组中有大量基因已被实验证实， 并在相应数据库中有注释(annotation)信息。</li>
+<li>亲缘关系很近的生物体之间可能具有相似的基因。</li>
+<li>用某个物种中的未知基因与亲缘关系相近的其它物种的基因作比较，对揭示未知基因的信息会有帮助。</li>
+</ul>
+<p>基本思路：充分利用序列同源性帮助进行基因识别问题。</p>
+<p>比较两个基因组中的基因：计算最优剪接比对，以比较不同基因组中存在相似度很高的外显子“群岛”区域。</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611110107270.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<p>比较基因组DNA与mRNA：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611110150024.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h3 id="基因识别问题总结">4.6 基因识别问题总结</h3>
+<p>基本任务：从DNA序列中识别出基因编码部分。</p>
+<p>基本方法：基因识别问题归结为模式分类问题。</p>
+<p>计算碱基/密码子的统计信息：</p>
+<ul>
+<li>在DNA的编码区和非编码区，碱基的信号特性是不相同的，比如基因编码区的周期性特征、功能位点。</li>
+<li>在DNA的编码区和非编码区，3联密码子出现的频率是不相同的。</li>
+<li>6联密码子的出现频率在编码区和非编码区具有差异性。
+<ul>
+<li>比如: AAAAAA 在编码区出现概率为1%，而非编码区为5%。</li>
+</ul></li>
+</ul>
+<p>建立识别模型： 贝叶斯决策 / 朴素贝叶斯 / 马尔科夫链 / HMM。</p>
+<h4 id="基因识别方法的局限性">基因识别方法的局限性：</h4>
+<p>目前的方法仅能识别蛋白质编码基因，对基因非编码部分还没有可靠的识别方法。</p>
+<ul>
+<li>识别原理与基因表达的真实分子机制没有多少关系。
+<ul>
+<li>由于缺乏识别非编码基因的方法，无法统计在人类基因组中究竟隐藏多少非编码基因。</li>
+</ul></li>
+</ul>
+<p>现有基因识别方法存在固有的保守性。</p>
+<ul>
+<li>不可能发现与数据库中已知基因有较大差别的基因或新基因。</li>
+</ul>
+<p>现有基因识别方法的最大缺陷在于忽视关于基因结构的生物学知识。</p>
+<ul>
+<li>从生物学家来看，现有的基因识别程序还不可靠，需要结合分子生物学、比较基因组学等其他方面研究。</li>
+</ul>
+<h1 id="三隐马尔可夫模型-hidden-markov-model-hmm">三、隐马尔可夫模型 (Hidden Markov Model: HMM)</h1>
+<h2 id="hmm的定义">1.HMM的定义</h2>
+<p>一阶阶离散HMM是一个关于离散序列的随机生成模型。</p>
+<p>基本要素：</p>
+<ul>
+<li>离散明字符集合：V = {V<sub>1</sub> , …, 𝑉<sub>M</sub>}</li>
+<li>有限隐状态集合：S = {S<sub>1</sub> , …, 𝑆<sub>N</sub>}</li>
+<li>初始状态概率向量：<em>π</em> = (<em>π</em><sub>1</sub> , …, <em>π</em><sub>N</sub>)</li>
+<li>状态转移概率矩阵： A = { a<sub>ij</sub>, i,j = 1, …N}</li>
+<li>明字符生成概率矩阵： B = { b<sub>jk</sub>, j = 1, …N, k=1,...M}</li>
+</ul>
+<p>HMM记作<em>λ</em>=(S,V,π,A,B)或<em>λ</em>=(π,A,B)</p>
+<ul>
+<li>一个HMM模型是一个三元组(S, V, λ)，其中λ为模型参数的集合，S 是明字符集V是有限状态集合——每个状态可以产生明字符集中的字符。</li>
+</ul>
+<h2 id="评估问题">2.评估问题</h2>
+<h3 id="前向算法">2.1 前向算法</h3>
+<p>算法过程：</p>
+<ol type="1">
+<li><p>初始化 <span class="math display">\[
+\alpha(1,i)=\pi(i)b(i,o_1)
+\]</span></p></li>
+<li><p>递推 <span class="math display">\[
+\alpha(t+1,j)=\Bigg[\sum_{i=1}^{N}\alpha(t,i)\alpha(i,j)\Bigg]b(j,o_{t+1})
+\]</span></p></li>
+<li><p>终结 <span class="math display">\[
+P(O|\lambda)=\sum_{i=1}^{N}\alpha(T,i)
+\]</span></p></li>
+</ol>
+<h3 id="前向算法例题">2.2 前向算法例题</h3>
+<p>考虑一个包含两个字符的字符表{C, T}和包含3个状态的状态集{S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub>}，HMM的转移概率和字符生成概率如下表。请计算序列O = CCT的全概率。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">→0</th>
+<th style="text-align: center;">→S<sub>1</sub></th>
+<th style="text-align: center;">→S<sub>2</sub></th>
+<th style="text-align: center;">→S<sub>3</sub></th>
+<th style="text-align: center;">生成C</th>
+<th style="text-align: center;">生成T</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/3</td>
+<td style="text-align: center;">1/3</td>
+<td style="text-align: center;">1/3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S<sub>1</sub></td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">0.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">S<sub>2</sub></td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">S<sub>3</sub></td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.9</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\Rightarrow\begin{cases}
+\begin{aligned}
+\alpha(1,1)=\pi(1)b_1(C)=0.33×0.5=0.165\\
+\alpha(1,2)=\pi(2)b_2(C)=0.33×0.1=0.033\\
+\alpha(1,3)=\pi(3)b_3(C)=0.33×0.9=0.297
+\end{aligned}
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow\begin{cases}
+\alpha(2,1)=b_1(C)\sum_{i=1}^{3}\alpha(1,i)a_{i1}=0.165×0.3×0.5=0.02475\\
+\alpha(2,2)=b_2(C)\sum_{i=1}^{3}\alpha(1,i)a_{i2}=(0.165×0.2+0.033×0.4+0.297×0.2)×0.1=0.01056\\
+\alpha(2,3)=b_3(C)\sum_{i=1}^{3}\alpha(1,i)a_{i3}=(0.165×0.3+0.033×0.4+0.297×0.4)×0.9=0.16335
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow\begin{cases}
+\alpha(3,1)=b_1(T)\sum_{i=1}^{3}\alpha(2,i)a_{i1}=0.02475×0.3×0.5=0.0037125\\
+\alpha(3,2)=b_2(T)\sum_{i=1}^{3}\alpha(2,i)a_{i2}=(0.02475×0.2+0.01056×0.4+0.16335×0.2)×0.9=0.0376596\\
+\alpha(3,3)=b_3(T)\sum_{i=1}^{3}\alpha(2,i)a_{i3}=(0.02475×0.3+0.01056×0.4+0.16335×0.4)×0.1=0.0076989
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\Rightarrow P(O)=P(CCT)=\sum_{i=1}^{3}\alpha(3,i)=0.0037125+0.0376596+0.0076989=0.049071
+\]</span></p>
+<h3 id="后向算法">2.3 后向算法</h3>
+<p>算法过程：</p>
+<ol type="1">
+<li><p>初始化 <span class="math display">\[
+\beta_T(i)=1
+\]</span></p></li>
+<li><p>递推 <span class="math display">\[
+\beta_t(i)=\sum_{j=1}^{N}a_{ij}b_j(o_{t+1})\beta_{t+1}(j)
+\]</span></p></li>
+<li><p>终结 <span class="math display">\[
+P(O|\lambda)=\pi_ib_i(o_1)\beta_1(i)
+\]</span></p></li>
+</ol>
+<h2 id="解码问题">3.解码问题</h2>
+<h3 id="维特比viterbi算法">3.1 维特比(Viterbi)算法</h3>
+<p>维特比(Viterbi)算法过程：</p>
+<ol type="1">
+<li><p>初始化： <span class="math display">\[
+\delta_1(i)=\pi_ib_i(o_1)
+\]</span></p></li>
+<li><p>递归： <span class="math display">\[
+\delta_t(j)=\max_{1\le i\le N}[\delta_{t-1}(i)a_{ij}]*b_j(o_t)
+\]</span></p></li>
+<li><p>终结： <span class="math display">\[
+P^*=\max_{1\le i\le N}[\delta_T(i)]
+\]</span></p></li>
+<li><p>回溯： <span class="math display">\[
+q^*_T=arg\:\max_{1\le i\le N}[\delta_T(i)
+\]</span></p></li>
+</ol>
+<h3 id="解码问题例题">3.2 解码问题例题</h3>
+<p>从3个盒子中随机摸出1个球，盒子中的球有黑白两个颜色，重复实验多次，观察球的颜色构成观测序列。</p>
+<ul>
+<li><p>隐含状态集合: {盒子1，盒子2，盒子3} = {S<sub>1</sub>,S<sub>2</sub>,S<sub>3</sub>}</p></li>
+<li><p>观测集合：{黑球，白球} = {Black, White}</p></li>
+<li><p>N=3,M=2</p></li>
+<li><p>初始状态概率:<em>π</em> = (0.3 , 0.5, 0.2)<sup>T</sup></p></li>
+<li><p>状态转移概率矩阵： <span class="math display">\[
+A = \begin{bmatrix}
+0.4 &amp; 0.4 &amp; 0.2\\
+0.3 &amp; 0.2 &amp; 0.5\\
+0.2 &amp; 0.6 &amp; 0.2
+\end{bmatrix}
+\]</span></p></li>
+<li><p>观测生成概率矩阵： <span class="math display">\[
+B = \begin{bmatrix}
+0.2 &amp; 0.8\\
+0.6 &amp; 0.4\\
+0.4 &amp; 0.6 
+\end{bmatrix}
+\]</span></p></li>
+<li><p>请计算观测到序列<mark>O = {o<sub>1</sub> , o<sub>2</sub>, o<sub>3</sub>} = {′黑球′ ， ‘白球’ ， ‘黑球’ }</mark>的最可能的盒子序列。</p></li>
+</ul>
+<p><strong>解：</strong></p>
+<p><strong>t = 1观测到o<sub>1</sub>的概率δ<sub>1</sub>(i)：</strong> <span class="math display">\[
+\Rightarrow\begin{cases}
+\delta_1(1)=\pi_1b_{1o_1}=0.3*0.2=0.06\\
+\delta_1(2)=\pi_2b_{2o_1}=0.5*0.6=0.3\\
+\delta_1(3)=\pi_3b_{3o_1}=0.2*0.4=0.08
+\end{cases}
+\]</span> <img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614120605011.png" srcset="/img/loading.gif" lazyload alt="t = 1 时的观测概率示意图" style="zoom:67%;"></p>
+<p><strong>t = 2观测到o<sub>1</sub>o<sub>2</sub>的概率δ<sub>2</sub>(i)：</strong> <span class="math display">\[
+\Rightarrow\begin{cases}
+\delta_2(1)=max[\delta_1(j)a_{j1}]b_{1o_2}=max\{\delta_1(1)a_{11},\delta_1(2)a_{21},\delta_1(3)a_{31}\}b_{1o_2}=max\{0.06*0.4,0.3*0.3,0.08*0.2\}*0.8
+=max\{0.024,0.09,0.016\}*0.8=0.072,同时记录t=1时的回溯为j=2(对应0.09的取值)\\
+\delta_2(2)=max[\delta_1(j)a_{j2}]b_{2o_2}=max\{\delta_1(1)a_{12},\delta_1(2)a_{22},\delta_1(3)a_{32}\}b_{2o_2}=max\{0.06*0.4,0.3*0.2,0.08*0.6\}*0.4
+=max\{0.024,0.06,0.048\}*0.4=0.024,同时记录t=1时的回溯为j=2(对应0.06的取值)\\
+\delta_2(3)=max[\delta_1(j)a_{j3}]b_{3o_2}=max\{\delta_1(1)a_{13},\delta_1(2)a_{23},\delta_1(3)a_{33}\}b_{3o_2}=max\{0.06*0.2,0.3*0.5,0.08*0.2\}*0.8
+=max\{0.012,0.15,0.016\}*0.6=0.09,同时记录t=1时的回溯为j=2(对应0.15的取值)
+\end{cases}
+\]</span> $$</p>
+<p>$$</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614120633023.png" srcset="/img/loading.gif" lazyload alt="t = 2 时的观测概率示意图" style="zoom:50%;"></p>
+<p><strong>t = 3观测到o<sub>1</sub>o<sub>2</sub>o<sub>3</sub>的概率δ<sub>3</sub>(i)：</strong> <span class="math display">\[
+\Rightarrow\begin{cases}
+\delta_3(1)=max[\delta_2(j)a_{j1}]b_{1o_3}=max\{\delta_2(1)a_{11},\delta_2(2)a_{21},\delta_2(3)a_{31}\}b_{1o_3}=max\{0.072*0.4,0.024*0.3,0.09*0.2\}*0.2
+=max\{0.0288,0.0072,0.018\}*0.2=0.00576,同时记录t=2时的回溯为j=1(对应0.0288的取值)\\
+\delta_3(2)=max[\delta_2(j)a_{j2}]b_{2o_3}=max\{\delta_2(1)a_{12},\delta_2(2)a_{22},\delta_2(3)a_{32}\}b_{2o_3}=max\{0.072*0.4,0.024*0.2,0.09*0.6\}*0.6
+=max\{0.0288,0.0048,0.054\}*0.6=0.0324,同时记录t=2时的回溯为j=3(对应0.054的取值)\\
+\delta_3(3)=max[\delta_2(j)a_{j3}]b_{3o_3}=max\{\delta_2(1)a_{13},\delta_2(2)a_{23},\delta_2(3)a_{33}\}b_{3o_3}=max\{0.072*0.2,0.024*0.5,0.09*0.2\}*0.4
+=max\{0.0144,0.012,0.018\}*0.4=0.0072,同时记录t=2时的回溯为j=3(对应0.018的取值)
+\end{cases}
+\]</span> <img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614121258299.png" srcset="/img/loading.gif" lazyload alt="t = 3 时的观测概率示意图" style="zoom:50%;"></p>
+<p>解码出的隐含状态序列是: <mark>盒子2，盒子3，盒子2</mark></p>
+<h1 id="四系统发育分析">四、系统发育分析</h1>
+<h2 id="系统发育树">1.系统发育树</h2>
+<p>系统发生树：表达类群/物种/序列之间进化关系的一种树状图。</p>
+<blockquote>
+<p>也叫<mark>系统发育树(Phylogenetic Tree)</mark>、进化树。</p>
+</blockquote>
+<p>分子进化树：从DNA或蛋白质序列数据出发构建而成，用以揭示不同物种之间的进化联系的一种树状图。</p>
+<blockquote>
+<p>分子钟假设：两个物种的同源基因之间的差异程度与它们的共同祖先的存在时间有一定关系, 分子进化速度大体恒定。</p>
+</blockquote>
+<h2 id="基因树和物种树">2.基因树和物种树</h2>
+<p>基因树(gene tree)：基于单个同源基因差异构建的系统树。</p>
+<p>物种树(species tree)：</p>
+<ul>
+<li>表达某一特定类群的进化路径。</li>
+<li>由多个基因或基因组所建立的基因树通过综合而成。</li>
+</ul>
+<p>基因树和物种树两者的差异：</p>
+<ul>
+<li>从两个不同的物种中获取的两个基因，其分化可能早于物种的分化。</li>
+<li>基因树的拓扑结构可能与物种树不一致，因为两个或多个基因树之间很可能存在不一致之处
+<ul>
+<li>如何将由多个基因或基因组建立的基因树综合成为一个物种树，是分子系统学目前所面临的一个难题。</li>
+</ul></li>
+</ul>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611221237122.png" srcset="/img/loading.gif" lazyload alt="物种树" style="zoom: 67%;"></p>
+<h2 id="进化树">3.进化树</h2>
+<p>进化树由结点(node, 顶点)与分枝(branch, 边)组成。</p>
+<p>结点分两类：</p>
+<ul>
+<li>叶结点代表一个分类单元（比如类群、物种或序列）。</li>
+<li>内部结点(祖先结点)代表推断出的共同祖先, 祖先结点可以对应于一种已知的物种，也可以没有对应的物种。</li>
+</ul>
+<p>分枝用以显示不同的遗传路线。</p>
+<p>进化树在本质上包含两类信息：</p>
+<ul>
+<li>树的拓扑信息。</li>
+<li>分枝的长度信息。</li>
+</ul>
+<p>对进化树的分类：</p>
+<ul>
+<li>标度树、非标度树</li>
+<li>二叉树、k-叉树</li>
+<li>有根树、无根树</li>
+</ul>
+<h3 id="标度树与非标度树">3.1 标度树与非标度树</h3>
+<p>非标度树：枝长无意义；叶结点排列整齐，内部结点可以反映进化时间的顺序。</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222054188.png" srcset="/img/loading.gif" lazyload alt="非标度树"><figcaption aria-hidden="true">非标度树</figcaption>
+</figure>
+<p>标度树：枝长有意义；分枝长度与物种/序列的进化时间成正比。</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222309737.png" srcset="/img/loading.gif" lazyload alt="标度树"><figcaption aria-hidden="true">标度树</figcaption>
+</figure>
+<p>两种树都可在分枝上标注信息(分支长度、进化时间以及其它数值)。</p>
+<h3 id="k-叉树">3.2 k −叉树</h3>
+<p>k −叉树 (内部结点的分叉)：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222638711.png" srcset="/img/loading.gif" lazyload alt="k −叉树" style="zoom:67%;"></p>
+<h3 id="进化树是否有根root">3.3 进化树是否有根(root)</h3>
+<p>有根进化树：</p>
+<ul>
+<li>根表示各个物种共同的祖先。</li>
+<li>从祖先结点只有唯一的路径进化到达叶结点。</li>
+</ul>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223144654.png" srcset="/img/loading.gif" lazyload alt="有根树（可以明确进化路径）"><figcaption aria-hidden="true">有根树（可以明确进化路径）</figcaption>
+</figure>
+<p>无根进化树：</p>
+<ul>
+<li>没有指定各物种的共同祖先。</li>
+<li>没有关于进化方向的信息。</li>
+</ul>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223708792.png" srcset="/img/loading.gif" lazyload alt="无根树（无进化方向）"><figcaption aria-hidden="true">无根树（无进化方向）</figcaption>
+</figure>
+<p>有些进化树构造算法产生有根树，也有些算法只能产生无根树。</p>
+<p>无根树→有根树的转换</p>
+<ul>
+<li>利用一个外部类群(物种、序列)生成根。
+<ul>
+<li>外部类群(outgroup)：与所有待研究类群亲缘关系都较远的类群。</li>
+</ul></li>
+</ul>
+<h2 id="构建进化树的方法">4.构建进化树的方法</h2>
+<h3 id="构建分子进化树">4.1 构建分子进化树</h3>
+<p>推断分子进化树的基本原理：同源序列之间的差异是进化造成的，差异程度与进化时间成正比。</p>
+<blockquote>
+<p>分子钟假设</p>
+</blockquote>
+<p>构建分子进化树的基本方法：</p>
+<ol type="1">
+<li>刻画多条同源序列的差异</li>
+<li>构建反映序列间差异的树状图
+<ul>
+<li>从现有数据出发, 试图<mark>推断(或重构)</mark>进化树——真实的进化树是未知的。</li>
+</ul></li>
+</ol>
+<p>推断分子进化树的关键：刻画出序列之间由进化造成的与进化时间成正比的差异。</p>
+<p>刻画序列之间差异的方法：进行序列比对，由最佳比对构造距离(或不相似度)。</p>
+<ul>
+<li><p>设 最佳比对中不匹配位点所占的百分<em>f</em></p>
+<ul>
+<li>“每100个位点上不匹配位点的数目”</li>
+</ul></li>
+<li><p>比如: Jukes-Cantor模型构造的距离： <span class="math display">\[
+d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
+\]</span></p></li>
+</ul>
+<p>进化树构建算法：</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611233724121.png" srcset="/img/loading.gif" lazyload alt="进化树构建算法"><figcaption aria-hidden="true">进化树构建算法</figcaption>
+</figure>
+<h3 id="非加权组算术平均法upgma">4.2 非加权组算术平均法(UPGMA)</h3>
+<p>最早的基于距离矩阵的方法，最初产生于20世纪60年代早期。</p>
+<ul>
+<li>所有树重建方法中最简单的一种。</li>
+</ul>
+<p>算法特点：</p>
+<ul>
+<li>基于距离矩阵数据</li>
+<li>使用层次式聚类算法</li>
+</ul>
+<p>步骤：</p>
+<ol type="1">
+<li>初始化：每条序列自成一个组C<sub>i</sub>，分别对应于树中的一个叶结点。</li>
+<li>迭代：
+<ul>
+<li>寻找具有最小距离值d<sub>ij</sub>的两个组C<sub>i</sub>和C<sub>j</sub> , 合并成 一个新组C<sub>k</sub> = C<sub>i</sub>∪ C<sub>j</sub></li>
+<li>更新C<sub>k</sub>与各旧组C<sub>ℓ</sub>的距离为d<sub>k,ℓ</sub> = (d<sub>i,ℓ</sub>+ d<sub>j,ℓ</sub>)/2</li>
+<li>在树中增加一个分支点，同时与C<sub>i</sub>和C<sub>j</sub>相连接，<strong>两条分枝各为d<sub>i,j</sub>/2</strong></li>
+</ul></li>
+<li>终止：直到所有序列聚为一个组时终止，最终得到的分枝点为树的根。</li>
+</ol>
+<h4 id="例-利用非加权组算数平均法进行进化树构建">例: 利用非加权组算数平均法进行进化树构建</h4>
+<p>A: GTGCTGCACGG CTCAGTATA GCATTTACCC TTCCATCTTC AGATCCTGAA</p>
+<p>B: ACGCTGCACGG CTCAGTGCG GTGCTTACCC TCCCATCTTC AGATCCTGAA</p>
+<p>C: GTGCTCGCAGG CTCGGCGCA GCATTTACCC TCCCATCTTC AGATCCTATC</p>
+<p>D: GTATCACACGA CTCAGCGCA GCATTTGCCC TCCCGTCTTC AGATCCTAAA</p>
+<p>E: GTATCACATAG CTCAGCGCA GCATTTGCCC TCCCGTCTTC AGATCTAAA</p>
+<p>1.初始化：计算序列之间的汉明距离，即对应位点上字符不同的数目</p>
+<p>得到初始距离矩阵：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">物种</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p>2.迭代：选择最近结点进行合并，更新距离矩阵，更新进化树</p>
+<p>第1次迭代：更新距离矩阵；合并分支（叶节点）</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201442420.png" srcset="/img/loading.gif" lazyload alt="第一次迭代"><figcaption aria-hidden="true">第一次迭代</figcaption>
+</figure>
+<p>进化树上标注进化距离：两条分枝各为d<sub><em>ij</em></sub>/2</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201549550.png" srcset="/img/loading.gif" lazyload alt="第一次迭代得到进化树"><figcaption aria-hidden="true">第一次迭代得到进化树</figcaption>
+</figure>
+<p>第2次迭代：</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201712875.png" srcset="/img/loading.gif" lazyload alt="第二次迭代"><figcaption aria-hidden="true">第二次迭代</figcaption>
+</figure>
+<p>进化树：</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201747559.png" srcset="/img/loading.gif" lazyload alt="第二次迭代得到进化树"><figcaption aria-hidden="true">第二次迭代得到进化树</figcaption>
+</figure>
+<p>第3次迭代：</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201825651.png" srcset="/img/loading.gif" lazyload alt="第二次迭代"><figcaption aria-hidden="true">第二次迭代</figcaption>
+</figure>
+<p>进化树：</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201951538.png" srcset="/img/loading.gif" lazyload alt="第三次迭代得到进化树"><figcaption aria-hidden="true">第三次迭代得到进化树</figcaption>
+</figure>
+<blockquote>
+<p>左侧中间结点((A,C),B) 到中间结点 (A,C)的距离是: 10/2 – 4 = 1</p>
+</blockquote>
+<p>第4次迭代：</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202054031.png" srcset="/img/loading.gif" lazyload alt="第四次迭代"><figcaption aria-hidden="true">第四次迭代</figcaption>
+</figure>
+<p>进化树：</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202212962.png" srcset="/img/loading.gif" lazyload alt="第四次迭代得到进化树"><figcaption aria-hidden="true">第四次迭代得到进化树</figcaption>
+</figure>
+<p>3.算法终止：完成进化树构建</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202320043.png" srcset="/img/loading.gif" lazyload></p>
+<p>不带标度的文本表示法：(((A,C),B),(D,E))</p>
+<p>带标度的文本表示法：(((A:4,C:4):1,B:5):2.25,(D:2.5,E:2.5):4.75)</p>
+<figure>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202350905.png" srcset="/img/loading.gif" lazyload alt="最终进化树"><figcaption aria-hidden="true">最终进化树</figcaption>
+</figure>
+<ul>
+<li><p>初始距离矩阵：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">物种</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>进化距离矩阵：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">物种</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">14.5</td>
+<td style="text-align: center;">14.5</td>
+<td style="text-align: center;">14.5</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">14.5</td>
+<td style="text-align: center;">14.5</td>
+<td style="text-align: center;">14.5</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<blockquote>
+<p>两个距离矩阵中的数值 并不严格匹配</p>
+</blockquote>
+<p>超度量(Ultrametric)：如果任何3个不同序列S<sub>i</sub>,S<sub>j</sub>,S<sub>k</sub>，距离函数d<sub>ij</sub>,d<sub>ik</sub>,d<sub>jk</sub>中的两个相等且不小于第3个, 则称距离函数为超度量。</p>
+<p>若初始距离矩阵为超度量矩阵，则UPGMA算法总能产生正确的进化树。即初始距离矩阵与所构造进化树对应的距离矩阵一致。</p>
+<h1 id="五蛋白质结构分析与预测">五、蛋白质结构分析与预测</h1>
+<h2 id="引言蛋白质">1.引言—蛋白质</h2>
+<p>蛋白质是由<mark>氨基酸</mark>用<mark>肽键</mark>相连接起来的线性聚合物。</p>
+<blockquote>
+<p>蛋白质是平均长度为200个左右的氨基酸。</p>
+<p>大的蛋白质可以达到上千个氨基酸。</p>
+</blockquote>
+<p>蛋白质决定的细胞的形状与结构。</p>
+<ul>
+<li>细胞中蛋白质的重量占细胞干重的一半以上。</li>
+</ul>
+<p>蛋白质是分子识别及催化作用的主要主体，执行生物体内各种重要工作：</p>
+<ul>
+<li>营养物质的运输</li>
+<li>生物反应的催化</li>
+<li>生物体的生长和分化的控制</li>
+<li>生物信号的识别与传递</li>
+</ul>
+<blockquote>
+<p>序列决定结构，结构决定功能。</p>
+</blockquote>
+<p>构成蛋白质的氨基酸序列的长度不同、排列不同和空间结构不同。</p>
+<ul>
+<li><p>一级结构：蛋白质中相邻的氨基酸通过肽键形成一条伸展的链。</p></li>
+<li><p>二级结构：肽链上的氨基酸残基形成局部的二级结构。</p>
+<blockquote>
+<p>比如α螺旋是氨基酸的单链螺旋，而β片层则由序列片段“织”形成平面片状结构。</p>
+</blockquote></li>
+<li><p>空间结构：各种二级结构组合形成完整的折叠结构。</p></li>
+</ul>
+<h2 id="蛋白质结构预测">2.蛋白质结构预测</h2>
+<h5 id="蛋白质结构预测问题的可行性">蛋白质结构预测问题的可行性</h5>
+<p>自然界中实际存在的蛋白质种类是<strong>有限的</strong>，可能的结构类型并不多。</p>
+<ul>
+<li>结构的数目并未随蛋白质氨基残基的个数呈现指数增长。</li>
+</ul>
+<p>存在大量同源序列，序列到结构的关系有一定规律可循。</p>
+<ul>
+<li>相似的序列具有相似的结构。</li>
+</ul>
+<h5 id="蛋白质结构预测问题的数学本质">蛋白质结构预测问题的数学本质</h5>
+<p>寻找一种从蛋白质的氨基酸<strong>线性序列</strong>到蛋白质所有原子<strong>三维坐标</strong>的<mark>一种映射</mark>。</p>
+<h5 id="结构预测的基本方法">结构预测的基本方法</h5>
+<p>统计分析方法：对已知结构的蛋白质进行统计分析，建立氨基酸序列到蛋白质结构的映射模型，进而对未知结构的氨基酸序列根据映射模型直接从序列预测结构。</p>
+<ul>
+<li>经验参数法</li>
+<li>相似片断法</li>
+<li>同源方法</li>
+</ul>
+<p>理论分析方法：假设蛋白质分子取能量最低的空间结构，根据物理化学原理，通过理论计算(如分子力学/分子动力学)进行对氨基酸序列结构预测。</p>
+<ul>
+<li>从头计算法</li>
+</ul>
+<h2 id="蛋白质二级结构预测">3.蛋白质二级结构预测</h2>
+<p>基本依据：每一段相邻氨基酸残基具有形成一定二级结构的倾向。</p>
+<p>问题的本质是模式分类问题。</p>
+<ul>
+<li>蛋白质二级结构的构成具有比较强的统计规律。</li>
+<li>所有蛋白质中约85%的氨基酸残基处于三种基本二级结构状态之一。
+<ul>
+<li>α螺旋、β折叠和 t 转角</li>
+</ul></li>
+</ul>
+<p>二级结构预测的目标：判断每一段中心的残基是否处于二级结构的三态之一。</p>
+<blockquote>
+<p>三态：α螺旋、β折叠和 t 转角(或其它状态)</p>
+</blockquote>
+<p>二级结构预测的基本思路：相似序列对应着相似的结构。</p>
+<ul>
+<li>相似的一段相邻氨基酸残基，对应着相似的二级结构。</li>
+</ul>
+<p>二级结构预测的基本过程：</p>
+<p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612215417920.png" srcset="/img/loading.gif" lazyload alt="二级结构预测" style="zoom:50%;"></p>
+<p>二级结构预测可利用的信息：</p>
+<ol type="1">
+<li>单个氨基酸残基统计分析</li>
+</ol>
+<ul>
+<li>从数据集中提取各种残基形成特定二级结构的倾向，以此作为预测依据。</li>
+</ul>
+<ol start="2" type="1">
+<li>基于氨基酸片断的统计分析
+<ul>
+<li>统计对象氨基酸片断，片断体现了中心残基所处的环境。</li>
+<li>以残基在特定环境中形成的特定二级结构的倾向作为预测依据。</li>
+</ul></li>
+<li>蛋白质序列的长程信息和进化信息
+<ul>
+<li>二级结构的形成一定程度上受到长程残基的影响。</li>
+<li>蛋白质家族具有特异的残基替换模式。</li>
+<li>存在进化保守区域，该区域变化则会导致蛋白质结构的改变。</li>
+</ul></li>
+</ol>
+<h5 id="经验参数法">(1)经验参数法</h5>
+<p>根据不同氨基酸形成特定二级结构的倾向进行结构预测。</p>
+<ul>
+<li>通过对已知结构的蛋白质(如蛋白质结构数据库PDB、蛋白质二级结构数据库DSSP中的蛋白质)进行统计分析，可发现各种氨基酸形成不同二级结构的倾向，从而形成一系列关于二级结构预测的规则。</li>
+</ul>
+<h6 id="预测二级结构的经验规则">预测二级结构的经验规则</h6>
+<p>基本思想：在序列中寻找符合某规则的二级结构的成核位点和终止位点。</p>
+<p>基本步骤：扫描输入的氨基酸序列，利用一组规则发现可能成为特定二级结构<strong>成核区域</strong>的短序列，然后对于<strong>成核区域</strong>进行扩展，不断扩大<strong>成核区域</strong>，直到倾向性因子小于1.0为止。</p>
+<ul>
+<li>α螺旋规则</li>
+<li>β折叠规则</li>
+<li>转角规则</li>
+<li>重叠规则</li>
+</ul>
+<h5 id="相似片段法">(2)相似片段法</h5>
+<p>基本原理：最近邻方法。</p>
+<ul>
+<li>相似序列具有相似的结构，将相似序列或序列的片断所对应的二级结构作为预测结果；在预测中心残基的二级结构时，以残基在特定环境形成特定二级结构的倾向作为预测依据。</li>
+</ul>
+<p>基本统计信息：基于氨基酸片段的统计分析。</p>
+<ul>
+<li>统计的对象是氨基酸片段，片段体现了中心残基所处的上下文环境。
+<ul>
+<li>片段的长度通常为11~21。</li>
+</ul></li>
+</ul>
+<p>实现步骤：</p>
+<ul>
+<li>训练阶段
+<ul>
+<li>通过窗口扫描已知结构的训练序列，形成大量短片断，即训练片断。</li>
+<li>记录这些片断中心氨基酸残基的二级结构。</li>
+</ul></li>
+<li>预测阶段
+<ul>
+<li>利用同样大小的窗口扫描待测序列u，在每个窗口位置下的序列片断与上述训练片断比较，找出最相似的k个训练片断。
+<ul>
+<li>比如 k=20，50</li>
+</ul></li>
+<li>取出现频率最高的训练片断的二级结构作为待测片断二级结构的预测。</li>
+</ul></li>
+</ul>
+<h5 id="同源分析法">(3)同源分析法</h5>
+<p>基本思路：</p>
+<ul>
+<li>将待预测的片段与数据库中已知二级结构的片段进行相似性比较。</li>
+<li>利用打分矩阵计算出相似性得分。</li>
+<li>根据相似性得分以及数据库中的构象态，构建出待预测片段的二级结构。</li>
+</ul>
+<p>适用情况：</p>
+<ul>
+<li>该方法对数据库中同源序列的存在非常敏感。</li>
+<li>若数据库中有相似性大于30%的序列，则预测准确率可大幅上升。</li>
+</ul>
+<h2 id="蛋白质三维空间结构预测">4.蛋白质三维空间结构预测</h2>
+<ul>
+<li>同源模型法</li>
+<li>线索化方法</li>
+<li>从头预测法</li>
+</ul>
+<h5 id="三种方法的比较">三种方法的比较：</h5>
+<p>同源模型法需要得到一个好的序列比对。</p>
+<ul>
+<li>目标蛋白质序列与模板等同部分超过60%，则完全可以找到正确的比对；如果相似程度只有20%-25%，则很难找到正确的比对；如果相似度低于20%，无法应用同源模型化方法。
+<ul>
+<li>同源模型法是预测结果最可靠的方法</li>
+</ul></li>
+</ul>
+<p>线索化方法需要找到远程同源蛋白。</p>
+<ul>
+<li>如果能够找到同一家族的远程同源蛋白质，则可以获得比较好的预测结果；如果找到的模板属于不同的家族，则预测准确性难以保证。</li>
+</ul>
+<p>从头预测方法</p>
+<ul>
+<li>需要准确的能量函数和快速搜索策略。</li>
+<li>通常难以产生准确的预测结构。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/" class="category-chain-item">专业课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BF%A1%E6%81%AF%EF%BC%8C%E7%94%9F%E7%89%A9%EF%BC%8C%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B%EF%BC%8C%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%EF%BC%8C%E8%B4%9D%E5%8F%B6%E6%96%AF%EF%BC%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%8C%E8%BF%9B%E5%8C%96%E6%A0%91/">#信息，生物，专业课程，马尔可夫，贝叶斯，动态规划，进化树</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>生物信息学</div>
+      <div>http://example.com/2023/06/08/生物信息学/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Faceless-person</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年6月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" title="通信网性能分析">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">通信网性能分析</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="个人博客搭建">
+                        <span class="hidden-mobile">个人博客搭建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

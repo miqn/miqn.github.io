@@ -1,0 +1,1468 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Faceless-person">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="通信原理主要研究信息传输中的基本问题，主要讲授通信的基本原理和关键技术，掌握信息传输的基本原理和通信系统的性能分析方法，具备分析和解决通信系统设计中的工程实践问题的能力。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通信原理(Ⅰ)">
+<meta property="og:url" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/index.html">
+<meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="通信原理主要研究信息传输中的基本问题，主要讲授通信的基本原理和关键技术，掌握信息传输的基本原理和通信系统的性能分析方法，具备分析和解决通信系统设计中的工程实践问题的能力。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419233002637.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419233644437.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419233053555.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%8F%8C%E8%BE%B9%E8%B0%B1%E5%AF%86%E5%BA%A6.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%8D%95%E8%BE%B9%E8%B0%B1%E5%AF%86%E5%BA%A6.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E7%BB%9D%E5%AF%B9%E5%B8%A6%E5%AE%BD.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E4%B8%BB%E7%93%A3%E5%B8%A6%E5%AE%BD.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/3dB%E5%B8%A6%E5%AE%BD.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E5%8F%98%E6%8D%A2.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E5%8F%98%E6%8D%A2%E5%AF%B9.jpg">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%B8%A6%E9%80%9A%E4%BF%A1%E5%8F%B7.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E3%80%81%E8%A7%A3%E6%9E%90%E4%BF%A1%E5%8F%B7%E3%80%81%E5%B8%A6%E9%80%9A%E4%BF%A1%E5%8F%B7.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%B8%A6%E9%80%9A%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%AD%89%E6%95%88%E5%9F%BA%E5%B8%A6%E5%88%86%E6%9E%90.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419234031223.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/Q%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/erfc%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%8A%9F%E7%8E%87%E8%B0%B1%E5%AF%86%E5%BA%A6.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E8%87%AA%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E5%8A%9F%E7%8E%87%E8%B0%B1%E5%AF%86%E5%BA%A61.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E8%87%AA%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B01.png">
+<meta property="og:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B.png">
+<meta property="article:published_time" content="2023-01-07T08:09:15.000Z">
+<meta property="article:modified_time" content="2023-06-01T11:07:26.274Z">
+<meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="通信原理">
+<meta property="article:tag" content="专业课程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419233002637.png">
+  
+  
+  
+  <title>通信原理(Ⅰ) - Faceless_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Faceless_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="通信原理(Ⅰ)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-07 16:09" pubdate>
+          2023年1月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          107 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">通信原理(Ⅰ)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>主要参考</p>
+</blockquote>
+<ul>
+<li>视频教程<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11x411G79C/?spm_id_from=333.880.my_history.page.click&amp;vd_source=ef3842945b0f7729a278874a86c98aa5">北邮 通信原理公开课 杨鸿文</a></li>
+</ul>
+<h1 id="一绪论">一、绪论</h1>
+<h2 id="通信系统和通信网的构成">1.通信系统和通信网的构成</h2>
+<h3 id="通信系统">1.1 通信系统</h3>
+<p>通信系统：指点对点通信所需的全部设施</p>
+<p>通信系统的香农模型:</p>
+<p><img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419233002637.png" srcset="/img/loading.gif" lazyload></p>
+<p>信源：信息的发送者；信宿：信息的接收者。信源和信宿决定了通信系统的<strong>业务性质</strong>。例如电话系统传送语音信息，电报或数据通信系统传送代表某些信息的符号，电视系统传送活动图像的信息等。</p>
+<p>编码：泛指把信源输出变换成适合信道传送的信号所需的设备。有信源编码、信道编码。</p>
+<p>译码: 编码的反变换所需要的设备。</p>
+<p>信道: 传送信息的通道。</p>
+<p>以电信号为物理载体的通信系统（通信系统的另一种模型）：</p>
+<p><img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419233644437.png" srcset="/img/loading.gif" lazyload></p>
+<p>信源：</p>
+<ul>
+<li>模拟信源：各种传感器的输出，其存在形式一般是基带电信号；</li>
+<li>数字信源：电脑、手机中存储的比特。</li>
+</ul>
+<p>信道：</p>
+<ul>
+<li>基带信道：一般可建模为低通型滤波器；</li>
+<li>频带信道：一般可建模为带通型滤波器。</li>
+</ul>
+<p>故有这四种传输：</p>
+<ul>
+<li>模拟基带传输：最简单的传输</li>
+<li>模拟频带传输：第四章</li>
+<li>数字基带传输：第五章</li>
+<li>数字频带传输：第六章</li>
+</ul>
+<h3 id="通信网">1.2 通信网</h3>
+<p>通信网的构成：</p>
+<ul>
+<li><p>通信系统：终端设备（编码、译码）、传输设备（信道）；</p></li>
+<li><p>交换设备：</p>
+<ul>
+<li><p>电路交换：如公共电话网，优点：实时、QoS(Quality of Service)高；缺点：信道利用率低。</p></li>
+<li><p>分组交换：如Internet网，优点：信道利用率高；缺点：实时和QoS不易保证。</p></li>
+</ul></li>
+<li><p>信令和协议</p></li>
+</ul>
+<h3 id="信息消息信号">1.3 信息、消息、信号</h3>
+<p>信息：要表示和传送的对象。</p>
+<p><strong>消息</strong>：信息的表现形式，信息的数学表示形式。</p>
+<p>信号：信号是与消息对应的某种物理量，信息的物理表示形式。</p>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419233053555.png" srcset="/img/loading.gif" lazyload alt="信息、消息、信号"><figcaption aria-hidden="true">信息、消息、信号</figcaption>
+</figure>
+<p>香农信息论认为：信息的多少等于无知度的大小。人们已知的消息不是信息，而好像，大概，可能之类的不确切的内容包含着信息。 <span class="math display">\[
+离散消息的熵定义:H(X)=-\sum{p(x)\log_2p(x)}
+\]</span></p>
+<p><span class="math display">\[
+连续消息的熵定义:H(X)=-\int_{a}^{b}{p(x)\log_2p(x)}dx
+\]</span></p>
+<ul>
+<li>连续消息的信息量是无限的.</li>
+<li>连续消息有无穷个状态，因此根据香农熵的定义必然为无穷大。</li>
+</ul>
+<h3 id="通信系统的主要性能指标">1.4 通信系统的主要性能指标</h3>
+<ul>
+<li><p>有效性：是指在给定信道内传输的信息量的多少</p></li>
+<li><p>代价：资源占用情况</p></li>
+<li><p>带宽；传输速率、频带利用率</p></li>
+<li><p>可靠性：是指接收信息的准确度</p>
+<ul>
+<li>质量：失真大小</li>
+<li>输出信噪比、调制增益；误码率、误比特率</li>
+</ul></li>
+<li><p>码元传输速率（R<sub>S</sub> 或R<sub>B</sub>）：码元传输速率简称传码率，也称码元速率或符号速率。它被定义为单位时间（s<sup>-1</sup>）内传输码元的数目，单位为波特，记为Baud或B。</p></li>
+<li><p>信息传输速率（R<sub>b</sub>）：信息传输速率简称传信率，又称信息速率。它被定义为单位时间（s<sup>-1</sup>）内传递的信息量（bit数），单位是比特/秒，也记为bit / s或bps。</p></li>
+</ul>
+<h1 id="二确定信号分析">二、确定信号分析</h1>
+<h2 id="傅里叶变换">1.傅里叶变换</h2>
+<h3 id="傅里叶变换与反变换">1.1 傅里叶变换与反变换</h3>
+<p><span class="math display">\[
+傅里叶变换:F(f)=\int_{-\infty}^{+\infty}{f(t)e^{-j2\pi ft}}dt
+\]</span></p>
+<p><span class="math display">\[
+傅里叶反变换:f(t)=\int_{-\infty}^{+\infty}{F(f)e^{j2\pi ft}}df
+\]</span></p>
+<h3 id="典型信号的傅里叶变换">1.2 典型信号的傅里叶变换</h3>
+<ul>
+<li><p>矩形脉冲信号： <span class="math display">\[
+E\tau sinc(t\tau)\Leftrightarrow E[u(f+\frac{\tau}{2})-u(f-\frac{\tau}{2})]
+\]</span></p>
+<p><span class="math display">\[
+也可表示为:E\tau sinc(t\tau)\Leftrightarrow Erect(\frac{f}{\tau})
+\]</span></p>
+<p><span class="math display">\[
+E[u(t+\frac{\tau}{2})-u(t-\frac{\tau}{2})]\Leftrightarrow E\tau sinc(f\tau)
+\]</span></p>
+<p><span class="math display">\[
+sinc(x)=\frac{sin(\pi x)}{\pi x},Sa(x)=\frac{sin(x)}{x}
+\]</span></p>
+<p><span class="math display">\[
+E\tau Sa(\pi t\tau)\Leftrightarrow E[u(f+\frac{\tau}{2})-u(f-\frac{\tau}{2})]
+\]</span></p></li>
+</ul>
+<p><span class="math display">\[
+拓展:Asinc^2(at)\Leftrightarrow\frac{A}{a}(1-\frac{|f|}{a})
+\]</span></p>
+<ul>
+<li><p>单边指数信号： <span class="math display">\[
+Ee^{-at}(t&gt;0,a&gt;0)\Leftrightarrow\frac{E}{a+j2\pi f}
+\]</span></p></li>
+<li><p>直流信号：</p></li>
+</ul>
+<p><span class="math display">\[
+E\Leftrightarrow E\delta(f)
+\]</span></p>
+<ul>
+<li><p>单位冲激信号： <span class="math display">\[
+\delta(t)\Leftrightarrow 1
+\]</span></p></li>
+<li><p>符号函数：</p></li>
+</ul>
+<p><span class="math display">\[
+f(t)=\begin{cases} +1，t&gt;0\\ -1， t&lt;0\end{cases},\quad F(w)=\frac{1}{j\pi f}
+\]</span></p>
+<ul>
+<li><p>阶跃函数： <span class="math display">\[
+  u(t)\Leftrightarrow\frac{1}{j2\pi f}+\frac{1}{2}\delta(f)
+  \]</span></p></li>
+<li><p>正余弦函数： <span class="math display">\[
+cos(2\pi f_0)\Leftrightarrow\frac{1}{2}[\delta(f+f_0)+\delta(f-f_0)]
+\]</span></p>
+<p><span class="math display">\[
+sin(2\pi f_0)\Leftrightarrow\frac{j}{2}[\delta(f+f_0)-\delta(f-f_0)]
+\]</span></p></li>
+</ul>
+<h3 id="傅里叶变换的性质">1.3 傅里叶变换的性质</h3>
+<ul>
+<li>尺度变换性质：</li>
+</ul>
+<p><span class="math display">\[
+若f(t)\Leftrightarrow F(w),则f(at)\Leftrightarrow\frac{1}{|a|}F(\frac{w}{a})
+\]</span></p>
+<ul>
+<li>时移性质：</li>
+</ul>
+<p><span class="math display">\[
+若f(t)\Leftrightarrow F(w),则f(t-t_0)\Leftrightarrow\ F(w)e^{-jwt_0}
+\]</span></p>
+<blockquote>
+<p>同号</p>
+</blockquote>
+<ul>
+<li>对称性质：</li>
+</ul>
+<p><span class="math display">\[
+若f(t)\Leftrightarrow F(w),则F(t)\Leftrightarrow 2\pi f(-w),或F(t)\Leftrightarrow f(-f)
+\]</span></p>
+<p><span class="math display">\[
+若f(t)为偶函数,则F(t)\Leftrightarrow2\pi f(w)
+\]</span></p>
+<ul>
+<li>频移性质：</li>
+</ul>
+<p><span class="math display">\[
+若f(t)\Leftrightarrow F(w),则f(t)e^{jw_0t}\Leftrightarrow\ F(w-w_0)
+\]</span></p>
+<blockquote>
+<p>异号</p>
+</blockquote>
+<ul>
+<li>微分性质：</li>
+</ul>
+<p><span class="math display">\[
+f&#39;(t)\Leftrightarrow jwF(w),\quad f^{(n)}(t)\Leftrightarrow(jw)^{n}F(w)
+\]</span></p>
+<p><span class="math display">\[
+tf(t)\Leftrightarrow jF&#39;(w),\quad t^{n}f(t)\Leftrightarrow j^{n}F^{(n)}(w)
+\]</span></p>
+<ul>
+<li>积分性质：</li>
+</ul>
+<p><span class="math display">\[
+F(0)=0时,\int_{-\infty}^{t}{f(\tau)}d\tau\Leftrightarrow\frac{F(w)}{jw}
+\]</span></p>
+<p><span class="math display">\[
+F(0)\neq0时,\int_{-\infty}^{t}{f(\tau)}d\tau\Leftrightarrow\pi F(0)\delta(w)+\frac{F(w)}{jw}
+\]</span></p>
+<h3 id="积化和差公式">1.4 积化和差公式</h3>
+<p><span class="math display">\[
+cosacosβ=\frac{1}{2}[cos(a+β)+cos(a-β)]
+\]</span></p>
+<p><span class="math display">\[
+sinasinβ=-\frac{1}{2}[cos(a+β)-cos(a-β)]
+\]</span></p>
+<p><span class="math display">\[
+sinacosβ=\frac{1}{2}[sin(a+β)+sin(a-β)]
+\]</span></p>
+<p><span class="math display">\[
+cosasinβ=\frac{1}{2}[sin(a+β)-sin(a-β)]
+\]</span></p>
+<h2 id="能量谱密度与功率谱密度及相关函数">2.能量谱密度与功率谱密度及相关函数</h2>
+<h3 id="能量信号与功率信号">2.1 能量信号与功率信号</h3>
+<ul>
+<li>能量信号：</li>
+</ul>
+<p><span class="math display">\[
+E_f=\int_{-\infty}^{\infty}{f^{2}(t)}dt&lt;\infty(能量有限)
+\]</span></p>
+<ul>
+<li>功率信号：</li>
+</ul>
+<p><span class="math display">\[
+P_f=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}{f^{2}(t)}dt&lt;\infty(能量无限，功率有限)
+\]</span></p>
+<h3 id="能量信号的相关函数">2.2 能量信号的相关函数</h3>
+<ul>
+<li>能量信号x(t)与y(t)的互相关函数</li>
+</ul>
+<p><span class="math display">\[
+R_{xy}(\tau)=\int_{-\infty}^{\infty}{x(t+\tau)y^{*}(t)}dt
+\]</span></p>
+<p><span class="math display">\[
+R_{yx}(\tau)=\int_{-\infty}^{\infty}{y(t+\tau)x^{*}(t)}dt
+\]</span></p>
+<ul>
+<li>能量信号x(t)的自相关函数：</li>
+</ul>
+<p><span class="math display">\[
+R_x(\tau)=\int_{-\infty}^{\infty}{x(t+\tau)x^{*}(t)}dt
+\]</span></p>
+<blockquote>
+<p>实信号不需要共轭</p>
+</blockquote>
+<ul>
+<li>相关函数的性质：</li>
+</ul>
+<p><span class="math display">\[
+共轭对称性:R_{xy}(\tau)=R^{*}_{yx}(-\tau)
+\]</span></p>
+<p><span class="math display">\[
+R_{x}(\tau)=R^{*}_{x}(-\tau)
+\]</span></p>
+<p><span class="math display">\[
+x(t)的能量是自相关函数在\tau=0处的值
+\]</span></p>
+<ul>
+<li><p>许瓦兹不等式： <span class="math display">\[
+许瓦兹不等式:\vert \int_{-\infty}^{\infty}{s_1(t)s_2^{*}(t)}dt\vert\leq\sqrt{E_1E_2}
+\]</span></p>
+<p><span class="math display">\[
+互相关函数满足:|R_{xy}(\tau)|=|\int_{-\infty}^{\infty}{x(t+\tau)y^{*}(t)}dt|\leq\sqrt{E_xE_y}
+\]</span></p>
+<p><span class="math display">\[
+自相关函数在\tau=0时最大:R_x(\tau)\leq R_x(0)=E_x
+\]</span></p></li>
+</ul>
+<h3 id="能量谱密度">2.3 能量谱密度</h3>
+<p><span class="math display">\[
+互能量谱密度:E_{xy}(f)=X(f)Y^*(f)
+\]</span></p>
+<p><span class="math display">\[
+能量谱密度:E_{x}(f)=X(f)X^*(f)=|X(f)|^2
+\]</span></p>
+<p><span class="math display">\[
+能量（帕塞瓦尔定理）:E_x=\int_{-\infty}^{\infty}{|x(t)|^2}dt=\int_{-\infty}^{\infty}{|X(f)|^2}df
+\]</span></p>
+<p><span class="math display">\[
+自相关函数的傅里叶变换是能量谱密度:R_x(\tau)\Leftrightarrow|X(f)|^2
+\]</span></p>
+<h3 id="功率信号的相关函数">2.4 功率信号的相关函数</h3>
+<p><span class="math display">\[
+R_x(\tau)=\overline{[x(t+\tau)x^{*}(t)]}
+\]</span></p>
+<p><span class="math display">\[
+自相关函数在\tau=0的值是功率:R_x(0)=\overline{[x(t)x^{*}(t)]}=P_x
+\]</span></p>
+<blockquote>
+<p>其他性质可类比能量信号</p>
+</blockquote>
+<h3 id="功率谱密度">2.5 功率谱密度</h3>
+<p><span class="math display">\[
+功率:P_x=R_x(0)=\overline{|x(t)|^2}=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}{|x_T(t)|^2}dt\bigg)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\infty}^{\infty}{|x_T(t)|^2}dt\bigg)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\infty}^{\infty}{|X_T(f)|^2}df\bigg)=\int_{-\infty}^{\infty}{\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|X_T(f)|^2\bigg)}df
+\]</span></p>
+<p><span class="math display">\[
+功率谱密度:P_x(f)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|X_T(f)|^2\bigg)
+\]</span></p>
+<p><span class="math display">\[
+自相关函数的傅里叶变换是功率谱密度:R_x(\tau)\Leftrightarrow P_x(f)
+\]</span></p>
+<h2 id="带宽">3.带宽</h2>
+<h3 id="单边功率谱">3.1 单边功率谱</h3>
+<p>从数学上来说，当我们对一个信号作傅里叶变换时，f的定义域是(-∞，+∞)，频率可正可负。</p>
+<p>但在物理测量当中，负频率是没有意义的，f的定义域是[0，+∞)。实信号的功率谱密度或能量谱密度是对称的，故在工程中常用单边谱密度。 <span class="math display">\[
+P_x^单(f)=P_x(f)+P_x(-f)=2P_x(f)\qquad f\geq0
+\]</span></p>
+<p><span class="math display">\[
+P_x=\int_{0}^{\infty}{P_x^单(f)}df
+\]</span></p>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/双边谱密度.png" srcset="/img/loading.gif" lazyload alt="双边谱密度"><figcaption aria-hidden="true">双边谱密度</figcaption>
+</figure>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/单边谱密度.png" srcset="/img/loading.gif" lazyload alt="单边谱密度"><figcaption aria-hidden="true">单边谱密度</figcaption>
+</figure>
+<h3 id="基带信号与频带信号">3.2 基带信号与频带信号</h3>
+<p>基带信号：信号的功率或能量主要集中在零频附近。</p>
+<p>频带信号（带通信号）：信号的功率或能量集中在某个载频附近。</p>
+<h3 id="带宽-1">3.3 带宽</h3>
+<p>带宽：信号的带宽指单边谱密度的宽度。</p>
+<ul>
+<li><p>绝对带宽：频谱在某个区间之外为零，该区间的宽度就是绝对带宽。</p>
+<blockquote>
+<p>只是一种模型，一个信号若频域有限，则其时域无限，现实中的信号不可能时域无限。</p>
+</blockquote></li>
+</ul>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/绝对带宽.png" srcset="/img/loading.gif" lazyload alt="绝对带宽"><figcaption aria-hidden="true">绝对带宽</figcaption>
+</figure>
+<ul>
+<li>主瓣带宽：有些信号频谱呈现出主瓣、旁瓣的特征，其带宽可采用主瓣宽度衡量。</li>
+</ul>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/主瓣带宽.png" srcset="/img/loading.gif" lazyload alt="主瓣带宽"><figcaption aria-hidden="true">主瓣带宽</figcaption>
+</figure>
+<ul>
+<li>3dB带宽：功率谱密度从峰值下降一半（3dB)的宽度。</li>
+</ul>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/3dB带宽.png" srcset="/img/loading.gif" lazyload alt="3dB带宽"><figcaption aria-hidden="true">3dB带宽</figcaption>
+</figure>
+<ul>
+<li><p>等效矩形带宽：功率谱同高同面积的矩形的宽度。</p></li>
+<li><p>按能量占比定义的带宽</p></li>
+</ul>
+<blockquote>
+<p>信号平方的带宽：x(t)的绝对带宽是W，x<sup>2</sup>(t)的绝对带宽是2W。</p>
+<p>正弦调制的带宽：x(t)的绝对带宽是W，是s(t)=x(t)cos2πf<sub>c</sub>t的绝对带宽是2W。</p>
+</blockquote>
+<h2 id="线性时不变系统">4.线性时不变系统</h2>
+<h3 id="线性时不变系统-1">4.1 线性时不变系统</h3>
+<p>复单频信号通过滤波器后还是复单频信号： <span class="math display">\[
+x(t)=e^{j2\pi vt},\quad y(t)=e^{j2\pi vt}H(v)
+\]</span> 能量（功率）谱密度： <span class="math display">\[
+E_y(f)=|H(f)|^2E_x(f),\quad P_y(f)=|H(f)|^2P_x(f)
+\]</span></p>
+<h3 id="希尔伯特变换与解析信号">4.2 希尔伯特变换与解析信号</h3>
+<ul>
+<li>希尔伯特变换： <span class="math display">\[
+实信号x(t)的希尔波特变换\widehat{x}(t)是将x(t)通过一个特定滤波器的输出。
+\]</span></li>
+</ul>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/希尔伯特变换.png" srcset="/img/loading.gif" lazyload alt="希尔伯特变换"><figcaption aria-hidden="true">希尔伯特变换</figcaption>
+</figure>
+<p><span class="math display">\[
+H(f)=-j*sgn(f)=\begin{cases} -j，f&gt;0\\ j，f&lt;0\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+h(t)=\frac{1}{\pi t}
+\]</span></p>
+<p>​ 由于|H(f)|<sup>2</sup>=1，故希尔伯特变换不改变能量（功率）谱密度，不改变自相关函数。</p>
+<p>​ 偶函数的希尔伯特变换是奇函数，奇函数的希尔伯特变换是偶函数。</p>
+<p><span class="math display">\[
+x(t)与\widehat{x}(t)正交：\int_{-\infty}^{\infty} {\widehat{x}(t)x(t)}dt=0
+\]</span> ​ 常用希尔伯特变换对：</p>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/希尔伯特变换对.jpg" srcset="/img/loading.gif" lazyload alt="希尔伯特变换对"><figcaption aria-hidden="true">希尔伯特变换对</figcaption>
+</figure>
+<ul>
+<li><p>解析信号</p>
+<p>实信号x(t)的解析信号z(t)定义为如下复信号：<span class="math display">\[z(t)=x(t)+j\widehat{x}(t)\]</span></p></li>
+</ul>
+<p><span class="math display">\[
+H(f)=1+j·[-j·sgn(f)]=1+sgn(f)=\begin{cases} 2，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+Z(f)=H(f)X(f)=\begin{cases} 2X(f)，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<p>​ 功率谱密度： <span class="math display">\[
+P_Z(f)=|1+sgn(f)|^2P_x(f)=\begin{cases} 4P_x(f)，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<h2 id="带通信号">5.带通信号</h2>
+<h3 id="带通信号的复包络">5.1 带通信号的复包络</h3>
+<p>带通信号：频谱集中在某个载频f<sub>c</sub>附近，默认假设最高频率不超过2f<sub>c</sub></p>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/带通信号.png" srcset="/img/loading.gif" lazyload alt="带通信号"><figcaption aria-hidden="true">带通信号</figcaption>
+</figure>
+<p>复包络： <span class="math display">\[
+实带通信号x(t)的复包络定义为:x_L(t)=z(t)e^{-j2\pi f_ct},其中z(t)=x(t)+j·\widehat{x}(t)
+\]</span></p>
+<p><span class="math display">\[
+x_L(t)=[x(t)+j·\widehat{x}(t)]e^{-j2\pi f_ct}
+\]</span></p>
+<ul>
+<li>频谱关系</li>
+</ul>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/基带信号、解析信号、带通信号.png" srcset="/img/loading.gif" lazyload alt="基带信号、解析信号、带通信号"><figcaption aria-hidden="true">基带信号、解析信号、带通信号</figcaption>
+</figure>
+<ul>
+<li><p>功率谱密度关系 <span class="math display">\[
+解析信号的功率谱密度:P_Z(f)=\begin{cases} 4P_x(f)，f&gt;0\\ 0，f&lt;0\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+复包络的功率谱密度:P_L(f)=P_Z(f+f_c)=\begin{cases} 4P_x(f+f_c)，|f|&lt;f_c\\ 0，else\end{cases}
+\]</span></p></li>
+</ul>
+<h3 id="带通信号的三种表示方法">5.2 带通信号的三种表示方法</h3>
+<ul>
+<li><p><span class="math display">\[
+x(t)=Re\{x_L(t)e^{j2\pi fct}\}
+\]</span></p></li>
+<li><p><span class="math display">\[
+x(t)=x_c(t)cos2\pi f_ct-x_s(t)sin2\pi f_ct
+\]</span></p>
+<p><span class="math display">\[
+x_c(t)=Re\{x_L(t)\}\quad同相分量
+\]</span></p>
+<p><span class="math display">\[
+x_s(t)=Im\{x_L(t)\}\quad正交分量
+\]</span></p>
+<p><span class="math display">\[
+x_L(t)=x_c(t)+j·x_s(t)
+\]</span></p></li>
+<li><p><span class="math display">\[
+x(t)=A(t)cos[2\pi f_ct+\varphi(t)]
+\]</span></p>
+<p><span class="math display">\[
+A(t)=|x_L(t)|\quad包络
+\]</span></p>
+<p><span class="math display">\[
+\varphi(t)=\angle x_L(t)\quad相位
+\]</span></p>
+<p><span class="math display">\[
+x_L(t)=A(t)e^{j\varphi(t)}
+\]</span></p></li>
+</ul>
+<h3 id="带通系统的等效基带分析">5.3 带通系统的等效基带分析</h3>
+<p><img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/带通系统的等效基带分析.png" srcset="/img/loading.gif" lazyload alt="带通系统的等效基带分析"> <span class="math display">\[
+H_e(f)=\frac{1}{2}H_L(f)=H(f+f_c),\quad h_e(t)=\frac{1}{2}h_L(t)
+\]</span></p>
+<blockquote>
+<p>例题：</p>
+<p><img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/image-20230419234031223.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<h1 id="三随机过程">三、随机过程</h1>
+<h2 id="随机过程">1.随机过程</h2>
+<p>随机变量X：随机实验的结果是确定实数，X∈{x<sub>1</sub>,x<sub>2</sub>,…}</p>
+<p>随机过程X(t)：随机实验的结果是确定的函数，X(t)∈{x<sub>1</sub>(t),x<sub>2</sub>(t),…}</p>
+<p>随机过程X(t)是沿时间轴-∞&lt;t&lt;∞排列的无数个随机变量。</p>
+<h3 id="随机过程的统计特性">1.1 随机过程的统计特性</h3>
+<p>随机过程的数学期望： <span class="math display">\[
+E[X(t)]=m_X(t)
+\]</span> 任意随机过程可以看成是零均值随机过程与确定函数的和。</p>
+<p>X(t)，Y(t)的互相关函数： <span class="math display">\[
+R_{XY}(t_1,t_2)=E[X(t_1)Y(t_2)]
+\]</span></p>
+<blockquote>
+<p>X(t)，Y(t)是两个随机过程，随便在两个过程上取两个时间，这样得到两个随机变量。</p>
+<p>确定信号的互相关函数取平均是时间平均，随机信号的互相关函数取平均是统计平均。</p>
+</blockquote>
+<p>X(t)的自相关函数： <span class="math display">\[
+R_{X}(t_1,t_2)=E[X(t_1)X(t_2)]
+\]</span></p>
+<p><span class="math display">\[
+\tau=t_1-t_2
+\]</span></p>
+<p>平均自相关函数：对t做时间平均： <span class="math display">\[
+\overline{R}_X(\tau)=\overline{E[X(t+\tau)X(t)]}=E[\overline{X(t+\tau)X(t)}]
+\]</span></p>
+<h3 id="随机过程的功率谱密度">1.2 随机过程的功率谱密度</h3>
+<p>随机过程X(t)是从样本空间中随机抽出一个确定的样本函数x(t)。 <span class="math display">\[
+P_x(f)=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|F[x_T(t)]|^2\bigg)
+\]</span> 每个样函数x(t)都有各自的功率谱密度。</p>
+<p>随机抽出的不同样函数的功率谱密度可能不同。随机过程的功率谱密度定义为<strong>所有样本函数的功率谱密度的统计平均</strong>： <span class="math display">\[
+\overline{P}_x(f)=E[\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}|F[x_T(t)]|^2\bigg)]=\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}E[|F[x_T(t)]|^2]\bigg)
+\]</span> 随机过程的功率谱密度是<strong>平均</strong>自相关函数的傅氏变换。</p>
+<h2 id="平稳随机过程">2.平稳随机过程</h2>
+<h3 id="狭义严平稳随机过程">2.1 狭义（严）平稳随机过程</h3>
+<p>对于任意n和t<sub>1</sub>,t<sub>2</sub>,...,t<sub>n</sub>以及τ有分布函数： <span class="math display">\[
+F_n(x_1,x_2,...,x_n;t_1.t_2,...,t_n)=F_n(x_1,x_2,...,x_n,t_1+\tau,t_2+\tau,...,t_n+\tau)
+\]</span> 称X(t)为狭义（严）平稳随机过程。</p>
+<h3 id="广义宽平稳随机过程">2.2 广义（宽）平稳随机过程</h3>
+<p><span class="math display">\[
+满足E[X(t)]=m_X,R_X(t+\tau,t)=R_X(\tau),称X(t)为宽平稳随机过程。
+\]</span></p>
+<blockquote>
+<p>均值和自相关满足遍历性的平稳过程叫做广义遍历过程。</p>
+<p>遍历：每个样本函数的时间平均等于随机过程（所有样本函数）的统计平均。 <span class="math display">\[
+例如X(t)=cos(2\pi f_0t+\theta),X(t)就是随机过程，其中\theta可以取不同的值，求m_X也就是求X(t)的统计平均，一般是对\theta根据其所属分布求平均；而样本函数x(t)也就是确定了一个X(t)，\theta值固定，对其求时间平均就是对t求平均，\lim_{T\rightarrow+\infty}\bigg(\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}{x_T(t)}dt\bigg)这样去求
+\]</span></p>
+</blockquote>
+<ul>
+<li><p>功率谱密度 <span class="math display">\[
+随机过程的功率谱密度是平均自相关函数的傅氏变换。
+\]</span></p>
+<p><span class="math display">\[
+因为平稳过程的自相关函数与t无关，故\overline{R}_X(\tau)=R_X(\tau)
+\]</span></p>
+<p><span class="math display">\[
+P_X(f)=\int_{-\infty}^{\infty}{R_X(\tau)e^{-j2\pi f\tau}}d\tau
+\]</span></p></li>
+</ul>
+<h3 id="联合平稳">2.3 联合平稳</h3>
+<p>X(t)、Y(t)联合平稳：除X(t)、Y(t)各自平稳外，还满足： <span class="math display">\[
+E[X(t+\tau)Y(t)]=R_{XY}(\tau)
+\]</span></p>
+<blockquote>
+<p>随机变量的不相关和独立： <span class="math display">\[
+不相关:E[XY]=E[X]E[Y]
+\]</span></p>
+<p><span class="math display">\[
+独立:Pr\{A,B\}=Pr\{A\}Pr\{B\},f_{XY}(x,y)=f_X(x)f_Y(y)
+\]</span></p>
+<p>若独立，则不相关。反之不一定。</p>
+</blockquote>
+<p>两个随机过程不相关：X(t<sub>1</sub>)，Y(t<sub>2</sub>) <span class="math display">\[
+E[X(t_1)Y(t_2)]=E[X(t_1)]E[Y(t_2)]
+\]</span></p>
+<p><span class="math display">\[
+R_{XY}(t_1,t_2)=m_X(t_1)m_Y(t_2)
+\]</span></p>
+<p>两个随机过程在同一时刻不相关： <span class="math display">\[
+t_1=t_2=t,E[X(t)Y(t)]=E[X(t)]E[Y(t)]
+\]</span></p>
+<p><span class="math display">\[
+R_{XY}(t,t)=m_X(t)m_Y(t)
+\]</span></p>
+<p>零均值平稳过程的相关系数：</p>
+<p><img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/相关系数.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>看互相关函数，为零则不相关（因为是零均值平稳过程）</p>
+</blockquote>
+<h3 id="平稳过程通过线性系统">2.4 平稳过程通过线性系统</h3>
+<p>平稳过程通过线性系统后还是平稳过程，且输入输出联合平稳。 <span class="math display">\[
+m_Y=m_XH(0)\quad P_Y(f)=|H(f)|^2P_X(f)
+\]</span> 零均值平稳过程X(t)的希尔伯特变换是零均值平稳过程。希尔伯特变换不改变功率谱密度、自相关函数。 <span class="math display">\[
+X(t)与\widehat{X}(t)在同一时刻不相关
+\]</span></p>
+<h3 id="复平稳过程">2.5 复平稳过程</h3>
+<ul>
+<li><p>一种判断方法：Z(t)的实部X(t)、虚部Y(t)联合平稳。即X(t)、Y(t)各自平稳且互相关函数与t无关。</p></li>
+<li><p>另一种判断方法：如果复过程的均值、自相关函数、共轭相关函数与t无关，则它是复平稳过程 <span class="math display">\[
+E[Z(t)]=m_Z\quad 均值与t无关
+\]</span></p>
+<p><span class="math display">\[
+E[Z(t+\tau)Z^*(t)]=R_Z(\tau)\quad 自相关函数与t无关
+\]</span></p>
+<p><span class="math display">\[
+E[Z(t+\tau)Z(t)]=R_{ZZ^*}(\tau)\quad 共轭相关函数与t无关
+\]</span></p></li>
+</ul>
+<h3 id="平稳带通过程的解析信号及复包络">2.6 平稳带通过程的解析信号及复包络</h3>
+<p>零均值平稳过程X(t)的解析信号是零均值复平稳过程，且共轭不相关（共轭相关函数为0）。 <span class="math display">\[
+解析信号的自相关函数是R_X(\tau)的解析信号的2倍；功率谱密度是P_X(f)正频率部分的4倍。
+\]</span></p>
+<p><span class="math display">\[
+R_Z(\tau)=2[R_X(\tau)+j·\widehat{R}_X(\tau)]
+\]</span></p>
+<p>零均值平稳带通过程X(t)的复包络X<sub>L(</sub>t)=Z(t)e<sup>-j2πf_<sub>c</sub>t</sup>是零均值复平稳过程，且共轭不相关。</p>
+<p>复包络的功率谱密度是P<sub>X</sub>(f)正频率部分的4倍向下搬移。</p>
+<p>X(t)的同相分量X<sub>c</sub>(t)和正交分量X<sub>s</sub>(t)是零均值联合平稳，且有相同的功率谱密度及自相关函数。</p>
+<p>X(t)的同相分量X<sub>c</sub>(t)和正交分量X<sub>s</sub>(t)在同一时刻不相关。</p>
+<h3 id="平稳序列和循环平稳过程">2.7 平稳序列和循环平稳过程</h3>
+<ul>
+<li><p>随机序列：{X<sub>n</sub>}是无限个随机变量</p></li>
+<li><p>广义平稳序列：{X<sub>n</sub>}的均值及自相关函数与绝对时间n无关 <span class="math display">\[
+E[X_n]=m_X(n)=m_X,\quad n=0,\pm1,\pm2,...
+\]</span></p>
+<p><span class="math display">\[
+E[X_{n+m}X_n]=R_X(n+m,n)=R_X(m)
+\]</span></p></li>
+<li><p>循环（周期）平稳过程：均值与自相关函数是t的周期函数 <span class="math display">\[
+E[X(t+T)]=E[X(t)]
+\]</span></p>
+<p><span class="math display">\[
+E[X(t+T+\tau)X(t+T)]=E[X(t+\tau)X(t)]
+\]</span></p>
+<p>循环平稳过程不是平稳过程。</p></li>
+</ul>
+<h2 id="高斯噪声">3.高斯噪声</h2>
+<h3 id="高斯过程">3.1 高斯过程</h3>
+<ul>
+<li>高斯（正态）分布：</li>
+</ul>
+<p><span class="math display">\[
+高斯随机变量X\sim N(a,\sigma^2)的概率密度函数为p_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-a)^2}{2\sigma^2}}
+\]</span></p>
+<ul>
+<li>Q函数：</li>
+</ul>
+<p><span class="math display">\[
+定义：Q(x)=Pr\{X&gt;x\}=\frac{1}{\sqrt{2\pi}}\int_{x}^{\infty}{e^{-\frac{t^2}{2}}}dt
+\]</span></p>
+<p><span class="math display">\[
+含义：X\sim N(0,1)大于x的概率
+\]</span></p>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/Q函数.png" srcset="/img/loading.gif" lazyload alt="Q函数"><figcaption aria-hidden="true">Q函数</figcaption>
+</figure>
+<ul>
+<li>erfc函数：</li>
+</ul>
+<p><span class="math display">\[
+定义：erfc(x)=\frac{2}{\sqrt{\pi}}\int_{x}^{\infty}{e^{-t^2}}dt
+\]</span></p>
+<p><span class="math display">\[
+含义：X\sim N(0,1/2),|X|大于x的概率
+\]</span></p>
+<p><span class="math display">\[
+erfc(x)=Pr\{|X|&gt;x\}=\int_{x}^{\infty}{\frac{1}{\sqrt{\pi}}e^{-t^2}}dt\int_{-\infty}^{-x}{\frac{1}{\sqrt{\pi}}e^{-t^2}}dt
+\]</span></p>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/erfc函数.png" srcset="/img/loading.gif" lazyload alt="erfc函数"><figcaption aria-hidden="true">erfc函数</figcaption>
+</figure>
+<ul>
+<li><p>联合高斯： <span class="math display">\[
+设Z_1,Z_2,...,Z_n是一组独立同分布的标准正态随机变量，Z_i\sim N(0,1)。若X_1,X_2,...,X_k中的每一个都是Z_1,Z_2,...,Z_n以及常数的线性组合，则称X_1,X_2,...,X_k服从联合高斯分布。
+\]</span></p>
+<p><span class="math display">\[
+\begin{pmatrix}
+X_1  \\
+X_2  \\
+...  \\
+X_k  \\
+\end{pmatrix}=\begin{pmatrix}
+a_{11}&amp;a_{12}&amp;...&amp;a_{1n}  \\
+a_{21}&amp;a_{22}&amp;...&amp;a_{2n}  \\
+... &amp;...&amp;...&amp;... \\
+a_{k1}&amp;a_{k2}&amp;...&amp;a_{kn}  \\
+\end{pmatrix}\begin{pmatrix}
+Z_1  \\
+Z_2  \\
+...  \\
+Z_n  \\
+\end{pmatrix}+\begin{pmatrix}
+b_1  \\
+b_2  \\
+...  \\
+b_k  \\
+\end{pmatrix}
+\]</span> 若X<sub>1</sub>,X<sub>2</sub>,...,X<sub>k</sub>是联合高斯，则X<sub>1</sub>,X<sub>2</sub>,...,X<sub>k</sub>的各种线性组合也是联合高斯。</p>
+<p>若X<sub>1</sub>,X<sub>2</sub>,...,X<sub>k</sub>是联合高斯，m<sub>1</sub>,m<sub>2</sub>,...,m<sub>k</sub>是常数，则m<sub>1</sub>X<sub>1</sub>,m<sub>2</sub>X<sub>2</sub>,...,m<sub>k</sub>X<sub>k</sub>是联合高斯。</p></li>
+<li><p>高斯过程：设X(t)是随机过程，若对于任意n个时刻t<sub>1</sub>,t<sub>2</sub>,...,t<sub>n</sub>，X(t<sub>1</sub>),X(t<sub>2</sub>),...X(t<sub>n</sub>)联合高斯，则称X(t)为高斯过程。</p>
+<blockquote>
+<p>随机过程是沿时间排列的无数个随机变量。</p>
+</blockquote>
+<p>设X(t)是高斯过程，m(t)是确定信号，则Y(t)=m(t)X(t)是高斯过程。</p>
+<p>对于任意n个时刻t<sub>1</sub>,t<sub>2</sub>,...,t<sub>n</sub>，Y(t<sub>i</sub>)=m(t<sub>i</sub>)X(t<sub>i</sub>)。而m(t<sub>1</sub>),m(t<sub>2</sub>),...m(t<sub>n</sub>)是一组确定的系数，故Y(t<sub>1</sub>), Y(t<sub>2</sub>),...Y(t<sub>n</sub>)联合高斯。</p></li>
+</ul>
+<h3 id="高斯白噪声">3.2 高斯白噪声</h3>
+<ul>
+<li>理想限带高斯白噪声：带宽为B的理想限带高斯白噪声n<sub>B</sub>(t)是一种零均值平稳高斯过程。</li>
+</ul>
+<p><span class="math display">\[
+其功率谱密度为：P_{n_B}(f)=\begin{cases}\frac{N_0}{2}，f\leq B\\ 0，else\end{cases}
+\]</span> <img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/功率谱密度.png" srcset="/img/loading.gif" lazyload alt="功率谱密度"> <span class="math display">\[
+其自相关函数为：R_{n_B}(\tau)=N_0B·sinc(2B\tau)
+\]</span> <img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/自相关函数.png" srcset="/img/loading.gif" lazyload alt="自相关函数"> <span class="math display">\[
+功率:P=R_{n_B}(0)=\int_{-\infty}^{\infty}{P_{n_B}(f)}df=N_0B
+\]</span></p>
+<ul>
+<li>高斯白噪声：高斯白噪声是理想限带高斯白噪声的极限：</li>
+</ul>
+<p><span class="math display">\[
+n_w(t)=\lim_{B\rightarrow+\infty}n_B(t)
+\]</span></p>
+<p><span class="math display">\[
+P_{n_w}(f)=\frac{N_0}{2}
+\]</span></p>
+<p><img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/功率谱密度1.png" srcset="/img/loading.gif" lazyload alt="功率谱密度"> <span class="math display">\[
+R_{n_w}(\tau)=\frac{N_0}{2}\delta(\tau)
+\]</span> <img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/自相关函数1.png" srcset="/img/loading.gif" lazyload alt="自相关函数"></p>
+<h3 id="高斯白噪声与确定信号的内积">3.3 高斯白噪声与确定信号的内积</h3>
+<p>高斯白噪声与确定信号的内积是零均值高斯随机变量，方差为 <span class="math display">\[
+\frac{N_0}{2}E_g
+\]</span> 高斯白噪声在两个正交确定信号上的内积是两个独立的零均值高斯随机变量。</p>
+<p>高斯白噪声在一组归一化正交函数上的投影是一组独立同分布的高斯随机变量，方差均为N<sub>0</sub>/2。</p>
+<h3 id="窄带高斯噪声的解析信号及复包络">3.4 窄带高斯噪声的解析信号及复包络</h3>
+<p>窄带高斯噪声：窄带高斯噪声n(t)就是高斯白噪声通过带通滤波器的输出。n(t)是带通型的零均值平稳高斯过程。 <span class="math display">\[
+解析信号:z(t)=n(t)+j·\widehat{n}(t)
+\]</span></p>
+<p><span class="math display">\[
+复包络:n_L(t)=z(t)e^{-j2\pi f_ct}
+\]</span></p>
+<p><span class="math display">\[
+同相分量:n_c(t)=Re\{n_L(t)\}\quad 正交分量:n_s(t)=Im\{n_L(t)\}
+\]</span></p>
+<p><span class="math display">\[
+根据带通信号的表示方法:n(t)=n_c(t)cos2\pi f_ct-n_s(t)sin2\pi f_ct
+\]</span></p>
+<p><span class="math display">\[
+n(t)的功率谱密度为P_n(f)=\frac{N_0}{2}|H(f)|^2
+\]</span></p>
+<p>n(t)的解析信号z(t)是零均值平稳复高斯过程，满足共轭不相关。 <span class="math display">\[
+z(t)的功率谱密度为P_Z(f)=\begin{cases} 4P_n(f),f&gt;0\\ 0， f&lt;0\end{cases}
+\]</span></p>
+<h3 id="窄带高斯噪声的同相分量及正交分量">3.5 窄带高斯噪声的同相分量及正交分量</h3>
+<p>n(t)的同相分量n<sub>c</sub>(t)、正交分量n<sub>s</sub>(t)是联合平稳的零均值高斯过程，二者有相同的自相关函数和功率谱密度，在同一时刻独立。</p>
+<blockquote>
+<p>对于高斯过程，不相关等于独立。</p>
+</blockquote>
+<p><span class="math display">\[
+三者有相同的功率:P_{n_c}=P_{n_s}=P_{n}
+\]</span></p>
+<p>n<sub>c</sub>(t)与n<sub>s</sub>(t)有相同的功率谱密度： <span class="math display">\[
+P_c(f)=P_s(f)=P_n(f+f_c)+P_n(f-f_c)
+\]</span> n(t)的包络A(t)服从瑞利分布，相位φ(t)服从均匀分布。</p>
+<h1 id="四模拟通信系统">四、模拟通信系统</h1>
+<p>模拟信号m(t)是模仿物理量变化的电信号，m(t)一般的特征：时间连续、取值连续。</p>
+<blockquote>
+<p>默认m(t)不包含直流分量，频域就体现为频谱不含f=0处的冲击δ(f)</p>
+</blockquote>
+<p>模拟基带信号的传输：</p>
+<ul>
+<li><p>基带传输： <span class="math display">\[
+\xrightarrow{m(t)} \boxed{基带信道}\to
+\]</span></p></li>
+<li><p>频带传输: <span class="math display">\[
+\xrightarrow{m(t)} \boxed{调制器}\xrightarrow{s(t)}\boxed{带通信号}\xrightarrow{}\boxed{解调器}\xrightarrow{}
+\]</span></p></li>
+<li><p>数字化传输： <span class="math display">\[
+\xrightarrow{m(t)} \boxed{数字化}\xrightarrow{}\boxed{数字传输}\xrightarrow{}\boxed{还原}\xrightarrow{}
+\]</span></p></li>
+</ul>
+<p>本章假设理想无失真信道；无失真：波形不变，可以有延迟，可以有幅度变化；默认假设K=1、t<sub>0</sub>=0。 <span class="math display">\[
+s(t)\xrightarrow{}\boxed{信道}\xrightarrow{}K·s(t-t_0)
+\]</span> 系统模型：称m(t)为调制信号，称s(t)为已调信号。</p>
+<figure>
+<img src="/2023/01/07/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86(%E2%85%A0)/系统模型.png" srcset="/img/loading.gif" lazyload alt="系统模型"><figcaption aria-hidden="true">系统模型</figcaption>
+</figure>
+<p>模拟调制的基本思路：</p>
+<ul>
+<li><p>目标：发送端：把基带信号m(t)变成带通信号s(t)；</p>
+<p>​ 接收端：从带通信号s(t)中恢复出m(t)。</p></li>
+<li><p>思路：发送端：让s(t)的复包络s<sub>L</sub>(t)携带m(t);</p>
+<p>​ 接收端：先取复包络，再恢复m(t)。</p></li>
+</ul>
+<p>模拟调制的典型方法：</p>
+<ul>
+<li><p>幅度类调制：复包络就是m(t)—DSB-SC</p>
+<p>​ 包络携带m(t)—AM</p>
+<p>​ 复包络的实部是m(t)—SSB</p></li>
+<li><p>角度类调制：复包络的相位φ(t)与mO(t)成比例—PM</p>
+<p>​ φ(t)的斜率与m(t)成比例—FM</p></li>
+</ul>
+<p>关键性能指标：</p>
+<ul>
+<li><p>发送端：已调信号的带宽及频谱特征，涉及对频谱资源的耗费情况。</p></li>
+<li><p>接收端：输出信噪比： <span class="math display">\[
+\Big(\frac{S}{N}\Big)_o=\frac{\overline{m^2(t)}}{E[n^2_o(t)]}
+\]</span> 涉及对功率资源的耗费情况。</p></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/" class="category-chain-item">专业课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">#通信原理</a>
+      
+        <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/">#专业课程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>通信原理(Ⅰ)</div>
+      <div>http://example.com/2023/01/07/通信原理(Ⅰ)/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Faceless-person</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/07/%E8%80%83%E7%A0%94%E8%A7%84%E5%88%92/" title="考研规划">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">考研规划</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

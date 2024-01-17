@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Faceless-person">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="多媒体信息检索课程设计。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于文本和图像的多媒体检索系统">
+<meta property="og:url" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="多媒体信息检索课程设计。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/0046403193-6.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/0046402509-7.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603231847152.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232019342.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232117000.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232137227.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232530108.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232558759.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232945163.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233009341.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233058696.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233130164.png">
+<meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233219873.png">
+<meta property="article:published_time" content="2023-06-02T14:36:08.000Z">
+<meta property="article:modified_time" content="2023-12-25T13:19:48.892Z">
+<meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="多媒体，专业课程，项目，计算机视觉">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/0046403193-6.png">
+  
+  
+  
+  <title>基于文本和图像的多媒体检索系统 - Faceless_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Faceless_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基于文本和图像的多媒体检索系统"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-02 22:36" pubdate>
+          2023年6月2日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          19k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          155 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基于文本和图像的多媒体检索系统</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>参考资料</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.zzvips.com/article/214469.html">在pycharm中配置pyqt5</a></li>
+</ul>
+<hr>
+<p>2023/6/2 22:44 这是我基于《多媒体信息检索课程设计》所作的一个项目，涉及到了计算机视觉方面的知识，主要用到了BOW模型。代码语言为python，运行环境为pycharm。废话不多说，开始操作。</p>
+<hr>
+<h1 id="一所需安装的软件及库">一、所需安装的软件及库</h1>
+<h2 id="anaconda及pycharm的安装">1.Anaconda及pycharm的安装</h2>
+<p>详情见多媒体信息检索实验指导（一）。</p>
+<h2 id="jieba的安装">2.jieba的安装</h2>
+<h3 id="全自动安装">2.1 全自动安装</h3>
+<p>在pycharm终端或cmd输入：</p>
+<p><code>pip install jieba / pip3 install jieba</code></p>
+<h3 id="pycharm安装">2.2 pycharm安装</h3>
+<p>依次点击 文件-设置-项目-解释器-“加号”，接着搜索需要的库并添加。</p>
+<h3 id="手动安装">2.3 手动安装：</h3>
+<p>将 jieba 的整个目录放置于python的site-packages 目录中。</p>
+<h2 id="在pycharm中配置pyqt5">3.在pycharm中配置pyqt5</h2>
+<h3 id="pyqt5简介">3.1 PyQt5简介</h3>
+<p>1.什么是<a target="_blank" rel="noopener" href="http://www.zzvips.com/article/106394.html">GUI</a>：Graphical User Interface，图形用户界面，用于人机交互。</p>
+<p>2.怎么设计GUI：Qt。</p>
+<p>3.什么是Qt：Qt是一种基于C++的跨平台图形用户界面应用程序开发框架。</p>
+<p>4.学习python的我们怎么用Qt：PyQt5模块。</p>
+<p>5.什么是PyQt5:Qt的python接口，pyqt5对Qt进行完全封装，我们可以利用python代码设计想要的图形界面。</p>
+<h3 id="安装pyqt5模块">3.2 安装PyQt5模块</h3>
+<p>(包括pyqt5,pyqt5-tools,pyqt5designer）</p>
+<p>依次点击 文件-设置-项目-解释器-“加号” 来添加。</p>
+<h3 id="配置pyqt5设计器qt-designer及转换工具">3.3 配置PyQt5设计器（Qt Designer）及转换工具</h3>
+<h4 id="qt-designer">(1)Qt Designer</h4>
+<p>用途：方便我们打开设计器。</p>
+<p>首先同样是在file里面打开settings：</p>
+<p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/0046403193-6.png" srcset="/img/loading.gif" lazyload></p>
+<p>Name：我们自己给这个tool起的名字。</p>
+<p>Program：填入designer.exe的路径，每个人路径不同，找到自己计算机上的 路径输进去。一般来说是在D:-packages.exe这里。</p>
+<p>Working directory:填入$ProjectFileDir$，表示文件所在的项目路径。</p>
+<h4 id="pyuic">(2)PyUIC</h4>
+<p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/0046402509-7.png" srcset="/img/loading.gif" lazyload></p>
+<p>Name:自己起的名字。</p>
+<p>Program:python.exe所在的位置，一般在D:.exe这里。</p>
+<p>Arguements:填入-m PyQt5.uic.pyuic $FileName$ -o $FileNameWithoutExtension$.py 是将.ui文件转化成.py文件的语句。</p>
+<p>Working directory:$FileDir$,表示文件所在路径。</p>
+<h2 id="pcv包的安装">4.PCV包的安装</h2>
+<p>1.下载PCV包：https://codeload.github.com/Li-Shu14/PCV/zip/master；</p>
+<p>2.打开Anaconda3的prompt窗口，切换到下载好的PCV包所在的路径下；</p>
+<p>3.执行以下命令：</p>
+<p><code>pip install PCV-master.zip</code></p>
+<blockquote>
+<p><strong>注：</strong> 压缩包不用解压，直接pip install即可。</p>
+</blockquote>
+<h2 id="vlfeat包安装">5.vlfeat包安装</h2>
+<p>1.下载安装vlfeat包，版本0.9.20 官方下载连接：http://www.vlfeat.org/download/（注意要下载20版本，不然会出现找不到.sift文件）</p>
+<p>2.下载完成过后，把vlfeat里win64里的vl.dll和sift.exe和vl.lib复制粘贴到项目目录下：这样子环境配置基本上已完成。</p>
+<blockquote>
+<p><strong>注：</strong>vlfeat0.9.21版本太高导致部分电脑提取特征为空，要用9.20版本。</p>
+</blockquote>
+<h2 id="pysqlite3库安装">6.pysqlite3库安装</h2>
+<ul>
+<li><p>访问 https://www.sqlite.org/download.html 页面，下载 Windows 版 SQLite 预编译二进制文件。</p>
+<p>注意要下载与你 Python 版本和操作系统位数（32 位或 64 位）对应的版本。</p></li>
+<li><p>解压缩下载的 SQLite 文件。</p>
+<p>在解压后的文件夹中，你将看到一些静态库和工具，以及一个名为 sqlite3.dll 的共享库文件。这个文件是 <code>pysqlite3</code> 包所依赖的 SQLite 动态链接库。</p></li>
+<li><p>访问 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pysqlite 页面，找到 <code>pysqlite3</code> 的适用于你的 Python 版本和操作系统位数的安装包并下载。</p>
+<p>下载后的文件名一般是这样的：<code>pysqlite3-x.x.x-cpXX-cpXXm-win_amd64.whl</code>，其中 <code>x.x.x</code> 是版本号，<code>cpXX</code> 是 Python 主版本和次版本号，例如 <code>cp39</code> 代表 Python 3.9，<code>win_amd64</code> 表示 64 位 Windows 平台。</p></li>
+<li><p>在命令提示符中使用 pip 安装刚才下载的 <code>pysqlite3</code> 安装包。</p>
+<p>进入 <code>pysqlite3</code> 安装包所在的目录，然后运行以下命令：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">`Copy Codepip install pysqlite<span class="hljs-number">3</span>-<span class="hljs-keyword">x</span>.<span class="hljs-keyword">x</span>.<span class="hljs-keyword">x</span>-cpXX-cpXXm-win_amd<span class="hljs-number">64</span>.whl`<br></code></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>如果你 Python 版本为 32 位，请下载适用于 32 位 Python 的安装包，并将含有 <code>win_amd64</code> 的部分替换为 <code>win32</code> 即可。</p>
+<p>pysqlite3这个库下载比较麻烦，下载之后需要重新编译python，并且要注意pycharm中的编译环境最好设置为python所在的python.exe这个环境，否则之前安装的一些库会不在列表中。</p>
+<p>也要注意python3版本使用的是sqlite3这个库，尽管编辑器报错的时候会提醒一个跟pysqlite2有关的错误，最后解决的方法是同时更换文件中和PCV中imagesearch.py的import，尝试更改那里即可成功。</p>
+</blockquote>
+<h1 id="二文本检索部分算法说明">二、文本检索部分算法说明</h1>
+<h2 id="文本爬取">1.文本爬取</h2>
+<p>我对https://www.8lrc.com/ 网站的经典歌词进行了爬取，并将爬取到的歌词，用’lyrics’+歌名+歌手的命名方式，以记事本的文件类型保存在了当前文件夹里。并将标题与歌词的对应关系进行了保存。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">lyrics_urls</span>():<br>    titles = []  <span class="hljs-comment"># 用于保存标题</span><br>    urls = []  <span class="hljs-comment"># 用于保存每首歌的链接</span><br>    qianzhui = <span class="hljs-string">&#x27;https://www.8lrc.com/&#x27;</span>  <span class="hljs-comment"># 爬取网站</span><br>    <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">50</span>):  <span class="hljs-comment"># 共49页</span><br>        link = <span class="hljs-string">&#x27;https://www.8lrc.com/jingdian/32/&#x27;</span> + <span class="hljs-built_in">str</span>(index) + <span class="hljs-string">&#x27;.htm&#x27;</span>  <span class="hljs-comment"># 每页链接</span><br>        req = requests.get(link)    <span class="hljs-comment"># 发起get请求</span><br>        html = req.text     <span class="hljs-comment"># 获取信息</span><br>        soup = BeautifulSoup(html, <span class="hljs-string">&#x27;lxml&#x27;</span>)  <span class="hljs-comment"># 提取排行榜中的30首歌信息</span><br>        lrcList = soup.find(<span class="hljs-string">&#x27;ul&#x27;</span>, class_=<span class="hljs-string">&#x27;lrcList&#x27;</span>)<br>        lrcList = BeautifulSoup(<span class="hljs-built_in">str</span>(lrcList), <span class="hljs-string">&#x27;lxml&#x27;</span>)<br>        r = lrcList.find_all(<span class="hljs-string">&#x27;li&#x27;</span>, class_=<span class="hljs-string">&#x27;clearfix&#x27;</span>)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> r:     <span class="hljs-comment"># 对于每首歌</span><br>            lrc = BeautifulSoup(<span class="hljs-built_in">str</span>(i), <span class="hljs-string">&#x27;lxml&#x27;</span>)<br>            Singer = lrc.find(<span class="hljs-string">&#x27;a&#x27;</span>, class_=<span class="hljs-string">&#x27;tGeshou&#x27;</span>).get_text()  <span class="hljs-comment"># 获取歌手名</span><br>            Song = lrc.find(<span class="hljs-string">&#x27;a&#x27;</span>, class_=<span class="hljs-string">&#x27;tGequ&#x27;</span>).get_text().split(<span class="hljs-string">&#x27;[&#x27;</span>)[<span class="hljs-number">0</span>]  <span class="hljs-comment"># 获取歌名</span><br>            urls.append(qianzhui + lrc.find(<span class="hljs-string">&#x27;a&#x27;</span>, class_=<span class="hljs-string">&#x27;tGequ&#x27;</span>).get(<span class="hljs-string">&#x27;href&#x27;</span>))  <span class="hljs-comment"># 获取链接</span><br>            titles.append((Song + <span class="hljs-string">&#x27; &#x27;</span> + Singer).replace(<span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>))  <span class="hljs-comment"># 标题记为歌名+歌手名</span><br>    <span class="hljs-keyword">return</span> titles, urls<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">titles, urls</span>):<br>    lyrics_set = &#123;&#125;  <span class="hljs-comment"># 用于保存标题与歌词的对应关系</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(urls)):  <span class="hljs-comment"># 对于每页歌词链接</span><br>        req = requests.get(urls[i])     <span class="hljs-comment"># 发起get请求</span><br>        html = req.text     <span class="hljs-comment"># 获取信息</span><br>        soup = BeautifulSoup(html, <span class="hljs-string">&#x27;lxml&#x27;</span>)  <span class="hljs-comment"># 提取内容</span><br>        <span class="hljs-keyword">if</span> soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;fl&#x27;</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:   <span class="hljs-comment"># 排除没有歌词或链接失效等情况</span><br>            lrc = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;fl&#x27;</span>).text    <span class="hljs-comment"># 获取歌词</span><br>            lrc = lrc.split(<span class="hljs-string">&#x27;编辑于&#x27;</span>)[<span class="hljs-number">0</span>]   <span class="hljs-comment"># 去掉每首歌都包含的编辑信息</span><br>            lyrics_set[titles[i]] = lrc   <span class="hljs-comment"># 保存标题与歌词的对应冠词</span><br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>((<span class="hljs-string">&#x27;lyrics&#x27;</span> + titles[i] + <span class="hljs-string">&#x27;.txt&#x27;</span>), <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:  <span class="hljs-comment"># 将歌词以txt的格式下载</span><br>                f.writelines(lrc)  <span class="hljs-comment"># 写入歌词</span><br>    <span class="hljs-keyword">return</span> lyrics_set<br>titles, urls = lyrics_urls()<br>lyrics_set = download(titles, urls)<br><br></code></pre></td></tr></table></figure>
+<h2 id="jieba分词">2.jieba分词</h2>
+<p>使用jieba分词对每首歌进行分词并统计所有词(每个词的长度大于1)记为一个集合。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">all_words = []  <span class="hljs-comment"># 用于统计所有词</span><br>    split_lyric = &#123;&#125;  <span class="hljs-comment"># 用于统计每首歌包含的词</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> lyrics_set.keys():  <span class="hljs-comment"># 对于每首歌</span><br>        lyric = lyrics_set[j]  <span class="hljs-comment"># 获取歌词</span><br>        word = jieba.lcut(lyric)  <span class="hljs-comment"># 分词并返回list</span><br>        word = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> word <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(i) &gt; <span class="hljs-number">1</span>]  <span class="hljs-comment"># 去掉单字</span><br><br>        split_lyric[j] = word<br>        all_words.extend(word)<br><br>    set_all_words = <span class="hljs-built_in">set</span>(all_words)<br>    <br></code></pre></td></tr></table></figure>
+<h2 id="倒排索引">3.倒排索引</h2>
+<p>每个歌词文本都可以用一系列关键词来表示，如果按关键词建立到文本的倒排索引便可以实现根据关键词快速地检索到相关文本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">invert_index = &#123;&#125;  <span class="hljs-comment"># 倒排索引</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> set_all_words:  <span class="hljs-comment"># 对于每个词</span><br>        temp = []  <span class="hljs-comment"># 用于保存包含词的歌名</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> lyrics_set.keys():  <span class="hljs-comment"># 对于每首歌</span><br>            <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> split_lyric[j]:  <span class="hljs-comment"># 若词在歌中</span><br>                temp.append(j)  <span class="hljs-comment"># 保存歌名</span><br>        invert_index[i] = tempvert_index[i] = temp<br>        <br></code></pre></td></tr></table></figure>
+<h2 id="建立vsm模型">4.建立VSM模型</h2>
+<p>向量空间模型(Vector Space Model, VSM)可以把提取文本内容中的关键词作为向量空间中的向量，并将向量间的相似度作为衡量文本相似度的标准。</p>
+<p>关键词的提取使用TF-IDF算法<strong>（term frequency–inverse document frequency，词频-逆文档频率）</strong>。TF是词频，表示词在文本中出现的频率；IDF是逆文档频率，表示词的常见程度。将两者相乘得到TF-IDF值，其大小表示了词对文本的重要程度，因此可以选取TF-IDF值大的作为文本的关键词。</p>
+<p>我们取TF-IDF值最大的10个作为关键词。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">VSM</span>(<span class="hljs-params">invert_index, split_lyric</span>):<br><br>    IDF = &#123;&#125;  <span class="hljs-comment"># 统计每次词的逆文档频率</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> invert_index.keys():  <span class="hljs-comment"># 对于每个词</span><br>        IDF[j] = math.log(<span class="hljs-built_in">len</span>(split_lyric) / (<span class="hljs-built_in">len</span>(invert_index[j]) + <span class="hljs-number">1</span>))<br><br>    TF = &#123;&#125;  <span class="hljs-comment"># 统计词频</span><br>    TF_IDF = &#123;&#125;   <span class="hljs-comment"># 统计TF-IDF值</span><br>    key_word = &#123;&#125;   <span class="hljs-comment"># 统计每首歌的关键词</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> split_lyric.keys():  <span class="hljs-comment"># 对于每首歌</span><br>        count = <span class="hljs-built_in">dict</span>(Counter(split_lyric[j]))   <span class="hljs-comment"># 统计每个词在歌词中的出现次数</span><br>        temp_TF = &#123;&#125;<br>        temp_TI = &#123;&#125;<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> count.keys():  <span class="hljs-comment"># 对于每次词</span><br>            temp_TF[i] = count[i] / <span class="hljs-built_in">max</span>(count.values())  <span class="hljs-comment"># 计算TF</span><br>            temp_TI[i] = temp_TF[i] * IDF[i]    <span class="hljs-comment"># 计算TF-IDF</span><br>        TF[j] = temp_TF<br>        TF_IDF[j] = temp_TI<br>        all_sorted = <span class="hljs-built_in">sorted</span>(TF_IDF[j].items(), key=<span class="hljs-keyword">lambda</span> item: item[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 将每个词的TF-IDF值从大到小排序</span><br>        key_word[j] = [x[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> all_sorted <span class="hljs-keyword">if</span> x <span class="hljs-keyword">in</span> all_sorted[:<span class="hljs-number">10</span>]]    <span class="hljs-comment"># 取其中前10个作为关键词</span><br>    <span class="hljs-keyword">return</span> TF, key_word<br><br></code></pre></td></tr></table></figure>
+<h2 id="计算余弦相似度">5.计算余弦相似度</h2>
+<p>首先我们要获取关键词出现在歌曲里的词频：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_tf</span>(<span class="hljs-params">keyword, song</span>):<br>    kw_tf = np.zeros(<span class="hljs-built_in">len</span>(keyword))  <span class="hljs-comment"># 若歌词中不包含关键词则词频为0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> keyword:   <span class="hljs-comment"># 对于每个关键词</span><br>        <span class="hljs-keyword">if</span> song <span class="hljs-keyword">in</span> invert_index[i]:  <span class="hljs-comment"># 若歌词中包含关键词</span><br><br>            kw_tf[keyword.index(i)] = TF[song][i]   <span class="hljs-comment"># 获取关键词的词频</span><br><br>    <span class="hljs-keyword">return</span> kw_tf<br><br></code></pre></td></tr></table></figure>
+<p>然后就可以计算余弦相似度： <span class="math display">\[
+cos(q,d_j)=\frac{\sum_{i=1}^{m}w_{ij}*w_{iq}}{\sqrt{\sum_{i=1}^{m}w_{ij}^2}*\sqrt{\sum_{i=1}^{m}w_{iq}^2}}
+\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">compare</span>(<span class="hljs-params">song1, song2</span>):<br>    keyword = <span class="hljs-built_in">set</span>(key_word[song1] + key_word[song2]) <span class="hljs-comment"># 获取两首歌的关键词集合</span><br>    keyword = <span class="hljs-built_in">list</span>(keyword)<br><br>    tf1 = get_tf(keyword, song1)<br>    tf2 = get_tf(keyword, song2)<br><br><br>    result = dot(tf1, tf2) / (norm(tf1) * norm(tf2))    <span class="hljs-comment"># 计算其余弦相似度</span><br>    <span class="hljs-keyword">return</span> result<br><br></code></pre></td></tr></table></figure>
+<h2 id="检索和输入歌曲相似度最高的十首歌曲">6. 检索和输入歌曲相似度最高的十首歌曲</h2>
+<p>首先用get_tf函数得到输入歌曲和每首歌曲的关键词的词频，然后计算输入歌曲和每首歌曲的余弦相似度。</p>
+<p>最后比较余弦相似度，余弦相似度越高，则该歌曲与输入歌曲的歌词越相似，输出前十首余弦相似度最大的歌曲。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">search</span>(<span class="hljs-params">song</span>):<br>    score = &#123;&#125;<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> TF.keys():  <span class="hljs-comment"># 对于每首歌</span><br>        score[j] = compare(song, j)  <span class="hljs-comment"># 获取与指定歌曲比对所得的余弦相似度作为得分</span><br>    score_sorted = <span class="hljs-built_in">sorted</span>(score.items(), key=<span class="hljs-keyword">lambda</span> item: item[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 将得分从大到小排序</span><br>    result = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> score_sorted <span class="hljs-keyword">if</span> x <span class="hljs-keyword">in</span> score_sorted[<span class="hljs-number">1</span>:<span class="hljs-number">11</span>]]<br><span class="hljs-comment"># 取其中得分最高的10个</span><br>    <span class="hljs-keyword">return</span> result<br><br></code></pre></td></tr></table></figure>
+<h1 id="三图像检索部分算法说明">三、图像检索部分算法说明</h1>
+<h2 id="图片爬取">1.图片爬取</h2>
+<p>我这里选择爬取百度图片，可以进行分类爬取，我这里爬取了30张猫的图片，30张花朵的图片，30张人脸图片，30张车的图片，30张轮船的图片。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">getPages</span>():<span class="hljs-comment">#只能得到30张图片，想得到更多图片，需要变化params[&#x27;pn&#x27;]的值。</span><br>    headers=&#123;<span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36 Edg/103.0.1264.77&quot;</span>&#125;<br>    url=<span class="hljs-string">&#x27;https://image.baidu.com/search/acjson&#x27;</span><br>    <span class="hljs-comment">#追加请求内容（负载）</span><br>    params=&#123;<br>        <span class="hljs-string">&#x27;tn&#x27;</span>:<span class="hljs-string">&#x27;resultjson_com&#x27;</span>,<br>        <span class="hljs-string">&#x27;logid&#x27;</span>:<span class="hljs-string">&#x27;5336511566462226640&#x27;</span>,<br>        <span class="hljs-string">&#x27;ipn&#x27;</span>:<span class="hljs-string">&#x27;rj&#x27;</span>,<br>        <span class="hljs-string">&#x27;ct&#x27;</span>:<span class="hljs-string">&#x27;201326592&#x27;</span>,<br>        <span class="hljs-string">&#x27;is&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;fp&#x27;</span>:<span class="hljs-string">&#x27;result&#x27;</span>,<br>        <span class="hljs-string">&#x27;fr&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;word&#x27;</span>:<span class="hljs-string">&#x27;suv&#x27;</span>,<br>        <span class="hljs-string">&#x27;cg&#x27;</span>:<span class="hljs-string">&#x27;girl&#x27;</span>,<br>        <span class="hljs-string">&#x27;queryWord&#x27;</span>:<span class="hljs-string">&#x27;suv&#x27;</span>,<br>        <span class="hljs-string">&#x27;cl&#x27;</span>:<span class="hljs-string">&#x27;2&#x27;</span>,<br>        <span class="hljs-string">&#x27;lm&#x27;</span>:<span class="hljs-string">&#x27;-1&#x27;</span>,<br>        <span class="hljs-string">&#x27;ie&#x27;</span>:<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>        <span class="hljs-string">&#x27;oe&#x27;</span>:<span class="hljs-string">&#x27;utf-8&#x27;</span>,<br>        <span class="hljs-string">&#x27;adpicid&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;st&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;z&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;ic&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;hd&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;latest&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;copyright&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;s&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;se&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;tab&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;width&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;height&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;face&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;istype&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;qc&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;nc&#x27;</span>:<span class="hljs-string">&#x27;1&#x27;</span>,<br>        <span class="hljs-string">&#x27;expermode&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;nojc&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;isAsync&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span>,<br>        <span class="hljs-string">&#x27;pn&#x27;</span>:<span class="hljs-string">&#x27;30&#x27;</span>,<br>        <span class="hljs-string">&#x27;rn&#x27;</span>:<span class="hljs-string">&#x27;30&#x27;</span>,<br>        <span class="hljs-string">&#x27;gsm&#x27;</span>:<span class="hljs-string">&#x27;1e&#x27;</span>,<br>        <span class="hljs-string">&#x27;1660570401395&#x27;</span>:<span class="hljs-string">&#x27; &#x27;</span><br>        &#125;<br>    res=requests.get(url=url,headers=headers,params=params)<br>    <span class="hljs-comment"># print(res.json())</span><br>    data=res.json()[<span class="hljs-string">&#x27;data&#x27;</span>]<br>    <span class="hljs-comment"># print(data)</span><br>    <span class="hljs-comment">#得到所有图片地址</span><br>    urlPages=[]<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> data:<br>        <span class="hljs-keyword">if</span> i.get(<span class="hljs-string">&#x27;thumbURL&#x27;</span>) !=<span class="hljs-literal">None</span>:<br>            urlPages.append(i[<span class="hljs-string">&#x27;thumbURL&#x27;</span>])<br>    <span class="hljs-comment"># print(urlPages)</span><br>    <span class="hljs-comment">#检测文件夹是否存在</span><br>    <span class="hljs-built_in">dir</span>=<span class="hljs-string">&#x27;D:\pycharm\picture&#x27;</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-built_in">dir</span>):<br>        os.mkdir(<span class="hljs-built_in">dir</span>)<span class="hljs-comment">#创建目录方法</span><br>    <span class="hljs-comment">#向每个图片url发起请求</span><br>    x=<span class="hljs-number">70</span><br>    name1=<span class="hljs-string">&#x27;paris_invalides_00000&#x27;</span><br>    name2=<span class="hljs-string">&#x27;paris_invalides_0000&#x27;</span><br> <br>    <span class="hljs-keyword">for</span> o <span class="hljs-keyword">in</span> urlPages:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;下载成功&#x27;</span>)<br>        res=requests.get(url=o,headers=headers)<br>        <span class="hljs-comment">#下载到dir文件夹</span><br>        <span class="hljs-keyword">if</span> x&lt;<span class="hljs-number">10</span>:<br>            <span class="hljs-built_in">open</span>(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;<span class="hljs-built_in">dir</span>&#125;</span>/<span class="hljs-subst">&#123;name1&#125;</span><span class="hljs-subst">&#123;x&#125;</span>.jpg&#x27;</span>,<span class="hljs-string">&#x27;wb&#x27;</span>).write(res.content)<br>        <span class="hljs-keyword">if</span> <span class="hljs-number">9</span>&lt;x&lt;<span class="hljs-number">100</span>:<br>            <span class="hljs-built_in">open</span>(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;<span class="hljs-built_in">dir</span>&#125;</span>/<span class="hljs-subst">&#123;name2&#125;</span><span class="hljs-subst">&#123;x&#125;</span>.jpg&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>).write(res.content)<br> <br>        x+=<span class="hljs-number">1</span><br>getPages()<br></code></pre></td></tr></table></figure>
+<h2 id="计算机视觉中的bag-of-words基础流程">2.计算机视觉中的Bag-of-words基础流程</h2>
+<h3 id="特征提取-sift">2.1 特征提取 （SIFT）</h3>
+<p>过分割、密集或随机采集、关键点或稳定区域、显著区域等方式使图像形成不同的图像块，并获得各图像块处的特征。</p>
+<h3 id="学习-视觉词典visual-vocabulary-k-means">2.2 学习 “视觉词典（visual vocabulary）” （k-means）</h3>
+<p>在上面提取完SIFT特征的步骤后,利用K-means聚类算法将提取的SIFT特征聚类生成视觉词典。</p>
+<p>K-means算法是度量样本间相似性的一种方法，该算法设置参数为K，把N个对象分成K个簇，簇内之间的相似度较高，而簇间的相似度较低。聚类中心有K个，视觉词典为K。</p>
+<h3 id="针对输入特征集根据视觉词典进行量化">2.3 针对输入特征集，根据视觉词典进行量化</h3>
+<p>这一步骤通过对图像特征提取，然后将提取出来的特征点，根据第三步，转换为频率直方图。</p>
+<p>这里在转换为频率直方图时候，有使用到TF-IDF，即词频(Term Frequency，TF)与逆文档频率(Inverse Document Frequency，IDF)乘积作为权值。引入这个权值的目的是为了降低一些重复特征所带来的影响。比如在BOW中，一些常用词汇譬如the，it，do等等词汇，不能体现文本内容特征，但是出现频率却很高，利用tf-idf可以降低这种不必要词汇的影响。同理，在BOF图像搜索中，图像之间也会有这样的无意义的特征出现，所以需要降低这类特征的权值。</p>
+<h3 id="把输入图像转化成视觉单词visual-words的频率直方图">2.4 把输入图像转化成视觉单词（visual words）的频率直方图</h3>
+<h3 id="构造特征到图像的倒排表通过倒排表快速索引相关图像">2.5 构造特征到图像的倒排表，通过倒排表快速索引相关图像</h3>
+<p>倒排表是一种逆向的查找方式，在BOW中大体的思路是通过已经提取出来的词汇，反向查找出现过这个词汇的文章。</p>
+<h3 id="根据索引结果进行直方图匹配">2.6 根据索引结果进行直方图匹配</h3>
+<p>当我们做完上面的步骤，就需要对直方图进行匹配。直方图的匹配给出输入图像的频率直方图，在数据库中查找K个最近邻的图像，根据这K个近邻来投票图像的分类结果。</p>
+<h2 id="特征提取">3.特征提取</h2>
+<p>SIFT算法的实质是在不同的尺度空间上查找关键点(特征点)，并计算出关键点的方向。SIFT所查找到的关键点是一些十分突出，不会因光照，仿射变换和噪音等因素而变化的点，如角点、边缘点、暗区的亮点及亮区的暗点等。</p>
+<p>特征提取及描述主要是将一些<strong>具有代表性</strong>且<strong>区分性较强</strong>的<strong>全局或局部特征</strong>从图像中进行抽取，这些特征一般是类别之间差距比较<strong>明显的特征</strong>，可以将其与其他类别区分开，其次，这些特征还要求具有<strong>较好的稳定性</strong>，并对这些特征进行描述。</p>
+<p>通常会使用SIFT算法从图片上提取出很多特征点，每个特征点都是128维的向量，因此，如果图片足够多的话,我们会提取出一个巨大的特征向量库。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><span class="hljs-keyword">from</span> pylab <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">process_image</span>(<span class="hljs-params">imagename, resultname, params=<span class="hljs-string">&quot;--edge-thresh 10 --peak-thresh 5&quot;</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot; Process an image and save the results in a file. &quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">if</span> imagename[-<span class="hljs-number">3</span>:] != <span class="hljs-string">&#x27;pgm&#x27;</span>:<br>        <span class="hljs-comment"># create a pgm file</span><br>        im = Image.<span class="hljs-built_in">open</span>(imagename).convert(<span class="hljs-string">&#x27;L&#x27;</span>)  <span class="hljs-comment"># .convert(&#x27;L&#x27;) 将RGB图像转为灰度模式，灰度值范围[0,255]</span><br>        im.save(<span class="hljs-string">&#x27;tmp.pgm&#x27;</span>)  <span class="hljs-comment"># 将灰度值图像信息保存在.pgm文件中</span><br>        imagename = <span class="hljs-string">&#x27;tmp.pgm&#x27;</span><br><br>    cmmd = <span class="hljs-built_in">str</span>(<br>        <span class="hljs-string">&quot;D:\pycharm\picture\sift.exe &quot;</span> + imagename + <span class="hljs-string">&quot; --output=&quot;</span> + resultname +<br>        <span class="hljs-string">&quot; &quot;</span> + params)<br>    os.system(cmmd)  <span class="hljs-comment"># 执行sift可执行程序，生成resultname(test.sift)文件</span><br>    <span class="hljs-built_in">print</span><br>    <span class="hljs-string">&#x27;processed&#x27;</span>, imagename, <span class="hljs-string">&#x27;to&#x27;</span>, resultname<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">read_features_from_file</span>(<span class="hljs-params">filename</span>):<br>    <span class="hljs-string">&quot;&quot;&quot; Read feature properties and return in matrix form. &quot;&quot;&quot;</span><br><br>    f = loadtxt(filename)<br>    <span class="hljs-keyword">return</span> f[:, :<span class="hljs-number">4</span>], f[:, <span class="hljs-number">4</span>:]  <span class="hljs-comment"># feature locations, descriptors</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_features</span>(<span class="hljs-params">im, locs, circle=<span class="hljs-literal">True</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot; Show image with features. input: im (image as array),</span><br><span class="hljs-string">        locs (row, col, scale, orientation of each feature). &quot;&quot;&quot;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">draw_circle</span>(<span class="hljs-params">c, r</span>):<br>        t = arange(<span class="hljs-number">0</span>, <span class="hljs-number">1.01</span>, <span class="hljs-number">.01</span>) * <span class="hljs-number">2</span> * pi<br>        x = r * cos(t) + c[<span class="hljs-number">0</span>]<br>        y = r * sin(t) + c[<span class="hljs-number">1</span>]<br>        plot(x, y, <span class="hljs-string">&#x27;b&#x27;</span>, linewidth=<span class="hljs-number">2</span>)<br><br>    imshow(im)<br>    <span class="hljs-keyword">if</span> circle:<br>        <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> locs:<br>            draw_circle(p[:<span class="hljs-number">2</span>], p[<span class="hljs-number">2</span>])<br>    <span class="hljs-keyword">else</span>:<br>        plot(locs[:, <span class="hljs-number">0</span>], locs[:, <span class="hljs-number">1</span>], <span class="hljs-string">&#x27;ob&#x27;</span>)<br>    axis(<span class="hljs-string">&#x27;off&#x27;</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">10</span>):<br> <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    imname = <span class="hljs-string">&#x27;D:/pycharm/picture/paris_invalides_00000&#x27;</span>+<span class="hljs-built_in">str</span>(i)+<span class="hljs-string">&#x27;.jpg&#x27;</span> <span class="hljs-comment"># 待处理图像路径</span><br><br>    process_image(imname, <span class="hljs-string">&#x27;D:/pycharm/picture/paris_invalides_00000&#x27;</span>+<span class="hljs-built_in">str</span>(i)+<span class="hljs-string">&#x27;.sift&#x27;</span>)<br><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>,<span class="hljs-number">100</span>):<br> <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    imname = <span class="hljs-string">&#x27;D:/pycharm/picture/paris_invalides_0000&#x27;</span>+<span class="hljs-built_in">str</span>(i)+<span class="hljs-string">&#x27;.jpg&#x27;</span> <span class="hljs-comment"># 待处理图像路径</span><br><br>    process_image(imname, <span class="hljs-string">&#x27;D:/pycharm/picture/paris_invalides_0000&#x27;</span>+<span class="hljs-built_in">str</span>(i)+<span class="hljs-string">&#x27;.sift&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="生成词汇">4.生成词汇</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">from</span> PCV.imagesearch <span class="hljs-keyword">import</span> vocabulary<br><span class="hljs-keyword">from</span> PCV.tools.imtools <span class="hljs-keyword">import</span> get_imlist<br><span class="hljs-keyword">from</span> PCV.localdescriptors <span class="hljs-keyword">import</span> sift<br><span class="hljs-keyword">from</span> pylab <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br> <br><span class="hljs-comment"># 获取图像列表</span><br>imlist = get_imlist(<span class="hljs-string">&#x27;d:/pycharm/picture/&#x27;</span>)<br>nbr_images = <span class="hljs-built_in">len</span>(imlist)<br><span class="hljs-comment"># 获取特征列表</span><br>featlist = [imlist[i][:-<span class="hljs-number">3</span>] + <span class="hljs-string">&#x27;sift&#x27;</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(nbr_images)]<br> <br><span class="hljs-comment"># 提取文件夹下图像的sift特征</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(nbr_images):<br>    im = array(Image.<span class="hljs-built_in">open</span>(imlist[i]).convert(<span class="hljs-string">&#x27;L&#x27;</span>))<br>    sift.process_image(imlist[i], featlist[i])<br> <br><span class="hljs-comment"># 生成词汇</span><br>voc = vocabulary.Vocabulary(<span class="hljs-string">&#x27; d:/pycharm/picture/paris_louvretest&#x27;</span>)<br>voc.train(featlist, <span class="hljs-number">500</span>, <span class="hljs-number">10</span>)<br><span class="hljs-comment"># 保存词汇</span><br><span class="hljs-comment"># saving vocabulary</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;d:/pycharm/picture/vocabulary.pkl&#x27;</span>, <span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    pickle.dump(voc, f)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;vocabulary is:&#x27;</span>, voc.name, voc.nbr_words)<br><br></code></pre></td></tr></table></figure>
+<h2 id="图像索引创建数据库">5.图像索引（创建数据库）</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pickle<br><span class="hljs-keyword">from</span> PCV.imagesearch <span class="hljs-keyword">import</span> imagesearch<br><span class="hljs-keyword">from</span> PCV.localdescriptors <span class="hljs-keyword">import</span> sift<br><span class="hljs-keyword">from</span> sqlite3 <span class="hljs-keyword">import</span> dbapi2 <span class="hljs-keyword">as</span> sqlite<br><span class="hljs-keyword">from</span> PCV.tools.imtools <span class="hljs-keyword">import</span> get_imlist<br><br><span class="hljs-comment"># 获取图像列表</span><br>imlist = get_imlist(<span class="hljs-string">&#x27;d:/pycharm/picture/&#x27;</span>)<br>nbr_images = <span class="hljs-built_in">len</span>(imlist)<br><span class="hljs-comment"># 获取特征列表</span><br>featlist = [imlist[i][:-<span class="hljs-number">3</span>] + <span class="hljs-string">&#x27;sift&#x27;</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(nbr_images)]<br><br><span class="hljs-comment"># load vocabulary</span><br><span class="hljs-comment"># 载入词汇</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;d:/pycharm/picture/vocabulary.pkl&#x27;</span>, <span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    voc = pickle.load(f)<br><span class="hljs-comment"># 创建索引</span><br>indx = imagesearch.Indexer(<span class="hljs-string">&#x27;d:/pycharm/picture/testImaAdd.db&#x27;</span>, voc)<br>indx.create_tables()<br><span class="hljs-comment"># go through all images, project features on vocabulary and insert</span><br><span class="hljs-comment"># 遍历所有的图像，并将它们的特征投影到词汇上</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(nbr_images)[:<span class="hljs-number">1000</span>]:<br>    locs, descr = sift.read_features_from_file(featlist[i])<br>    indx.add_to_index(imlist[i], descr)<br><span class="hljs-comment"># commit to database</span><br><span class="hljs-comment"># 提交到数据库</span><br>indx.db_commit()<br><br>con = sqlite.connect(<span class="hljs-string">&#x27;d:/pycharm/picture/testImaAdd.db&#x27;</span>)<br><span class="hljs-built_in">print</span> (con.execute(<span class="hljs-string">&#x27;select count (filename) from imlist&#x27;</span>).fetchone())<br><span class="hljs-built_in">print</span> (con.execute(<span class="hljs-string">&#x27;select * from imlist&#x27;</span>).fetchone())<br><br></code></pre></td></tr></table></figure>
+<h2 id="图像检索">6.图像检索</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">i</span>):<br>  <span class="hljs-comment"># 获取图像列表</span><br>  imlist = get_imlist(<span class="hljs-string">&#x27;d:/pycharm/picture/&#x27;</span>)<br>  nbr_images = <span class="hljs-built_in">len</span>(imlist)<br>  <span class="hljs-comment"># 获取特征列表</span><br>  featlist = [imlist[i][:-<span class="hljs-number">3</span>] + <span class="hljs-string">&#x27;sift&#x27;</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(nbr_images)]<br><br>  <span class="hljs-comment"># 载入词汇</span><br>  f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;d:/pycharm/picture/vocabulary.pkl&#x27;</span>, <span class="hljs-string">&#x27;rb&#x27;</span>)<br>  voc = pickle.load(f)<br>  f.close()<br><br>  src = imagesearch.Searcher(<span class="hljs-string">&#x27;d:/pycharm/picture/testImaAdd.db&#x27;</span>, voc)<br>  locs, descr = sift.read_features_from_file(featlist[<span class="hljs-number">0</span>])<br>  iw = voc.project(descr)<br><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;ask using a histogram...&#x27;</span>)<br>  <span class="hljs-built_in">print</span>(src.candidates_from_histogram(iw)[:<span class="hljs-number">10</span>])<br><br>  src = imagesearch.Searcher(<span class="hljs-string">&#x27;d:/pycharm/picture/testImaAdd.db&#x27;</span>, voc)<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;try a query...&#x27;</span>)<br><br>  nbr_results = <span class="hljs-number">11</span><br>  res = [w[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> src.query(imlist[i-<span class="hljs-number">1</span>])[:nbr_results]]<br><br><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;计算搜索结果得分:&quot;</span>)<br>  score=imagesearch.compute_ukbench_score(src, imlist[:<span class="hljs-number">10</span>])<br>  <span class="hljs-keyword">return</span> src, res, score<br><br></code></pre></td></tr></table></figure>
+<h2 id="对数据库的操作">7.对数据库的操作</h2>
+<p>我在最终运行的时候发现在图像检索时，有时会出现是个运行结果中有一两个显示不出来的问题，一开始我还以为是电脑卡顿的问题。然后我试着打印了res：</p>
+<p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603231847152.png" srcset="/img/loading.gif" lazyload></p>
+<p>发现当运行结果中有一两个显示不出来时，res中有几个序号就大于我的图片总数，我知道了是我的数据库出现了问题，于是我用以下代码查看我的数据库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sqlite3<br><br>conn = sqlite3.connect(<span class="hljs-string">&#x27;d:/pycharm/picture/testImaAdd.db&#x27;</span>)<br>cursor = conn.cursor()<br>cursor.execute(<span class="hljs-string">&quot;SELECT * FROM imlist&quot;</span>)<br>result = cursor.fetchall()<br><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> result:<br>    <span class="hljs-built_in">print</span>(row)<br>    <br>conn.close()<br><br></code></pre></td></tr></table></figure>
+<p>发现了下面的问题，我知道了是我之前在刚刚做图像检索时尝试代码，用了其他的命名方式给图片命名，这就导致了我后来的图片没有覆盖掉数据库中这些数据，其还占据着我的数据库，但图片和sift已经被我在文件夹中删掉了，如下图所示：</p>
+<p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232019342.png" srcset="/img/loading.gif" lazyload></p>
+<p>而我之所以运行结果中有一两个显示不出来的问题，是因为它正好匹配到了那几个占据着我的数据库但不存在于我的图片库的序号。于是想着通过删除数据库的数据，来把数据库清空，再进行一次图像索引创建数据库，就可以删掉那几个多出的数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sqlite3<br><br><span class="hljs-comment"># 1.创建数据库连接</span><br>conn = sqlite3.connect(<span class="hljs-string">&#x27;d:/pycharm/picture/testImaAdd.db&#x27;</span>)<br><span class="hljs-comment"># 2.创建游标</span><br>cursor = conn.cursor()<br><br><span class="hljs-comment"># 删除数据库表记录</span><br><br>results = cursor.execute(<span class="hljs-string">&quot;DELETE  FROM imlist &quot;</span>)<br>conn.commit()  <span class="hljs-comment"># 更新数据库</span><br>results = cursor.execute(<span class="hljs-string">&quot;SELECT * FROM imlist&quot;</span>)<br>cursor.close()  <span class="hljs-comment"># 关闭cursor对象</span><br>conn.close()  <span class="hljs-comment"># 关闭数据库连接</span><br><br></code></pre></td></tr></table></figure>
+<p>结果成功将那几个多余数据删除:</p>
+<p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232117000.png" srcset="/img/loading.gif" lazyload></p>
+<p>但当我很兴奋地去执行最后一步图像检索时，却出现了下面的报错：</p>
+<p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232137227.png" srcset="/img/loading.gif" lazyload></p>
+<p>我尝试了各种办法，到处搜索，甚至还重新创建一个工程，用了一下午的时间，最终我突然想到，之所以会检索到有空的类型，是我之前删掉的那几个多余数据就变成了空的类型，我是150张图片，而数据库现在容量是153，3个位置是空的，于是我便又找了三张图片加入了进去，提取特征，生成词汇，再加入数据库，随后检索，果然成功，解决了这个问题。</p>
+<p>最后，我一开始遇到的运行结果中有一两个显示不出来的问题也得到了解决。</p>
+<blockquote>
+<p>还有一个问题，导致如果匹配到前九张图片，就会显示不出来，原因是我的if语句用错了，应该是if,elif,else，而不是if,if,else。</p>
+</blockquote>
+<h1 id="三操作界面设计">三、操作界面设计</h1>
+<p>利用了pyqt，点击工具中的QTdesigner，利用到了Push Button、Lable、Text Browser。</p>
+<p>然后保存得到一个.ui文件，然后利用工具中的PyUIC，将.ui文件转换为.py文件。</p>
+<p>将输入的歌曲和图像显示在界面上，然后输出前十个候选结果，且将余弦相似度和得分显示在界面上。</p>
+<p>图像显示和文本显示用的方法是不同的，文本显示直接用setText即可将结果写入：</p>
+<p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232530108.png" srcset="/img/loading.gif" lazyload></p>
+<p>图像显示首先使用QtGui模块中的QPixmap类创建一个名为jpg的Pixmap对象，该对象表示Name路径指定的图像文件；然后使用.scaled()方法将图像缩放到与label标签具有相同的宽度和高度。这是为了确保图像适应标签的大小；最后用setPixmap()方法将缩放后的图像设置为label标签的当前图像。这将在界面上显示图像。</p>
+<figure>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232558759.png" srcset="/img/loading.gif" lazyload alt="image-20230603232558759"><figcaption aria-hidden="true">image-20230603232558759</figcaption>
+</figure>
+<p>代码中在显示图片的输出结果时我没有用循环，只是笨拙的罗列，所以我就不都放完整代码了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QMainWindow, QFileDialog, QApplication<br><span class="hljs-keyword">from</span> gui <span class="hljs-keyword">import</span> Ui_MainWindow<br><span class="hljs-keyword">from</span> PyQt5 <span class="hljs-keyword">import</span> QtGui<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyWindow</span>(QMainWindow, Ui_MainWindow):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, parent=<span class="hljs-literal">None</span></span>):<br>        <span class="hljs-built_in">super</span>(MyWindow, self).__init__(parent)<br>        self.setupUi(self)<br>        self.pushButton.clicked.connect(self.<span class="hljs-built_in">open</span>)  <span class="hljs-comment"># 将点击按钮与函数open连接</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open</span>(<span class="hljs-params">self</span>):<br>        Name, TYPE = QFileDialog.getOpenFileName(self, <span class="hljs-string">&quot;选择歌词&quot;</span>, <span class="hljs-string">&quot;./lyrics/&quot;</span>, <span class="hljs-string">&quot;Text Files (*.txt)&quot;</span>)  <span class="hljs-comment"># 获取选择的歌曲名字</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(Name, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:    <span class="hljs-comment"># 打开所选歌曲的歌词</span><br>            data = f.read()     <span class="hljs-comment"># 获取歌词</span><br>            self.textBrowser.setText(data)      <span class="hljs-comment"># 将歌词显示在textBrowser上</span><br>        Name = <span class="hljs-built_in">str</span>(Name).split(<span class="hljs-string">&quot;/&quot;</span>)[-<span class="hljs-number">1</span>]     <span class="hljs-comment"># 去掉歌名的位置信息</span><br>        Name = Name[<span class="hljs-number">6</span>:-<span class="hljs-number">4</span>]    <span class="hljs-comment"># 去掉歌名的后缀(.txt)</span><br><br>        self.label.setText(Name)    <span class="hljs-comment"># 将歌名显示在label上</span><br>        self.label_4.setText(get_keyword(Name)) <span class="hljs-comment">#将歌的关键词显示在label_4上</span><br>        result = search(Name)   <span class="hljs-comment"># 检索与所选歌歌词最相似的十首歌</span><br>        best = result[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]     <span class="hljs-comment"># 最相似的一首歌</span><br>        result = <span class="hljs-string">&#x27;\n&#x27;</span>.join([<span class="hljs-built_in">str</span>(x[<span class="hljs-number">1</span>]) + <span class="hljs-number">8</span> * <span class="hljs-string">&#x27; &#x27;</span> + <span class="hljs-built_in">str</span>(x[<span class="hljs-number">0</span>]) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> result])  <span class="hljs-comment"># 调整检索结果</span><br>        self.label_2.setText(result)  <span class="hljs-comment"># 将检索结果显示在label_2上</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;lyrics&#x27;</span> + best + <span class="hljs-string">&#x27;.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:   <span class="hljs-comment"># 打开相似效果最好的歌词</span><br>            data = f.read()  <span class="hljs-comment"># 获取歌词</span><br>            self.textBrowser_2.setText(data)  <span class="hljs-comment"># 将歌词显示在textBrowser_2上</span><br>        self.label_5.setText(get_keyword(best)) <span class="hljs-comment">#将歌的关键词显示在label_5上</span><br><br>        Name0, TYPE = QFileDialog.getOpenFileName(self, <span class="hljs-string">&quot;选择图片&quot;</span>, <span class="hljs-string">&quot;D:/pycharm/picture/paris_invalides/&quot;</span>, <span class="hljs-string">&quot;Text Files (*.jpg)&quot;</span>)  <span class="hljs-comment"># 获取选择的图片名字</span><br>        jpg = QtGui.QPixmap(Name0).scaled(self.label_8.width(), self.label_8.height())<br>        self.label_8.setPixmap(jpg)     <span class="hljs-comment"># 将输入图片显示在label_8上</span><br><br>        Name0 = <span class="hljs-built_in">str</span>(Name0).split(<span class="hljs-string">&quot;/&quot;</span>)[-<span class="hljs-number">1</span>]     <span class="hljs-comment"># 去掉图片的位置信息</span><br>        Name0 = Name0[-<span class="hljs-number">6</span>:-<span class="hljs-number">4</span>]    <span class="hljs-comment"># 去掉图片的后缀(.txt)</span><br>        i=<span class="hljs-built_in">int</span>(Name0)<br>        src, res, score=get(i)<br>        self.label_10.setText(<span class="hljs-built_in">str</span>(score))  <span class="hljs-comment"># 将搜索得分显示在label_10上</span><br>        <span class="hljs-comment">#将搜索到的10张图片显示</span><br>        <span class="hljs-keyword">if</span> res[<span class="hljs-number">1</span>]&lt;<span class="hljs-number">10</span>:<br>                Name1 = <span class="hljs-string">&quot;D:/pycharm/picture/paris_invalides_00000&quot;</span>+<span class="hljs-built_in">str</span>(res[<span class="hljs-number">1</span>])+<span class="hljs-string">&quot;.jpg&quot;</span><br>                jpg1 = QtGui.QPixmap(Name1).scaled(self.label_12.width(), self.label_12.height())<br>                self.label_12.setPixmap(jpg1)<br>        <span class="hljs-keyword">else</span>:<br>                Name1 = <span class="hljs-string">&quot;D:/pycharm/picture/paris_invalides_0000&quot;</span> + <span class="hljs-built_in">str</span>(res[<span class="hljs-number">1</span>]) + <span class="hljs-string">&quot;.jpg&quot;</span><br>                jpg1 = QtGui.QPixmap(Name1).scaled(self.label_12.width(), self.label_12.height())<br>                self.label_12.setPixmap(jpg1)<br>……<br><br></code></pre></td></tr></table></figure>
+<h1 id="四程序运行结果图">四、程序运行结果图</h1>
+<h2 id="歌词爬取结果">1.歌词爬取结果</h2>
+<figure>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232945163.png" srcset="/img/loading.gif" lazyload alt="所有歌词"><figcaption aria-hidden="true">所有歌词</figcaption>
+</figure>
+<figure>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233009341.png" srcset="/img/loading.gif" lazyload alt="单个歌词"><figcaption aria-hidden="true">单个歌词</figcaption>
+</figure>
+<h2 id="图片爬取结果">2.图片爬取结果</h2>
+<p>猫：</p>
+<figure>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233058696.png" srcset="/img/loading.gif" lazyload alt="“猫”的爬取结果"><figcaption aria-hidden="true">“猫”的爬取结果</figcaption>
+</figure>
+<p>车：</p>
+<figure>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233130164.png" srcset="/img/loading.gif" lazyload alt="“车”的爬取结果"><figcaption aria-hidden="true">“车”的爬取结果</figcaption>
+</figure>
+<p>......</p>
+<h2 id="最终效果">3.最终效果</h2>
+<figure>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233219873.png" srcset="/img/loading.gif" lazyload alt="最终运行结果"><figcaption aria-hidden="true">最终运行结果</figcaption>
+</figure>
+<h2 id="总结与不足">4.总结与不足</h2>
+<p>可以看出文本检索实现的很好，图像检索有八个正确结果，还算不错。</p>
+<p>不足的地方一是在图像检索中，由于图像集数目不足，以及图片背景过于丰富，会导致特征采集不准确，有几个出现错误；</p>
+<p>BOW的一个主要缺点是在用视觉单词表示图像时不包含图像特征的位置信息，而图像特征的位置信息在人脸识别图像时起到了很好的作用；</p>
+<p>我觉得可以改进的地方，输入一张非图像库内的图像，然后再与图像库图像进行检索和匹配。且可以让文本检索和图像检索联系起来，输入文本可以既能得到相似文本，又能得到对应语义的图片，实现更强的功能。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BF%9B%E9%98%B6%E9%A1%B9%E7%9B%AE/" class="category-chain-item">进阶项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%9A%E5%AA%92%E4%BD%93%EF%BC%8C%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B%EF%BC%8C%E9%A1%B9%E7%9B%AE%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">#多媒体，专业课程，项目，计算机视觉</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基于文本和图像的多媒体检索系统</div>
+      <div>http://example.com/2023/06/02/基于文本和图像的多媒体检索系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Faceless-person</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年6月2日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/06/04/%E9%87%91%E8%9E%8D%E9%A2%86%E5%9F%9F%E9%97%AE%E9%A2%98%E5%8C%B9%E9%85%8D/" title="金融领域问题匹配">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">金融领域问题匹配</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/19/%E5%9F%BA%E4%BA%8ESYSTEMVIEW%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/" title="基于SYSTEMVIEW通信原理实验">
+                        <span class="hidden-mobile">基于SYSTEMVIEW通信原理实验</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

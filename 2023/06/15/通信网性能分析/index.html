@@ -1,0 +1,1167 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Faceless-person">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="使用相关数学或应用数学工具（如随机过程、排队论、图论等）来建模、分析通信网络的性能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通信网性能分析">
+<meta property="og:url" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="使用相关数学或应用数学工具（如随机过程、排队论、图论等）来建模、分析通信网络的性能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621204746403.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615200225503.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615200329406.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615210209146.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230620225521649.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230620231245977.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230618194227852.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621213119808.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621215552636.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621222102785.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621222213322.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120016583.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621223124406.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120102209.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120152137.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120218809.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615113134324.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615143534212.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230044115.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230104150.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230218619.png">
+<meta property="og:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230502255.png">
+<meta property="article:published_time" content="2023-06-15T02:50:56.000Z">
+<meta property="article:modified_time" content="2024-01-12T05:48:06.656Z">
+<meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="通信网，泊松分布，数学建模">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621204746403.png">
+  
+  
+  
+  <title>通信网性能分析 - Faceless_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Faceless_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="通信网性能分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-15 10:50" pubdate>
+          2023年6月15日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          86 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">通信网性能分析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2023/6/15 10:53 今天开始网络理论基础课程的复习及知识整理。</p>
+<p>2023/6/21 23:14 今天下午总算考完这门课，我也在今天晚上完成了通信网性能分析这门课知识的总结。另外说一句，今晚一边整理，一边发现今天下午考试时写错的，这种感觉真是苦不堪言啊......ps：明天开始高数的知识点梳理。</p>
+<h1 id="一通信信源模型">一、通信信源模型</h1>
+<h2 id="泊松过程">1.泊松过程</h2>
+<p>对于Poisson呼叫流，长度为t的时间内到达k个呼叫的概率<span class="math inline">\(P_k(t)\)</span>服从Poisson分布，即 <span class="math display">\[
+p_k(t)=\frac{(\lambda t)^k}{k!}e^{-\lambda t}\qquad k=0,1,2,......
+\]</span> Poisson分布的均值：<span class="math inline">\(E[N(t)]=\lambda t\)</span></p>
+<p>Poisson分布的方差：<span class="math inline">\(Var[N(t)]=\lambda t\)</span></p>
+<p>m个Poisson流的参数分别为<span class="math inline">\(\lambda_1,\lambda_2,......,\lambda_m,\)</span>并且它们是相互<strong>独立</strong>的，合并流仍然为Poisson流，且参数为<span class="math inline">\(\lambda=\lambda_1+\lambda_2+...+\lambda_m\)</span>。</p>
+<p>一个随机过程是参数 λ 的Poisson过程的充分必要条件为呼叫到达间隔<span class="math inline">\(X_i,i=1,2...\)</span>相互独立，且服从相同参数 λ 的负指数分布。</p>
+<h2 id="负指数分布">2.负指数分布</h2>
+<p>随机变量X满足<span class="math inline">\(P\{X\ge t\}=e^{-\lambda t}\)</span>，或分布函数为：<span class="math inline">\(P\{X&lt;t\}=1-e^{-\lambda t},t\ge0\)</span>，则这个分布被称之为参数为λ的<strong>负指数分布</strong>。</p>
+<p>这个分布的概率密度函数为：<span class="math inline">\(f_x(t)=\lambda e^{-\lambda t},t\ge0\)</span></p>
+<p>负指数分布的均值：<span class="math inline">\(E[X]=\frac{1}{\lambda}\)</span></p>
+<p>负指数分布的均值：<span class="math inline">\(Var[X]=\frac{1}{\lambda^2}\)</span></p>
+<p>负指数分布具有无记忆特性：<span class="math inline">\(P\{X\ge t+s|X\ge t\}=P\{X\ge s\}\)</span></p>
+<p>假设<span class="math inline">\(T_1,T_2\)</span>为<strong>相互独立的</strong>两个负指数分布，参数分别为<span class="math inline">\(\lambda_1,\lambda_2\)</span>，令<span class="math inline">\(T=min(T_1,T_2)\)</span>则：</p>
+<ol type="1">
+<li><p>T 是一个以<span class="math inline">\(\lambda_1+\lambda_2\)</span>为参数的负指数分布；</p></li>
+<li><p>T 的分布和<span class="math inline">\(T_i\)</span>谁是较小数无关；</p></li>
+<li><p><span class="math inline">\(P\{T_1&lt;T_2|T=t\}=\frac{\lambda_1}{\lambda_1+\lambda_2}\)</span></p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621204746403.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"></p></li>
+</ol>
+<h2 id="mm1排队系统">3.M/M/1排队系统</h2>
+<h3 id="排队系统性能指标">3.1 排队系统性能指标</h3>
+<p><em>λ</em>：排队系统到达率</p>
+<p><span class="math inline">\(\mu\)</span>：服务率（离去率）</p>
+<p>k：队长（系统中的顾客数）</p>
+<p><span class="math inline">\(\omega\)</span>：等待时间</p>
+<p><span class="math inline">\(\tau\)</span>：服务时间</p>
+<p>s=<span class="math inline">\(\omega+\tau\)</span>：系统时间</p>
+<p>η：系统效率</p>
+<p><span class="math inline">\(\rho=\frac{\lambda}{\mu}\)</span></p>
+<h3 id="mm1">3.2 M/M/1</h3>
+<p>根据生灭过程的性质：<span class="math inline">\(p_k=\rho^kp_0\)</span></p>
+<p>在<span class="math inline">\(\rho&lt;1\)</span>时，两边求和得到： <span class="math display">\[
+p_0=\frac{1}{1+\sum_{k=1}^{\infty}\rho^k}=1-\rho
+\]</span> M/M/1的队长分布：<span class="math inline">\(p_k=\rho^k(1-\rho)\qquad k=0,1,2,...\)</span></p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615200225503.png" srcset="/img/loading.gif" lazyload alt="M/M/1的状态转移图" style="zoom: 80%;"></p>
+<p>N：系统中的平均顾客数</p>
+<p>T：顾客在系统中的平均时间 <span class="math display">\[
+平均队长:E[N]=\frac{\rho}{1-\rho}
+\]</span></p>
+<p><span class="math display">\[
+Var[N]=\frac{\rho}{(1-\rho)^2}
+\]</span></p>
+<p><span class="math display">\[
+在系统中的平均停留时间:E[s]=\frac{\frac{\rho}{1-\rho}}{\lambda}=\frac{1}{\mu-\lambda}
+\]</span></p>
+<p><span class="math display">\[
+平均排队时间:E[\omega]=E[s]-\frac{1}{\mu}=\frac{\rho}{1-\rho}\frac{1}{\mu}
+\]</span></p>
+<p><span class="math display">\[
+平均等待队长:E[N_w]=\lambda E[\omega]=\frac{\rho}{1-\rho}\frac{\lambda}{\mu}
+\]</span></p>
+<p>M/M/1排队系统在稳态时，系统时间 s 服从参数为<span class="math inline">\(\mu-\lambda\)</span>的负指数分布。</p>
+<h1 id="二erlang拒绝和等待系统">二、Erlang拒绝和等待系统</h1>
+<p>呼叫量=业务量/观察时间</p>
+<p>呼叫量的单位为erl，这是一个无量纲的单位。</p>
+<p>实际上，在一段时间T内通过的呼叫量就是该时段内被占用的平均中继线数目。</p>
+<h2 id="erlang即使拒绝系统mmss">1.Erlang即使拒绝系统——M/M/s(s)</h2>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615200329406.png" srcset="/img/loading.gif" lazyload alt="M/M/s(s)的状态转移图" style="zoom: 67%;"></p>
+<p>令<span class="math inline">\(a=\frac{\lambda}{\mu}\)</span>，则<span class="math inline">\(p_k=\frac{a^k}{k!}p_0\qquad k=1,2,...,s\)</span></p>
+<p>两边求和解得： <span class="math display">\[
+p_0=\frac{1}{\sum_{r=0}^{s}\frac{a^r}{r!}}
+\]</span> 稳态分布为： <span class="math display">\[
+p_k=\frac{\frac{a^k}{k!}}{\sum_{r=0}^{s}\frac{a^r}{r!}}\qquad k=0,1,2,...,s
+\]</span> 特别，当k＝s 时，p<sub>s</sub>表达了中继线全忙的概率，这个概率为系统的时间阻塞率，记为 <span class="math display">\[
+p_s=B(s,a)=\frac{a^s/s!}{\sum_{r=0}^{s}\frac{a^r}{r!}}
+\]</span> 通过的呼叫量：<span class="math inline">\(a&#39;=a[1-B(s,a)]\)</span></p>
+<h2 id="erlang等待制系统mms">2.Erlang等待制系统—M/M/S</h2>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615210209146.png" srcset="/img/loading.gif" lazyload alt="M/M/S状态转移图" style="zoom: 80%;"></p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230620225521649.png" srcset="/img/loading.gif" lazyload alt="等待制系统分析" style="zoom: 67%;"></p>
+<p><span class="math display">\[
+p_0=\frac{1}{\sum_{k=0}^{s-1}\frac{a^k}{k!}+\frac{a^s}{s!}\frac{1}{1-a/s}}
+\]</span> 一个呼叫需要等待的概率： <span class="math display">\[
+C(s,a)=\frac{a^s}{s!}\frac{p_0}{1-a/s}
+\]</span> 在a&lt;s的条件下：</p>
+<p>通过的呼叫量：<span class="math inline">\(a&#39;=a\)</span></p>
+<p>系统中的平均呼叫数：<span class="math inline">\(E[N]=\frac{\rho}{1-\rho}C(s,a)+a\qquad \rho=a/s\)</span></p>
+<p>系统中的平均呼叫数为a，等待队列中的平均呼叫数为<span class="math inline">\(\frac{\rho}{1-\rho}C(s,a)\)</span></p>
+<p>平均等待时间：<span class="math inline">\(E[\omega]=[\frac{\rho}{1-\rho}C(s,a)]/\lambda=\frac{C(s,a)}{s\mu(1-\rho)}\)</span></p>
+<p>等待时间的分布：<span class="math inline">\(p\{\omega&gt;t\}=C(s,a)e^{-(s\mu-\lambda)t}\)</span></p>
+<h2 id="一般混合制的mmsn系统">3.一般混合制的M/M/S(n)系统</h2>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230620231245977.png" srcset="/img/loading.gif" lazyload alt="M/M/S(n)系统分析" style="zoom:67%;"></p>
+<h1 id="三通信网络性能分析">三、通信网络性能分析</h1>
+<h2 id="wilkinson定理算溢出呼叫流的统计特征">1.Wilkinson定理算溢出呼叫流的统计特征</h2>
+<p><span class="math display">\[
+\alpha=aB(s,a)\qquad v=\alpha(1-\alpha+\frac{a}{s+1+\alpha-a})
+\]</span></p>
+<blockquote>
+<p>上面是溢出呼叫流和溢出呼叫流的方差</p>
+</blockquote>
+<p><span class="math display">\[
+峰值因子:z=\frac{v}{\alpha}
+\]</span></p>
+<h2 id="呼损的近似计算方法rapp">2.呼损的近似计算方法Rapp</h2>
+<ol type="1">
+<li><p>计算<span class="math inline">\(z=\frac{v}{\alpha}\)</span></p></li>
+<li><p>令<span class="math inline">\(a=v+3z(z-1)\)</span> <span class="math display">\[
+然后,s=\frac{a(\alpha+z)}{\alpha+z-1}-\alpha-1
+\]</span> 但s一般不为整数，向下取整，记为[s]</p></li>
+<li><p>重新计算： <span class="math display">\[
+a=\frac{([s]+\alpha+1)(\alpha+z-1)}{\alpha+z}
+\]</span></p></li>
+<li><p>计算等效系统的呼损和拒绝的呼叫量<span class="math inline">\(B(s+c,a)\)</span>和<span class="math inline">\(aB(s+c,a)\)</span></p></li>
+</ol>
+<h1 id="四网络拓扑结构分析">四、网络拓扑结构分析</h1>
+<h2 id="图论基础">1.图论基础</h2>
+<h3 id="图的定义和基本概念">1.1 图的定义和基本概念</h3>
+<p>图：所谓一个图G，是指给了一个端点集合V，以及边的集合或V中元素的序对集合E，图一般用G=(V,E)来表示。</p>
+<p>端的度数：</p>
+<ul>
+<li>对无向图的端<span class="math inline">\(v_i\)</span>，与该端关联边的数目为该端的度数，记为：<span class="math inline">\(d(v_i)\)</span>。</li>
+<li>对有向图的端<span class="math inline">\(v_i\)</span>，<span class="math inline">\(d^+(v_i)\)</span>表示离开<span class="math inline">\(v_i\)</span>的边数，<span class="math inline">\(d^-(v_i)\)</span>表示进入<span class="math inline">\(v_i\)</span>的边数。</li>
+</ul>
+<p>给定图G=(V,E)，若<span class="math inline">\(V_1\subseteq V,E_1=\{(u,v)\in E|u,v\in V_1\}\)</span>称图<span class="math inline">\(G_1=(V_1,E_1)\)</span>是G中由<span class="math inline">\(V_1\)</span>生成的<strong>子图</strong>，记<span class="math inline">\(G[V_1]\)</span>。</p>
+<p>特别，若子图的端点集合为V，这个图被称为图G的<strong>支撑子图</strong>。</p>
+<p>若<span class="math inline">\(E_1\subseteq E,V_1=\{V\in V|v是E_1中某边的端点\}\)</span>， 称图<span class="math inline">\(G_1=(V_1,E_1)\)</span>是G中由<span class="math inline">\(E_1\)</span>生成的子图，记为<span class="math inline">\(G[E_1]\)</span>。</p>
+<p>考虑边的一个序列，相邻两边有公共端，如(v1，v2)， (v2，v3)， (v3，v4)，…… (vi ，vi+1)，这个边序列称为<strong>链</strong>，链简单说就是一个连续轨迹。</p>
+<p>没有重复边的链称为简单链；没有重复端的链称为初等链或<strong>道路</strong>。</p>
+<p>若链的起点与终点重合，称之为<strong>圈</strong>；若道路的起点与终点重合,称之为<strong>初等圈</strong>。</p>
+<p>任何两端间至少存在一条链的图，为<strong>连通图</strong>。否则，就是非连通图。</p>
+<h3 id="树">1.2 树</h3>
+<p>树的定义：</p>
+<ul>
+<li>任何二端有且只有一条道路的图称为树。</li>
+<li>无圈的连通图称为树。</li>
+</ul>
+<p>如果树T是连通图G的子图，<span class="math inline">\(T\subseteq G\)</span>，且T包含G的所有端，称T是G的<strong>支撑树或主树</strong>。</p>
+<p>树边，连枝：如果在一个连通图中确定了一个支撑树，图的边集合被分为两类，属于树的边称为树边；不属于树的边称为连枝。</p>
+<h3 id="割集">1.3 割集</h3>
+<p><strong>割集</strong>指的是某些端集或边子集，对连通图，去掉此类子集，图变为不连通（即图变成一个点）。</p>
+<p>设v是图G的一个端，去掉<mark>v和其关联边</mark>后，G的部分数增加（或图变成一个点），则称v是图G的<strong>割端</strong>。</p>
+<p>去掉一个端集合后，G的部分数增加，这个端的集合称为<strong>割端集</strong>。</p>
+<p>对于连通图, 在众多的割端集中至少存在一个端数最少的割端集，称为<strong>最小割端集</strong>。</p>
+<p>最小割端集的端数目，称为图的<strong>点连通度或连通度</strong>，连通度用a 表示。</p>
+<p>设e是图G的一条边，去掉 e 后，G的部分数增加，则称e是图G的<strong>割边</strong>。去掉一个边集合后，G的部分数增加，这个边的集合称为<strong>割边集</strong>。</p>
+<p>割边集中边数最少的割边集，称为<strong>最小割边集</strong>。最小割边集的边数目，称为<strong>线连通度</strong>，线连通度用β 表示。</p>
+<p>确定了连通图的一个支撑树后，每条树边可以决定一个基本割集。</p>
+<p>对于支撑树，去掉<strong>树</strong>上任何一条边，<strong>树</strong>便分为两个连通分支，从而将原图的<strong>端</strong>分为两个集合，这两个集合之间的所有<strong>边</strong>形成一个极小边割集，这个边割集称为<strong>基本割集</strong>。</p>
+<blockquote>
+<p>基本割集数等于树支数。</p>
+</blockquote>
+<p>对于任何一个连通图G，设T为G的一个支撑树，每一条连枝决定的圈是<strong>基本圈</strong>。</p>
+<blockquote>
+<p>基本圈的个数等于连枝数。</p>
+</blockquote>
+<p>反圈：给定图G=(V,E)，<span class="math inline">\(S,T\subseteq V\)</span>，记<span class="math inline">\([S,T]_G=\{(u,v)\in E|u\in S,v\in T \}\)</span>；特别，当T=V，将<span class="math inline">\([S,T]_G\)</span>记为<span class="math inline">\(\Phi_G(S)\)</span>或<span class="math inline">\(\Phi(S)\)</span>。设X是V的非空真子集，若<span class="math inline">\(\Phi_G(X)\not=\phi\)</span>，称<span class="math inline">\(\Phi_G(X)\)</span>为由X确定的反圈。</p>
+<blockquote>
+<p>反圈是一种特殊的边割集。</p>
+</blockquote>
+<h2 id="最短路径问题">2.最短路径问题</h2>
+<h3 id="最小支撑树">2.1 最小支撑树</h3>
+<h4 id="prim算法反圈法">2.1.1 Prim算法－反圈法</h4>
+<ol type="1">
+<li>任取一点作为初始的<span class="math inline">\(X^{(0)}\)</span>；</li>
+<li>在反圈<span class="math inline">\(\Phi[X^{(k)}]\)</span>中选边的原则是：
+<ul>
+<li>从<span class="math inline">\(\Phi[X^{(k)}]\)</span>中选一条权最小的边（如果有多条权最小的边，则任选一条）；</li>
+<li>将选出边的邻端并入<span class="math inline">\(X^{(k)}\)</span>形成<span class="math inline">\(X^{(k+1)}\)</span>；</li>
+</ul></li>
+<li>若在某一步，<span class="math inline">\(\Phi[X^{(k)}]=\phi\)</span>，则G不含支撑树；若在某一步，<span class="math inline">\(X^{(k)}=V\)</span>，则由所有被选边生成的树是最小支撑树。</li>
+</ol>
+<h4 id="kruskal算法避圈法">2.1.2 Kruskal算法－避圈法</h4>
+<p>将所有边排序，然后由小到大选边，保持所选的边不生成圈，如果选了n－1条边，则生成了一个最小支撑树。</p>
+<h4 id="破圈法">2.1.3 破圈法</h4>
+<p>从连通图中先寻找圈，然后在圈中删去权最大的边，最后剩下的无圈连通图为最小支撑树。</p>
+<h3 id="端间最短距离和路由">2.2 端间最短距离和路由</h3>
+<h4 id="dijkstra算法">2.2.1 Dijkstra算法</h4>
+<p>在下图中求<span class="math inline">\(v_1\)</span>到其余端点的最短距离和路由：</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230618194227852.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;"></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(v_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(v_5\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(v_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(v_3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(v_4\)</span></th>
+<th style="text-align: center;">置定端<span class="math inline">\(l_0\)</span></th>
+<th style="text-align: center;">距离<span class="math inline">\(\lambda_{l_0}\)</span></th>
+<th style="text-align: center;">路由<span class="math inline">\(i_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">V1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">V3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">V1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">V2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">V3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">V4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">V3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">V5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">V2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="floyd算法">2.2.1 Floyd算法</h4>
+<ul>
+<li><p>给定图G及其边(i,j)的权<span class="math inline">\(w_{i,j}\)</span></p></li>
+<li><p><span class="math inline">\(F_0\)</span>：初始化距离矩阵<span class="math inline">\(W^{(0)}\)</span>和路由矩阵<span class="math inline">\(R^{(0)}\)</span></p>
+<ul>
+<li><p><span class="math display">\[
+w_{ij}^{(0)}=\begin{cases}
+w_{ij} &amp;\text{若 $e_{ij}\in E$}\\
+\infty &amp;\text{若 $e_{ij}\not\in E$}\\
+0 &amp;\text{若 $i=j$}\\
+\end{cases}
+\]</span></p></li>
+<li><p><span class="math display">\[
+r_{ij}^{(0)}=\begin{cases}
+j &amp;\text{若 $w_{ij}^{(0)}\not=\infty,0$}\\
+0 &amp;\text{其它}\\
+\end{cases}
+\]</span></p></li>
+</ul></li>
+<li><p>迭代</p>
+<ul>
+<li><p><span class="math display">\[
+w_{i,j}^{(k)}=min(w_{i,j}^{(k-1)},w_{i,k}^{(k-1)}+w_{k,j}^{(k-1)})
+\]</span></p></li>
+<li><p><span class="math display">\[
+r_{ij}^{(k)}=\begin{cases}
+r_{i,k}^{(k-1)}&amp;\text{若 $w_{i,j}^{(k)}&lt;w_{i,j}^{(k-1)}$}\\
+r_{i,j}^{(k-1)} &amp;\text{若$w_{i,j}^{(k)}=w_{i,j}^{(k-1)}$}\\
+\end{cases}
+\]</span></p></li>
+</ul></li>
+<li><p>根据<span class="math inline">\(R^{(n)}\)</span>进行路由查找。</p></li>
+<li><p>根据<span class="math inline">\(W^{(n)}\)</span>求图的中心与中点</p>
+<ul>
+<li>中心：先找每行最大值，再找里面最小的；</li>
+<li>中点：先每行求和，再找里面最小的。</li>
+</ul></li>
+</ul>
+<p>例：利用F算法求v2到 v4的最短距离和正向路由，并求网的中心和中点。</p>
+<figure>
+<img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621213119808.png" srcset="/img/loading.gif" lazyload alt="例题解答"><figcaption aria-hidden="true">例题解答</figcaption>
+</figure>
+<p><span class="math inline">\(v_2\)</span>到<span class="math inline">\(v_4\)</span>的最短距离为4，正向路由为<span class="math inline">\(v_2\to v_1\to v_4\)</span>。</p>
+<h2 id="网络流量问题">3.网络流量问题</h2>
+<p>可行流的两个限制条件：</p>
+<ol type="1">
+<li><p>非负有界性：对任意边<span class="math inline">\(e_{i,j}\)</span>有，<span class="math inline">\(0\le f_{i,j}\le c_{i,j}\)</span></p></li>
+<li><p>连续性：对任意端<span class="math inline">\(v_t\)</span>有， <span class="math display">\[
+\sum_{(i,j)\in E}^{}f_{ij}-\sum_{(j,i)\in E}^{}f_{ji}=\begin{cases}
+F &amp;\text{$v_i$为源端$v_s$}\\
+-F &amp;\text{$v_i$为源端$v_t$}\\
+0 &amp;\text{其他}\\
+\end{cases}
+\]</span></p></li>
+</ol>
+<p>割量<span class="math inline">\(C(X,X^c)\)</span>定义为这个割集中所有边容量的和。</p>
+<p>对于某条流，若在某条路中，前向边均不饱和（<span class="math inline">\(f_{i,j}&lt;c_{i,j}\)</span>），反向边均有非0流量（<span class="math inline">\(f_{j,j}\not=0\)</span>），称这条路为<strong>可增流路</strong>。</p>
+<h3 id="最大流问题m算法">3.1 最大流问题—M算法</h3>
+<p>例：利用M算法计算下图的最大流结果</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621215552636.png" srcset="/img/loading.gif" lazyload alt="题目所给网络" style="zoom:80%;"></p>
+<p>①标<span class="math inline">\(V_S(+,S,\infty)\)</span></p>
+<p>查<span class="math inline">\(V_S\)</span>：标<span class="math inline">\(V_A(+,S,5)\)</span>，标<span class="math inline">\(V_B(+,S,4)\)</span>，<span class="math inline">\(V_S\)</span>已查</p>
+<p>查<span class="math inline">\(V_A\)</span>：标<span class="math inline">\(V_C(+,A,5)\)</span>，<span class="math inline">\(V_A\)</span>已查</p>
+<p>查<span class="math inline">\(V_C\)</span>：标<span class="math inline">\(V_T(+,C,5)\)</span></p>
+<p>增流：<span class="math inline">\(f_{SA}=5,f_{AC}=5,f_{CT}=5\)</span></p>
+<p>②重标<span class="math inline">\(V_S(+,S,\infty)\)</span></p>
+<p>查<span class="math inline">\(V_S\)</span>：标<span class="math inline">\(V_B(+,S,4)\)</span>，<span class="math inline">\(V_S\)</span>已查</p>
+<p>查<span class="math inline">\(V_B\)</span>：标<span class="math inline">\(V_C(+,B,4)\)</span>，标<span class="math inline">\(V_D(+,B,4)\)</span>，<span class="math inline">\(V_B\)</span>已查</p>
+<p>查<span class="math inline">\(V_C\)</span>：标<span class="math inline">\(V_T(+,C,3)\)</span></p>
+<p>增流：<span class="math inline">\(f_{SB}=3,f_{BC}=3,f_{CT}=3\)</span></p>
+<p>③重标<span class="math inline">\(V_S(+,S,\infty)\)</span></p>
+<p>查<span class="math inline">\(V_S\)</span>：标<span class="math inline">\(V_B(+,S,1)\)</span>，<span class="math inline">\(V_S\)</span>已查</p>
+<p>查<span class="math inline">\(V_B\)</span>：标<span class="math inline">\(V_C(+,B,1)\)</span>，标<span class="math inline">\(V_D(+,B,1)\)</span>，<span class="math inline">\(V_B\)</span>已查</p>
+<p>查<span class="math inline">\(V_C\)</span>：标<span class="math inline">\(V_T(+,D,1)\)</span></p>
+<p>增流：<span class="math inline">\(f_{SB}=3+1,f_{BD}=1,f_{DT}=1\)</span></p>
+<p>故最大可行流为5+3+1=9。</p>
+<h3 id="最小费用流问题负价环法算法">3.2 最小费用流问题—负价环法算法</h3>
+<p>例：图(a)为该通信网，一个可行流安排如图(b)，求最小费用流的流量安排。</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621222102785.png" srcset="/img/loading.gif" lazyload alt="图(a)" style="zoom: 67%;"></p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621222213322.png" srcset="/img/loading.gif" lazyload alt="图(b)" style="zoom:67%;"></p>
+<ol type="1">
+<li><p>图(b)的总费用为54，其补图为图(c)：</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120016583.png" srcset="/img/loading.gif" lazyload alt="图(c)" style="zoom:67%;"></p>
+<p>找到负圈(B,C,T,D)，沿其增流2单位，总费用减2×(-1)=-2</p>
+<p>可行流为图(d)：</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621223124406.png" srcset="/img/loading.gif" lazyload alt="图(d)" style="zoom:67%;"></p></li>
+<li><p>图(d)的补图为图(e)：</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120102209.png" srcset="/img/loading.gif" lazyload alt="图(e)" style="zoom:67%;"></p>
+<p>找到负圈(A,C,B,S)，沿其增流1单位，总费用减1×(-1)=-1。</p>
+<p>可行流为图(f)：</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120152137.png" srcset="/img/loading.gif" lazyload alt="图(f)" style="zoom:67%;"></p></li>
+<li><p>图(f)的补图为图(g)：</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230622120218809.png" srcset="/img/loading.gif" lazyload alt="图(g)" style="zoom:67%;"></p>
+<p>已找不到负圈，最小费用为51。</p></li>
+</ol>
+<h1 id="五网络可靠性分析">五、网络可靠性分析</h1>
+<h2 id="可靠性理论基础">1.可靠性理论基础</h2>
+<h3 id="寿命分布和失效率函数">1.1 寿命分布和失效率函数</h3>
+<h3 id="寿命分布和可靠度">1.1.1 寿命分布和可靠度</h3>
+<p>首先，考虑子系统的可靠性特点，然后考虑子系统依照不同方法构成的大系统的可靠性。</p>
+<p>对于简单系统，假设它仅包含两个状态：正常和故障。如果用一个非负随机变量X来描述系统的寿命，X相应的分布函数为：</p>
+<p><span class="math display">\[
+F(t)=P\{X \le t \}
+\]</span> 有了寿命分布，就知道了在时刻t以前都正常的概率： <span class="math display">\[
+R(t)=P\{X &gt; t \}=1-F(t)
+\]</span> 而R(t)表示系统的可靠度函数或可靠度。</p>
+<p>平均寿命为： <span class="math display">\[
+E(X)=\int_{0}^{\infty}R(t)dt
+\]</span></p>
+<h4 id="失效率函数">1.1.2 失效率函数</h4>
+<p>设系统的寿命为非负连续型随机变量，其分布函数为F(t)，密度函数为f(t)，定义失效率函数如下： <span class="math display">\[
+对任意t,F(t)&lt;1, 失效率函数（简称失效率）:r(t)=\frac{f(t)}{1-F(t)}
+\]</span> 因系统在t时刻正常，在(t,t+△t]中失效的概率为： <span class="math display">\[
+P\{X \le t+\varDelta t|X&gt;t\}\frac{F(t+\varDelta t)-F(t)}{1-F(t)} \sim\frac{f(t)\varDelta t}{1-F(t)}=r(t)\varDelta t
+\]</span> 当△t很小时，r(t)△t表示在(t,t+△t]中失效的概率。</p>
+<p>下图中表示了典型的失效率函数，也被称之为浴盆曲线：</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615113134324.png" srcset="/img/loading.gif" lazyload alt="浴盆曲线" style="zoom: 67%;"></p>
+<h3 id="不可修复系统和可修复系统">1.2 不可修复系统和可修复系统</h3>
+<p>如果一个子系统在故障后，不再修复，这个子系统称之为不可修复系统。</p>
+<p>如果一个子系统在故障后，经历一段时间，修复又重新使用，如此循环往复，这种系统称之为可修复系统。</p>
+<p>可修复系统和不可修复系统的区分并不是绝对的，在一定条件下它们可以相互转换。</p>
+<h4 id="不可修复系统">1.2.1 不可修复系统</h4>
+<p>对于不可修复系统，可靠性的重要指标为其寿命分布X和可靠度函数R(t)。若失效率函数为常数α，X服从负指数分布，则 <span class="math display">\[
+R(t)=P\{X&gt;t\}=e^{-\alpha t}
+\]</span> 不可修复系统的平均寿命记为MTTF， <span class="math display">\[
+MTTF=\frac{1}{\alpha}
+\]</span> 一般地，系统的失效率函数不为常数，设为r(t)，则可靠度： <span class="math display">\[
+R(t)=e^{-\int_{0}^{t}r(x)dx}
+\]</span></p>
+<h4 id="可修复系统">1.2.2 可修复系统</h4>
+<p>对于可修复系统，系统处于故障、正常的循环交替中。系统的可靠度有时也被称为<strong>可用度</strong>，它表示在总时间中有多少比例的时间系统处于正常状态，其可靠度R应与时间t无关， <span class="math display">\[
+R=\frac{正常时间}{总时间}
+\]</span></p>
+<h4 id="平均故障间隔时间mtbf和平均修复时间mttr">1.2.3 平均故障间隔时间MTBF和平均修复时间MTTR</h4>
+<p>可修复系统在故障之后，其修复时间的分布有多种类型。</p>
+<p>下面假设系统的修复时间为参数β的负指数分布，系统正常工作时间为参数α的负指数分布，若R(t)为可靠度函数，则 <span class="math display">\[
+R(t)=\frac{\beta}{\alpha+\beta}+\frac{\alpha}{\alpha+\beta}e^{-(\alpha+\beta)t}
+\]</span></p>
+<p><span class="math display">\[
+在t\rightarrow\infty时,R(t)=R=\frac{\beta}{\alpha+\beta}或\frac{\frac{1}{\alpha}}{\frac{1}{\alpha}+\frac{1}{\beta}}
+\]</span></p>
+<p>1/α为平均故障间隔时间，一般记为MTBF；</p>
+<p>1/β为平均修复时间，一般记为MTTR。</p>
+<p>同时β也被称为修复率。</p>
+<p>对于可修复系统可以利用实测数据来估计它的可用度；而对于不可修复系统，容易根据实测数据获得可靠度的估计值，从而得到寿命分布函数。</p>
+<h3 id="复杂系统的可靠度">1.3 复杂系统的可靠度</h3>
+<p>子系统可以依照不同的方法构成大系统，最简单的如串接、并接。在下图中分别表示了串接、并接系统。</p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230615143534212.png" srcset="/img/loading.gif" lazyload alt="串接、并接系统" style="zoom: 67%;"></p>
+<p>如果n个子系统只要有一个子系统故障，整个系统就故障，n个子系统就构成一个串接系统。</p>
+<p>如果n个子系统只要有一个子系统正常，整个系统就正常，n个子系统就构成一个并接系统。</p>
+<h5 id="独立系统可靠度计算">独立系统可靠度计算:</h5>
+<p>当各个子系统独立时，串、并接系统的可靠度分别计算如下： <span class="math display">\[
+R_串=\prod_{i=1}^{n}R_i
+\]</span></p>
+<p><span class="math display">\[
+R_并=1-\prod_{i=1}^{n}(1-R_i)
+\]</span></p>
+<p>已知各子系统的可靠度R<sub>i</sub>总是小于1的，则串接系统的可靠度必小于任一子系统的可靠度。串接子系统愈多，可靠度也将愈小。</p>
+<p>并接系统中的子系统愈多，系统的可靠度愈高。实际上这是采用备用系统的结果。备用系统愈多，当然愈不会失效。</p>
+<h5 id="不可修复子系统的串接">不可修复子系统的串接：</h5>
+<p>例如一个系统是由n个不可修复的子系统组成的串接系统，各子系统均相同，失效率均为α，或平均寿命均为1/α，则此系统的可靠度将为：<span class="math inline">\(R(t)=e^{-nat}\)</span> 其平均寿命将为1/nα，即缩短到1/n。</p>
+<p>当各不可修复的子系统有不同失效率α<sub>r</sub>时，可得全系统的可靠度为：<span class="math inline">\(R(t)=e^{-t\sum_{r=1}^{n}\alpha_r}\)</span></p>
+<p>平均寿命为： <span class="math display">\[
+T=\frac{1}{\sum_{r=1}^{n}\alpha_r}
+\]</span> 等效失效率为：<span class="math inline">\(\alpha=1/T\)</span></p>
+<h5 id="非独立系统可靠度">非独立系统可靠度：</h5>
+<p>n个子系统串接形成一个系统，每个子系统为可修复系统，其可靠度为<span class="math inline">\(\frac{\beta_i}{\alpha_i+\beta_i}\)</span>，但当某个子系统故障时，别的子系统停顿，等故障子系统修复后，其它子系统继续一起工作，求系统可靠度R。</p>
+<p>若第r个子系统失效，平均修复时间为：<span class="math inline">\(1/\beta_r\)</span></p>
+<p>各子系统的失效概率应与它的失效率α<sub>r</sub>成正比，第r个系统失效的概率为： <span class="math display">\[
+p_r=\frac{\alpha_r}{\sum_{k=1}^{n}\alpha_k}
+\]</span> 全系统的平均修复时间为： <span class="math display">\[
+MTTR=\sum_{r=1}^{n}\frac{p_r}{\beta_r}=\frac{\sum_{r=1}^{n}\frac{\alpha_r}{\beta_r}}{\sum_{r=1}^{n}\alpha_r}
+\]</span> 平均故障间隔时间为： <span class="math display">\[
+MTBF=\frac{1}{\sum_{r=1}^{n}\alpha_r}
+\]</span> 全系统的可靠度为： <span class="math display">\[
+R&#39;=\frac{MTBF}{MTBF+MTTR}=\frac{1}{1+\sum_{r=1}^{n}\frac{\alpha_r}{\beta_r}}
+\]</span> 各子系统独立时的可靠度： <span class="math display">\[
+R=\prod_{r=1}^{n}\frac{\beta_r}{\alpha_r+\beta_r}=\frac{1}{\prod_{r=1}^{n}(1+\frac{\alpha_r}{\beta_r})}
+\]</span> 许多子系统停止了不必要的运行：R'&gt;R <span class="math display">\[
+\prod_{r=1}^{n}(1+\frac{\alpha_r}{\beta_r})&gt;1+\sum_{r=1}^{n}\frac{\alpha_r}{\beta_r}
+\]</span></p>
+<h5 id="不可修复子系统的并接">不可修复子系统的并接：</h5>
+<p>若各子系统都是不可修复的，全系统的可靠度为： <span class="math display">\[
+R(t)=1-\prod_{i=1}^{n}[1-R_r(t)]=1-\prod_{i=1}^{n}(1-e^{-\alpha_rt})=\sum_{r=1}^{n}e^{-\alpha_rt}-\sum_{r_1\not=r_2}^{}e^{-(\alpha_{r1}+\alpha_{r2})t}+\sum_{r_1\not=r_2\not=r_3}^{}e^{-(\alpha_{r1}+\alpha_{r2}+\alpha_{r3})t}-...
+\]</span> 平均寿命为：<span class="math inline">\(T=\sum_{r=1}^{n}\frac{1}{\alpha_r}-\sum_{r_1\not=r_2}^{}\frac{1}{\alpha_{r1}+\alpha_{r2}}+...\)</span></p>
+<p>若各子系统的失效率均为α，则平均寿命为：<span class="math inline">\(T=\frac{n}{\alpha}-\frac{1}{2\alpha}C_n^2+\frac{1}{3\alpha}C_n^3-...+(-1)^n\frac{1}{n\alpha}\)</span></p>
+<h2 id="网络可靠度的计算">2.网络可靠度的计算</h2>
+<p>若考虑连通无向图G=(V,E)，<strong>点连通度α</strong>与<strong>线连通度β</strong>反映了图的可靠性大小，下面再定义一个混合连通度γ，其定义如下</p>
+<p><span class="math inline">\(γ=min|X|\)</span>，其中X为混合割集。则<span class="math inline">\(\alpha=\gamma\le \beta\le \delta\le \frac{2m}{n}\)</span></p>
+<p>为了更加细致地描述图的可靠性，引入三个辅助指标。它们的定义如下：</p>
+<ul>
+<li>C<sub>α</sub> = 最小割端集的数目；</li>
+<li>B<sub>β</sub> = 最小割边集的数目；</li>
+<li>A<sub>γ</sub> = 最小混合割集的数目；</li>
+</ul>
+<p>例题：<img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230044115.png" srcset="/img/loading.gif" lazyload alt="题目" style="zoom:80%;"></p>
+<p>解：</p>
+<figure>
+<img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230104150.png" srcset="/img/loading.gif" lazyload alt="端和边的个数"><figcaption aria-hidden="true">端和边的个数</figcaption>
+</figure>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230218619.png" srcset="/img/loading.gif" lazyload alt="混合割集" style="zoom:80%;"> <span class="math display">\[
+\alpha=3,\beta=3,\gamma=3
+\]</span></p>
+<p><span class="math display">\[
+C_\alpha=60,B_\beta=60,A_\gamma=60+60+60*3+90*2=480
+\]</span></p>
+<p><img src="/2023/06/15/%E9%80%9A%E4%BF%A1%E7%BD%91%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/image-20230621230502255.png" srcset="/img/loading.gif" lazyload alt="近似可靠度" style="zoom: 50%;"></p>
+<h2 id="网络综合可靠度">3.网络综合可靠度</h2>
+<p><strong>通信网的各种连通度以及一些辅助指标</strong>，这些指标仅仅依赖于拓扑结构，是对可靠性的<strong>确定性度量</strong>。</p>
+<p>为了<strong>进一步</strong>分析网络的可靠度，需要考虑<strong>网络承载的业务</strong>。</p>
+<p>考虑<strong>故障因素</strong>的电话网络平均呼损也可被称之为<strong>综合不可靠度</strong>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/" class="category-chain-item">专业课程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%9A%E4%BF%A1%E7%BD%91%EF%BC%8C%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83%EF%BC%8C%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">#通信网，泊松分布，数学建模</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>通信网性能分析</div>
+      <div>http://example.com/2023/06/15/通信网性能分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Faceless-person</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年6月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/" title="考研数学">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">考研数学</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" title="生物信息学">
+                        <span class="hidden-mobile">生物信息学</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
