@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/image-20240117114157948.png">
 <meta property="og:image" content="http://example.com/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/image-20240117114800996.png">
 <meta property="article:published_time" content="2023-12-25T13:15:55.000Z">
-<meta property="article:modified_time" content="2024-01-17T04:35:50.689Z">
+<meta property="article:modified_time" content="2024-01-18T04:02:26.379Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="考研，高等数学，线性代数，概率论与数理统计">
 <meta name="twitter:card" content="summary_large_image">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k 字
+          13k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          85 分钟
+          110 分钟
         
       </span>
     
@@ -279,6 +279,7 @@
               <div class="markdown-body">
                 
                 <p>2024/1/12 13:40 这些知识点是真题中的易错点，是在我做完1998到2023年的数一真题，总结出我在真题中做错的题目所涉及的知识点，大多数是因为相应知识点记不熟或者理解不到位，如果能将下面的知识点记牢，对提升数学成绩有很大帮助。</p>
+<p>2024/1/18 10:24 我的建议是在完成数学前两轮复习后，准备开始做真题前再开始看这份知识点整理。</p>
 <h1 id="一高等数学">一、高等数学</h1>
 <h2 id="数列极限">1.数列极限</h2>
 <h3 id="数学归纳法">1.1 数学归纳法</h3>
@@ -351,6 +352,8 @@ A\Delta x=\begin{cases}dy \\d[f(x)]\\微分(\Delta x的微分)\\线性主部(\De
 <p>令<span class="math inline">\(f_x&#39;(x_0,y_0)=A,f_y&#39;(x_0,y_0)=B\)</span>，若<span class="math inline">\(\lim\limits_{\varDelta x \to 0,\varDelta y \to 0}\frac{f(x_0+\varDelta x,y_0+\varDelta y)-f(x_0,y_0)-A\varDelta x-B\varDelta y}{\sqrt{\varDelta x ^2+\varDelta y^2}}=0\)</span>，则<span class="math inline">\(f(x,y)\)</span>在<span class="math inline">\((x_0,y_0)\)</span>可微</p>
 <h3 id="可微可导与连续的关系">4.3 可微、可导与连续的关系</h3>
 <p><img src="/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/image-20240117110110925.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="结论-3">4.4 结论</h3>
+<p>二阶偏导数连续<span class="math inline">\(\to \frac{\partial^2 f}{\partial u\partial v}=\frac{\partial^2 f}{\partial v\partial u}\)</span></p>
 <h2 id="微分方程">5.微分方程</h2>
 <h3 id="伯努利方程">5.1 伯努利方程</h3>
 <p>能写成<span class="math inline">\(y&#39;+p(x)y=q(x)y^n(n≠0，1)\)</span>：</p>
@@ -523,9 +526,105 @@ dS
 <li><p><span class="math inline">\(Pi+Qj\)</span>为某二元函数<span class="math inline">\(u(x,y)\)</span>的梯度</p></li>
 <li><p><span class="math inline">\(\frac{\partial P}{\partial y}\equiv\frac{\partial Q}{\partial x}\)</span>在<span class="math inline">\(D\)</span>内处处成立：</p>
 <p>由4推6，<span class="math inline">\(\because u&#39;&#39;_{xy}=u&#39;&#39;_{yx}\)</span>又<span class="math inline">\(\because \frac{\partial P}{\partial y}=u&#39;&#39;_{xy},\frac{\partial Q}{\partial x}=u&#39;&#39;_{yx}\)</span></p>
-<p>​ <span class="math inline">\(\therefore \frac{\partial P}{\partial y}\equiv\frac{\partial Q}{\partial x}\)</span></p>
-<p>​</p></li>
+<p>​ <span class="math inline">\(\therefore \frac{\partial P}{\partial y}\equiv\frac{\partial Q}{\partial x}\)</span></p></li>
 </ol>
+<h1 id="二线性代数">二、线性代数</h1>
+<h2 id="行列式">1.行列式</h2>
+<h3 id="拉普拉斯展开式">1.1 拉普拉斯展开式</h3>
+<p><span class="math display">\[
+\begin{vmatrix}
+A &amp; *\\
+O &amp; B
+\end{vmatrix}=
+\begin{vmatrix}
+A &amp; O\\
+* &amp; B
+\end{vmatrix}=|A|·|B|
+\]</span></p>
+<p><span class="math display">\[
+\begin{vmatrix}
+O &amp; A\\
+B &amp; *
+\end{vmatrix}=
+\begin{vmatrix}
+* &amp; A\\
+B &amp; O
+\end{vmatrix}=(-1)^{mn}|A|·|B|
+\]</span></p>
+<h3 id="克拉默法则">1.2 克拉默法则</h3>
+<p>若<span class="math inline">\(n\)</span>个方程<span class="math inline">\(n\)</span>个未知数的线性方程组<span class="math inline">\(\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2 \\\cdots \\ a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=b_n \end{cases}\)</span>的系数行列式<span class="math inline">\(D=\begin{vmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp;\ddots &amp; \vdots\\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix}≠0\)</span>，</p>
+<p>则方程组有唯一解：<span class="math inline">\(x_1=\frac{D_1}{D},x_2=\frac{D_2}{D},\cdots,x_n=\frac{D_n}{D}\)</span></p>
+<p>其中<span class="math inline">\(D_j=\begin{vmatrix} a_{11} &amp;\cdots &amp; a_{1,j-1}&amp; b_1 &amp; a_{1,j+1}&amp; \cdots &amp; a_{1n}\\ a_{21} &amp;\cdots &amp; a_{2,j-1}&amp; b_2 &amp; a_{2,j+1}&amp; \cdots &amp; a_{2n} \\ \vdots &amp; &amp; \vdots &amp; \vdots &amp; \vdots &amp; &amp;\vdots\\ a_{n1} &amp;\cdots &amp; a_{n,j-1}&amp; b_n &amp; a_{n,j+1}&amp; \cdots &amp; a_{nn}\end{vmatrix}\)</span></p>
+<h2 id="矩阵">2.矩阵</h2>
+<h3 id="分块矩阵的初等行列变换">2.1 分块矩阵的初等行（列）变换</h3>
+<p>交换分块矩阵中的某两个块行（列）；</p>
+<p>用某个<mark><span class="math inline">\(可逆矩阵\)</span></mark>左（右）乘分块矩阵的某块行（列）；</p>
+<p>用一个矩阵<mark><span class="math inline">\(左\)</span></mark>（右）乘某个块<mark><span class="math inline">\(行\)</span></mark>（列）之后加到另一个块<mark><span class="math inline">\(行\)</span></mark>（列）。</p>
+<h3 id="伴随矩阵的秩">2.2 伴随矩阵的秩</h3>
+<p><span class="math display">\[
+r(A^*)=\begin{cases}
+n, &amp;r(A)=n\\
+1, &amp;r(A)=n-1\\
+0, &amp;r(A)&lt;n-1\\
+\end{cases}
+\]</span></p>
+<h3 id="初等矩阵的逆变换">2.3 初等矩阵的逆变换</h3>
+<p><span class="math display">\[
+E_i^{-1}(k)=E_i(\frac{1}{k}),例:D = \begin{bmatrix}
+1 &amp; &amp;\\
+ &amp; 1&amp;\\&amp;&amp;2
+\end{bmatrix}^{-1}=D = \begin{bmatrix}
+1 &amp; &amp;\\
+ &amp; 1&amp;\\&amp;&amp;\frac{1}{2}
+\end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+E_{ij}^{-1}(k)=E_{ij}(-k),例:D = \begin{bmatrix}
+1 &amp;0 &amp;0\\
+2 &amp; 1&amp;0\\0&amp;0&amp;1
+\end{bmatrix}^{-1}=D = \begin{bmatrix}
+1 &amp;0 &amp;0\\
+-2 &amp; 1&amp;0\\0&amp;0&amp;1
+\end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+E_{ij}^{-1}=E_{ij},例:D = \begin{bmatrix}
+1 &amp;0 &amp;0\\
+0 &amp; 0&amp;1\\0&amp;1&amp;0
+\end{bmatrix}^{-1}=D = \begin{bmatrix}
+1 &amp;0 &amp;0\\
+0 &amp; 0&amp;1\\0&amp;1&amp;0
+\end{bmatrix}
+\]</span></p>
+<h2 id="n维向量">3.<span class="math inline">\(n\)</span>维向量</h2>
+<h3 id="向量空间">3.1 向量空间</h3>
+<h4 id="过渡矩阵">3.1.1 过渡矩阵</h4>
+<p><span class="math display">\[
+\begin{bmatrix}\beta_1 &amp; \beta_2 &amp; \beta_3\end{bmatrix}=\begin{bmatrix}\alpha_1 &amp; \alpha_2 &amp; \alpha_3\end{bmatrix}C
+\]</span></p>
+<p>称矩阵<span class="math inline">\(C\)</span>为由基<span class="math inline">\(\alpha_1\alpha_2\alpha_3\)</span>到<span class="math inline">\(\beta_1\beta_2\beta_3\)</span>的过渡矩阵。</p>
+<h4 id="坐标变换公式">3.1.2 坐标变换公式</h4>
+<p><span class="math display">\[
+\begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix}=C\begin{bmatrix}y_1 \\ y_2 \\ y_3\end{bmatrix}
+\]</span></p>
+<p>其中<span class="math inline">\(x\)</span>是<span class="math inline">\(\gamma\)</span>在基<span class="math inline">\(\alpha\)</span>的坐标，其中<span class="math inline">\(y\)</span>是<span class="math inline">\(\gamma\)</span>在基<span class="math inline">\(\beta\)</span>的坐标。</p>
+<h2 id="特征值与特征向量">5.特征值与特征向量</h2>
+<h3 id="注意">5.1 注意</h3>
+<p>求特征向量时，结果前要乘k，表示全部的特征向量。</p>
+<h3 id="注意-1">5.2 注意</h3>
+<p>证明<span class="math inline">\(A,B\)</span>相似，首先要证明<span class="math inline">\(A,B\)</span>可相似对角化。</p>
+<h2 id="二次型">6.二次型</h2>
+<h3 id="二次型的矩阵表示">6.1 二次型的矩阵表示</h3>
+<p><span class="math inline">\(f(x_1,x_2,\cdots,x_n)=\cdots\)</span>称为<span class="math inline">\(n\)</span>元二次型；二次型有矩阵表示： <span class="math display">\[
+f(x_1,x_2,\cdots,x_n)=x^TAx
+\]</span> 其中<span class="math inline">\(x\)</span>是<span class="math inline">\(n\)</span>维列向量，<span class="math inline">\(A\)</span>是实对称矩阵，称<span class="math inline">\(A\)</span>为二次型的矩阵，秩<span class="math inline">\(r(A)\)</span>称为二次型的秩。</p>
+<h3 id="一些曲面">6.2 一些曲面</h3>
+<p>单叶双曲面：<span class="math inline">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1\)</span></p>
+<p>双叶双曲面：<span class="math inline">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=-1\)</span></p>
+<h3 id="施密特正交化">6.3 施密特正交化</h3>
+<p><span class="math inline">\(\beta_1=\alpha_1\)</span></p>
+<p><span class="math inline">\(\beta_2=\alpha_2-\frac{(\alpha_2,\beta_1)}{(\beta_1,\beta_1)}·\beta_1\)</span></p>
+<p><span class="math inline">\(\beta_3=\alpha_3-\frac{(\alpha_3,\beta_1)}{(\beta_1,\beta_1)}·\beta_1-\frac{(\alpha_3,\beta_2)}{(\beta_2,\beta_2)}·\beta_2\)</span></p>
 
                 
               </div>
