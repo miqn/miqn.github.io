@@ -27,9 +27,12 @@
 <meta property="og:image" content="http://example.com/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/image-20240117114157948.png">
 <meta property="og:image" content="http://example.com/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/image-20240117114800996.png">
 <meta property="article:published_time" content="2023-12-25T13:15:55.000Z">
-<meta property="article:modified_time" content="2024-01-18T04:02:26.379Z">
+<meta property="article:modified_time" content="2024-01-26T04:38:41.552Z">
 <meta property="article:author" content="Faceless-person">
-<meta property="article:tag" content="考研，高等数学，线性代数，概率论与数理统计">
+<meta property="article:tag" content="考研">
+<meta property="article:tag" content="高等数学">
+<meta property="article:tag" content="线性代数">
+<meta property="article:tag" content="概率论与数理统计">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/image-20240117110110925.png">
   
@@ -224,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          15k 字
         
       </span>
     
@@ -235,7 +238,7 @@
         
         
         
-          110 分钟
+          124 分钟
         
       </span>
     
@@ -552,9 +555,17 @@ B &amp; O
 \end{vmatrix}=(-1)^{mn}|A|·|B|
 \]</span></p>
 <h3 id="克拉默法则">1.2 克拉默法则</h3>
-<p>若<span class="math inline">\(n\)</span>个方程<span class="math inline">\(n\)</span>个未知数的线性方程组<span class="math inline">\(\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2 \\\cdots \\ a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=b_n \end{cases}\)</span>的系数行列式<span class="math inline">\(D=\begin{vmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp;\ddots &amp; \vdots\\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix}≠0\)</span>，</p>
+<p>若<span class="math inline">\(n\)</span>个方程<span class="math inline">\(n\)</span>个未知数的线性方程组<span class="math inline">\(\begin{cases}a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2 \\\cdots \\ a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=b_n \end{cases}\)</span></p>
+<p>的系数行列式<span class="math inline">\(D=\begin{vmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp;\ddots &amp; \vdots\\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\end{vmatrix}≠0\)</span>，</p>
 <p>则方程组有唯一解：<span class="math inline">\(x_1=\frac{D_1}{D},x_2=\frac{D_2}{D},\cdots,x_n=\frac{D_n}{D}\)</span></p>
 <p>其中<span class="math inline">\(D_j=\begin{vmatrix} a_{11} &amp;\cdots &amp; a_{1,j-1}&amp; b_1 &amp; a_{1,j+1}&amp; \cdots &amp; a_{1n}\\ a_{21} &amp;\cdots &amp; a_{2,j-1}&amp; b_2 &amp; a_{2,j+1}&amp; \cdots &amp; a_{2n} \\ \vdots &amp; &amp; \vdots &amp; \vdots &amp; \vdots &amp; &amp;\vdots\\ a_{n1} &amp;\cdots &amp; a_{n,j-1}&amp; b_n &amp; a_{n,j+1}&amp; \cdots &amp; a_{nn}\end{vmatrix}\)</span></p>
+<h3 id="代数余子式">1.3 代数余子式</h3>
+<p><span class="math display">\[
+A_{ij}=(-1)^{i+j}M_{ij}
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(A_{ij}\)</span>是代数余子式，<span class="math inline">\(M_{ij}\)</span>是余子式</p>
+</blockquote>
 <h2 id="矩阵">2.矩阵</h2>
 <h3 id="分块矩阵的初等行列变换">2.1 分块矩阵的初等行（列）变换</h3>
 <p>交换分块矩阵中的某两个块行（列）；</p>
@@ -596,6 +607,14 @@ E_{ij}^{-1}=E_{ij},例:D = \begin{bmatrix}
 0 &amp; 0&amp;1\\0&amp;1&amp;0
 \end{bmatrix}
 \]</span></p>
+<h3 id="矩阵的秩">2.4 矩阵的秩</h3>
+<ol type="1">
+<li><span class="math inline">\(r(A)=r(A^T)\)</span>，<span class="math inline">\(r(A^TA)=r(A)\)</span></li>
+<li><span class="math inline">\(r(A+B)\le r(A)+r(B)\)</span></li>
+<li><span class="math inline">\(r(AB)\le min\{r(A),r(B)\}\)</span>，若<span class="math inline">\(A\)</span>可逆，则<span class="math inline">\(r(AB)=r(B)\)</span>，<span class="math inline">\(r(BA)=r(B)\)</span></li>
+<li>若<span class="math inline">\(A\)</span>是<span class="math inline">\(m\times n\)</span>矩阵，<span class="math inline">\(B\)</span>是<span class="math inline">\(n\times\)</span> s矩阵，<span class="math inline">\(AB=O\)</span>，则<span class="math inline">\(r(A)+r(B)\le n\)</span></li>
+<li></li>
+</ol>
 <h2 id="n维向量">3.<span class="math inline">\(n\)</span>维向量</h2>
 <h3 id="向量空间">3.1 向量空间</h3>
 <h4 id="过渡矩阵">3.1.1 过渡矩阵</h4>
@@ -608,23 +627,92 @@ E_{ij}^{-1}=E_{ij},例:D = \begin{bmatrix}
 \begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix}=C\begin{bmatrix}y_1 \\ y_2 \\ y_3\end{bmatrix}
 \]</span></p>
 <p>其中<span class="math inline">\(x\)</span>是<span class="math inline">\(\gamma\)</span>在基<span class="math inline">\(\alpha\)</span>的坐标，其中<span class="math inline">\(y\)</span>是<span class="math inline">\(\gamma\)</span>在基<span class="math inline">\(\beta\)</span>的坐标。</p>
-<h2 id="特征值与特征向量">5.特征值与特征向量</h2>
-<h3 id="注意">5.1 注意</h3>
+<h2 id="特征值与特征向量">4.特征值与特征向量</h2>
+<h3 id="注意">4.1 注意</h3>
 <p>求特征向量时，结果前要乘k，表示全部的特征向量。</p>
-<h3 id="注意-1">5.2 注意</h3>
+<h3 id="注意-1">4.2 注意</h3>
 <p>证明<span class="math inline">\(A,B\)</span>相似，首先要证明<span class="math inline">\(A,B\)</span>可相似对角化。</p>
-<h2 id="二次型">6.二次型</h2>
-<h3 id="二次型的矩阵表示">6.1 二次型的矩阵表示</h3>
+<h3 id="特征值与特征向量的变化规律">4.3 特征值与特征向量的变化规律</h3>
+<table>
+
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(A\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(kA+E\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A+kE\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A^{-1}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A^*\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A^n\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P^{-1}AP\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\lambda\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(k\lambda+1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda+k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{1}{\lambda}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{|A|}{\lambda}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda^n\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\lambda\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(P^{-1}\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><span class="math inline">\(\lambda\)</span>变<span class="math inline">\(\alpha 不变\)</span>，<span class="math inline">\(\lambda\)</span>不变<span class="math inline">\(\alpha 变\)</span>。</p>
+</blockquote>
+<h3 id="特征多项式是lambda-e-a">4.4 特征多项式是<span class="math inline">\(|\lambda E-A|\)</span></h3>
+<p>例：<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>是同阶方阵，如果<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>相似，试证<span class="math inline">\(A\)</span>、<span class="math inline">\(B\)</span>的特征多项式相等。</p>
+<p>证：<span class="math inline">\(\because A,B\)</span>相似</p>
+<p>​ <span class="math inline">\(\therefore P^{-1}AP=B\)</span></p>
+<p>​ <span class="math inline">\(\therefore |\lambda E-B|=|\lambda E-P^{-1}AP|=|P^{-1}\lambda EP-P^{-1}AP|=|P^{-1}(\lambda E-A)P|=|\lambda E-A|\)</span></p>
+<h2 id="二次型">5.二次型</h2>
+<h3 id="二次型的矩阵表示">5.1 二次型的矩阵表示</h3>
 <p><span class="math inline">\(f(x_1,x_2,\cdots,x_n)=\cdots\)</span>称为<span class="math inline">\(n\)</span>元二次型；二次型有矩阵表示： <span class="math display">\[
 f(x_1,x_2,\cdots,x_n)=x^TAx
 \]</span> 其中<span class="math inline">\(x\)</span>是<span class="math inline">\(n\)</span>维列向量，<span class="math inline">\(A\)</span>是实对称矩阵，称<span class="math inline">\(A\)</span>为二次型的矩阵，秩<span class="math inline">\(r(A)\)</span>称为二次型的秩。</p>
-<h3 id="一些曲面">6.2 一些曲面</h3>
+<h3 id="一些曲面">5.2 一些曲面</h3>
 <p>单叶双曲面：<span class="math inline">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1\)</span></p>
 <p>双叶双曲面：<span class="math inline">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=-1\)</span></p>
-<h3 id="施密特正交化">6.3 施密特正交化</h3>
+<h3 id="施密特正交化">5.3 施密特正交化</h3>
 <p><span class="math inline">\(\beta_1=\alpha_1\)</span></p>
 <p><span class="math inline">\(\beta_2=\alpha_2-\frac{(\alpha_2,\beta_1)}{(\beta_1,\beta_1)}·\beta_1\)</span></p>
 <p><span class="math inline">\(\beta_3=\alpha_3-\frac{(\alpha_3,\beta_1)}{(\beta_1,\beta_1)}·\beta_1-\frac{(\alpha_3,\beta_2)}{(\beta_2,\beta_2)}·\beta_2\)</span></p>
+<h3 id="合同变换和正定矩阵">5.4 合同变换和正定矩阵</h3>
+<p>两个<span class="math inline">\(n\)</span>阶矩阵<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>，如果存在可逆矩阵<span class="math inline">\(C\)</span>，使得<span class="math inline">\(C^TAC=B\)</span>，就称矩阵<span class="math inline">\(A\)</span>和<span class="math inline">\(B\)</span>合同，记作<span class="math inline">\(A\simeq B\)</span>，称<span class="math inline">\(C\)</span>为合同变换的矩阵。</p>
+<p>对二次型<span class="math inline">\(x^TAx\)</span>，如果对任何<span class="math inline">\(x≠0\)</span>，恒有<span class="math inline">\(x^TAx&gt;0\)</span>，则称二次型<span class="math inline">\(x^TAx\)</span>是正定二次型，并称实对称矩阵<span class="math inline">\(A\)</span>是正定矩阵。</p>
+<p><span class="math inline">\(n\)</span>元二次型<span class="math inline">\(x^TAx\)</span>正定的充要条件有：</p>
+<ol type="1">
+<li><span class="math inline">\(A\)</span>的正惯性指数是<span class="math inline">\(n\)</span>；</li>
+<li><span class="math inline">\(A\)</span>与<span class="math inline">\(E\)</span>合同，即存在可逆矩阵<span class="math inline">\(C\)</span>，使<span class="math inline">\(C^TAC=E\)</span>；</li>
+<li><span class="math inline">\(A\)</span>的所有特征值<span class="math inline">\(\lambda(i=1,2,\cdots,n)\)</span>均为正数；</li>
+<li><span class="math inline">\(A\)</span>的各阶顺序主子式均大于零。</li>
+</ol>
+<p>例：设<span class="math inline">\(A\)</span>为<span class="math inline">\(m\)</span>阶实对称矩阵且正定，<span class="math inline">\(B\)</span>为<span class="math inline">\(m\times n\)</span>实矩阵，<span class="math inline">\(B^T\)</span>为<span class="math inline">\(B\)</span>的转置矩阵，试证：<span class="math inline">\(B^TAB\)</span>为正定矩阵的充分必要条件是<span class="math inline">\(r(B)=n\)</span>。</p>
+<p>证：必要性：设<span class="math inline">\(B^TAB\)</span>为正定矩阵</p>
+<p>​ <span class="math inline">\(\therefore\)</span>对任意<span class="math inline">\(n\)</span>维列向量<span class="math inline">\(x≠0\)</span>，有<span class="math inline">\(x^TB^TABx&gt;0\)</span>，即<span class="math inline">\((Bx)^TA(Bx)&gt;0\)</span></p>
+<p>​ 又<span class="math inline">\(\because A\)</span>正定</p>
+<p>​ <span class="math inline">\(\therefore Bx≠0\)</span>，因此<span class="math inline">\(Bx=0\)</span>只有零解</p>
+<p>​ <span class="math inline">\(\therefore r(B)=n\)</span></p>
+<p>​ 充分性：设<span class="math inline">\(r(B)=n\)</span></p>
+<p>​ <span class="math inline">\(\because B^TAB=(B^TAB)^T=B^TAB\)</span></p>
+<p>​ <span class="math inline">\(\therefore B^TAB\)</span>为实对称矩阵</p>
+<p>​ <span class="math inline">\(\because r(B)=n\)</span></p>
+<p>​ <span class="math inline">\(\therefore Bx=0\)</span>只有零解</p>
+<p>​ <span class="math inline">\(\therefore\)</span>对任意<span class="math inline">\(n\)</span>维列向量<span class="math inline">\(x≠0\)</span>，都有<span class="math inline">\(Bx≠0\)</span></p>
+<p>​ <span class="math inline">\(\because A\)</span>正定</p>
+<p>​ <span class="math inline">\(\therefore (Bx)^TA(Bx)&gt;0\)</span>，即<span class="math inline">\(x^TB^TABx&gt;0\)</span></p>
+<p>​ <span class="math inline">\(\therefore B^TAB\)</span>为正定矩阵</p>
+<h1 id="三概率论与数理统计">三、概率论与数理统计</h1>
 
                 
               </div>
@@ -658,7 +746,13 @@ f(x_1,x_2,\cdots,x_n)=x^TAx
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%80%83%E7%A0%94%EF%BC%8C%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%EF%BC%8C%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%EF%BC%8C%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">#考研，高等数学，线性代数，概率论与数理统计</a>
+        <a href="/tags/%E8%80%83%E7%A0%94/">#考研</a>
+      
+        <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">#高等数学</a>
+      
+        <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">#线性代数</a>
+      
+        <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">#概率论与数理统计</a>
       
     </div>
   
