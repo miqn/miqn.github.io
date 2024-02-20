@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Faceless-person">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="视频教程杭州电子科技大学 移动通信公开课   一、移动通信基础知识 1.多址方式 多址方式就是用户间的资源分配。信号传输需要占用的资源包括频率、时间、空间、功率。 根据分配资源的不同，多址方式包含频分多址(FDMA)、时分多址(TDMA)、码分多址(CDMA)、空分多址(SDMA)、正交频分多址(OFDMA)、非正交多址(NOMA)这几类。  NOMA在5G中采用  FDM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动通信">
+<meta property="og:url" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/index.html">
+<meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="视频教程杭州电子科技大学 移动通信公开课   一、移动通信基础知识 1.多址方式 多址方式就是用户间的资源分配。信号传输需要占用的资源包括频率、时间、空间、功率。 根据分配资源的不同，多址方式包含频分多址(FDMA)、时分多址(TDMA)、码分多址(CDMA)、空分多址(SDMA)、正交频分多址(OFDMA)、非正交多址(NOMA)这几类。  NOMA在5G中采用  FDM">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218155752231.png">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218160118592.png">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218161407617.png">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240219103011167.png">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240219103435103.png">
+<meta property="article:published_time" content="2024-02-18T05:03:54.000Z">
+<meta property="article:modified_time" content="2024-02-20T12:39:38.631Z">
+<meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="通信原理">
+<meta property="article:tag" content="专业课程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218155752231.png">
+  
+  
+  
+  <title>移动通信 - Faceless_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Faceless_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="移动通信"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-18 13:03" pubdate>
+          2024年2月18日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">移动通信</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <ul>
+<li>视频教程<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/HDU-1464128174?tid=1471185461#/learn/content?type=detail&amp;id=1256070370&amp;cid=1288761743">杭州电子科技大学 移动通信公开课</a></li>
+<li></li>
+</ul>
+<h1 id="一移动通信基础知识">一、移动通信基础知识</h1>
+<h2 id="多址方式">1.多址方式</h2>
+<p>多址方式就是用户间的资源分配。信号传输需要占用的资源包括频率、时间、空间、功率。</p>
+<p>根据分配资源的不同，多址方式包含频分多址(FDMA)、时分多址(TDMA)、码分多址(CDMA)、空分多址(SDMA)、正交频分多址(OFDMA)、非正交多址(NOMA)这几类。</p>
+<blockquote>
+<p>NOMA在5G中采用</p>
+</blockquote>
+<p>FDMA的定义：在频域中一个相对窄带信道里，信号功率被集中起来传输，<strong>不同信号被分配到不同频率的信道</strong>，发往和来自邻近信道的干扰用带通滤波器限制，这样在规定的窄带里只能通过有用信号的能量，而任何其他频率的信号被排斥在外。</p>
+<figure>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218155752231.png" srcset="/img/loading.gif" lazyload alt="image-20240218155752231"><figcaption aria-hidden="true">image-20240218155752231</figcaption>
+</figure>
+<ul>
+<li>TDMA的定义：指一个信道由一连串周期性的时隙构成，<strong>不同信号被分配到不同的时隙里</strong>，利用定时选通来限制邻近信道的干扰，从而在规定时隙中只让有用的信号通过。</li>
+</ul>
+<figure>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218160118592.png" srcset="/img/loading.gif" lazyload alt="FDMA和TDMA相结合的多址方式"><figcaption aria-hidden="true">FDMA和TDMA相结合的多址方式</figcaption>
+</figure>
+<p>CDMA的定义：每一个信号被分配一个伪随机二进制序列进行扩频，<strong>不同信号的能量被分配到不同的伪随机序列里</strong>。</p>
+<blockquote>
+<p>不同用户所使用的码字是不同的，且是正交的。</p>
+</blockquote>
+<p>SDMA的定义：<strong>使得不同的用户信号占用不同的空间位置</strong>。不同用户信号的波束方向不同，避免了相互间的干扰。核心技术是智能天线，要求天线给每个用户分配一个点波束。</p>
+<blockquote>
+<p>处于不同位置的用户可以在同一时间使用同一频率和同一码型，而不会相互干扰。</p>
+</blockquote>
+<p>OFDMA的定义：</p>
+<ul>
+<li>是LTE系统中应用的多址方式，LTE是4G中采用的标准。</li>
+<li>OFDM技术将带宽划分为多个重叠但正交的子载波。</li>
+<li>而OFDMA将OFDM技术扩展到多用户，将不同的子载波分配给不同的用户。</li>
+<li>实际上，LTE中采用的是OFDMA与TDMA结合的多址方式。</li>
+</ul>
+<figure>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218161407617.png" srcset="/img/loading.gif" lazyload alt="image-20240218161407617"><figcaption aria-hidden="true">image-20240218161407617</figcaption>
+</figure>
+<p>NOMA的定义：是5G中提出的一种多址方式，该方式最大的特点是为<strong>不同信号分配的功率不同</strong>，通常要结合接收端信号处理技术来消除干扰。</p>
+<p>为什么要引入NOMA？</p>
+<ul>
+<li><p>非正交多址技术（NOMA）的<strong>基本思想</strong>是在发送端采用非正交发送，主动引入干扰信息，在接收端通过串行干扰删除（SIC）接收机实现正确解调。虽然，采用SIC技术的接收机复杂度有一定的提高，但是可以<strong>很好地提高频谱效率</strong>。</p></li>
+<li><p><strong>用提高接收机的复杂度来换取频谱效率，这就是NOMA技术的本质</strong>。</p></li>
+<li><p>非正交多址接入(Non-Orthogonal Multiple Access, NOMA) 技术以<strong>不同功率</strong>将多个信息流在时域/频域/码域重叠的信道上传输，在相同无线资源上为多个用户同时提供无线业务。</p></li>
+<li><p>在正交多址技术（OMA）中，只能为一个用户分配单一的无线资源，例如按频率分割或按时间分割，而NOMA方式可将一个资源分配给多个用户。在某些场景中，比如远近效应场景和广覆盖多节点接入的场景，特别是上行密集场景，采用功率复用的非正交接入多址方式较传统的正交接入有明显的性能优势，更适合未来系统的部署。目前已经有研究验证了在城市地区采用NOMA的效果，并已证实，采用该方法可使无线接入宏蜂窝的总吞吐量提高50%左右。非正交多址复用通过结合串行干扰消除或类最大似然解调才能取得容量极限，因此技术实现的难点在于是否能设计出低复杂度且有效的接收机算法。</p></li>
+</ul>
+<p><strong><mark>注意NOMA指的是非正交多址，而不是非正交频分，即NOMA的子信道传输依然采用正交频分复用（OFDM）技术，子信道之间是正交的</mark>，互不干扰，但是一个子信道上不再只分配给一个用户，而是多个用户共享，同一子信道上不同用户之间是非正交传输 <mark>（即非正交多址）</mark>，这样就会产生用户间干扰问题，这也就是在接收端要采用SIC技术进行多用户检测的目的。在发送端，对同一子信道上的不同用户采用功率复用技术进行发送，不同的用户的信号功率按照相关的算法进行分配，这样到达接收端每个用户的信号功率都不一样。SIC接收机再根据不同户用信号功率大小按照一定的顺序进行干扰消除，实现正确解调，同时也达到了区分用户的目的。</strong></p>
+<blockquote>
+<p>总之，记住一句话，NOMA就是多个用户共享一份资源，目的便是<strong>提升频谱效率</strong>。</p>
+</blockquote>
+<h2 id="分集技术及复用技术">2.分集技术及复用技术</h2>
+<p>分集技术利用多条独立的通道传输相同的数据，而复用技术利用多条独立的通道传输不同的数据。</p>
+<h3 id="分集技术">2.1 分集技术</h3>
+<p>分集技术是一种<strong>补偿信道衰落的技术</strong>，用于改善无线通信链路的质量，而且不用改变通用空中接口或者增加发射功率或者带宽。</p>
+<p>分集是指分散传输和集中接收。所谓分散传输是使接收端能获得多个统计独立的、携带<strong>同一信息</strong>的衰落信号。集中接收是接收机把收到的多个统计独立的衰落信号进行合并(选择与组合)以降低衰落的影响。</p>
+<blockquote>
+<p>核心思想即寻找无线传播环境中的独立（或高度不相关）路径，传输同一信号。</p>
+</blockquote>
+<p>常用分集：时间分集、频率分集、空间分集、极化分集</p>
+<p>时间分集：以超过信道相干时间的时间间隔重复发送信号，以便让再次收到的信号具有独立的衰落环境，从而产生分集效果。重发的时间间隔要满足： <span class="math display">\[
+\Delta T \gg \frac{1}{2f_m}=\frac{1}{2(v/\lambda)}
+\]</span> 频率分集：在<strong>多于一个的载频</strong>上传送信号，其工作原理为，<strong>相隔超过信道相干带宽的两个信号是不相关的，并且不会出现相同的衰落</strong>。理论上，如果信道是不相关的，那么同时衰减的概率将是单独衰减概率的乘积。相干带宽的公式为： <span class="math display">\[
+B_c=\frac{1}{2\pi \Delta}(其中\Delta为时延扩展:最大传输时延和最小传输时延的差值)
+\]</span> 空间分集：从不同的天线上获得非相关的接收信号，要求天线间的间隔距离等于或大于半个波长。</p>
+<blockquote>
+<p>在市区，<span class="math inline">\(d\)</span>通常取0.5<span class="math inline">\(\lambda\)</span>，而在郊区，<span class="math inline">\(d\)</span>通常取0.8<span class="math inline">\(\lambda\)</span>。</p>
+</blockquote>
+<p>极化分集：利用了空中的水平极化和垂直极化路径不相关的特性。由于在传输中进行了多次反射，使得信号在不同的极化方向上是不相关的。将极化天线用于多径环境中，当传输路径中有障碍物时，极化分集可以极大地减少多径时延扩展，而不会明显地降低功率。</p>
+<figure>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240219103011167.png" srcset="/img/loading.gif" lazyload alt="image-20240219103011167"><figcaption aria-hidden="true">image-20240219103011167</figcaption>
+</figure>
+<p>接收端分集合并：选择性合并、最大比值合并、等增益合并。</p>
+<h3 id="复用技术">2.2 复用技术</h3>
+<p>复用技术是对信道进行划分，一个信道划分为多个独立通道，传输多路<strong>不同信号</strong>。包括时分复用(TDM)、频分复用(FDM)、码分复用(CDM)、波分复用(WDM)。</p>
+<figure>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240219103435103.png" srcset="/img/loading.gif" lazyload alt="几种资源分配技术的比较"><figcaption aria-hidden="true">几种资源分配技术的比较</figcaption>
+</figure>
+<h1 id="二noma和ofdma的性能对比">二、NOMA和OFDMA的性能对比</h1>
+<h2 id="noma采用的关键技术">1.NOMA采用的关键技术</h2>
+<h3 id="串行干扰删除sic">1.1 串行干扰删除（SIC）</h3>
+<p>在发送端，类似于CDMA系统，引入干扰信息可以获得更高的频谱效率，但是同样也会遇到多址干扰（MAI）的问题。关于消除多址干扰的问题，在研究第三代移动通信系统的过程中已经取得很多成果，串行干扰删除（SIC）也是其中之一。NOMA在接收端采用SIC接收机来消除干扰，可以很好地提高接收机的性能。</p>
+<p><strong>串行干扰消除技术的基本思想是采用逐级消除干扰策略，在接收信号中对用户逐个进行判决，进行幅度恢复后，将该用户信号产生的多址干扰从接收信号中减去，并对剩下的用户再次进行判决，如此循环操作，直至消除所有的多址干扰。</strong></p>
+<p>例如：在一个由3个用户共享的子信道上，<strong>叠加后的信号为</strong><span class="math inline">\(x=x_1+x_2+x_3\)</span>。其中，<span class="math inline">\(x_i(i=1,2,3)\)</span>分别代表3个用户信号，其中，信号功率<span class="math inline">\(x_1&lt;x_2&lt;x_3\)</span>，为了简单起见。<strong>在接收端，接收信号<span class="math inline">\(y_i=h_i·x+w_i\)</span></strong>。</p>
+<p>其中，<span class="math inline">\(h_i\)</span>是信道系数，<span class="math inline">\(w_i\)</span>是信道高斯白噪声和小区干扰。则SIC接收机解调3个用户过程为：</p>
+<ul>
+<li>在第一级检测之前，<strong>先要将接收信号按照信号功率大小进行排序</strong>，这里由于<span class="math inline">\(x_3\)</span>信号功率最强，先要对<span class="math inline">\(x_3\)</span>进行判决，输出<span class="math inline">\(x_3\)</span>。然后恢复出对<span class="math inline">\(x_3\)</span>的信号估计值，从接收信号中减去<span class="math inline">\(x_3\)</span>的估计值，得到<span class="math inline">\(x_1+x_2\)</span>，然后将<span class="math inline">\(y_2=h_2·(x_1+x_2)+w_2\)</span>作为下一级输入。按照功率顺序依次执行相同的操作，最后先后输出<span class="math inline">\(x_2\)</span>和<span class="math inline">\(x_1\)</span>，完成对所有的用户信号检测。</li>
+<li><strong>在SIC信号检测过程中，很重要的一点是用户检测的顺序。这里进行排序是根据用户的信号功率来进行的。在NOMA中，发送端会采用功率复用技术对不同的用户进行功率分配</strong>。通常，信道增益高的用户会少分配一些功率资源，而信道增益低的用户会多分配一些功率资源。到达接收端后，每个用户的信号功率会不一样，SIC接收机根据用户的信号功率进行排序，依次对不同的进行解调，同时达到区分用户的目的。</li>
+<li>虽然，SIC技术有很好的信号检测性能，但要在NOMA中采用，有3个问题。首先，相对于传统的SIC接收机，NOMA中采用的SIC接收机要更复杂，要求具备更强的信号处理能力；其次，从上述过程可知，根据信号功率排的用户顺序决定了最佳的接收效果，而在实际过程中，用户的功率是不断变化的，这就要求SIC接收机不断地对用户功率进行排序；再次，从SIC结构图中可以看出，每一级处理都会产生一定的时延，在现实多级处理过程中，产生的时延很大。前一个问题的解决有赖于未来芯片处理能力的提升，而后两个问题则需要对相关的处理算法进行进一步的研究。</li>
+</ul>
+<h3 id="功率复用">1.2 功率复用</h3>
+<p>SIC在接收端消除多址干扰（MAI），需要在接收信号中对用户进行判决来排出消除干扰的用户的先后顺序，<strong>而判决的依据就是用户信号功率大小。基站在发送端会对不同的用户分配不同的信号功率，来获取系统<mark>最大的性能增益</mark>，同时达到<mark>区分用户</mark>的目的，这就是功率复用技术</strong>。功率复用技术在其他几种传统的多址方案没有被充分利用，其不同于简单的功率控制，而是由基站遵循相关的算法来进行功率分配。</p>
+<h3 id="不依赖用户反馈csi">1.3 不依赖用户反馈CSI</h3>
+<p>在现实的蜂窝网中，因为流动性、反馈处理延迟等一些原因，通常用户并不能根据网络环境的变化反馈出实时有效的网络状态信息。虽然在目前，有很多技术已经不再那么依赖用户反馈信息就可以获得稳定的性能增益，但是采用了SIC技术的NOMA方案可以更好地适应这种情况，从而NOMA技术可以在高速移动场景下获得更好的性能，并能组建更好的移动节点回程链路。</p>
+<h2 id="与cdma3g和ofdma4g相比noma性能的优势">2.与CDMA（3G）和OFDMA（4G）相比，NOMA性能的优势</h2>
+<p>从上面的描述中我们也可以看出，NOMA虽然是一种新的技术，但是也融合了一些3G和4G的技术和思想。例如，OFDM是在4G中用到的，而SIC最初是在3G中用到的。</p>
+<p>3G的多址技术采用的是直序扩频码分多址（CDMA）技术，采用非正交发送，所有用户共享一个信道，在接收端采用RAKE接收机。<strong>非正交传输有一个很严重的问题，就是远近效应</strong>，在3G中，人们采用<strong>功率控制技术</strong>在发送端对距离小区中心比较近的用户进行功率限制，<strong>保证在到达接收端每个用户的功率相当。</strong></p>
+<p><strong>4G的多址技术采用的是基于OFDM的正交频分多址（OFDMA）技术，不同用户之间采用正交传输，所以远近效应不是那么明显，功率控制也不再是必需的了</strong>。在链路自适应技术上，4G采用了自适应编码（AMC）技术，可以根据链路状态信息自动调整调制编码方式，从而给用户提供最佳的传输速度，但是在一定程度上要依赖用户反馈的链路状态信息。</p>
+<p>跟CDMA和OFDMA相比，<strong>NOMA子信道之间采用正交传输</strong>，不会存在跟3G一样明显的远近效应问题，多址干扰（MAI）问题也没那么严重；由于可以不依赖用户反馈的CSI信息，在采用AMC和功率复用技术后，应对各种多变的链路状态更加自如，即使在高速移动的环境下，依然可以提供很好地速率表现；<strong>同一子信道上可以由多个用户共享</strong>，跟4G相比，在保证传输速度的同时，可以提高频谱效率，这也是最重要的一点。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="category-chain-item">毕业设计</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">#通信原理</a>
+      
+        <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/">#专业课程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>移动通信</div>
+      <div>http://example.com/2024/02/18/移动通信/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Faceless-person</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6/" title="考研数学">
+                        <span class="hidden-mobile">考研数学</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
