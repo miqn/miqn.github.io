@@ -32,8 +32,11 @@
 <meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-66028592dd8732d512b75e78c1e901d9_r.jpg">
 <meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-0295e95d931f1a1090c2ccb3108b37f1_720w.webp">
 <meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-308da06fad3f4952b9b8df042112e95b_720w.webp">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/NOMA-BPSK.jpeg">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/NOMA-4PSK.jpeg">
+<meta property="og:image" content="http://example.com/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/NOMA-8PSK.png">
 <meta property="article:published_time" content="2024-02-18T05:03:54.000Z">
-<meta property="article:modified_time" content="2024-02-29T13:52:27.218Z">
+<meta property="article:modified_time" content="2024-03-05T13:24:55.824Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="移动通信">
 <meta property="article:tag" content="非正交多址">
@@ -231,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          20k 字
+          21k 字
         
       </span>
     
@@ -242,7 +245,7 @@
         
         
         
-          164 分钟
+          172 分钟
         
       </span>
     
@@ -331,6 +334,11 @@
 <blockquote>
 <p>总之，记住一句话，NOMA就是多个用户共享一份资源，目的便是<strong>提升频谱效率</strong>。</p>
 </blockquote>
+<h3 id="协作非正交多址接入co-noma">1.1 协作非正交多址接入（Co-NOMA）</h3>
+<p>协作非正交多址接入（Cooperative Non-Orthogonal Multiple Access，简称Co-NOMA）是一种新型的多用户接入技术，它结合了NOMA 和协作通信的思想。在 Co-NOMA 中，多个用户之间可以通过相互协作来提高系统性能和频谱效率。</p>
+<p>Co-NOMA 的基本原理是，当一个用户的信号在到达接收器之前受到严重干扰时，其他用户可以通过协作来帮助该用户，以提高其信号的可靠性和质量。这种协作可以通过不同用户之间的合作传输、信号处理或者干扰抑制等方式实现。</p>
+<p>Co-NOMA 技术可以应用于不同的通信场景，包括蜂窝通信系统、物联网（IoT）、车联网（V2X）等。通过协作，Co-NOMA 可以提高系统容量、覆盖范围和用户体验，同时有效地利用有限的频谱资源。</p>
+<p>总的来说，Co-NOMA 是一种结合了 NOMA 和协作通信思想的新型多用户接入技术，可以提高系统性能和频谱效率，并在未来的通信系统中具有广泛的应用前景。</p>
 <h2 id="分集技术及复用技术">2.分集技术及复用技术</h2>
 <p>分集技术利用多条独立的通道传输相同的数据，而复用技术利用多条独立的通道传输不同的数据。</p>
 <h3 id="分集技术">2.1 分集技术</h3>
@@ -351,6 +359,11 @@ B_c=\frac{1}{2\pi \Delta}(其中\Delta为时延扩展:最大传输时延和最�
 <p>极化分集：利用了空中的水平极化和垂直极化路径不相关的特性。由于在传输中进行了多次反射，使得信号在不同的极化方向上是不相关的。将极化天线用于多径环境中，当传输路径中有障碍物时，极化分集可以极大地减少多径时延扩展，而不会明显地降低功率。</p>
 <p><img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240219103011167.png" srcset="/img/loading.gif" lazyload></p>
 <p>接收端分集合并：选择性合并、最大比值合并、等增益合并。</p>
+<h4 id="最大比传输mrt">2.1.1 最大比传输（MRT）</h4>
+<p>MRT可以被视为一种空间分集技术，是一种用于多天线系统（MIMO）中的传输技术。它的原理基于<strong>最大化接收信号功率</strong>，从而提高信号质量和系统性能。</p>
+<p>MRT通常应用于具有多个发射天线和多个接收天线的系统中。这种系统称为多输入多输出（MIMO）系统。在MRT中，发送端利用多个天线发送相同的信号，但在每个天线上<strong>加权不同的系数</strong>。这些系数通常是为了最大化接收端的信号功率而计算得到的。MRT的主要目标是通过合理的<strong>天线加权</strong>，使得接收端接收到的信号功率最大化。这意味着在接收端的每个天线上收到的信号尽可能强，并且在信号与噪声的混合中，信号所占的比例最大。</p>
+<p>在MRT中，除了<strong>幅度加权</strong>外，也需要对发送信号的<strong>相位</strong>进行调整，以确保在接收端接收到的信号相位最大程度地匹配，从而实现信号的合理叠加。在接收端，通过一定的信号处理技术（如最大比合并），将从各个天线接收到的信号合并起来，以最大程度地提高接收信号的质量。</p>
+<p>总的来说，MRT的原理是通过合理的天线加权和相位调整，在传输端尽可能地增强信号功率，从而在接收端获得更高的信噪比，提高通信系统的性能和可靠性。</p>
 <h3 id="复用技术">2.2 复用技术</h3>
 <p>复用技术是对信道进行划分，一个信道划分为多个独立通道，传输多路<strong>不同信号</strong>。包括时分复用(TDM)、频分复用(FDM)、码分复用(CDM)、波分复用(WDM)。</p>
 <figure>
@@ -408,15 +421,18 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 <p>因此，引入预编码的目的视为让矩阵求逆变得简单。</p>
 </blockquote>
 <h4 id="用svd分析mimo">4.2.1 用SVD分析MIMO</h4>
-<p>对<strong>信道矩阵</strong>进行SVD，即<span class="math inline">\(H=U\varSigma V^T\)</span>。</p>
+<p>对<strong>信道矩阵</strong>进行SVD，即<span class="math inline">\(H=U\varSigma V^H\)</span>。</p>
+<blockquote>
+<p><span class="math inline">\(V^H\)</span>表示矩阵<span class="math inline">\(V\)</span>的共轭转置，实数域中共轭转置就等于转置，V和H都是正交矩阵。</p>
+</blockquote>
 <p>预编码矩阵<span class="math inline">\(V\)</span>的维度是<span class="math inline">\(N_{T_x}×N_{T_x}\)</span>。</p>
 <figure>
 <img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-66028592dd8732d512b75e78c1e901d9_r.jpg" srcset="/img/loading.gif" lazyload alt="MIMO_SVD"><figcaption aria-hidden="true">MIMO_SVD</figcaption>
 </figure>
 <blockquote>
-<p>在发射端和接收端分别加上<strong>预编码矩阵</strong><span class="math inline">\(V\)</span>和<strong>合并矩阵</strong><span class="math inline">\(U^T\)</span>，<strong>这两个都是信道矩阵分解后得到的酉矩阵</strong>，因此最后剩下的新的信道矩阵是一个对角矩阵。</p>
+<p>在发射端和接收端分别加上<strong>预编码矩阵</strong><span class="math inline">\(V\)</span>和<strong>合并矩阵</strong><span class="math inline">\(U^H\)</span>，<strong>这两个都是信道矩阵分解后得到的酉矩阵</strong>，因此最后剩下的新的信道矩阵是一个对角矩阵。</p>
 </blockquote>
-<p>在这种情况下，<span class="math inline">\(y=U^T(U\varSigma V^T)Vx=\varSigma x\)</span>。</p>
+<p>在这种情况下，<span class="math inline">\(y=U^H(U\varSigma V^H)Vx=\varSigma x\)</span>。</p>
 <p>通过SVD，将<strong>信道矩阵</strong>可以简单表达为一个<strong>对角矩阵</strong>，<span class="math inline">\(\varSigma=\begin{bmatrix} \sigma_1 &amp; 0\\ 0 &amp; \sigma_2 \end{bmatrix}\)</span>，其中<span class="math inline">\(\sigma_i\)</span>为信道矩阵<span class="math inline">\(H\)</span>的<strong>奇异值</strong>，<span class="math inline">\(\sigma_i^2\)</span>为<span class="math inline">\(H^*H\)</span>的<strong>特征值</strong>。</p>
 <p>此时，2×2的MIMO图示可以简化为：</p>
 <figure>
@@ -431,7 +447,7 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 </figure>
 <p>UE侧在具体的时刻选择最适合信道的CodeBook的步骤：</p>
 <ol type="1">
-<li>计算CodeBook中每个元素的<span class="math inline">\(\Omega=W(H^TH)W^T\)</span>，其中，<span class="math inline">\(W\)</span>为CodeBook中的每个元素(预编码矩阵)，<span class="math inline">\(H\)</span>为传播矩阵；</li>
+<li>计算CodeBook中每个元素的<span class="math inline">\(\Omega=W(H^HH)W^H\)</span>，其中，<span class="math inline">\(W\)</span>为CodeBook中的每个元素(预编码矩阵)，<span class="math inline">\(H\)</span>为传播矩阵；</li>
 <li>选择<span class="math inline">\(\Omega_{min}\)</span>对应的<span class="math inline">\(W\)</span>作为预编码矩阵</li>
 <li>将选择的<span class="math inline">\(W\)</span>在CodeBook中的下标(PMI)告知发射机</li>
 </ol>
@@ -520,6 +536,13 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ bit_u1, bit_u2 ]</span> = <span class="hljs-title">ofdma_dec</span><span class="hljs-params">( sym_seq, len, M, N1, N2 )</span></span><br><span class="hljs-comment">% 根据用户1和用户2的子载波数进行OFDMA解码</span><br><br>sym_mat = <span class="hljs-built_in">reshape</span>(sym_seq, N1+N2, <span class="hljs-built_in">numel</span>(sym_seq)/(N1+N2));<br><span class="hljs-comment">% 首先，将接收到的OFDMA符号序列 sym_seq 重塑为一个矩阵 sym_mat,这个矩阵表示了每个OFDMA符号中的用户1和用户2的符号序列</span><br>sym_mat1 = sym_mat(<span class="hljs-number">1</span>:N1,:);<br><span class="hljs-comment">% 从重塑后的矩阵中提取出用户1的符号序列</span><br>sym_mat2 = sym_mat(N1+<span class="hljs-number">1</span>:<span class="hljs-keyword">end</span>,:);<br><br>sym_seq1 = <span class="hljs-built_in">reshape</span>(sym_mat1, <span class="hljs-built_in">numel</span>(sym_mat1), <span class="hljs-number">1</span>);<br><span class="hljs-comment">% 将用户1的符号序列重新展开为列向量</span><br>sym_seq2 = <span class="hljs-built_in">reshape</span>(sym_mat2, <span class="hljs-built_in">numel</span>(sym_mat2), <span class="hljs-number">1</span>);<br><br>hDemod = comm.PSKDemodulator(M, <span class="hljs-string">&#x27;BitOutput&#x27;</span>, <span class="hljs-built_in">true</span>, <span class="hljs-string">&#x27;PhaseOffset&#x27;</span>,<span class="hljs-built_in">pi</span>/M);<br>pskdemod_u1 = step(hDemod, sym_seq1);<br><span class="hljs-comment">% 使用PSK解调器对用户1的符号序列进行解调，得到用户1的比特序列</span><br>bit_u1 = turbo_dec(pskdemod_u1, len);<br><span class="hljs-comment">% 将用户1的比特序列输入到Turbo解码器中进行解码，得到最终的用户1比特序列</span><br>pskdemod_u2 = step(hDemod, sym_seq2);<br>bit_u2 = turbo_dec(pskdemod_u2, len);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <h3 id="绘图">3.9 绘图</h3>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ flag ]</span> = <span class="hljs-title">plot_ber</span><span class="hljs-params">( M, SNR, N_data, p1,p2,N1,N2 )</span></span><br><span class="hljs-comment">% 画BER的图</span><br><br>load(<span class="hljs-string">&#x27;ber.mat&#x27;</span>);<br>SNR_ad = SNR - <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>(<span class="hljs-built_in">sqrt</span>(N_data));<br><span class="hljs-comment">% 计算了一个调整后的信噪比，这种调整通常用于匹配预先计算的数据与实际情况的场景</span><br><span class="hljs-comment">%% NOMA bpsk</span><br><span class="hljs-built_in">figure</span>;<br><br>SNR_u1_noma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>(p1/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">1</span>)));<br>SNR_u2_noma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>(p2/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">1</span>)));<br><span class="hljs-comment">% 分别计算 NOMA 系统中用户 1 和用户 2 的信噪比。这里使用了之前计算得到的调整后的 SNR（SNR_ad），并根据各自的功率分配（p1 和 p2）以及调制方案的比特数 M(1) 来计算</span><br>SNR_u1_ofdma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>((N1+N2)/N1/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">2</span>)));<br>SNR_u2_ofdma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>((N1+N2)/N2/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">2</span>)));<br><span class="hljs-comment">% 类似地，计算了 OFDMA 系统中用户 1 和用户 2 的信噪比，但使用的调制方案为 M(2)</span><br>semilogy(SNR_u1_noma, r1(<span class="hljs-number">1</span>,:),<span class="hljs-string">&#x27;-ob&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>semilogy(SNR_u2_noma, r2(<span class="hljs-number">1</span>,:),<span class="hljs-string">&#x27;-vb&#x27;</span>);<br>semilogy(SNR_u1_ofdma, r11(<span class="hljs-number">2</span>,:), <span class="hljs-string">&#x27;-or&#x27;</span>);<br>semilogy(SNR_u2_ofdma, r22(<span class="hljs-number">2</span>,:), <span class="hljs-string">&#x27;-vr&#x27;</span>);<br><span class="hljs-comment">% semilogy 函数用于绘制双对数坐标系下的曲线。</span><br><span class="hljs-comment">% 它的前两个参数分别是 x 轴和 y 轴的值，即信噪比和比特误码率。</span><br><span class="hljs-comment">% -ob、-vb、-or 和 -vr 是曲线的样式，分别表示蓝色圆点、绿色圆点、红色圆点和紫色圆点。</span><br>box on;<br>grid on;<br><br><span class="hljs-built_in">legend</span> (<span class="hljs-string">&#x27;NOMA用户1&#x27;</span>,<span class="hljs-string">&#x27;NOMA用户2&#x27;</span>,<span class="hljs-string">&#x27;OFDMA用户1&#x27;</span>,<span class="hljs-string">&#x27;OFDMA用户2&#x27;</span>,<span class="hljs-string">&#x27;Location&#x27;</span>,<span class="hljs-string">&#x27;southwest&#x27;</span>);<br>title(<span class="hljs-string">&#x27;NOMA-BPSK&#x27;</span>);<br>xlim([<span class="hljs-number">10</span> <span class="hljs-number">25</span>]);<br>ylim([<span class="hljs-number">1e-4</span> <span class="hljs-number">1</span>]);<br><br>xlabel(<span class="hljs-string">&#x27;Eb/N0&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;BER&#x27;</span>);<br><br><span class="hljs-comment">%% NOMA-4psk</span><br><span class="hljs-built_in">figure</span>;<br><br>SNR_u1_noma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>(p1/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">2</span>)));<br>SNR_u2_noma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>(p2/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">2</span>)));<br>SNR_u1_ofdma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>((N1+N2)/N1/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">4</span>)));<br>SNR_u2_ofdma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>((N1+N2)/N2/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">4</span>)));<br><br>semilogy(SNR_u1_noma, r1(<span class="hljs-number">2</span>,:),<span class="hljs-string">&#x27;-ob&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>semilogy(SNR_u2_noma, r2(<span class="hljs-number">2</span>,:),<span class="hljs-string">&#x27;-vb&#x27;</span>);<br>semilogy(SNR_u1_ofdma, r11(<span class="hljs-number">4</span>,:), <span class="hljs-string">&#x27;-or&#x27;</span>);<br>semilogy(SNR_u2_ofdma, r22(<span class="hljs-number">4</span>,:), <span class="hljs-string">&#x27;-vr&#x27;</span>);<br>box on;<br>grid on;<br><br><span class="hljs-built_in">legend</span> (<span class="hljs-string">&#x27;NOMA用户1&#x27;</span>,<span class="hljs-string">&#x27;NOMA用户2&#x27;</span>,<span class="hljs-string">&#x27;OFDMA用户1&#x27;</span>,<span class="hljs-string">&#x27;OFDMA用户2&#x27;</span>,<span class="hljs-string">&#x27;Location&#x27;</span>,<span class="hljs-string">&#x27;southwest&#x27;</span>);<br>title(<span class="hljs-string">&#x27;NOMA-4PSK&#x27;</span>);<br>xlim([<span class="hljs-number">10</span> <span class="hljs-number">32</span>]);<br>ylim([<span class="hljs-number">1e-4</span> <span class="hljs-number">1</span>]);<br><br>xlabel(<span class="hljs-string">&#x27;Eb/N0&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;BER&#x27;</span>);<br><br><span class="hljs-comment">%% NOMA 8psk</span><br><span class="hljs-built_in">figure</span>;<br><br>SNR_u1_noma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>(p1/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">3</span>)));<br>SNR_u2_noma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>(p2/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">3</span>)));<br>SNR_u1_ofdma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>((N1+N2)/N1/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">5</span>)));<br>SNR_u2_ofdma = SNR_ad + <span class="hljs-number">10</span>*<span class="hljs-built_in">log10</span>((N1+N2)/N2/<span class="hljs-built_in">log2</span>(M(<span class="hljs-number">5</span>)));<br><br>semilogy(SNR_u1_noma, r1(<span class="hljs-number">3</span>,:),<span class="hljs-string">&#x27;-ob&#x27;</span>);<br><span class="hljs-built_in">hold</span> on;<br>semilogy(SNR_u2_noma, r2(<span class="hljs-number">3</span>,:),<span class="hljs-string">&#x27;-vb&#x27;</span>);<br>semilogy(SNR_u1_ofdma, r11(<span class="hljs-number">5</span>,:), <span class="hljs-string">&#x27;-or&#x27;</span>);<br>semilogy(SNR_u2_ofdma, r22(<span class="hljs-number">5</span>,:), <span class="hljs-string">&#x27;-vr&#x27;</span>);<br>box on;<br>grid on;<br><br><span class="hljs-built_in">legend</span> (<span class="hljs-string">&#x27;NOMA用户1&#x27;</span>,<span class="hljs-string">&#x27;NOMA用户2&#x27;</span>,<span class="hljs-string">&#x27;OFDMA用户1&#x27;</span>,<span class="hljs-string">&#x27;OFDMA用户2&#x27;</span>,<span class="hljs-string">&#x27;Location&#x27;</span>,<span class="hljs-string">&#x27;southwest&#x27;</span>);<br>title(<span class="hljs-string">&#x27;NOMA-8PSK&#x27;</span>);<br>xlim([<span class="hljs-number">15</span> <span class="hljs-number">45</span>]);<br>ylim([<span class="hljs-number">1e-4</span> <span class="hljs-number">1</span>]);<br><br>xlabel(<span class="hljs-string">&#x27;Eb/N0&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;BER&#x27;</span>);<br><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<h2 id="仿真结果">4.仿真结果</h2>
+<p>BPSK：</p>
+<p><img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/NOMA-BPSK.jpeg" srcset="/img/loading.gif" lazyload alt="BPSK时NOMA与OFDMA的误比特率对比" style="zoom: 80%;"></p>
+<p>4PSK：</p>
+<p><img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/NOMA-4PSK.jpeg" srcset="/img/loading.gif" lazyload alt="4PSK时NOMA与OFDMA的误比特率对比" style="zoom:80%;"></p>
+<p>8PSK：</p>
+<p><img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/NOMA-8PSK.png" srcset="/img/loading.gif" lazyload alt="8PSK时NOMA与OFDMA的误比特率对比" style="zoom: 80%;"></p>
 
                 
               </div>
@@ -611,6 +634,12 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/" title="复试常见题汇总">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">复试常见题汇总</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
