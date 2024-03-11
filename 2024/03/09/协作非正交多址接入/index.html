@@ -1,0 +1,970 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Faceless-person">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="通过阅读论文，学习协作非正交多址接入。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="协作非正交多址接入">
+<meta property="og:url" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/index.html">
+<meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="通过阅读论文，学习协作非正交多址接入。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309103321318.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309103405901.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309105403057.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309110021598.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309112121965.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240310012622259.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/70.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311100527324.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311101804437.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311101911374.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311111948260.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311112631998.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311114246988.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311162147994.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311172428326.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311173034851.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311174840989.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311204849947.png">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/b7e4dcaa31a2dec0a3701849ded5b1be.svg">
+<meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/75e7f28a355ad71a021979ac4e46f161.svg">
+<meta property="article:published_time" content="2024-03-09T01:47:35.000Z">
+<meta property="article:modified_time" content="2024-03-11T13:46:05.103Z">
+<meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="协作非正交多址">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309103321318.png">
+  
+  
+  
+  <title>协作非正交多址接入 - Faceless_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Faceless_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="协作非正交多址接入"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-09 09:47" pubdate>
+          2024年3月9日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          98 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">协作非正交多址接入</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一协作非正交多址接入方案">一、协作非正交多址接入方案</h1>
+<h2 id="通过星座重排实现非正交多用户传输">1.通过星座重排实现非正交多用户传输</h2>
+<p>本文提出了一种通过重新排列调制星座的新型非正交多址接入方案。每个用户的调制符号在叠加到不同的资源元素上之前，都要通过一个置换函数进行重映射。多用户系统的互信息被视为为每个用户找到最佳重映射的标准。采用模拟退火算法实现优化。根据误码率的数值结果，所提出的方案明显优于其他方案。</p>
+<h3 id="引言">1.1引言</h3>
+<p>非正交多址接入（NOMA）作为 5G 无线通信的几项关键技术之一，能有效提高频谱利用率和系统容量。近年来，人们提出了多种 NOMA 方案，包括功率域非正交多址接入（power domain non-orthogonal multiple access）、稀疏码多址接入（sparse code multiple access，SCMA）、多用户共享接入（multi-user sharing access，MUSA）、模式划分多址接入（pattern division multiple access，PDMA）等。一般来说，这些非正交多用户接入方案都是通过发送器的符号叠加和接收器的高级多用户检测来实现非正交多用户传输的。</p>
+<blockquote>
+<p>Pattern Division Multiple Access (PDMA) 是一种多址接入技术，旨在提高通信系统中多用户之间的频谱效率。它将时间-频率资源划分成一系列模式，每个模式用于单独的用户或用户组。通过精确的模式分配和调度，PDMA 允许多个用户同时使用同一频谱资源，从而提高了系统的容量和效率。</p>
+</blockquote>
+<p>现有的 NOMA 方案利用某些信号域的特性来区分用户，如发射功率、相位旋转、扩频序列等。目前的研究主要以系统容量或错误概率作为性能分析的标准。</p>
+<p>大多数现有方案都利用了调制符号的振幅或者相位差。在传输过程中，振幅和相位不可避免地会受到信道衰落的影响。因此，尽管这些方案能够实现良好的性能，但它们在很大程度上依赖于信道状态信息（CSI）的正确性。一旦无法保证信道估计的准确性，性能下降就不可避免。因此，本文避免使用振幅和相位作为用户特征，而是提出了用于多用户叠加传输的星座重排（CoRe）。星座重排已在许多通信场景中实现，如中继信道、HARQ 系统等。通过重新排列不同链路调制中的比特-符号映射，可以得到最小欧氏距离更大的联合星座。对于多用户传输系统，我们在将每个用户的调制符号叠加到资源元素上之前，会根据一个置换函数对其进行重新映射。从一个用户的角度来看，联合星座因与资源元素的多重连接而具有更好的距离特性。从系统的角度来看，联合星座充分利用了多维空间，并获得了更多的非重叠点。我们以可实现速率为标准，通过置换函数对系统进行优化。我们采用模拟退火算法，以可接受的复杂度搜索最佳值。数值结果表明，与其他方案相比，我们提出的方案在传输速率和误码率 (BER) 方面都有显著提高。</p>
+<p>本文的其余部分安排如下。第二节介绍了多用户叠加传输的系统模型和因子图表示法。第三节介绍了新提出的多用户传输星座重排方案，并介绍了优化准则和模拟退火算法。第四节提供了数值结果和性能讨论。第五节得出结论。</p>
+<h3 id="多用户叠加传输的上行链路系统模型">1.2 多用户叠加传输的上行链路系统模型</h3>
+<p>在不失一般性的前提下，我们考虑一个多用户叠加传输的上行链路系统，如图 1 所示，K 个用户将其数据映射到 N 个资源元素上。资源要素（RE）可以是时间、频率和/或空间维度的，其中一个 RE 与另一个 RE 正交。系统负载由<span class="math inline">\(\lambda=K/N\)</span>表示。如图 2 所示，叠加可以用因子图来表示。</p>
+<p>我们定义<span class="math inline">\(X=[X_1,X_2,\cdots,X_K]^T\)</span>为 K 维用户符号向量，<span class="math inline">\(R=[R_1,R_2,\cdots,R_N]^T\)</span>为 N 维叠加信号向量。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309103321318.png" srcset="/img/loading.gif" lazyload alt="图1：多用户叠加传输的上行链路系统模型"><figcaption aria-hidden="true">图1：多用户叠加传输的上行链路系统模型</figcaption>
+</figure>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309103405901.png" srcset="/img/loading.gif" lazyload alt="图2：多用户叠加传输因子图"><figcaption aria-hidden="true">图2：多用户叠加传输因子图</figcaption>
+</figure>
+<p>因子图的边连接可用叠加矩阵 H 来描述。矩阵 H 的大小为 N × K，元素为二进制。第 (n; k) 个元素用<span class="math inline">\(h_{nk}\)</span>表示。如果第 k 个用户的数据通过第 n 个资源元素传输，则<span class="math inline">\(h_{nk}=1\)</span>；否则，<span class="math inline">\(h_{nk}=0\)</span>。一个 RE 上的信号叠加是来自不同 UE 的调制符号的相加。那么我们有： <span class="math display">\[
+R=HX=\begin{bmatrix}
+\sum_{k=1}^Kh_{1k}X_k  \\ 
+\sum_{k=1}^Kh_{2k}X_k  \\ 
+\vdots \\
+\sum_{k=1}^Kh_{Nk}X_k   \\ 
+\end{bmatrix}\qquad (1)
+\]</span> 接收机接收到的信号为： <span class="math display">\[
+Y=R+Z\qquad (2)
+\]</span> 其中，<span class="math inline">\(Y=[Y_1,Y_2,\cdots,Y_N]^T\)</span>是 N 维接收信号向量，<span class="math inline">\(Z=[Z_1,Z_2,\cdots,Z_N]^T\)</span>表示 N 维噪声向量。</p>
+<h3 id="星座重排的拟议方案">1.3 星座重排的拟议方案</h3>
+<h4 id="拟议计划说明">1.3.1 拟议计划说明</h4>
+<p>本文提出了多用户叠加传输的星座重排方法，如图3所示。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309105403057.png" srcset="/img/loading.gif" lazyload alt="表I：4-PAM的π_nk(·)示例"><figcaption aria-hidden="true">表I：4-PAM的π_nk(·)示例</figcaption>
+</figure>
+<p>我们将用户传输的符号重新映射到每条边上，然后再叠加到 RE 上。第 k 个用户设备和第 n 个资源元素之间的重映射函数用<span class="math inline">\(\pi_{nk}(·)\)</span>表示。它是M进制调制符号的排列，显然重映射符号的数量仍然是 M。表Ⅰ显示了 4-PAM 的<span class="math inline">\(\pi_{nk}(·)\)</span>示例，其中 d 为归一化常数。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309110021598.png" srcset="/img/loading.gif" lazyload alt="图3：重新排列星座的因子图"><figcaption aria-hidden="true">图3：重新排列星座的因子图</figcaption>
+</figure>
+<p>图4展示了使用星座重排的优势。我们以第二个用户的 4-PAM 调制符号<span class="math inline">\(X_2\)</span>及其相连的RE（即<span class="math inline">\(R_1\)</span>和<span class="math inline">\(R_N\)</span>）为例，假设比特到符号的映射为格雷映射。如图4(b)所示，第二条边上的符号被重新映射，导致联合星座的布局发生变化。与图4(a)相比，星座的最小欧氏距离变大，因为重新映射使二维星座平面得到充分利用。</p>
+<p>对于给定的叠加矩阵 H，系统相应的 N × K CoRe矩阵可表示为： <span class="math display">\[
+G = \begin{bmatrix}
+h_{11}\pi_{11}(·) &amp; h_{12}\pi_{12}(·) &amp; \cdots &amp;h_{1K}\pi_{1K}(·) \\ 
+h_{21}\pi_{21}(·) &amp; h_{22}\pi_{22}(·) &amp; \cdots &amp; h_{2K}\pi_{2K}(·) \\ 
+\vdots &amp; \vdots &amp;\ddots &amp; \vdots\\
+h_{N1}\pi_{N1}(·) &amp; h_{N2}\pi_{N2}(·) &amp; \cdots &amp; h_{NK}\pi_{NK}(·) \\ 
+\end{bmatrix}\qquad (3)
+\]</span> 回顾公式(1)，带有 CoRe 的 RE 上的叠加信号 R 可重写为： <span class="math display">\[
+R=\begin{bmatrix}
+\sum_{k=1}^Kh_{1k}\pi_{1k}(X_k)  \\ 
+\sum_{k=1}^Kh_{2k}\pi_{2k}(X_k)  \\ 
+\vdots \\
+\sum_{k=1}^Kh_{Nk}\pi_{Nk}(X_k)   \\ 
+\end{bmatrix}\qquad (4)
+\]</span> <img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240309112121965.png" srcset="/img/loading.gif" lazyload alt="图4：不同重新映射下X2的联合星座"></p>
+<p>举一个例子，<span class="math inline">\(K=3\)</span>，<span class="math inline">\(N=2\)</span>，并且 <span class="math display">\[
+H= \begin{bmatrix}
+1 &amp; 1 &amp; 1 \\ 
+1 &amp; 0 &amp; 1 \\ 
+\end{bmatrix}\qquad (5)
+\]</span> 则接收机接收到的信号为： <span class="math display">\[
+\begin{cases}
+Y_1=\pi_{11}(X_1)+\pi_{12}(X_2)+\pi_{13}(X_3)+Z_1\\
+Y_2=\pi_{21}(X_1)+\pi_{23}(X_3)+Z_2\\
+\end{cases}\qquad (6)
+\]</span> 在这个例子中，我们通过图5中的星座重排来展示其优势。我们假设所有用户的传输符号都是 BPSK 调制的。根据<span class="math inline">\(\pi^1(-1)=1\)</span>，<span class="math inline">\(\pi^1(1)=-1\)</span>对<span class="math inline">\(X_3\)</span>和<span class="math inline">\(R_1\)</span>之间边缘上的调制符号进行重新映射，联合星座的布局就会发生变化，如图5(b)所示。与图5(a)相比，星座的最小欧氏距离变大。更重要的是，图5(a)中重叠的星座点被分开了。图5(b)中区分的星座点数量达到了8个，这使得多用户系统的最大传输速率为1比特/用户。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240310012622259.png" srcset="/img/loading.gif" lazyload alt="图5：不同重映射下K=3,N=2的联合星座"><figcaption aria-hidden="true">图5：不同重映射下K=3,N=2的联合星座</figcaption>
+</figure>
+<h4 id="使用-core-的可实现速率">1.3.2 使用 CoRe 的可实现速率</h4>
+<p>可实现速率是多用户系统的一个重要性能指标，它由传输符号与接收信号之间的互信息来衡量。在 CoRe 设计中，通过选择适当的置换函数来最大化可实现率，从而实现系统优化。因此，在给定 H 的基础上，目标是寻找一个能使系统互信息最大化的 G，即 <span class="math display">\[
+G^*=arg\ max(I(X;Y))\qquad (7)
+\]</span></p>
+<blockquote>
+<p>数学在argmax g(t)中，表达的是定义域的一个子集，该子集中任一元素都可使函数g(t)取最大值。</p>
+</blockquote>
+<p>互信息的计算公式为： <span class="math display">\[
+I(X;Y)=h(Y)-h(Y|X)\qquad (8)
+\]</span> 假设每个用户的调制字母表都是有限的，并且服从均匀分布，则 h(Y) 的值为： <span class="math display">\[
+h(Y)=-\int p(y)\log_2(p(y))dy~\\=-\int\frac{1}{\prod_{k=1}^{K}N_k}\displaystyle\sum_{x}p(y|x)\log_2(\frac{1}{\prod_{k=1}^{K}N_k}\displaystyle\sum_{\hat x}p(y|\hat x))dy~\\=\log_2(\displaystyle\prod_{k=1}^KN_k)-\frac{1}{\prod_{k=1}^{K}N_k}\displaystyle\sum_{x}\int p(y|x)\log_2(\displaystyle\sum_{\hat x}p(y|\hat x))dy\qquad (9)
+\]</span> 其中，<span class="math inline">\(N_k\)</span>是第 k 个用户调制星座的基数。条件熵 h(Y|X) 可以表示为： <span class="math display">\[
+h(Y|X)=-\frac{1}{\prod_{k=1}^{K}N_k}\displaystyle\sum_{x}\int p(y|x)\log_2(p(y|x))dy\qquad (10)
+\]</span></p>
+<blockquote>
+<p><img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/70.png" srcset="/img/loading.gif" lazyload alt="条件熵的公式" style="zoom: 67%;"></p>
+</blockquote>
+<p>假设所有信道上的噪声都是高斯噪声，即<span class="math inline">\(Z_n\sim N(0,\sigma^2)\)</span>，我们有： <span class="math display">\[
+p(y|x)=\displaystyle\prod_{n=1}^N\frac{1}{\sqrt{2\pi\sigma^2}}exp(-\frac{(Y_n-R_n)^2}{2\sigma^2})\qquad (11)
+\]</span> 不难发现，多维星座中点的布局和出现概率决定了 p(y|x)。也就是说，可实现速率的优化就是找到最佳星座R。</p>
+<h4 id="利用模拟退火算法进行优化">1.3.3 利用模拟退火算法进行优化</h4>
+<p>我们假设每个用户使用 M 阶调制，系统需要重新映射 L 个边，即矩阵 G 中非零元素的个数。由于<span class="math inline">\(\pi_{nk}(X_k)\)</span>是用户调制字母表的排列组合，因此将有<span class="math inline">\((M!)^L\)</span>种可能的解决方案。显然，用穷举搜索来找到最优解是不可能的。因此，利用模拟退火算法寻求最优G。模拟退火算法在解空间中进行随机搜索。如果新的解决方案更好，它就接受新方案；反之，它以一定概率接受新方案，而这种概率会随着温度的下降而降低。虽然它不能确保获得的解决方案是全局最优的，但它有机会通过设置几个不同的初始化来接近全局最优解决方案。</p>
+<h3 id="数值结果及讨论">1.4 数值结果及讨论</h3>
+<p>在本节中，我们将提供可实现速率和误码率方面的数值结果。我们首先展示了 CoRe 对星座布局和互信息的影响。然后介绍误码率性能，以验证互信息的比较。</p>
+<h4 id="联合星座和互信息">1.4.1 联合星座和互信息</h4>
+<p>为了更好地说明星座重排带来的改进，我们首先研究 K = 3 和 N = 2 的小型结构。可能的边缘连接分别描述为<span class="math inline">\(H_1\)</span>、<span class="math inline">\(H_2\)</span>和<span class="math inline">\(H_3\)</span>，它们分别为： <span class="math display">\[
+H_1= \begin{bmatrix}
+1 &amp; 1 &amp; 0 \\ 
+1 &amp; 0 &amp; 1 \\ 
+\end{bmatrix}\qquad (12)
+\]</span></p>
+<p><span class="math display">\[
+H_2= \begin{bmatrix}
+1 &amp; 1 &amp; 1 \\ 
+1 &amp; 0 &amp; 1 \\ 
+\end{bmatrix}\qquad (13)
+\]</span></p>
+<p><span class="math display">\[
+H_3= \begin{bmatrix}
+1 &amp; 1 &amp; 1 \\ 
+1 &amp; 1 &amp; 1 \\ 
+\end{bmatrix}\qquad (14)
+\]</span></p>
+<p>相应的因子图如图6所示。由于我们在图5中已经表明，对于<span class="math inline">\(H_2\)</span>，使用BPSK调制可以实现1比特/用户的最大传输速率，因此现在我们将其扩展到 4-PAM 调制的情况。</p>
+<p>发射功率 p 被限制为1，即<span class="math inline">\(E(|X_k|^2)=1\)</span>，<span class="math inline">\(X_k\in [-3d,-d,d,3d]\)</span>，并且<span class="math inline">\(Z_n\sim N(0,\sigma^2)\)</span>。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311100527324.png" srcset="/img/loading.gif" lazyload alt="图6：K = 3,N = 2的三个因子图"><figcaption aria-hidden="true">图6：K = 3,N = 2的三个因子图</figcaption>
+</figure>
+<p>图7显示了结构<span class="math inline">\(H_1\)</span>、<span class="math inline">\(H_2\)</span>和<span class="math inline">\(H_3\)</span>在最佳映射情况下每个用户的可实现速率。</p>
+<p>我们可以看到，所有这些结构都明显得益于重映射。特别是结构<span class="math inline">\(H_3\)</span>，在没有重映射的情况下表现最差，但在进行了最佳重映射后表现最好。</p>
+<p>现在我们研究结构<span class="math inline">\(H_3\)</span>，它是在不进行星座重排的情况下最差的结构。图8是通过模拟退火对 G 进行优化后得出的各用户平均互信息。我们可以发现，在不同的信噪比区域，最佳的 G 矩阵是不同的。也就是说，<span class="math inline">\(G_1\)</span>是低信噪比区域的最佳选择，<span class="math inline">\(G_2\)</span> 是中等信噪比区域的最佳选择，而<span class="math inline">\(G_3\)</span>则是高信噪比区域的最佳选择。当信道条件较好时，结构<span class="math inline">\(G_3\)</span>的性能明显优于其他结构；而当信道条件较差时，结构<span class="math inline">\(G_3\)</span>的性能与其他结构相当。也就是说，<span class="math inline">\(G_3\)</span>结构适用于所有信噪比区域。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311101804437.png" srcset="/img/loading.gif" lazyload alt="图7：不同映射下 H1、H2 和 H3 的可实现速率"><figcaption aria-hidden="true">图7：不同映射下 H1、H2 和 H3 的可实现速率</figcaption>
+</figure>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311101911374.png" srcset="/img/loading.gif" lazyload alt="图8：采用不同重置方式 G1、G2 和 G3 时 H3的可实现速率"><figcaption aria-hidden="true">图8：采用不同重置方式 G1、G2 和 G3 时 H3的可实现速率</figcaption>
+</figure>
+<p>根据图8中的观察结果，我们可以对重置后的星座布局进行研究。图9使用二维平面来表示与符号向量 X 相关的所有可能的星座点。需要注意的是，用户符号叠加到 RE 上后可能存在重叠的星座点，这些重叠点可以借助信道编码加以区分。图9(a)显示了两个 RE 在没有重映射的情况下的联合星座图，而图9(b,c,d)则显示了在不同信噪比下的联合星座图和相应的最佳重映射。与图9(c,d)相比，图9(b)中的星座点较少。这是因为在低信噪比情况下，为了对抗噪声，相邻星座点之间的欧氏距离应尽可能大。随着信噪比的增加，非重叠星座点的数量增加。根据熵最大化定理，当星座点具有均匀概率分布时，熵达到最大值<span class="math inline">\(K\log_2M\)</span>。由于在这种情况下噪声可以忽略不计，因此点数越多的星座可实现的速率越高。</p>
+<p>下面，我们将参数增加到 K = 6 和 N = 4。负载系数 λ 仍为 150%。我们将矩阵<span class="math inline">\(H_4\)</span>中的所有元素都设为 1，即所有用户和 RE 都完全连接。矩阵<span class="math inline">\(H_5\)</span>为 PDMA 系统优化的矩阵，矩阵<span class="math inline">\(H_6\)</span>取自其他方案。它们分别为： <span class="math display">\[
+H_5= \begin{bmatrix}
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\ 
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 \\ 
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 
+\end{bmatrix}\qquad (15)
+\]</span></p>
+<p><span class="math display">\[
+H_6= \begin{bmatrix}
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 \\ 
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\ 
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 \\ 
+\end{bmatrix}\qquad (15)
+\]</span></p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311111948260.png" srcset="/img/loading.gif" lazyload alt="图10：采用不同映射的 H5 和 H6 的实现速率，BPSK"><figcaption aria-hidden="true">图10：采用不同映射的 H5 和 H6 的实现速率，BPSK</figcaption>
+</figure>
+<p>首先，我们研究了文献中提出的 H5 和 H6 的可实现速率。采用 BPSK 调制。从图10中可以看出，通过星座重排，互信息明显增加。如图所示，这两种结构都能达到 BPSK 的最大传输速率。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311112631998.png" srcset="/img/loading.gif" lazyload alt="图11：不同映射下 H4、H5 和 H6 的可实现速率，4PAM"><figcaption aria-hidden="true">图11：不同映射下 H4、H5 和 H6 的可实现速率，4PAM</figcaption>
+</figure>
+<p>图 11 显示了采用 4PAM 调制和最佳映射的<span class="math inline">\(H_4\)</span>、<span class="math inline">\(H_5\)</span>和<span class="math inline">\(H_6\)</span>的可实现速率。从图11中可以看出，采用<span class="math inline">\(H_4\)</span>、<span class="math inline">\(H_5\)</span>和<span class="math inline">\(H_6\)</span>的系统在应用最佳重映射后都获得了显著提高。采用<span class="math inline">\(H_4\)</span>的结构改进最大，在其他结构中表现最好。同时，根据图 7 和图 11 的观察结果，可实现速率从 K = 3 和 N = 2 时的 1.875 比特/用户提高到 K = 6 和 N = 4 时的 1.966 比特/用户。通过增加参数 K 和 N，同时保持 λ 不变，每个用户的可实现速率接近最大<span class="math inline">\(\log_2M\)</span>。</p>
+<h4 id="误码率性能">1.4.2 误码率性能</h4>
+<p>为了评估误码率性能，我们模拟了图 1 中的结构。信道编码是速率为1/2的Turbo 码，调制为 4-PAM。比特到符号的映射在调制中自然标出。经过星座重排后，符号在 AWGN 信道中传输。接收机采用联合最大似然检测。由于信道编码有助于区分重叠的星座点，因此要进行迭代检测和解码。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311114246988.png" srcset="/img/loading.gif" lazyload alt="图12：H4、H5 和 H6 在 AWGN 信道中不同映射的误码率性能"><figcaption aria-hidden="true">图12：H4、H5 和 H6 在 AWGN 信道中不同映射的误码率性能</figcaption>
+</figure>
+<p>图 12 显示了 AWGN 信道中不同映射结构<span class="math inline">\(H_4\)</span>、<span class="math inline">\(H_5\)</span>和<span class="math inline">\(H_6\)</span>的平均误码率。在不进行星座重排的情况下，<span class="math inline">\(H_4\)</span>和<span class="math inline">\(H_5\)</span>结构不起作用，只有<span class="math inline">\(H_6\)</span>有机会恢复用户信息。在应用星座重排时，所有结构都通过使用最优重映射获得了显著改善。采用最佳映射的结构<span class="math inline">\(H_4\)</span>在误码率方面表现最佳，明显优于文献中优化的结构。图 12 中的误码率性能比较与图 11 中的互信息比较一致。</p>
+<h3 id="结论">1.5 结论</h3>
+<p>本文提出通过星座重排实现多用户叠加传输系统。我们基于互信息对多用户系统进行了优化，并使用模拟退火算法为每个用户找到了最佳重映射。数值结果表明，与文献中的方案相比，我们提出的方案在传输速率和误码率方面都有显著提高。</p>
+<h2 id="通过双层因子图实现协同-noma">2.通过双层因子图实现协同 NOMA</h2>
+<p>本文通过构建双层因子图提出了协作非正交多址接入。源端用户通过叠加一些资源元素来传输他们的符号。如果目的地的非正交多址传输不成功，中继器将协助解码和转发。两条链路上的叠加结构构建了一个双层因子图。来自中继站的信息有助于区分星座重叠并改善距离特性。利用遗传算法进行优化，以最大限度地提高传输总和速率。提供了传输速率和符号错误率方面的数值结果，说明了双层因子图在合作 NOMA 系统中的优越性。</p>
+<h3 id="引言-1">2.1引言</h3>
+<p>非正交多址接入（NOMA）被认为是一种有望提高 5G 无线通信频谱效率的技术。非正交多址方案的关键概念是将不同用户的符号叠加到同一资源要素（RE）上，RE 可以是时隙、频率信道、扩频码等。利用 NOMA 的协同传输，即使每个节点只配备一个天线，也能获得空间自由度。</p>
+<p>用于 5G 无线通信的合作 NOMA 近来备受关注。在协作 NOMA 中，全双工和半双工模式都考虑了译码-前向（DF）中继和放大-前向（AF）中继。</p>
+<p>关于协作 NOMA 的现有研究大多基于高斯源假设，并在功率域中实现。对于离散调制的情况，相关文献十分有限。同时，中继信道的拓扑结构与因子图自然相连。然而，基于因子图扩展的协作 NOMA 研究仍是空白。因此，本文提出了基于双层因子图的合作 NOMA 方案。从信源到目的地的 NOMA 传输被视为因子图的第一层。从中继站到目的地的传输构建了第二层，有助于区分星座重叠并改善距离特性。</p>
+<p>有双层因子图在中继信道分布式信道编码中的应用，他采用了扩展和加长的因子图来实现编码合作。本文将双层因子图引入合作 NOMA 系统。源节点的用户在多个资源元素上进行非正交传输。如果目的地的 NOMA 传输不成功，中继器会对信息进行解码和转发，以协助传输。从目的地的角度来看，两条链路上的叠加结构构建了一个双层因子图。来自中继站的信息有助于区分源信息叠加中出现的星座重叠。此外，"-1 "元素也包含在二进制叠加矩阵中。因此，重叠的概率降低了，联合星座的距离特性也得到了改善。为了最大限度地提高传输总和率，我们使用遗传算法进行了优化。提供了总和速率和符号错误率（SER）方面的数值结果，说明了双层因子图在合作 NOMA 系统中的优越性。</p>
+<p>本文的其余部分安排如下。首先，在第二节中使用因子图对一般的三节点中继信道进行建模。第三节提出了合作 NOMA 的双层因子图。第四节介绍了如何优化系统以实现最大传输速率。最后，第六部分是本文的结论。</p>
+<h3 id="系统模型">2.2 系统模型</h3>
+<p>本文考虑的是一般的三节点中继信道。与经典的中继模式不同，源节点（S）由多个用户设备（UE）组成。UE 以非正交方式向共同接收器（即目的地 (D)）传输信息。中继节点（R）协助从源节点到目的地的传输。我们假设系统以半双工模式运行：在第一阶段，源端 UE 向中继站和目的地广播；在第二阶段，中继站将源端的信息转发给目的地，而源端保持沉默。源端 UE 发出的信息叠加到多个资源元素（RE）上。同样，中继器将叠加的符号传送到目的地。最后，目的地结合信源和中继的信道观测结果来恢复信息。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311162147994.png" srcset="/img/loading.gif" lazyload alt="图1. 中继信道"><figcaption aria-hidden="true">图1. 中继信道</figcaption>
+</figure>
+<p>中继信道模型如图 1 所示。在不失一般性的前提下，我们假设有一个中继节点。扩展到多个中继节点的情况也很简单。在解码-转发协议中，中继节点对信息进行解码后再转发。我们假设源端有 K 个 UE，它们彼此独立。K 个 UE 的调制符号向量为<span class="math inline">\(x_S=[x_1,x_2,\cdots,x_K]^T\)</span>。这些符号根据叠加矩阵 <span class="math inline">\(H_S\)</span>映射到传输中的<span class="math inline">\(N_S\)</span>个资源元素上。目的地相应的接收信号矢量为<span class="math inline">\(y_{SD}=[y_1,y_2,\cdots,y_{N_S}]^T\)</span>。在中继节点，解码信息为<span class="math inline">\(x_R=[x_1&#39;,x_2&#39;,\cdots,x_K&#39;]^T\)</span>。中继根据叠加矩阵<span class="math inline">\(H_R\)</span>使用<span class="math inline">\(N_R\)</span>个RE 转发<span class="math inline">\(x_R\)</span>。目的地接收到的相应信号向量为<span class="math inline">\(y_{RD}=[y_{N_S+1},y_{N_S+2},\cdots,y_{N_S+N_R}]^T\)</span>。目的站根据<span class="math inline">\(y=[y_{SD}^T,y_{RD}^T]^T\)</span>进行多用户联合检测，以恢复源符号向量<span class="math inline">\(x_S\)</span>。我们假设所有资源元素的发射功率为 p，所有信道的噪声均为高斯噪声。那么，系统模型可以写成： <span class="math display">\[
+y_{SD}=H_Sx_S+z_S\qquad\quad~\\y_{RD}=H_Rx_R+z_R\qquad (1)
+\]</span> 噪声矢量<span class="math inline">\(z_S=[z_1,z_2,\cdots,z_{N_S}]^T\)</span>和<span class="math inline">\(z_R=[z_{N_S+1},z_{N_S+2},\cdots,z_{N_S+N_R}]^T\)</span>，其中<span class="math inline">\(s\in[1,N_S]\)</span>时，<span class="math inline">\(z_s\sim N(0,\sigma_S^2)\)</span>；<span class="math inline">\(r\in[N_S+1,N_S+N_R]\)</span>时，<span class="math inline">\(z_r\sim N(0,\sigma_R^2)\)</span>；我们定义<span class="math inline">\(N=N_S+N_R\)</span></p>
+<p>叠加矩阵<span class="math inline">\(H_S\)</span>和<span class="math inline">\(H_R\)</span>描述了传输符号向量与资源元素之间的联系。矩阵<span class="math inline">\(H_S\)</span>有<span class="math inline">\(N_S\)</span>行和 K 列，矩阵 <span class="math inline">\(H_R\)</span>的大小为<span class="math inline">\(N_R×K\)</span>。以<span class="math inline">\(H_S\)</span>为例，元素<span class="math inline">\(h_{nk}\)</span>代表第 n 行和第 k 列的值。如果来自第 k 个 UE 的符号通过第 n 个 RE 传输，则<span class="math inline">\(h_{nk}≠0\)</span>否则<span class="math inline">\(h_{nk}=0\)</span>。每个叠加矩阵与因子图相关联。例如，图 2 表示有 5 个 UE 和 3 个 RE 的叠加传输。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311172428326.png" srcset="/img/loading.gif" lazyload alt="图2. 5个 UE 和3个 RE 的叠加传输"><figcaption aria-hidden="true">图2. 5个 UE 和3个 RE 的叠加传输</figcaption>
+</figure>
+<h3 id="拟议计划">2.3 拟议计划</h3>
+<h3 id="动机">2.3.1 动机</h3>
+我们首先来看看第一阶段的传输情况，在这一阶段中，源端 UE 致力于将其信息传送到目的地。假设我们使用的是二进制叠加矩阵，即<span class="math inline">\(h_{nk}\)</span>等于 0 或 1。我们以图 2 中的传输为例，其中： $$ H_S^{(3,5)}=
+<span class="math display">\[\begin{bmatrix}
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 0  \\ 
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 1  \\ 
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 0  \\ 
+
+\end{bmatrix}\]</span>
+<p>(2) $$ 遗憾的是，这种叠加矩阵无法区分所有可能的传输符号向量。在 RE 上存在重叠的叠加符号。也就是说，不同的源符号向量可能会产生相同的叠加向量。如果目的地接收到这样的叠加向量，就无法分辨出传输的是哪个源符号向量。图 2 中的重叠叠加向量和相应的源符号向量列于表 Ⅰ。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311173034851.png" srcset="/img/loading.gif" lazyload alt="表Ⅰ.重叠的叠加向量"><figcaption aria-hidden="true">表Ⅰ.重叠的叠加向量</figcaption>
+</figure>
+<p>为了区分重叠的向量，目的地需要中继站提供额外的信息。通过观察表 1，我们可以发现关于<span class="math inline">\(x_4\)</span>或<span class="math inline">\(x_5\)</span>的知识可以简单地消除所有重叠。因此，在第二阶段，中继会向目的地转发一个符号。</p>
+<p>上例说明了协作 NOMA 的动机和设计原理。信源和中继的两个传输阶段为协作 NOMA 构建了一个双层因子图。下面，我们将介绍拟议方案的细节。</p>
+<h4 id="协作式-noma-的双层因子图">2.3.2 协作式 NOMA 的双层因子图</h4>
+<p>考虑到一般系统模型，整个叠加矩阵可写成： <span class="math display">\[
+H= \begin{bmatrix}
+H_S  \\ 
+H_R  \\ 
+\end{bmatrix}\qquad (3)
+\]</span> 信源-目的地链路的因子图与叠加矩阵<span class="math inline">\(H_S\)</span>相关联，中继-目的地链路的因子图与<span class="math inline">\(H_R\)</span>相关联。整个双层因子图对应于 N 行 K 列的矩阵 H。<span class="math inline">\(H_S\)</span>的设计目的是尽可能提高源-目的链路的传输速率，而<span class="math inline">\(H_R\)</span>所描述的传输有助于区分所有源符号向量。</p>
+事实上，并非所有二进制<span class="math inline">\(H_R\)</span>都能区分重叠的叠加向量。下面以 K = 6 和<span class="math inline">\(N_S=3\)</span>为例进行说明。叠加矩阵<span class="math inline">\(H_S\)</span>为： $$ H_S^{(3,6)}=
+<span class="math display">\[\begin{bmatrix}
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp;0 \\ 
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp;0 \\ 
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp;1 \\ 
+
+\end{bmatrix}\]</span>
+<p>(4) $$ 共有 14 个重叠叠加向量。表 II 列出了最高概率—1/16的叠加矢量及其对应的源符号矢量。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311174840989.png" srcset="/img/loading.gif" lazyload alt="表Ⅱ.重叠的叠加向量"><figcaption aria-hidden="true">表Ⅱ.重叠的叠加向量</figcaption>
+</figure>
+<p>在这个例子中，二进制<span class="math inline">\(H_R\)</span>只能减少重叠的可能性，但不能完全消除所有重叠。关键问题在于，当两个 UE 的符号之和为 "0 "时，不可能对 "+1 "和"-1 "做出判断。这可以通过在两个 UE 的其中一个连接中加入"-1 "来解决。因此，我们将<span class="math inline">\(H_R\)</span>中的值扩展为{-1,0,1}。如果来自第 k 个 UE 的符号通过第 n 个 RE 传输，则<span class="math inline">\(h_{nk}=1\)</span>；如果符号被拍击后再传输，则<span class="math inline">\(h_{nk}=-1\)</span>；否则，<span class="math inline">\(h_{nk}=0\)</span>。K = 6、<span class="math inline">\(N_S=3\)</span>和<span class="math inline">\(N_R=2\)</span>的映射示例由图 3 中的因子图表示。相应的叠加矩阵写为： <span class="math display">\[
+H_S^{(5,6)}= \begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp;1 \\ 
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp;0 \\ 
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp;1 \\ 
+\hline
+0 &amp; 0 &amp; 1 &amp; 0 &amp; -1 &amp;0 \\
+0 &amp; 1 &amp; -1 &amp; 0 &amp; 0 &amp;1 \\
+\end{bmatrix}\qquad (5)
+\]</span> 其中，上部与第一层相对应，下部与第二层相关。</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240311204849947.png" srcset="/img/loading.gif" lazyload alt="图3. 双层因子图示例"><figcaption aria-hidden="true">图3. 双层因子图示例</figcaption>
+</figure>
+<h4 id="目的地联合解码">2.3.3 目的地联合解码</h4>
+<p>目的地根据信源和中继的信道观测结果进行联合解码。在双层因子图上实现联合最大似然（ML）解码。解码向量的计算公式为： <span class="math display">\[
+\hat{x}= arg\ max\thinspace p(y_{SD}y_{RD}|x)\qquad (6)
+\]</span> 由于信源—中继链路存在噪声，可能会出现<span class="math inline">\(x_S≠x_R\)</span>的情况。第 k 个用户<span class="math inline">\(x_k\)</span>的信息位和它在中继站的估计<span class="math inline">\(x_k&#39;\)</span>的信息位不同的概率为<span class="math inline">\(p(x_k≠x_k&#39;)=\varepsilon_k\)</span>。那么 (6) 可以写成： <span class="math display">\[
+\hat{x}= arg\ max\thinspace p(y_{SD}|x)p(y_{RD}|x)~\\=arg\ max\thinspace p(y_{SD}|x)\displaystyle\sum_{x&#39;}p(y_{RD}|x&#39;)p(x&#39;|x)\qquad (7)
+\]</span> 其中<span class="math inline">\(p(x&#39;|x)=\prod_{k=1}^{K}p(x_k&#39;|x_k)\)</span>。</p>
+<blockquote>
+<ul>
+<li>定义：（完备事件组/样本空间的划分）</li>
+</ul>
+<p>设B1，B2，…Bn是一组事件,若</p>
+<ol type="1">
+<li><span class="math inline">\(\forall i≠j\in\{1,2,\cdots,n\},B_i\cap B_j=\varnothing\)</span></li>
+<li>B1∪B2∪…∪Bn=Ω</li>
+</ol>
+<p>则称B1，B2，…Bn样本空间Ω的一个划分，或称为样本空间Ω 的一个完备事件组。</p>
+<ul>
+<li>定理（全概率公式）：</li>
+</ul>
+<p>设事件组<span class="math inline">\(\{B_i\}\)</span>是样本空间 Ω 的一个划分，且P(Bi)&gt;0(i=1，2，…n)</p>
+<p>则对任一事件A，有：</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/b7e4dcaa31a2dec0a3701849ded5b1be.svg" srcset="/img/loading.gif" lazyload alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<ul>
+<li>定理（贝叶斯公式）：</li>
+</ul>
+<p>设B1，B2，…Bn…是一完备事件组，则对任一事件A，P（A）&gt;0，有</p>
+<figure>
+<img src="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/75e7f28a355ad71a021979ac4e46f161.svg" srcset="/img/loading.gif" lazyload alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+</blockquote>
+<p>在联合 ML 检测中，可以通过成对差错概率（PEP）计算出 SER 的上界。假设<span class="math inline">\(x_a,x_b\in\{x\}\)</span>，且第 k 个 UE 中<span class="math inline">\(x_b\)</span>与<span class="math inline">\(x_a\)</span>不同，则第 k 个 UE 的平均 SER 上界为： $$</p>
+<p>$$</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" class="category-chain-item">毕业设计</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80/">#协作非正交多址</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>协作非正交多址接入</div>
+      <div>http://example.com/2024/03/09/协作非正交多址接入/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Faceless-person</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/" title="复试常见题汇总">
+                        <span class="hidden-mobile">复试常见题汇总</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
