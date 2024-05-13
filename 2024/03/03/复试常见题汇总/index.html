@@ -29,12 +29,12 @@
 <meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113588706576.webp">
 <meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113588369094.webp">
 <meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113433199182.webp">
-<meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240328175547649.png">
 <meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240326202216213.png">
 <meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240326202953128.png">
 <meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240326205706105.png">
+<meta property="og:image" content="http://example.com/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240328175547649.png">
 <meta property="article:published_time" content="2024-03-03T01:28:24.000Z">
-<meta property="article:modified_time" content="2024-03-29T13:20:33.686Z">
+<meta property="article:modified_time" content="2024-04-02T13:36:39.624Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信原理">
 <meta property="article:tag" content="考研">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          25k 字
+          26k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          212 分钟
+          218 分钟
         
       </span>
     
@@ -288,7 +288,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一通信原理">一、通信原理</h1>
+                <p>2024/3/30 11:18 今天上午面试终于结束了，我感觉说的过去，不知道最后结果咋样。</p>
+<h1 id="一通信原理">一、通信原理</h1>
 <h2 id="高斯白噪声">1.高斯白噪声</h2>
 <ul>
 <li><u><strong>什么是白噪声，为什么叫白噪声？</strong></u></li>
@@ -1077,10 +1078,21 @@
 <li>防火墙设置有问题。</li>
 <li>是否有什么软件阻止了ping包。</li>
 </ol>
-<figure>
-<img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240328175547649.png" srcset="/img/loading.gif" lazyload alt="话术"><figcaption aria-hidden="true">话术</figcaption>
-</figure>
-<h1 id="四英语">四、英语</h1>
+<h1 id="四移动通信">四、移动通信</h1>
+<h2 id="多址方式">1.多址方式</h2>
+<ul>
+<li><strong><u>请问频分多址具体是怎样划分信道的？为了保证信道不产生明显的干扰，采用什么措施？FDMA有何特点？</u></strong></li>
+</ul>
+<p>FDMA对给定的频率资源规划出多个载波，通常是等间隔划分频段方式实现，一个载频对应一个物理通道；为了保证相邻信道之间不产生明显干扰，在用户信道之间，一般要设保护频带以确保频道之间相互正交；FDMA技术特点如下：每个频道只传送一路电话，一旦给移动台分配了频道，移动台和基站同时连续不断发射；信道带宽较窄，即FDMA通常使用窄带系统；系统简单，但需要双工器，同时需要精确的射频带通滤波器来消除邻道干扰和基站的杂散辐射。</p>
+<ul>
+<li><strong><u>请问时分多址具体是怎样划分信道的？为了保证TDMA系统正常工作，有什么要求？TDMA有何特点？</u></strong></li>
+</ul>
+<p>在一个带宽的无线载波上，把时间分成周期性的帧，每一帧再分割为若干时隙，每一时隙就是一个信道，分配给一个用户；同步和定时是TDMA系统正常工作的前提，具体就是要求：位同步、时隙同步、帧同步、网同步；TDMA的技术特点如下：（1）多用户共享一个载波频率，数据分组发送，不连续发送，需开关；（2）由于速率较高，往往需要采用均衡器。</p>
+<ul>
+<li><strong><u>请问码分多址是怎样划分信道的？如何解调？</u></strong></li>
+</ul>
+<p>通过不同的码序列来划分物理信道，信道在时间和频率上重合，在码字上分离；在CDMA系统中，码不但可以区分信道，还可以区分基站或用户，区分基站或用户的码统称为扰码；CDMA系统为每个用户分配了各自特定的地址码，无论从频域还是时域来看，各用户的信号都是混杂在一起的，因为这些地址码具有准正交性，接收端唯有使用完全一致的本地地址码才能解调信号。</p>
+<h1 id="五英语">五、英语</h1>
 <h2 id="自我介绍">1.自我介绍</h2>
 <p>Good morning, dear teachers! I am glad to be here for this interview. My name is QinMian. I like this name because it stands for diligence. I am from Beijing University of Posts and Telecommunications, and my major is Information Engineering.</p>
 <p>I would like to choose the word diligence to describe myself. I spent more than eight hours on learning almost every day during my preparation of this exam, and that's why I am here. I don't believe luck, I don't believe talent, but I do believe diligence can take me there.</p>
@@ -1098,9 +1110,15 @@
 <p><img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240326205706105.png" srcset="/img/loading.gif" lazyload></p>
 <p>《Green Book》: Whatever you do, do it a hundred percent, when you work, work, when you laugh, laugh, when you eat, eat like it is your last meal.</p>
 <p>I'm so sorry, teacher! I didn't hear the question clearly. Could you please repeat it？</p>
+<ul>
+<li><strong><u>What research direction you are interested in?</u></strong></li>
+</ul>
 <p>I want to research in the field of six generation mobile networks. Because it can bring faster transmission rates and lower latency. In the future, it will be applied in all aspects of our life. If I am admitted, I will continue to be strict with myself and work hard in my research direction.</p>
+<ul>
+<li><strong><u>Introduce your favorite course during your undergraduate studies.</u></strong></li>
+</ul>
 <p>My favourite course is Principles of Communication. It is the most important course in my major. I took the course seriously in my junior and did well in it, and I got some precious major-related knowledge. What's more, because I like this course, in the preliminary exam, I got a high score in the course. I will continue to be strict with myself and apply the knowledge of this course to future research.</p>
-<h1 id="五项目提问">五、项目提问</h1>
+<h1 id="六项目提问">六、项目提问</h1>
 <ul>
 <li><strong><u>蒙特卡洛拒绝采样？</u></strong></li>
 </ul>
@@ -1130,6 +1148,7 @@
 <p>把输入图像转化成视觉单词（visual words）的频率直方图。</p>
 <p>构造特征到图像的倒排表，通过倒排表快速索引相关图像。</p>
 <p>根据索引结果进行直方图匹配。</p>
+<p><img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240328175547649.png" srcset="/img/loading.gif" lazyload alt="话术" style="zoom: 67%;"></p>
 
                 
               </div>
