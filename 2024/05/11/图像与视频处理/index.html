@@ -16,12 +16,12 @@
   <meta name="author" content="Faceless-person">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2024&#x2F;5&#x2F;11 16:22 今天学习一下图像和视频处理的相关知识。 2024&#x2F;5&#x2F;16 11:17 到今天，已经把前三个实验任务完成了，今天准备开始做第四个实验。 一、PBM和PGM 1.PBM和PGM基本知识  PBM（Portable BitMap）支持单色图（1个像素位）。 PGM（Portable GreyMap）支持灰度图形，能够读PBM图形和PGM图形，输出PGM图形。">
+    <meta name="description" content="使用Matlab对PPM和PGM格式图像进行一系列处理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图像与视频处理">
 <meta property="og:url" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="Faceless_blog">
-<meta property="og:description" content="2024&#x2F;5&#x2F;11 16:22 今天学习一下图像和视频处理的相关知识。 2024&#x2F;5&#x2F;16 11:17 到今天，已经把前三个实验任务完成了，今天准备开始做第四个实验。 一、PBM和PGM 1.PBM和PGM基本知识  PBM（Portable BitMap）支持单色图（1个像素位）。 PGM（Portable GreyMap）支持灰度图形，能够读PBM图形和PGM图形，输出PGM图形。">
+<meta property="og:description" content="使用Matlab对PPM和PGM格式图像进行一系列处理。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514095516604.png">
 <meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/512b616b27ca4d9c891cdf7b43e68b3c.jpeg">
@@ -51,12 +51,16 @@
 <meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Peppers_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_rgb.jpeg">
 <meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_Peppers.jpeg">
 <meta property="article:published_time" content="2024-05-11T08:21:53.000Z">
-<meta property="article:modified_time" content="2024-05-18T08:09:03.190Z">
+<meta property="article:modified_time" content="2024-05-18T08:22:20.746Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="图像与视频处理">
-<meta property="article:tag" content="PBM">
 <meta property="article:tag" content="PGM">
 <meta property="article:tag" content="直方图">
+<meta property="article:tag" content="PPM">
+<meta property="article:tag" content="量化">
+<meta property="article:tag" content="采样">
+<meta property="article:tag" content="滤波">
+<meta property="article:tag" content="边缘检测">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514095516604.png">
   
@@ -251,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          36k 字
+          37k 字
         
       </span>
     
@@ -307,6 +311,7 @@
                 
                 <p>2024/5/11 16:22 今天学习一下图像和视频处理的相关知识。</p>
 <p>2024/5/16 11:17 到今天，已经把前三个实验任务完成了，今天准备开始做第四个实验。</p>
+<p>2024/5/18 16:21 项目结束。</p>
 <h1 id="一pbm和pgm">一、PBM和PGM</h1>
 <h2 id="pbm和pgm基本知识">1.PBM和PGM基本知识</h2>
 <ul>
@@ -891,11 +896,19 @@ G_x=\begin{bmatrix}
       
         <a href="/tags/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">#图像与视频处理</a>
       
-        <a href="/tags/PBM/">#PBM</a>
-      
         <a href="/tags/PGM/">#PGM</a>
       
         <a href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/">#直方图</a>
+      
+        <a href="/tags/PPM/">#PPM</a>
+      
+        <a href="/tags/%E9%87%8F%E5%8C%96/">#量化</a>
+      
+        <a href="/tags/%E9%87%87%E6%A0%B7/">#采样</a>
+      
+        <a href="/tags/%E6%BB%A4%E6%B3%A2/">#滤波</a>
+      
+        <a href="/tags/%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">#边缘检测</a>
       
     </div>
   
