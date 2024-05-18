@@ -1,0 +1,1277 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Faceless-person">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2024&#x2F;5&#x2F;11 16:22 今天学习一下图像和视频处理的相关知识。 2024&#x2F;5&#x2F;16 11:17 到今天，已经把前三个实验任务完成了，今天准备开始做第四个实验。 一、PBM和PGM 1.PBM和PGM基本知识  PBM（Portable BitMap）支持单色图（1个像素位）。 PGM（Portable GreyMap）支持灰度图形，能够读PBM图形和PGM图形，输出PGM图形。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像与视频处理">
+<meta property="og:url" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="2024&#x2F;5&#x2F;11 16:22 今天学习一下图像和视频处理的相关知识。 2024&#x2F;5&#x2F;16 11:17 到今天，已经把前三个实验任务完成了，今天准备开始做第四个实验。 一、PBM和PGM 1.PBM和PGM基本知识  PBM（Portable BitMap）支持单色图（1个像素位）。 PGM（Portable GreyMap）支持灰度图形，能够读PBM图形和PGM图形，输出PGM图形。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514095516604.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/512b616b27ca4d9c891cdf7b43e68b3c.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514100217700.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/1.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/2.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240516224506826.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240516224717094.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/v2-cf13cbb100995b17cb52c0e17eddf839_r.jpg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514104729354.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514174050694.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514174125706.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514174208637.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%9D%87%E8%A1%A1%E5%8C%96%E5%AF%B9%E6%AF%94_Lena.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%9D%87%E8%A1%A1%E5%8C%96%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%AF%B9%E6%AF%94_Lena.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%BB%BA%E6%A8%A1%E5%89%8D%E5%90%8EB%E7%9A%84%E5%AF%B9%E6%AF%94.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%BB%BA%E6%A8%A1AB_%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E5%AF%B9%E6%AF%94.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E5%BB%BA%E6%A8%A1%E5%89%8D%E5%90%8EB%E7%9A%84%E5%AF%B9%E6%AF%94.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%BB%BA%E6%A8%A1%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83_%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%8E%9F%E5%A7%8B%E5%9B%BE%E5%83%8F%E5%92%8C%E8%B4%9F%E7%89%87%E5%9B%BE%E5%83%8F_Lena.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%B9%B3%E7%A7%BB%E6%97%8B%E8%BD%AC-17157800682331.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E6%97%8B%E8%BD%AC%E5%80%BE%E6%96%9C%E7%BB%93%E5%90%88.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Lena_%E5%8A%A0%E5%99%AA%E5%A3%B0-17159126666311.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Lena_%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Lena_%E7%9F%A9%E5%BD%A2%E6%BB%A4%E6%B3%A2.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Peppers_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_grey-17160136154963.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Peppers_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_rgb.jpeg">
+<meta property="og:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_Peppers.jpeg">
+<meta property="article:published_time" content="2024-05-11T08:21:53.000Z">
+<meta property="article:modified_time" content="2024-05-18T08:09:03.190Z">
+<meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="图像与视频处理">
+<meta property="article:tag" content="PBM">
+<meta property="article:tag" content="PGM">
+<meta property="article:tag" content="直方图">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514095516604.png">
+  
+  
+  
+  <title>图像与视频处理 - Faceless_blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Faceless_blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="图像与视频处理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-11 16:21" pubdate>
+          2024年5月11日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          36k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          305 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">图像与视频处理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>2024/5/11 16:22 今天学习一下图像和视频处理的相关知识。</p>
+<p>2024/5/16 11:17 到今天，已经把前三个实验任务完成了，今天准备开始做第四个实验。</p>
+<h1 id="一pbm和pgm">一、PBM和PGM</h1>
+<h2 id="pbm和pgm基本知识">1.PBM和PGM基本知识</h2>
+<ul>
+<li>PBM（Portable BitMap）支持单色图（1个像素位）。</li>
+<li>PGM（Portable GreyMap）支持灰度图形，能够读PBM图形和PGM图形，输出PGM图形。</li>
+<li>PPM（Portable PixMap）支持真彩色图形，可以读上面所有格式，输出PPM图形。</li>
+</ul>
+<p>这三种图像格式都通过头2个字节<strong>magic number</strong>（P1, P2, P3, P4, P5, P6）来表明图像的类型(PBM, PGM, PPM), 以及编码方式(ASCII 或 Binary)。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Magic Number</th>
+<th style="text-align: left;">图像类型</th>
+<th style="text-align: left;">编码方式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">P1</td>
+<td style="text-align: left;">Bitmap</td>
+<td style="text-align: left;">ASCII</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P2</td>
+<td style="text-align: left;">Graymap</td>
+<td style="text-align: left;">ASCII</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P3</td>
+<td style="text-align: left;">Pixmap</td>
+<td style="text-align: left;">ASCII</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P4</td>
+<td style="text-align: left;">Bitmap</td>
+<td style="text-align: left;">Binary</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P5</td>
+<td style="text-align: left;">Graymap</td>
+<td style="text-align: left;">Binary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P6</td>
+<td style="text-align: left;">Pixmap</td>
+<td style="text-align: left;">Binary</td>
+</tr>
+</tbody>
+</table>
+<p>其实我们主要看的是图像文件的头信息, 且头信息都是ASCII格式的, 数据部分才分ASCII编码方式和Binary编码方式。</p>
+<p>下面着重讲解ppm格式：</p>
+<p>PPM图像格式分为两部分，分别为<strong>头部分</strong>和<strong>图像数据</strong>部分。</p>
+<p>头部分：由3部分组成，通过换行或空格进行分割，一般PPM的标准是空格。</p>
+<ul>
+<li>第1部分：P3或P6，指明PPM的编码格式，</li>
+<li>第2部分：图像的宽度和高度，通过ASCII表示，</li>
+<li>第3部分：最大像素值，0-255字节表示。</li>
+</ul>
+<p>图像数据部分：</p>
+<ul>
+<li>ASCII格式：按RGB的顺序排列，RGB中间用空格隔开，图片每一行用回车隔开。</li>
+<li>Binary格式：PPM用24bits代表每一个像素，红绿蓝分别占用8bits。</li>
+</ul>
+<h2 id="读取写入pgmppm图像">2.读取/写入PGM/PPM图像</h2>
+<p>读取PGM图像：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 读取PGM图像</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[image_data, width, height, max_val,P]</span> = <span class="hljs-title">readPGM</span><span class="hljs-params">(filename, format)</span></span><br>    fid = fopen(filename, <span class="hljs-string">&#x27;r&#x27;</span>);<br>    P=fgetl(fid); <span class="hljs-comment">% 读取并忽略P5</span><br>    fgetl(fid); <span class="hljs-comment">% 读取并忽略注释</span><br>    dimensions = fscanf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, <span class="hljs-number">2</span>);<br>    width = dimensions(<span class="hljs-number">1</span>);<br>    height = dimensions(<span class="hljs-number">2</span>);<br>    max_val = fscanf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">if</span> strcmp(format, <span class="hljs-string">&#x27;ASCII&#x27;</span>)<br>        image_data = fscanf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, [width, height]);<br>        image_data = image_data&#x27;;<br>    <span class="hljs-keyword">else</span><br>        image_data = fread(fid, [width, height], <span class="hljs-string">&#x27;uint8&#x27;</span>);<br>        image_data = image_data&#x27;;<br>    <span class="hljs-keyword">end</span><br>    image_data=uint8(image_data);<br>    fclose(fid);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>写入PGM图像：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 写入PGM图像</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">writePGM</span><span class="hljs-params">(filename, image_data, width, height, max_val, format,P)</span></span><br>    fid = fopen(filename, <span class="hljs-string">&#x27;w&#x27;</span>);<br>    <span class="hljs-keyword">if</span> strcmp(format, <span class="hljs-string">&#x27;ASCII&#x27;</span>)<br>        fprintf(fid, <span class="hljs-string">&#x27;%s\n&#x27;</span>,P); <span class="hljs-comment">% 写入P2</span><br>        fprintf(fid, <span class="hljs-string">&#x27;# image created by Sihan Rong\n&#x27;</span>); <span class="hljs-comment">% 添加注释</span><br>        fprintf(fid, <span class="hljs-string">&#x27;%d %d\n&#x27;</span>, width, height);<br>        fprintf(fid, <span class="hljs-string">&#x27;%d\n&#x27;</span>, max_val);<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:height<br>            fprintf(fid, <span class="hljs-string">&#x27;%d &#x27;</span>, image_data(<span class="hljs-built_in">i</span>, :));<br>            fprintf(fid, <span class="hljs-string">&#x27;\n&#x27;</span>);<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span><br>        fprintf(fid, <span class="hljs-string">&#x27;%s\n&#x27;</span>,P); <span class="hljs-comment">% 写入P5</span><br>        fprintf(fid, <span class="hljs-string">&#x27;# image created by Sihan Rong\n&#x27;</span>); <span class="hljs-comment">% 添加注释</span><br>        fprintf(fid, <span class="hljs-string">&#x27;%d %d\n&#x27;</span>, width, height);<br>        fprintf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, max_val);<br>        image_data = image_data&#x27;;<br>        fwrite(fid, image_data, <span class="hljs-string">&#x27;uint8&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br>    fclose(fid);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>读取PPM图像：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 读取PPM图像</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[image_data, width, height, max_val,P]</span> = <span class="hljs-title">readPPM</span><span class="hljs-params">(filename, format)</span></span><br>    fid = fopen(filename, <span class="hljs-string">&#x27;r&#x27;</span>);<br>    P=fgetl(fid);<span class="hljs-comment">% 读取并忽略P6</span><br>    fgetl(fid); <span class="hljs-comment">% 读取并忽略注释</span><br>    dimensions = fscanf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, <span class="hljs-number">2</span>);<br>    width = dimensions(<span class="hljs-number">1</span>);<br>    height = dimensions(<span class="hljs-number">2</span>);<br>    max_val = fscanf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">if</span> strcmp(format, <span class="hljs-string">&#x27;ASCII&#x27;</span>)<br>        image_data = fscanf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, [<span class="hljs-number">3</span>, width * height]);<br>        image_data = <span class="hljs-built_in">reshape</span>(image_data, [<span class="hljs-number">3</span>,width, height]);<br>        <br>    <span class="hljs-keyword">else</span><br>            image_data = fread(fid, [<span class="hljs-number">3</span>,width*height], <span class="hljs-string">&#x27;uint8&#x27;</span>);<br>            image_data=double(<span class="hljs-built_in">reshape</span>(image_data,[<span class="hljs-number">3</span>,width,height]));<br>    <span class="hljs-keyword">end</span><br>    fclose(fid);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>写入PPM图像：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 写入PPM图像</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">writePPM</span><span class="hljs-params">(filename, image_data, width, height, max_val, format,P)</span></span><br>    fid = fopen(filename, <span class="hljs-string">&#x27;w&#x27;</span>);<br>    <span class="hljs-keyword">if</span> strcmp(format, <span class="hljs-string">&#x27;ASCII&#x27;</span>)<br>        fprintf(fid, <span class="hljs-string">&#x27;%s\n&#x27;</span>,P); <span class="hljs-comment">% 写入P3</span><br>        fprintf(fid, <span class="hljs-string">&#x27;# image created by Sihan Rong\n&#x27;</span>); <span class="hljs-comment">% 添加注释</span><br>        fprintf(fid, <span class="hljs-string">&#x27;%d %d\n&#x27;</span>, width, height);<br>        fprintf(fid, <span class="hljs-string">&#x27;%d\n&#x27;</span>, max_val);<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:height<br>            <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">1</span>:width<br>                fprintf(fid, <span class="hljs-string">&#x27;%d %d %d &#x27;</span>, image_data(:, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>));<br>            <span class="hljs-keyword">end</span><br>            fprintf(fid, <span class="hljs-string">&#x27;\n&#x27;</span>);<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span><br>        fprintf(fid, <span class="hljs-string">&#x27;%s\n&#x27;</span>,P); <span class="hljs-comment">% 写入P6</span><br>        fprintf(fid, <span class="hljs-string">&#x27;# image created by Sihan Rong\n&#x27;</span>); <span class="hljs-comment">% 添加注释</span><br>        fprintf(fid, <span class="hljs-string">&#x27;%d %d\n&#x27;</span>, width, height);<br>        fprintf(fid, <span class="hljs-string">&#x27;%d&#x27;</span>, max_val);<br>        fwrite(fid, image_data, <span class="hljs-string">&#x27;uint8&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br>    fclose(fid);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 读取PPM图像并以其原始格式写入PPM图像</span><br><span class="hljs-comment">% input.ppm改成输入文件地址，output.ppm改成输出文件地址</span><br><span class="hljs-comment">% 注意在读取不同格式的图像数据时，要把函数后面的format换成相应的ASCII或Binary</span><br>[ppm_image_data, ppm_width, ppm_height, ppm_max_val] = readPPM(<span class="hljs-string">&#x27;input.ppm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br>writePPM(<span class="hljs-string">&#x27;output.ppm&#x27;</span>, ppm_image_data, ppm_width, ppm_height, ppm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>, P);<br><br><br><br><span class="hljs-comment">% 读取PGM图像并以其原始格式写入PGM图像</span><br>[pgm_image_data, pgm_width, pgm_height, pgm_max_val] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br>writePGM(<span class="hljs-string">&#x27;output.pgm&#x27;</span>, pgm_image_data, pgm_width, pgm_height, pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>, P);<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>fscanf</code> 函数用于从文件中按照指定的格式读取数据，并返回读取到的数据。但如果指定格式是矩阵的话，其读取后的数据填充方式是先填充列。故若源文件中数据矩阵式m×n大小，那就需要用<code>A=fscanf(fid, '%d', [n,m])</code>，再将A转置才是源文件中的矩阵。</p>
+<p><code>fscanf</code> 用于读取格式化的<strong>文本数据</strong>，可以按照指定的格式读取不同类型的数据。</p>
+<p><code>fread</code> 则用于读取<strong>二进制数据</strong>，它不关心数据的具体格式，只是按照字节来读取数据。</p>
+<p><code>fgetl</code> 是MATLAB中用于从文本数据文件中读取一行文本的函数。</p>
+<p>当你使用 <code>fopen</code> 打开文件时，该函数会返回一个文件标识符。你可以将这个标识符保存在一个变量中，并在后续的文件操作中使用它。一般情况下，当你完成文件操作后，应该使用 <code>fclose</code> 函数关闭文件，并释放该文件标识符。</p>
+</blockquote>
+<h1 id="二格式转换">二、格式转换</h1>
+<h2 id="yuv图像格式">1.YUV图像格式</h2>
+<p>YUV是一种图像颜色编码方式。相对于常见且直观的RGB颜色编码，YUV的产生自有其意义，它基于人眼对<strong>亮度</strong>比<strong>色彩</strong>的敏感度更高的特点，使用Y、U、V三个分量来表示颜色，并通过降低U、V分量的采样率，尽可能保证图像质量的情况下，做到如下3点：占用更低的存储空间、数据传输效率更高、兼容黑白与彩色显示。</p>
+<h3 id="像素">1.1 像素</h3>
+<p>想要深入了解YUV格式，必须得从Bit、Byte级别“看穿看透”它。</p>
+<ul>
+<li>Bit：位 —— 计算机硬件系统能识别的最基础单位。</li>
+<li>Byte：字节 —— 计算机文件系统能识别的最基础单位。</li>
+<li>像素：Pixel —— 显示图像的最基础单位。</li>
+</ul>
+<p>显示器上的一个像素点对应图像里的一个像素，不管哪种显示器，最终都是以像素为最小单位进行图像呈现。</p>
+<p>不论技术怎么革新，有两点是始终不变的：</p>
+<ul>
+<li>显示的基础单元是<strong>像素</strong>。</li>
+<li>每个像素的色彩由<strong>红、绿、蓝</strong>三原色混合实现。</li>
+</ul>
+<p>三原色是什么？显示器像素点的颜色数据是怎么排列存储的？带着问题先了解下RGB，为YUV的了解做个铺垫。</p>
+<h3 id="rgb">1.2 RGB</h3>
+<p>RGB：用R、G、B三个分量来表示像素点颜色，分别表示红、绿、蓝。这三种颜色就称为<strong>三原色</strong>，它们以不同比例混合能生成其他任意颜色。</p>
+<p>RGB表示一帧图像：</p>
+<ul>
+<li>每个像素点背后都包含一组R、G、B分量，像素点的颜色就是它们的混合。</li>
+<li>R、G、B每个分量分别占1个byte，也就是8个bit。</li>
+</ul>
+<p>例如，一张分辨率 1280 * 720 的RGB图片，占用 1280 * 720 * 3 / 1024 / 1024 = 2.63MB 空间。</p>
+<h3 id="yuv表示图像">1.3 YUV表示图像</h3>
+<p>YUV：用Y、U、V三个分量来表示像素颜色。</p>
+<ul>
+<li>Y 表示<strong>亮度</strong>（Luminance、缩写Luma），即为<strong>灰度值</strong>。</li>
+<li>U 和 V 表示<strong>色度</strong>（Chrominance、缩写Chroma），即为<strong>色调和饱和度</strong>。</li>
+</ul>
+<p>默认Y、U、V每个分量占用存储空间1个byte，和RGB一样。前文概述中提到过，YUV是通过降低U、V分量的采样率来实现它占用空间小和传输效率高的优势。也就是图像每个像素的Y分量都被完整采样全部保存，但是U、V分量只做部分采样，让多个像素按照一些规则共用U、V分量。</p>
+<h2 id="ppm图像和pgm图像之间的转换">2.PPM图像和PGM图像之间的转换</h2>
+<p>PPM就是RGB图像，PGM就是灰度图像，也就是YUV中Y通道的图像。</p>
+<p>给出YUV转换公式：</p>
+<p>Y = 0.257 * R + 0.504 * G + 0.098 * B + 16</p>
+<p>U = -0.148 * R - 0.291 * G + 0.439 * B + 128</p>
+<p>V = 0.439 * R - 0.368 * G - 0.071 * B + 128</p>
+<p>PPM转换为PGM：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[gray_image,YUV_image]</span> = <span class="hljs-title">BUPT_format_converter</span><span class="hljs-params">(color_image)</span></span><br>    [~,width, height] = <span class="hljs-built_in">size</span>(color_image);<br>    gray_image = <span class="hljs-built_in">zeros</span>(height, width);<br>    YUV_image = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">3</span>,width,height);<br><br><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:height<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">1</span>:width<br>            R = color_image(<span class="hljs-number">1</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>);<br>            G = color_image(<span class="hljs-number">2</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>);<br>            B = color_image(<span class="hljs-number">3</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>);<br>            <br>            Y = <span class="hljs-number">0.257</span> * R + <span class="hljs-number">0.504</span> * G + <span class="hljs-number">0.098</span> * B + <span class="hljs-number">16</span>;<br>            U = <span class="hljs-number">-0.148</span> * R - <span class="hljs-number">0.291</span> * G + <span class="hljs-number">0.439</span> * B + <span class="hljs-number">128</span>;<br>            V = <span class="hljs-number">0.439</span> * R - <span class="hljs-number">0.368</span> * G - <span class="hljs-number">0.071</span> * B + <span class="hljs-number">128</span>;<br>            <span class="hljs-comment">% 更改Y/U/V，选择得到哪个通道的灰度图</span><br>            gray_image(<span class="hljs-built_in">i</span>, <span class="hljs-built_in">j</span>) = <span class="hljs-built_in">round</span>(Y);<br>            YUV_image(<span class="hljs-number">1</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>) = Y;<br>            YUV_image(<span class="hljs-number">2</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>) = U;<br>            YUV_image(<span class="hljs-number">3</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>) = V;<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>下面图(a)是PPM(RGB)图像，图(b)是PGM(灰度)图像，图(c)是U通道的图像，图(d)是V通道的图像。</p>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514095516604.png" srcset="/img/loading.gif" lazyload alt="PPM转换为Y、U、V通道的图像"><figcaption aria-hidden="true">PPM转换为Y、U、V通道的图像</figcaption>
+</figure>
+<p>RGB 和灰度色彩空间之间的转换并不是线性的。这是因为转换涉及使用非线性系数对 RGB 分量进行加权平均，如YUV转换公式中所指定的那样。</p>
+<p>U、V通道的图片产生了失真。这是因为YUV色彩空间将颜色信息（U和V通道）与亮度信息（Y通道）分开。当单独显示YUV通道作为灰度图像时，人眼可能会将颜色信息视为灰度变化，从而导致与原始RGB图像相比的失真外观。</p>
+<p>换句话说，U和V通道代表色度信息，在单独显示为灰度图像时，并没有以原始的上下文展示。它们应该与亮度通道（Y）结合起来重建完整的彩色图像。因此，单独查看它们可能不能准确地呈现原始图像的颜色。</p>
+<p>根据YUV转换公式我们倒推得到RGB的转换公式：</p>
+<p><em>R</em>=<em>Y</em>+1.403⋅(<em>V</em>−128)</p>
+<p><em>G</em>=<em>Y</em>−0.344⋅(<em>U</em>−128)−0.714⋅(<em>V</em>−128)</p>
+<p><em>B</em>=<em>Y</em>+1.770⋅(<em>U</em>−128)</p>
+<p>YUV图像数据向PPM（RGB）图像转换：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rgb_img</span> = <span class="hljs-title">yuv_to_rgb</span><span class="hljs-params">(YUV_img)</span></span><br>    <span class="hljs-comment">% 得到图片维度</span><br>    [~,width, height] = <span class="hljs-built_in">size</span>(YUV_img);<br>    <br>    <span class="hljs-comment">% 建立rgb图像数据</span><br>    rgb_img = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">3</span>,width,height);<br>    <br>    <span class="hljs-comment">% 转换YUV 为 RGB</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:height<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">1</span>:width<br>            Y = YUV_img(<span class="hljs-number">1</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>);<br>            U = YUV_img(<span class="hljs-number">2</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>);<br>            V = YUV_img(<span class="hljs-number">3</span>, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>);<br>            <br>            R = Y + <span class="hljs-number">1.403</span> * (V - <span class="hljs-number">128</span>);<br>            G = Y - <span class="hljs-number">0.344</span> * (U - <span class="hljs-number">128</span>) - <span class="hljs-number">0.714</span> * (V - <span class="hljs-number">128</span>);<br>            B = Y + <span class="hljs-number">1.770</span> * (U - <span class="hljs-number">128</span>);<br>            <br><br>            rgb_img(:, <span class="hljs-built_in">j</span>, <span class="hljs-built_in">i</span>) = [<span class="hljs-built_in">round</span>(R), <span class="hljs-built_in">round</span>(G), <span class="hljs-built_in">round</span>(B)];<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br>    <br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[ppm_image_data, ppm_width, ppm_height, ppm_max_val,P] = readPPM(<span class="hljs-string">&#x27;input.ppm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br>[pgm_image_data,YUV_image]=BUPT_format_converter(ppm_image_data);<br>ppm_image = yuv_to_rgb(YUV_image);<br><span class="hljs-comment">%将YUV数据重新复原为RGB图像</span><br>writePPM(<span class="hljs-string">&#x27;output_2.ppm&#x27;</span>, ppm_image , ppm_width, ppm_height, ppm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P3&#x27;</span>);<br><span class="hljs-comment">%得到Y、U、V的PGM图像</span><br>writePGM(<span class="hljs-string">&#x27;output_1.pgm&#x27;</span>, pgm_image_data, ppm_width, ppm_height, ppm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br></code></pre></td></tr></table></figure>
+<h1 id="三图像采样">三、图像采样</h1>
+<h2 id="下采样sub-sampling的基本原理">1.下采样（Sub-sampling）的基本原理</h2>
+<p>图像的下采样也就是缩小图像。下采样是一种信号处理技术，用于降低信号的采样率。在图像处理中，下采样指的是减少图像的像素数量，从而降低图像的分辨率。这通常通过在水平和垂直方向上以一定的间隔丢弃像素来实现。</p>
+<p>下采样的原理是基于采样定理。根据奈奎斯特-香农采样定理，为了正确地表示一个信号（或图像），采样频率必须<strong>至少</strong>是信号最高频率的两倍。因此，如果降低采样率，即减少采样频率，就必须牺牲一些高频细节。下采样通过删除一些像素来实现这一点，从而降低了图像的分辨率，但同时也减少了文件大小和处理复杂度。</p>
+<p>然而，需要注意的是，对图像进行下采样时，实际上是减少了从原始图像中取样的数量，降低了有效的采样频率，这意味着图像的空间频率内容相对于采样率变得更高。如果在下采样过程中不恰当地处理高频细节，可能会导致混叠问题，即产生意外的图案或失真。因此，在进行下采样时，通常会应用滤波器来平滑图像并移除高频信息，以减少混叠问题的发生。</p>
+<p>当对图像进行下采样时，可能会产生混叠的明显例子是在图像中出现的摩尔纹（Moiré）图案。摩尔纹是一种常见的混叠现象，通常出现在对具有细微重复细节的图像进行采集时。这些细节可能包括纹理或图案。混叠是由于采样频率不足以准确捕捉场景中的高频细节而导致的，最终会在图像中产生不正确的表示和不需要的图案。</p>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/512b616b27ca4d9c891cdf7b43e68b3c.jpeg" srcset="/img/loading.gif" lazyload alt="混叠现象-摩尔纹"><figcaption aria-hidden="true">混叠现象-摩尔纹</figcaption>
+</figure>
+<h2 id="图像下采样">2.图像下采样</h2>
+<p>实现一个函数，通过因子n对<strong>灰度图像</strong>进行下采样，其中n是2的倍数。 该函数应该能够在水平和垂直方向上独立地进行下采样，或者同时在两个方向上进行下采样。</p>
+<blockquote>
+<p>因子n表示在n个像素点中取1个，若水平n=2，则表示图像的水平宽度要变为原来的1/2。</p>
+</blockquote>
+<p>对图像Lena进行下采样：2水平，2垂直，2垂直和8水平，4垂直和4水平。</p>
+<p>下采样函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 子采样函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sub_sampled_image</span> = <span class="hljs-title">subSample</span><span class="hljs-params">(image, n_horizontal, n_vertical)</span></span><br>    <span class="hljs-comment">% 获取原始图像的大小</span><br>    [height, width] = <span class="hljs-built_in">size</span>(image);<br>    <br>    <span class="hljs-comment">% 计算子采样后的大小</span><br>    new_height = height / n_vertical;<br>    new_width = width / n_horizontal;<br>    <br>    <span class="hljs-comment">% 初始化子采样后的图像</span><br>    sub_sampled_image = <span class="hljs-built_in">zeros</span>(new_height, new_width);<br>    <br>    <span class="hljs-comment">% 子采样</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:new_height<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">1</span>:new_width<br>            sub_sampled_image(<span class="hljs-built_in">i</span>, <span class="hljs-built_in">j</span>) = image((<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>)*n_vertical + <span class="hljs-number">1</span>, (<span class="hljs-built_in">j</span><span class="hljs-number">-1</span>)*n_horizontal + <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[lena_image, pgm_width, pgm_height, pgm_max_val,P] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br><span class="hljs-comment">% 水平方向子采样因子为2</span><br>sub_sampled_horizontal_2 = subSample(lena_image, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>writePGM(<span class="hljs-string">&#x27;output_1.ppm&#x27;</span>, sub_sampled_horizontal_2, <span class="hljs-built_in">size</span>(sub_sampled_horizontal_2, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(sub_sampled_horizontal_2, <span class="hljs-number">1</span>), ppm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br><span class="hljs-comment">% 垂直方向子采样因子为2</span><br>sub_sampled_vertical_2 = subSample(lena_image, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>writePGM(<span class="hljs-string">&#x27;output_2.pgm&#x27;</span>, sub_sampled_vertical_2, <span class="hljs-built_in">size</span>(sub_sampled_vertical_2, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(sub_sampled_vertical_2, <span class="hljs-number">1</span>), ppm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br><br><span class="hljs-comment">% 水平方向子采样因子为8，垂直方向子采样因子为2</span><br>sub_sampled_horizontal_8 = subSample(lena_image, <span class="hljs-number">8</span>, <span class="hljs-number">2</span>);<br>writePGM(<span class="hljs-string">&#x27;output_3.pgm&#x27;</span>, sub_sampled_horizontal_8, <span class="hljs-built_in">size</span>(sub_sampled_horizontal_8, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(sub_sampled_horizontal_8, <span class="hljs-number">1</span>), ppm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br><br><span class="hljs-comment">% 垂直方向子采样因子为4，水平方向子采样因子为4</span><br>sub_sampled_vertical_4 = subSample(lena_image, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>);<br>writePGM(<span class="hljs-string">&#x27;output_4.pgm&#x27;</span>, sub_sampled_vertical_4, <span class="hljs-built_in">size</span>(sub_sampled_vertical_4, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(sub_sampled_vertical_4, <span class="hljs-number">1</span>), ppm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>下面图(a)是在垂直方向因子为1水平方向因子为2的图像，图(b)是在垂直方向因子为2水平方向因子为1的图像，图(c)是在垂直方向因子为2水平方向因子为8的图像，图(d)是在垂直方向因子为4水平方向因子为4的图像。</p>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514100217700.png" srcset="/img/loading.gif" lazyload alt="图像下采样后的图像"><figcaption aria-hidden="true">图像下采样后的图像</figcaption>
+</figure>
+<h2 id="上采样up-sampling的基本原理">3.上采样（Up-sampling）的基本原理</h2>
+<p>图像放大几乎都是采用内插值方法，即在原有图像像素的基础上在像素点之间采用合适的插值算法插入新的元素。</p>
+<p>最简单的方式是重采样和插值：将输入图片 input image 进行 rescale 到一个想要的尺寸，而且计算每个点的像素点，使用如双线性插值 (Bilinear-Interpolation) 等插值方法对其余点进行插值。各种插值方法都有各自的优缺点。插值就是在不生成像素的情况下增加图像像素大小的一种方法，在周围像素色彩的基础上用数学公式计算丢失像素的色彩（也有的有些相机使用插值，人为地增加图像的分辨率）。所以在放大图像时，图像看上去会比较平滑、干净。但必须注意的是插值并不能增加图像信息。</p>
+<h3 id="最邻近元法nearest-neighbour-interpolation">3.1 最邻近元法（Nearest Neighbour Interpolation）</h3>
+<p>最邻近元法是最简单的一种插值方法，不需要计算，在待求像素的四邻像素中，将距离待求像素最近的像素素灰度赋给待求像素。设 i+u, j+v (i, j为正整数， u, v为大于零小于1的小数，下同)为待求像素坐标，则待求像素灰度的值 f(i+u, j+v)　如下图所示：</p>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果 (i+u, j+v) 落在A区，即 u&lt;0.5, v&lt;0.5，则将左上角像素的灰度值赋给待求像素，同理，落在B区则赋予右上角的像素灰度值，落在C区则赋予左下角像素的灰度值，落在D区则赋予右下角像素的灰度值。</p>
+<p>最邻近元法计算量较小，但可能会造成插值生成的图像灰度上的不连续，在灰度变化的地方可能出现明显的锯齿状。当图片放大时，缺少的像素通过直接使用与之最接近的原有的像素的颜色生成，也就是说照搬旁边的像素，这样做的结果是产生了明显可见的<strong>锯齿</strong>。</p>
+<h3 id="双线性内插法bilinear-interpolation">3.2 双线性内插法（Bilinear Interpolation）</h3>
+<p>双线性插值是通过周边的四个点，计算权值，然后决定插入后的图像的像素值。新生成的图像中每个点都会计算一遍，是利用待求象素四个邻象素的灰度在两个方向上作线性内插，如下图所示：</p>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/2.png" srcset="/img/loading.gif" lazyload alt="img"><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>(i+u,j+v)是目标位置（0&lt;u,v&lt;1)，需要进行插值的像素坐标，f(i+u,j+v)是该坐标下的像素值；(i,j)，(i+1,j)，(i,j+1)，(i+1,j+1)是原始图像中与目标位置最近的四个像素的坐标，分别表示左上、左下、右上和右下四个像素的位置。</p>
+<p>根据双线性插值的原理，插值的结果 <code>interpolated_value</code> 是通过如下公式计算得到的： <span class="math display">\[
+interpolated\_value=\frac{f(i,j)·[(i+1)-(i+u)]·[(j+1)-(j+v)]+f(i+1,j)·(i+u-i)·[(j+1)-(j+v)]+f(i,j+1)·[(i+1)-(i+u)]·(j+v-j)+f(i+1,j+1)·(i+u-i)·(j+v-j)}{(i+1-i)(j+1-j)}
+\]</span> 双线性内插法的计算比最邻近点法复杂，计算量较大，但没有灰度不连续的缺点，结果基本令人满意。双线性插值算法（Bilinear Interpolation）输出的图像的每个像素都是原图中四个像素（2×2）运算的结果，这种算法极大地消除了锯齿现象。但它具有低通滤波性质，使高频分量受损，图像轮廓可能会有一点模糊。</p>
+<h2 id="图像上采样">4.图像上采样</h2>
+<p>最邻近元法：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up_sampled_image</span> = <span class="hljs-title">BUPT_up</span><span class="hljs-params">(image, factor, method)</span></span><br>    <span class="hljs-comment">% 输入：</span><br>    <span class="hljs-comment">% image: 原始图像</span><br>    <span class="hljs-comment">% factor: 放大倍数</span><br>    <span class="hljs-comment">% method: 插值方法，&#x27;nearest&#x27; 或 &#x27;bilinear&#x27;</span><br>    <span class="hljs-comment">% 输出：</span><br>    <span class="hljs-comment">% up_sampled_image: 放大后的图像</span><br>    <br><br>    <span class="hljs-comment">% 获取原始图像尺寸</span><br>    [rows, cols] = <span class="hljs-built_in">size</span>(image);<br>    <br>    <span class="hljs-comment">% 计算放大后的尺寸</span><br>    new_rows = <span class="hljs-built_in">round</span>(rows * <span class="hljs-built_in">factor</span>);<br>    new_cols = <span class="hljs-built_in">round</span>(cols * <span class="hljs-built_in">factor</span>);<br>    <br>    <span class="hljs-comment">% 初始化放大后的图像</span><br>    up_sampled_image = <span class="hljs-built_in">zeros</span>(new_rows, new_cols);<br>    <br>    <span class="hljs-comment">% 遍历放大后的图像的每个像素位置</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:new_rows<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">1</span>:new_cols<br>            <span class="hljs-comment">% 计算对应原始图像的位置</span><br>            original_i = <span class="hljs-built_in">max</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">min</span>(<span class="hljs-built_in">round</span>(<span class="hljs-built_in">i</span> / <span class="hljs-built_in">factor</span>), rows));<br>            original_j = <span class="hljs-built_in">max</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">min</span>(<span class="hljs-built_in">round</span>(<span class="hljs-built_in">j</span> / <span class="hljs-built_in">factor</span>), cols));<br>            <br>            <span class="hljs-comment">% 根据插值方法填充像素值</span><br>            <span class="hljs-keyword">if</span> strcmp(method, <span class="hljs-string">&#x27;nearest&#x27;</span>)<br>                <span class="hljs-comment">% 最近邻插值</span><br>                up_sampled_image(<span class="hljs-built_in">i</span>, <span class="hljs-built_in">j</span>) = image(original_i, original_j);<br>            <span class="hljs-keyword">elseif</span> strcmp(method, <span class="hljs-string">&#x27;bilinear&#x27;</span>)<br>                <span class="hljs-comment">% 双线性插值</span><br>                up_sampled_image(<span class="hljs-built_in">i</span>, <span class="hljs-built_in">j</span>) = bilinear_interpolation(image, <span class="hljs-built_in">max</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">min</span>(<span class="hljs-built_in">i</span> / <span class="hljs-built_in">factor</span>, rows)), <span class="hljs-built_in">max</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">min</span>(<span class="hljs-built_in">j</span> / <span class="hljs-built_in">factor</span>, cols)));<br>            <span class="hljs-keyword">else</span><br>                error(<span class="hljs-string">&#x27;Unsupported interpolation method.&#x27;</span>);<br>            <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>双线性内插法：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">interpolated_value</span> = <span class="hljs-title">bilinear_interpolation</span><span class="hljs-params">(image, x, y)</span></span><br>    <span class="hljs-comment">% 双线性插值</span><br>    <span class="hljs-comment">% 输入：</span><br>    <span class="hljs-comment">% image: 原始图像</span><br>    <span class="hljs-comment">% x, y: 插值位置</span><br>    <span class="hljs-comment">% 输出：</span><br>    <span class="hljs-comment">% interpolated_value: 插值后的像素值</span><br><br>    <span class="hljs-comment">% 获取图像尺寸</span><br>    [rows, cols] = <span class="hljs-built_in">size</span>(image);<br>    <br>    <span class="hljs-comment">% 四个最近的整数坐标</span><br>    x1 = <span class="hljs-built_in">floor</span>(x);<br>    x2 = x1 + <span class="hljs-number">1</span>;<br>    y1 = <span class="hljs-built_in">floor</span>(y);<br>    y2 = y1 + <span class="hljs-number">1</span>;<br>    <br>    <span class="hljs-comment">% 边界处理</span><br>    <span class="hljs-keyword">if</span> x2 &gt; rows<br>        x2 = rows;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">if</span> y2 &gt; cols<br>        y2 = cols;<br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">% 获取四个最近像素的值</span><br>    Q11 = image(x1, y1);<br>    Q12 = image(x1, y2);<br>    Q21 = image(x2, y1);<br>    Q22 = image(x2, y2);<br>    <br>    <span class="hljs-comment">% 计算双线性插值</span><br>    interpolated_value = <span class="hljs-built_in">round</span>((Q11 * (x2 - x) * (y2 - y) + Q21 * (x - x1) * (y2 - y) + Q12 * (x2 - x) * (y - y1) + Q22 * (x - x1) * (y - y1)) / ((x2 - x1) * (y2 - y1)));<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 读取 Lena 图像</span><br>[lena, ~, ~, pgm_max_val,~] = readPGM(<span class="hljs-string">&#x27;input_1.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br><span class="hljs-comment">% 最近邻插值放大 Lena 图像</span><br><span class="hljs-built_in">factor</span> = <span class="hljs-number">4.5</span>;<br>up_sampled_nearest = BUPT_up(lena, <span class="hljs-built_in">factor</span>, <span class="hljs-string">&#x27;nearest&#x27;</span>);<br><br>writePGM(<span class="hljs-string">&#x27;output_1.pgm&#x27;</span>, up_sampled_nearest, <span class="hljs-built_in">size</span>(up_sampled_nearest, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(up_sampled_nearest, <span class="hljs-number">1</span>), pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br><span class="hljs-comment">% 读取 Baboon 图像</span><br>[baboon, ~, ~, pgm_max_val,~] = readPGM(<span class="hljs-string">&#x27;input_2.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br><span class="hljs-comment">% 双线性插值放大 Baboon 图像</span><br><span class="hljs-built_in">factor</span> = <span class="hljs-number">3.6</span>;<br>up_sampled_bilinear = BUPT_up(baboon, <span class="hljs-built_in">factor</span>, <span class="hljs-string">&#x27;bilinear&#x27;</span>);<br><br>writePGM(<span class="hljs-string">&#x27;output_2.pgm&#x27;</span>, up_sampled_bilinear, <span class="hljs-built_in">size</span>(up_sampled_bilinear, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(up_sampled_bilinear, <span class="hljs-number">1</span>), pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br></code></pre></td></tr></table></figure>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240516224506826.png" srcset="/img/loading.gif" lazyload alt="最邻近元法得到的锯齿状边缘" style="zoom:50%;"></p>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240516224717094.png" srcset="/img/loading.gif" lazyload alt="双线性内插法得到的图片进行放大" style="zoom: 50%;"></p>
+<p>将两种方法得到的上采样图像经过放大后观察细节，最邻近元法产生了明显的锯齿状边缘；而双线性内插法得到图像表现较好，没有灰度不连续的地方。</p>
+<p>在速度方面，Nearest Neighbour 插值通常比 Bilinear 插值更快。这是因为 Nearest Neighbour 插值只需要在目标位置附近找到最近的一个像素值，并将其作为插值结果，而不需要进行复杂的计算。相比之下，Bilinear 插值需要对目标位置周围的四个最近邻像素进行加权平均，计算量更大，因此更慢一些。</p>
+<p>在准确性方面，Bilinear 插值通常比 Nearest Neighbour 插值更准确。这是因为 Bilinear 插值考虑了目标位置与最近邻像素之间的距离，以及像素值之间的线性关系，可以提供更加平滑和连续的插值结果。相比之下，Nearest Neighbour 插值仅仅是简单地将最近邻像素的值赋给目标位置，可能会导致插值结果的锯齿状边缘和块状伪影。</p>
+<h1 id="四图像量化">四、图像量化</h1>
+<h2 id="基本原理">1.基本原理</h2>
+<p>图像通常是自然界景物的客观反映，并以照片形式或视频记录的介质连续保存，获取图像的目标是从感知的数据中产生数字图像，因此需要把连续的图像数据离散化，转换为数字化图像，其工作主要包括两方面——量化和采样。数字化幅度值称为量化，数字化坐标值称为采样。</p>
+<p>所谓量化（Quantization），就是将图像像素点对应亮度的连续变化区间转换为单个特定值的过程，即将原始灰度图像的空间坐标幅度值离散化。量化等级越多，图像层次越丰富，灰度分辨率越高，图像的质量也越好；量化等级越少，图像层次欠丰富，灰度分辨率越低，会出现图像轮廓分层的现象，降低了图像的质量。下图是将图像的连续灰度值转换为0至255的灰度级的过程。</p>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/v2-cf13cbb100995b17cb52c0e17eddf839_r.jpg" srcset="/img/loading.gif" lazyload alt="图像量化"><figcaption aria-hidden="true">图像量化</figcaption>
+</figure>
+<p>如果量化等级为2，则将使用两种灰度级表示原始图片的像素（0-255），灰度值小于128的取0，大于等于128的取128；如果量化等级为4，则将使用四种灰度级表示原始图片的像素，新图像将分层为四种颜色，0-64区间取0，64-128区间取64，128-192区间取128，192-255区间取192；依次类推。</p>
+<p>量化是一个不可逆过程。在量化过程中，连续值被近似为有限的一组离散值，这会导致信息丢失。这种损失称为量化误差。一旦细节被丢弃，就不能从量化值中完美恢复原始的细节。这个过程涉及数据精度的不可逆减少，因此不可能准确重建原始的连续值。</p>
+<p>将量化后的图像文件大小将与原始图像文件进行比较。通常，量化后的文图像文件由于数据精度的降低会更小。量化通常应用于数据大小缩减非常关键的领域，如图像和视频压缩。它还用于数字信号处理，以简化信号的表示和传输。</p>
+<h2 id="图像量化">2.图像量化</h2>
+<p>实现一个函数来均匀量化灰度图像。该函数将允许通过给定的量化等级 n（2 的幂）来减少灰度值的数量。</p>
+<p>量化函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quantized_image</span> = <span class="hljs-title">uniformQuantize</span><span class="hljs-params">(image, n)</span></span><br>    <span class="hljs-comment">% 确保n是2的幂</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">mod</span>(<span class="hljs-built_in">log2</span>(n), <span class="hljs-number">1</span>) ~= <span class="hljs-number">0</span><br>        error(<span class="hljs-string">&#x27;n必须是2的幂&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">% 将图像值转换为0到1之间</span><br>    image = double(image) / <span class="hljs-number">255</span>;<br>    <br>    <span class="hljs-comment">% 计算每个量化级别的步长</span><br>    step_size = <span class="hljs-number">1</span> / n;<br>    <br>    <span class="hljs-comment">% 对图像进行量化</span><br>    quantized_image = <span class="hljs-built_in">floor</span>(image / step_size) * step_size;<br>    <br>    <span class="hljs-comment">% 将量化后的图像重新映射到0到255之间</span><br>    quantized_image = uint8(quantized_image * <span class="hljs-number">255</span>);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>floor</code> 函数用于对每个元素执行向下取整操作。</p>
+<p><code>uint8()</code> 是一个函数，用于将数据转换为无符号 8 位整数类型。<code>uint8</code> 类型的值范围是 0 到 255，这使得它特别适合用于存储图像数据，因为灰度图像的像素值通常也是在这个范围内。</p>
+</blockquote>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[lena_image, pgm_width, pgm_height, pgm_max_val,P] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br><span class="hljs-comment">% 设置量化因子，例如4</span><br>n = <span class="hljs-number">128</span>;<br><br><span class="hljs-comment">% 对图像进行均匀量化</span><br>quantized_image = uniformQuantize(lena_image, n);<br>writePGM(<span class="hljs-string">&#x27;output.pgm&#x27;</span>, quantized_image, <span class="hljs-built_in">size</span>(quantized_image, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(quantized_image, <span class="hljs-number">1</span>), pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>imshow(lena_image);<br>title(<span class="hljs-string">&#x27;原始图像&#x27;</span>);<br><br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>imshow(quantized_image);<br>title([<span class="hljs-string">&#x27;量化后的图像，因子为&#x27;</span>, num2str(n)]);<br></code></pre></td></tr></table></figure>
+<p>下面是对比不同量化等级的“Lena”图。图(a)是量化等级为2时的图像，图(b)是是量化等级为8时的图像，图(c)是是量化等级为32时的图像，图(d)是是量化等级为128时的图像。</p>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514104729354.png" srcset="/img/loading.gif" lazyload alt="量化后的图像"><figcaption aria-hidden="true">量化后的图像</figcaption>
+</figure>
+<h1 id="五灰度图像的直方图">五、灰度图像的直方图</h1>
+<h2 id="灰度直方图的基本原理">1.灰度直方图的基本原理</h2>
+<h3 id="定义">1.1 定义</h3>
+<p>灰度直方图是关于灰度级分布的函数，是对图像中灰度级分布的统计。灰度直方图是将数字图像中的所有像素，按照灰度值的大小，统计其出现的频率。可表示为： <span class="math display">\[
+P(k)=\frac{n_k}{n},\quad k=0,1,\cdots,L-1
+\]</span> 且 <span class="math display">\[
+\displaystyle\sum_{k=0}^{L-1}P(k)=1
+\]</span> 式中，k为图像的第k级灰度值，<span class="math inline">\(n_k\)</span>则为图像中灰度值为k的像素个数，n为图像的总像素个数，L为灰度级数。不同的灰度分布对应着不同的图像质量。灰度直方图能反映图像的概貌和质量，也是图像增强处理的重要依据</p>
+<h3 id="灰度直方图的性质">1.2 灰度直方图的性质</h3>
+<ol type="1">
+<li>直方图的位置缺失性：灰度直方图仅仅反映了数字图像中各灰度级出现频数的分布，即取某灰度值的像素个数占图像总像素个数的比例，但对那些具有同一灰度值的像素在图像中的空间位置一无所知，即其具有位置缺失性。</li>
+<li>直方图与图像的一对多特性：任一幅图像都能唯一地确定与其对应的一个直方图，但由于直方图的位置缺失性，对于不同的多幅图像来说，只要其灰度级出现频数的分布相同，则都具有相同的直方图，即直方图与图像是一对多的关系。</li>
+<li>直方图的可叠加性：由于灰度直方图是各灰度级出现频数的统计值，若一图像分成几个子图，则该图像的直方图就等于各子图直方图的叠加。</li>
+</ol>
+<h2 id="获取灰度图像的直方图">2.获取灰度图像的直方图</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[lena_image, pgm_width, pgm_height, pgm_max_val,P] = readPGM(<span class="hljs-string">&#x27;D:\学习资料\大四下\思涵的实验\新建文件夹\6.img2024\Peppers512_ASCII2014.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br>   <br><span class="hljs-comment">% 计算直方图</span><br>histogram_values = imhist(lena_image);<br><br><span class="hljs-comment">% 绘制直方图</span><br><span class="hljs-built_in">figure</span>;<br>bar(histogram_values);<br>title(<span class="hljs-string">&#x27;Peppers灰度图像直方图&#x27;</span>);<br>xlabel(<span class="hljs-string">&#x27;灰度级别&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;频率&#x27;</span>);<br>xlim([<span class="hljs-number">0</span>, <span class="hljs-number">256</span>]);<br>ylim([<span class="hljs-number">0</span>, <span class="hljs-built_in">max</span>(histogram_values)]);<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>imhist</code> 是 MATLAB 中用于计算图像直方图的函数。它接受一个灰度图像作为输入，并返回一个表示直方图的向量。即返回一个向量，里面包含不同灰度级出现的频率。</p>
+<p><code>bar</code> 是 MATLAB 中用于创建柱状图的函数。它可以用来可视化数据的分布或频率。</p>
+</blockquote>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514174050694.png" srcset="/img/loading.gif" lazyload alt="Lena与它的灰度直方图"><figcaption aria-hidden="true">Lena与它的灰度直方图</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514174125706.png" srcset="/img/loading.gif" lazyload alt="Baboon与它的灰度直方图"><figcaption aria-hidden="true">Baboon与它的灰度直方图</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/image-20240514174208637.png" srcset="/img/loading.gif" lazyload alt="Peppers与它的灰度直方图"><figcaption aria-hidden="true">Peppers与它的灰度直方图</figcaption>
+</figure>
+<h2 id="图像增强直方图均衡化">3.图像增强——直方图均衡化</h2>
+<p>直方图均衡化是一种用于增强图像对比度的图像处理技术。它通过重新分配图像中的像素值，使得图像的像素值分布更加均匀，增强图像的对比度，从而改善图像的视觉效果。</p>
+<p>直方图均衡化的过程如下：</p>
+<ol type="1">
+<li><p>灰度转换：如果图像是彩色图像，则首先需要将其转换为灰度图像。这可以通过将彩色图像的RGB通道值平均或权重化来实现，得到一个表示亮度的灰度图像。</p></li>
+<li><p>统计直方图：对于灰度图像，统计每个像素值的频数，生成原始图像的直方图。直方图表示了不同像素值的数量分布。</p></li>
+<li><p>计算累积分布函数：通过计算原始图像的累积分布函数，可以得到每个像素值的累积概率分布，<strong>即小于等于该像素值的概率</strong>。可以通过对直方图进行归一化和累加操作得到。</p></li>
+<li><p>映射像素值：根据每个像素值的累积概率分布映射出新的像素值，即将概率乘以255得到均衡化后的像素值。</p></li>
+<li><p>像素重新映射：对于原始图像中的每个像素，根据映射将其像素值替换为均衡化后的像素值。</p></li>
+<li><p>生成均衡化后的图像：根据重新映射的像素值，生成均衡化后的图像。均衡化后的图像在直方图上将有更平坦的分布，从而提高了图像的对比度。</p></li>
+</ol>
+<p>注意，经过直方图均衡化后，分布并不是完全均匀的。虽然直方图均衡化的目的是使像素强度的分布更加均匀，但结果的分布受到原始图像像素值及其在强度范围内的分布方式的影响。</p>
+<p>经过直方图均衡化后，图像的直方图相比于原始图像会更加均匀地分布，但不会完全平坦。这是因为该过程是基于原始直方图的累积分布函数（CDF）重新分配像素值的，这意味着某些强度级别的像素数量仍然会因原始图像内容而有所不同。</p>
+<p>例如，如果原始图像中有大量像素具有特定的强度值，那么在均衡化后，这些像素会分布到一系列的强度值中，但分布仍然可能显示出与原始强度值相对应的峰值和谷值。</p>
+<h2 id="代码实现">4.代码实现</h2>
+<p>直方图均衡化：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">equalized_image</span> = <span class="hljs-title">histogramEqualization</span><span class="hljs-params">(image)</span></span><br>    <br>    <span class="hljs-comment">% 计算图像的直方图</span><br>    histogram_values = imhist(image);<br><br>    <span class="hljs-comment">% 计算累积分布函数（CDF）</span><br>    cdf = cumsum(histogram_values) / <span class="hljs-built_in">numel</span>(image);<br>    <br>    <span class="hljs-comment">% 创建一个查找表（Lookup Table），用于将原始灰度级映射到均衡化后的灰度级</span><br>    equalization_map = uint8(<span class="hljs-number">255</span> * cdf);<br><br>    <span class="hljs-comment">% 应用查找表，将原始图像转换为均衡化后的图像,将图像矩阵中的像素值作为查找表中的索引</span><br>    equalized_image = equalization_map(double(image) + <span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>cumsum</code> 可以对向量、矩阵或多维数组的元素进行累加，返回同尺寸的数组，其中每个元素表示该位置及之前所有元素的和。注意是在一行进行累加。</p>
+</blockquote>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 主函数示例，读取PGM图像并应用直方图均衡化</span><br><span class="hljs-comment">% 读取PGM图像</span><br>[lena_image, pgm_width, pgm_height, pgm_max_val,P] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br><span class="hljs-comment">% 调用直方图均衡化函数</span><br>equalized_image = histogramEqualization(lena_image);<br>writePGM(<span class="hljs-string">&#x27;output.pgm&#x27;</span>, equalized_image, <span class="hljs-built_in">size</span>(equalized_image, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(equalized_image, <span class="hljs-number">1</span>), pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br><span class="hljs-comment">% 显示原始图像和均衡化后的图像</span><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>imshow(lena_image);<br>title(<span class="hljs-string">&#x27;原始图像&#x27;</span>);<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>imshow(equalized_image);<br>title(<span class="hljs-string">&#x27;均衡化后的图像&#x27;</span>);<br><br><span class="hljs-comment">% 显示直方图</span><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>imhist(lena_image);<br>title(<span class="hljs-string">&#x27;原始图像直方图&#x27;</span>);<br>subplot(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>imhist(equalized_image);<br>title(<span class="hljs-string">&#x27;均衡化后的图像直方图&#x27;</span>);<br><br><span class="hljs-comment">% 显示均衡化后的图像直方图</span><br><span class="hljs-built_in">figure</span>;<br>histogram_values=imhist(equalized_image);<br>bar(histogram_values);<br>title(<span class="hljs-string">&#x27;Peppers均衡化后的图像直方图&#x27;</span>);<br>xlabel(<span class="hljs-string">&#x27;灰度级别&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;频率&#x27;</span>);<br>xlim([<span class="hljs-number">0</span>, <span class="hljs-number">256</span>]);<br>ylim([<span class="hljs-number">0</span>, <span class="hljs-built_in">max</span>(histogram_values)]);<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%9D%87%E8%A1%A1%E5%8C%96%E5%AF%B9%E6%AF%94_Lena.jpeg" srcset="/img/loading.gif" lazyload alt="Lena经过均衡化的图像"><figcaption aria-hidden="true">Lena经过均衡化的图像</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%9D%87%E8%A1%A1%E5%8C%96%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%AF%B9%E6%AF%94_Lena.jpeg" srcset="/img/loading.gif" lazyload alt="Lena经过均衡化的直方图"><figcaption aria-hidden="true">Lena经过均衡化的直方图</figcaption>
+</figure>
+<h2 id="直方图建模">5.直方图建模</h2>
+<p>直方图建模技术是修改图像的动态范围和对比度的有效工具。与对比度拉伸不同，直方图建模运算符可以使用非线性和非单调的传递函数来映射输入和输出图像中的像素强度值。</p>
+<h3 id="lena作为输入直方图">5.1 Lena作为输入直方图</h3>
+<p>使用图像A(Lena)的直方图作为输入直方图，并根据输入对另一个图像B(Peppers)的直方图建模。</p>
+<p>步骤：</p>
+<ol type="1">
+<li>读取图像A和图像B，并计算它们的直方图。</li>
+<li>计算图像A和图像B的累积分布函数（CDF）。</li>
+<li>创建一个映射表，将图像B的像素值映射到具有图像A的直方图分布的像素值。</li>
+<li>应用映射表，生成输出图像。</li>
+</ol>
+<p>直方图建模：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outputImage</span>  = <span class="hljs-title">Histogram_modelling</span><span class="hljs-params">(imageA,imageB)</span></span><br>    <br>    <span class="hljs-comment">% 计算图像A和图像B的直方图</span><br>    histA = imhist(imageA);<br>    histB = imhist(imageB);<br><br>    <span class="hljs-comment">% 计算累积分布函数（CDF）</span><br>    cdfA = cumsum(histA) / <span class="hljs-built_in">numel</span>(imageA);<br>    cdfB = cumsum(histB) / <span class="hljs-built_in">numel</span>(imageB);<br><br>    <span class="hljs-comment">% 根据图像B的CDF值找到最接近图像A的CDF值的索引，并构建映射表</span><br>    mapping = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">256</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;uint8&#x27;</span>);<br><br>    <span class="hljs-comment">% 生成映射表</span><br>    <span class="hljs-keyword">for</span> grayLevel = <span class="hljs-number">1</span>:<span class="hljs-number">256</span><br>        [~, idx] = <span class="hljs-built_in">min</span>(<span class="hljs-built_in">abs</span>(cdfB(grayLevel) - cdfA));<br>        mapping(grayLevel) = idx - <span class="hljs-number">1</span>; <span class="hljs-comment">% MATLAB的索引从1开始，减去1得到灰度值</span><br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-comment">% 应用映射表到图像B</span><br>    outputImage = mapping(double(imageB) + <span class="hljs-number">1</span>);<br><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>min</code> 函数有两个输出：</p>
+<ol type="1">
+<li><strong>最小值</strong>：在数组中找到的最小值。</li>
+<li><strong>索引</strong>：最小值所在的位置（索引）。</li>
+</ol>
+<p>例如，<code>[minValue, idx] = min(A)</code>。</p>
+</blockquote>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 读取灰度图像A和B</span><br>[imageA, ~, ~, ~,~] = readPGM(<span class="hljs-string">&#x27;input_A.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br>[imageB, ~, ~, ~,~] = readPGM(<span class="hljs-string">&#x27;input_B.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br>outputImage = Histogram_modelling(imageA,imageB);<br><br><span class="hljs-comment">% 显示原始图像和结果图像</span><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>imshow(imageB);<br>title(<span class="hljs-string">&#x27;图像B&#x27;</span>);<br><br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>imshow(outputImage);<br>title(<span class="hljs-string">&#x27;建模后的图像B&#x27;</span>);<br><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>imhist(imageA);<br>title(<span class="hljs-string">&#x27;图像A的直方图&#x27;</span>);<br><br>subplot(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>imhist(imageB);<br>title(<span class="hljs-string">&#x27;图像B的直方图&#x27;</span>);<br><br>subplot(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);<br>imhist(outputImage);<br>title(<span class="hljs-string">&#x27;建模后的图像B的直方图&#x27;</span>);<br><br><span class="hljs-comment">% 保存结果图像</span><br>writePGM(<span class="hljs-string">&#x27;output.pgm&#x27;</span>, outputImage, <span class="hljs-built_in">size</span>(outputImage, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(outputImage, <span class="hljs-number">1</span>), pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%BB%BA%E6%A8%A1%E5%89%8D%E5%90%8EB%E7%9A%84%E5%AF%B9%E6%AF%94.jpeg" srcset="/img/loading.gif" lazyload alt="建模前后图像B的对比" style="zoom:80%;"></p>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%BB%BA%E6%A8%A1AB_%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E5%AF%B9%E6%AF%94.jpeg" srcset="/img/loading.gif" lazyload alt="直方图对比" style="zoom:67%;"></p>
+<h3 id="使用指数分布的近似值作为输入直方图">5.2 使用指数分布的近似值作为输入直方图</h3>
+<p>使用指数分布的近似值作为输入直方图。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 生成指数分布直方图的近似</span><br>N = <span class="hljs-number">256</span>; <span class="hljs-comment">% 灰度级别数量</span><br>lambda = <span class="hljs-number">0.05</span>; <span class="hljs-comment">% 指数分布的参数</span><br><br><span class="hljs-comment">% 计算指数分布概率密度函数</span><br>x = <span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>;<br>pdf_exp = lambda * <span class="hljs-built_in">exp</span>(-lambda * x);<br><br><span class="hljs-comment">% 标准化概率密度函数以得到直方图</span><br>pdf_exp = pdf_exp / sum(pdf_exp); <span class="hljs-comment">% 使概率密度函数的总和为1</span><br><br><span class="hljs-comment">% 使用指数分布近似作为输入直方图，模拟另一个图像的直方图</span><br>cdf_exp = cumsum(pdf_exp); <span class="hljs-comment">% 计算指数分布的累积分布函数</span><br><br><span class="hljs-comment">% 读取另一个图像，这里假设为灰度图像B</span><br>[imageB, ~, ~, ~,~] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br><span class="hljs-comment">% 计算图像B的直方图</span><br>histB = imhist(imageB) / <span class="hljs-built_in">numel</span>(imageB); <span class="hljs-comment">% 将直方图标准化为概率</span><br><br><span class="hljs-comment">% 计算图像B的累积分布函数（CDF）</span><br>cdfB = cumsum(histB); <br><br><span class="hljs-comment">% 创建映射表</span><br>mapping = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">256</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;uint8&#x27;</span>);<br><br><span class="hljs-comment">% 对于每个灰度级别，找到与指数分布CDF最接近的灰度级别</span><br><span class="hljs-keyword">for</span> grayLevel = <span class="hljs-number">1</span>:<span class="hljs-number">256</span><br>    [~, idx] = <span class="hljs-built_in">min</span>(<span class="hljs-built_in">abs</span>(cdfB(grayLevel) - cdf_exp));<br>    mapping(grayLevel) = idx - <span class="hljs-number">1</span>; <span class="hljs-comment">% MATLAB的索引从1开始，减去1得到灰度值</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">% 应用映射表到图像B</span><br>outputImage = mapping(double(imageB) + <span class="hljs-number">1</span>);<br><br><span class="hljs-comment">% 显示原始图像和结果图像</span><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>imshow(imageB);<br>title(<span class="hljs-string">&#x27;图像B&#x27;</span>);<br><br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>imshow(outputImage);<br>title(<span class="hljs-string">&#x27;建模后的图像B&#x27;</span>);<br><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>bar(pdf_exp);<br>title(<span class="hljs-string">&#x27;指数分布直方图&#x27;</span>);<br>xlim([<span class="hljs-number">0</span>, <span class="hljs-number">256</span>]);<br>ylim([<span class="hljs-number">0</span>, <span class="hljs-built_in">max</span>(pdf_exp)]);<br><br>subplot(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>imhist(imageB);<br>title(<span class="hljs-string">&#x27;图像B的直方图&#x27;</span>);<br><br>subplot(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);<br>imhist(outputImage);<br>title(<span class="hljs-string">&#x27;建模后的图像B的直方图&#x27;</span>);<br><br><span class="hljs-comment">% 保存结果图像</span><br>writePGM(<span class="hljs-string">&#x27;output.pgm&#x27;</span>, outputImage, <span class="hljs-built_in">size</span>(outputImage, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(outputImage, <span class="hljs-number">1</span>), pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E5%BB%BA%E6%A8%A1%E5%89%8D%E5%90%8EB%E7%9A%84%E5%AF%B9%E6%AF%94.jpeg" srcset="/img/loading.gif" lazyload alt="建模前后图像B的对比"><figcaption aria-hidden="true">建模前后图像B的对比</figcaption>
+</figure>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%BB%BA%E6%A8%A1%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83_%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E5%AF%B9%E6%AF%94.png" srcset="/img/loading.gif" lazyload alt="直方图对比" style="zoom: 67%;"></p>
+<h1 id="六图像的基本操作">六、图像的基本操作</h1>
+<h2 id="图像负片">1.图像负片</h2>
+<p>图像的负片是指将图像的每个像素的灰度值取反，即将每个像素的灰度值从原来的值减去最大灰度级别，得到新的灰度值。这样做的结果是原来较亮的区域变得较暗，而原来较暗的区域变得较亮。因此，负片图像呈现出与原始图像完全相反的外观，亮度和对比度都会发生反转。</p>
+<p>在实际应用中，图像的负片经常用于图像增强、特效处理和艺术创作等方面。负片可以改变图像的外观，使其更具有视觉冲击力和独特性。同时，负片还可以突出原始图像中的细节和特征，对图像进行突出和强调。因此，在数字图像处理中，生成图像的负片是一项常见且有用的操作。</p>
+<p>得到图像负片：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">negativeImage</span> = <span class="hljs-title">generateNegative</span><span class="hljs-params">(image)</span></span><br>    <br>    <span class="hljs-comment">% 计算灰度级别的最大值</span><br>    maxIntensity = double(<span class="hljs-built_in">max</span>(image(:)));<br>    <br>    <span class="hljs-comment">% 生成负片</span><br>    negativeImage = maxIntensity - image;<br>    <br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 读取灰度图像</span><br>[image, ~, ~, pgm_max_val,~] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);<br><br>negativeImage = generateNegative(image);<br><br><span class="hljs-comment">% 显示原始图像和负片图像</span><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>imshow(image);<br>title(<span class="hljs-string">&#x27;原始图像&#x27;</span>);<br><br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>imshow(negativeImage);<br>title(<span class="hljs-string">&#x27;负片图像&#x27;</span>);<br><br><span class="hljs-comment">% 保存结果图像</span><br>writePGM(<span class="hljs-string">&#x27;output.pgm&#x27;</span>, negativeImage, <span class="hljs-built_in">size</span>(negativeImage, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(negativeImage, <span class="hljs-number">1</span>), pgm_max_val, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%8E%9F%E5%A7%8B%E5%9B%BE%E5%83%8F%E5%92%8C%E8%B4%9F%E7%89%87%E5%9B%BE%E5%83%8F_Lena.jpeg" srcset="/img/loading.gif" lazyload alt="Lena及其负片图像"><figcaption aria-hidden="true">Lena及其负片图像</figcaption>
+</figure>
+<h2 id="图像的旋转和倾斜">2、图像的旋转和倾斜</h2>
+<h3 id="基本原理-1">2.1 基本原理</h3>
+<p>图像倾斜的矩阵形式：</p>
+<p>假设我们有一个二维向量(x,y)表示图像中的一个像素点。图像倾斜操作可以表示为以下矩阵乘法： <span class="math display">\[
+\begin{bmatrix}
+x&#39; \\
+y&#39;
+\end{bmatrix}= \begin{bmatrix}
+1 &amp; tan(\theta) &amp; 0\\
+0 &amp; 1 &amp; 0
+\end{bmatrix}\begin{bmatrix}
+x\\
+y\\
+1
+\end{bmatrix}
+\]</span> 在这里，θ 是倾斜的角度，(x',y')是经过倾斜操作后的像素点坐标。</p>
+<p>图像旋转的矩阵形式：</p>
+<p>图像旋转操作可以表示为以下矩阵乘法： <span class="math display">\[
+\begin{bmatrix}
+x&#39; \\
+y&#39;
+\end{bmatrix}= \begin{bmatrix}
+cos(\theta) &amp; -sin(\theta) \\
+sin(\theta) &amp; cos(\theta)
+\end{bmatrix}\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+\]</span> 在这里，θ是旋转的角度，(x',y')是经过旋转操作后的像素点坐标。</p>
+<h3 id="代码实现-1">2.2 代码实现</h3>
+<p>创建并在下面粘贴一张 PGM 图像，其中包含用 Arial 字体、72 点、大写字母书写的您的姓名。将创建的图像顺时针旋转 30 度、60 120 度和-50 度。将同一图像倾斜 10 度、40 度和 60 度。</p>
+<p>旋转和倾斜函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[I_rotated,I_skewed]</span>=<span class="hljs-title">BUPT_transform</span><span class="hljs-params">(I, theta1, theta2)</span></span><br>   <br>    <span class="hljs-comment">% 旋转图像</span><br>    I_rotated = imrotate(I, theta1);<br><br>    <span class="hljs-comment">% 倾斜图像</span><br>    tform = affine2d([<span class="hljs-number">1</span>, <span class="hljs-built_in">tand</span>(theta2), <span class="hljs-number">0</span>; <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>; <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]); <span class="hljs-comment">% 创建仿射变换对象</span><br>    I_skewed = imwarp(I, tform);<br><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>imrotate(I, theta1)</code> 是 MATLAB 中用于旋转图像的函数。它将图像 <code>I</code> 按照指定的角度 <code>theta1</code> 进行逆时针旋转。</p>
+<p><code>affine2d</code> 是用于创建仿射变换对象的函数。仿射变换是一种线性变换，可以保持平行线的直线性质，但通常会改变对象的大小、形状和方向。</p>
+<p><code>affine2d()</code> 的参数是一个矩阵。它可以通过矩阵来描，这个矩阵通常是一个 3×33×3 的矩阵，称为仿射变换矩阵。这个矩阵包含了对平移、旋转、缩放和剪切等操作的描述。</p>
+<p>下面是这个仿射变换矩阵的一般形式： <span class="math display">\[
+\begin{bmatrix}
+a_{11} &amp; a_{12} &amp; t_x\\
+a_{21} &amp; a_{22} &amp; t_y\\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</span> 其中：</p>
+<ul>
+<li><span class="math inline">\(a_{11}\)</span>和<span class="math inline">\(a_{22}\)</span>控制着水平和垂直方向上的缩放；</li>
+<li><span class="math inline">\(a_{12}\)</span>和<span class="math inline">\(a_{21}\)</span>控制着水平和垂直方向上的剪切；</li>
+<li><span class="math inline">\(t_x\)</span>和<span class="math inline">\(t_y\)</span>控制着水平和垂直方向上的平移。</li>
+</ul>
+<p><code>imwarp()</code> 用于对图像进行<strong>仿射变换</strong>或<strong>非线性变换</strong>。它可以将输入图像根据指定的变换应用到输出图像上。</p>
+</blockquote>
+<p>创建包含自己姓名的PGM 图像并实现上述操作：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 定义您的名字</span><br>name = <span class="hljs-string">&#x27;Your name&#x27;</span>;<br> <br><span class="hljs-comment">% 创建一个灰度图像，大小可以根据需要调整</span><br>image_size = [<span class="hljs-number">512</span>, <span class="hljs-number">512</span>];<br>image = uint8(<span class="hljs-built_in">zeros</span>(image_size) * <span class="hljs-number">255</span>); <span class="hljs-comment">% 初始化为全黑图像</span><br> <br><span class="hljs-comment">% 设置文本属性</span><br>text_position = [<span class="hljs-number">10</span>, <span class="hljs-number">25</span>]; <span class="hljs-comment">% 文本位置</span><br><br><span class="hljs-comment">% 在图像上绘制文本</span><br>image = insertText(image, text_position, name, <span class="hljs-string">&#x27;FontSize&#x27;</span>, <span class="hljs-number">72</span>, <span class="hljs-string">&#x27;Font&#x27;</span>, <span class="hljs-string">&#x27;Arial&#x27;</span>, <span class="hljs-string">&#x27;TextColor&#x27;</span>, <span class="hljs-string">&#x27;white&#x27;</span>);<br><br><span class="hljs-comment">% 保存图像为PGM格式</span><br>writePGM(<span class="hljs-string">&#x27;output.pgm&#x27;</span>, image, <span class="hljs-built_in">size</span>(image, <span class="hljs-number">2</span>), <span class="hljs-built_in">size</span>(image, <span class="hljs-number">1</span>), <span class="hljs-number">255</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>,<span class="hljs-string">&#x27;P2&#x27;</span>);<br><br><span class="hljs-comment">% 读取并显示创建的图像</span><br>originalImage = imread(<span class="hljs-string">&#x27;input.pgm&#x27;</span>);<br><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>);<br>imshow(originalImage);<br>title(<span class="hljs-string">&#x27;原始图像&#x27;</span>);<br><br>rotationAngles = [<span class="hljs-number">30</span>, <span class="hljs-number">60</span>, <span class="hljs-number">120</span>, <span class="hljs-number">-50</span>];<br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(rotationAngles)<br>    [I_rotated,~]=BUPT_transform(originalImage, rotationAngles(<span class="hljs-built_in">i</span>), <span class="hljs-number">0</span>);<br>    subplot(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-built_in">i</span>+<span class="hljs-number">1</span>);<br>    imshow(I_rotated);<br>    title([<span class="hljs-string">&#x27;旋转 &#x27;</span>, num2str(rotationAngles(<span class="hljs-built_in">i</span>)), <span class="hljs-string">&#x27; 度&#x27;</span>]);<br><span class="hljs-keyword">end</span><br>skewAngles = [<span class="hljs-number">10</span>, <span class="hljs-number">40</span>, <span class="hljs-number">60</span>];<br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(skewAngles)<br>    [~,I_skewed]=BUPT_transform(originalImage, <span class="hljs-number">0</span>, skewAngles(<span class="hljs-built_in">i</span>));<br>    subplot(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-built_in">i</span>+<span class="hljs-number">5</span>);<br>    imshow(I_skewed);<br>    title([<span class="hljs-string">&#x27;倾斜 &#x27;</span>, num2str(skewAngles(<span class="hljs-built_in">i</span>)), <span class="hljs-string">&#x27; 度&#x27;</span>]);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>insertText()</code> 函数用于在图像上插入文本。它的基本用法：<code>insertText(I, position, text)</code></p>
+<p>其中：</p>
+<ul>
+<li><code>I</code> 是输入图像。</li>
+<li><code>position</code> 是文本的起始位置，可以是一个二元素的数组 <code>[x, y]</code>，表示文本左下角的坐标。</li>
+<li><code>text</code> 是要插入的文本字符串。</li>
+</ul>
+<p>此外，<code>insertText()</code> 还支持很多参数来控制文本的样式和外观，比如字体大小、字体、颜色等。你可以通过提供参数值来设置这些选项。</p>
+</blockquote>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E5%B9%B3%E7%A7%BB%E6%97%8B%E8%BD%AC-17157800682331.jpeg" srcset="/img/loading.gif" lazyload alt="经过旋转、倾斜后的图像"><figcaption aria-hidden="true">经过旋转、倾斜后的图像</figcaption>
+</figure>
+<p>将旋转与倾斜结合：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-built_in">figure</span>;<br>[I_rotated,~]=BUPT_transform(originalImage, <span class="hljs-number">20</span>, <span class="hljs-number">0</span>);<br>[~,I_skewed]=BUPT_transform(I_rotated, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>imshow(I_skewed);<br>title(<span class="hljs-string">&#x27;先旋转20°再倾斜50°&#x27;</span>);<br><br>[~,I_skewed]=BUPT_transform(originalImage, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>);<br>[I_rotated,~]=BUPT_transform(I_skewed, <span class="hljs-number">20</span>, <span class="hljs-number">0</span>);<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>imshow(I_rotated);<br>title(<span class="hljs-string">&#x27;先倾斜50°再旋转20°&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E6%97%8B%E8%BD%AC%E5%80%BE%E6%96%9C%E7%BB%93%E5%90%88.jpeg" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p>
+<h1 id="七对图像噪声的处理">七、对图像噪声的处理</h1>
+<h2 id="均方误差-mse-和峰值信噪比-psnr">1.均方误差 (MSE) 和峰值信噪比 (PSNR)</h2>
+<p>均方误差（MSE）是衡量原始图像与失真图像之间平均平方差的一种度量，量化了原始图像和失真图像之间对应像素差异的平方的平均值。其公式如下： <span class="math display">\[
+\text{MSE} = \frac{1}{m \cdot n} \sum_{i=1}^{m} \sum_{j=1}^{n} [I(i,j) - K(i,j)]^2
+\]</span> 其中： - <span class="math inline">\(I\)</span>是原始图像。 - <span class="math inline">\(K\)</span>是失真图像。 - <span class="math inline">\(m\)</span>和<span class="math inline">\(n\)</span>是图像的维度（行数和列数）。 - <span class="math inline">\(I(i,j)\)</span>和<span class="math inline">\(K(i,j)\)</span>分别是原始图像和失真图像在位置<span class="math inline">\((i,j)\)</span>的像素值。</p>
+<p>峰值信噪比是比较信号最大可能值与背景噪声水平的一种度量，通常以分贝 (dB) 表示。其公式如下： <span class="math display">\[
+ \text{PSNR} = 10 \cdot \log_{10} \left( \frac{\text{MAX}^2}{\text{MSE}} \right) 
+\]</span> 其中： - <span class="math inline">\(MAX\)</span>是图像的最大可能像素值（对于8位图像，这个值是255）。 - <span class="math inline">\(MSE\)</span>是原始图像和失真图像之间的均方误差。</p>
+<p>PSNR 通常是一个正值，因为<span class="math inline">\(MAX^2\)</span>的比值对实用和有用的图像来说总是大于1。如果 PSNR 为负，表明图像噪声极高，几乎无法使用。这种情况在实际应用中极为罕见。</p>
+<p>通过向测试图像添加不同量的随机噪声，可以观察到 MSE 和 PSNR 的变化，这有助于理解图像质量随着噪声的恶化情况，以及这些度量如何量化这种恶化。</p>
+<h2 id="获取加入噪声的图像">2.获取加入噪声的图像</h2>
+<p>获取加入噪声的图像：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add_noise_and_evaluate</span><span class="hljs-params">(original_image)</span></span><br>    <br>    <span class="hljs-comment">% 添加盐和胡椒噪声,可以改变噪声的密度，表示图像中受噪声影响的像素比例。例如，0.05 表示5%的像素会被随机设为0或1（黑或白）</span><br>    sp_noisy_image = imnoise(original_image, <span class="hljs-string">&#x27;salt &amp; pepper&#x27;</span>, <span class="hljs-number">0.05</span>);<br>    <span class="hljs-comment">% 计算盐和胡椒噪声的MSE和PSNR</span><br>    [mse_sp, psnr_sp] = compute_mse_psnr(original_image, sp_noisy_image);<br>    <br>    <span class="hljs-comment">% 添加高斯噪声,在这里可以改变噪声的方差</span><br>    gauss_noisy_image_1 = imnoise(original_image, <span class="hljs-string">&#x27;gaussian&#x27;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.0001</span>);<br>    <span class="hljs-comment">% 计算高斯噪声的MSE和PSNR</span><br>    [mse_gauss_1, psnr_gauss_1] = compute_mse_psnr(original_image, gauss_noisy_image_1);<br>    <br>    <span class="hljs-comment">% 添加高斯噪声,在这里可以改变噪声的方差</span><br>    gauss_noisy_image_2 = imnoise(original_image, <span class="hljs-string">&#x27;gaussian&#x27;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.0025</span>);<br>    <span class="hljs-comment">% 计算高斯噪声的MSE和PSNR</span><br>    [mse_gauss_2, psnr_gauss_2] = compute_mse_psnr(original_image, gauss_noisy_image_2);<br>    <br>    <span class="hljs-comment">% 显示原始图像和添加噪声后的图像</span><br>    <span class="hljs-built_in">figure</span>;<br>    subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>), imshow(original_image), title(<span class="hljs-string">&#x27;原始图像&#x27;</span>);<br>    subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>), imshow(sp_noisy_image), title(<span class="hljs-string">&#x27;盐和胡椒噪声图像&#x27;</span>);<br>    subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>), imshow(gauss_noisy_image_1), title(<span class="hljs-string">&#x27;\delta=0.01时的高斯噪声图像&#x27;</span>);<br>    subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>), imshow(gauss_noisy_image_2), title(<span class="hljs-string">&#x27;\delta=0.05高斯噪声图像&#x27;</span>);<br>    <br>    <span class="hljs-comment">% 显示计算结果</span><br>    <span class="hljs-built_in">disp</span>([<span class="hljs-string">&#x27;盐和胡椒噪声 - MSE: &#x27;</span>, num2str(mse_sp), <span class="hljs-string">&#x27;, PSNR: &#x27;</span>, num2str(psnr_sp)]);<br>    <span class="hljs-built_in">disp</span>([<span class="hljs-string">&#x27;标准差=0.01时的高斯噪声 - MSE: &#x27;</span>, num2str(mse_gauss_1), <span class="hljs-string">&#x27;, PSNR: &#x27;</span>, num2str(psnr_gauss_1)]);<br>    <span class="hljs-built_in">disp</span>([<span class="hljs-string">&#x27;标准差=0.05时的高斯噪声 - MSE: &#x27;</span>, num2str(mse_gauss_2), <span class="hljs-string">&#x27;, PSNR: &#x27;</span>, num2str(psnr_gauss_2)]);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>imnoise</code> 函数是 MATLAB 中用于向图像添加各种类型噪声的函数。</p>
+</blockquote>
+<p>计算MSE与PSNR：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[mse, psnr]</span> = <span class="hljs-title">compute_mse_psnr</span><span class="hljs-params">(original_image, noisy_image)</span></span><br>    <span class="hljs-comment">% 计算均方误差 (MSE)</span><br>    mse = immse(original_image, noisy_image);<br>    <br>    <span class="hljs-comment">% 计算峰值信噪比 (PSNR)</span><br>    max_pixel_value = <span class="hljs-number">255</span>; <span class="hljs-comment">% 对于8位图像</span><br>    psnr = <span class="hljs-number">10</span> * <span class="hljs-built_in">log10</span>(max_pixel_value^<span class="hljs-number">2</span> / mse);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[original_image, ~, ~, ~,~] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);    <br><br>add_noise_and_evaluate(original_image);<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Lena_%E5%8A%A0%E5%99%AA%E5%A3%B0-17159126666311.jpeg" srcset="/img/loading.gif" lazyload alt="加入不同噪声后的Lena图"><figcaption aria-hidden="true">加入不同噪声后的Lena图</figcaption>
+</figure>
+<p>其中，盐和胡椒噪声的MSE: 935.1138, PSNR: 18.4222；标准差=0.01时的高斯噪声的MSE: 6.6053, PSNR: 39.9318；标准差=0.05时的高斯噪声的MSE: 162.7394, PSNR: 26.0159。可以看到，MSE越小，误差越小；PSNR越大，误差越小。</p>
+<h2 id="低通滤波高斯滤波">3.低通滤波——高斯滤波</h2>
+<h3 id="基本原理-2">3.1 基本原理</h3>
+<p>低通滤波：图像滤波通过对原始图像像素执行某些操作生成处理后的图像。输出图像中的每个像素是作为原始图像中一个或多个像素（通常位于输出像素附近）的函数计算的。该过程通常通过将具有所需属性的卷积核与输入图像的像素进行卷积来实现。如果卷积核是高斯核，则滤波器的行为取决于高斯的方差。</p>
+<p>使用的高斯核的公式：<span class="math inline">\(G(x,y)=\frac{1}{\sqrt{2\pi\sigma^2}}exp(-\frac{x^2+y^2}{2\sigma^2})\)</span></p>
+<p>2D高斯核可以分解为两个1D高斯核。用于行和列的单独方程是：</p>
+<p>对于行：<span class="math inline">\(G_r(x)=\frac{1}{\sqrt{2\pi\sigma^2}}exp(-\frac{x^2}{2\sigma^2})\)</span></p>
+<p>对于列：<span class="math inline">\(G_c(y)=\frac{1}{\sqrt{2\pi\sigma^2}}exp(-\frac{y^2}{2\sigma^2})\)</span></p>
+<p>使用可分离滤波器的优点：</p>
+<ul>
+<li><strong>效率:</strong> 可分离滤波器将计算复杂度从<span class="math inline">\(O(n^2)\)</span>降低到<span class="math inline">\(O(n)\)</span>，其中n是核的大小。这意味着卷积操作变得更快。</li>
+<li><strong>内存使用:</strong> 它也减少了内存使用，因为使用两个较小的1D核代替一个大的2D核。</li>
+</ul>
+<p>σ与滤波器的截止频率之间的关系是截止频率与σ成反比。随着σ的增加，截止频率降低，导致图像更平滑和模糊。截止频率<span class="math inline">\(f_c\)</span>可以近似为：<span class="math inline">\(fc\approx\frac{1}{2\pi \sigma}\)</span></p>
+<p>给定σ，选择卷积核大小的标准通常是确保卷积核捕获高斯函数的大部分显著值。一个常见的规则是使用大小为6σ或8σ的卷积核。这是因为高斯函数在离均值3σ或4σ以外的值非常接近零，可以忽略不计。使用此标准可以确保卷积核足够大以提供准确的滤波，同时不过分增大，避免不必要的计算成本。</p>
+<h3 id="代码实现-2">3.2 代码实现</h3>
+<p>将噪声功率为50 dBm的高斯噪声添加到图像Lena中，然后将噪声图像分别与σ = 0.5，1，2，4，7，10的高斯核卷积。</p>
+<p>高斯滤波：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BUPT_lowpass</span><span class="hljs-params">(original_image)</span></span><br>    <br>    <span class="hljs-comment">% 添加高斯噪声，噪声功率为50 dBm</span><br>    <span class="hljs-comment">% 噪声方差是噪声功率除以255的平方</span><br>    noise_power = <span class="hljs-number">50</span>;<br>    noisy_image = imnoise(original_image, <span class="hljs-string">&#x27;gaussian&#x27;</span>, <span class="hljs-number">0</span>, noise_power / <span class="hljs-number">255</span>^<span class="hljs-number">2</span>);<br>    <br>    <span class="hljs-comment">% 定义不同sigma值的高斯核</span><br>    sigmas = [<span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">10</span>];<br>    filtered_images = cell(<span class="hljs-number">1</span>, <span class="hljs-built_in">length</span>(sigmas));<br>    <br>    <span class="hljs-comment">% 对每个sigma值，进行高斯低通滤波</span><br>    <span class="hljs-keyword">for</span> k = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(sigmas)<br>        sigma = sigmas(k);<br>        <span class="hljs-comment">% 计算高斯核的尺寸。</span><br>        <span class="hljs-comment">% 这里我们使用了经验法则，即高斯核的大小一般取为6 * sigma左右，以确保包含足够的高斯分布信息</span><br>        <span class="hljs-comment">% 而且要是奇数，这样高斯核的中心元素可以对准图像的像素</span><br>        kernel_size = <span class="hljs-number">2</span> * <span class="hljs-built_in">ceil</span>(<span class="hljs-number">3</span> * sigma) + <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">% 创建一个高斯核</span><br>        gaussian_kernel = fspecial(<span class="hljs-string">&#x27;gaussian&#x27;</span>, kernel_size, sigma);<br>        <span class="hljs-comment">% 对噪声图像进行高斯滤波</span><br>        filtered_images&#123;k&#125; = imfilter(noisy_image, gaussian_kernel, <span class="hljs-string">&#x27;same&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">% 显示原始图像、噪声图像以及不同sigma值的滤波结果</span><br>    <br>    <span class="hljs-built_in">figure</span>;<br>    subplot(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>);<br>    imshow(original_image);<br>    title(<span class="hljs-string">&#x27;Original Image&#x27;</span>);<br>    <br>    subplot(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>);<br>    imshow(noisy_image);<br>    title(<span class="hljs-string">&#x27;Noisy Image&#x27;</span>);<br>    <br>    <span class="hljs-keyword">for</span> k = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(sigmas)<br>        subplot(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, k + <span class="hljs-number">2</span>);<br>        imshow(filtered_images&#123;k&#125;);<br>        title([<span class="hljs-string">&#x27;\sigma = &#x27;</span>, num2str(sigmas(k))]);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>fspecial</code> 用于创建预定义的二维滤波器。它支持多种滤波器类型，例如高斯滤波器、均值滤波器、Laplacian滤波器等。</p>
+<p><code>imfilter</code> 用于图像滤波。它通过卷积操作将指定的滤波器核应用于输入图像。这个函数非常适用于实现各种图像处理操作，例如模糊、锐化、边缘检测等。</p>
+<p><code>'same'</code> 是 <code>imfilter</code> 函数的一个参数，用于指定输出图像的尺寸和位置与输入图像相同</p>
+<p>卷积操作的几种不同模式：</p>
+<ul>
+<li><strong><code>'full'</code></strong>：输出图像包含卷积核在整个输入图像上的滑动结果，输出图像尺寸比输入图像大。</li>
+<li><strong><code>'valid'</code></strong>：输出图像仅包含卷积核完全在输入图像内部滑动的结果，输出图像尺寸比输入图像小。</li>
+<li><strong><code>'same'</code></strong>：输出图像尺寸与输入图像相同，卷积结果对齐到输入图像的中心位置。</li>
+</ul>
+</blockquote>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[original_image, ~, ~, ~,~] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);    <br><br>BUPT_lowpass(original_image);<br></code></pre></td></tr></table></figure>
+<p><img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Lena_%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2.jpeg" srcset="/img/loading.gif" lazyload alt="经过低通滤波的Lena图" style="zoom:150%;"></p>
+<p>随着σ值的增加，滤波效果变得更加明显。具体来说：当σ较小，等于0.5时，图像保持了较多的细节，但噪声去除效果有限；当σ中等，等于1或2时，噪声被有效去除，图像变得更加平滑，但细节也开始丢失；当σ较大，等于4、7、10时，图像非常平滑，噪声几乎完全去除，但图像细节丢失严重，边缘变得模糊。</p>
+<p>由此可以看出，选择适当的σ值是实现噪声去除与图像细节保留之间的平衡的关键。</p>
+<h2 id="低通滤波矩形滤波">4.低通滤波——矩形滤波</h2>
+<p>实现一个矩形滤波器。使用5 × 5和7 × 7内核对噪声图像Lena进行滤波。</p>
+<p>矩形滤波器：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filtered_image</span> = <span class="hljs-title">BUPT_rect</span><span class="hljs-params">(image, kernel_size)</span></span><br>    <span class="hljs-comment">% 输入：</span><br>    <span class="hljs-comment">% image: 原始图像</span><br>    <span class="hljs-comment">% kernel_size: 滤波器大小，为正奇数</span><br>    <span class="hljs-comment">% 输出：</span><br>    <span class="hljs-comment">% filtered_image: 滤波后的图像</span><br><br>    <span class="hljs-comment">% 应用矩形滤波器</span><br>    kernel = <span class="hljs-built_in">ones</span>(kernel_size) / (kernel_size^<span class="hljs-number">2</span>);<br>    filtered_image = imfilter(image, kernel, <span class="hljs-string">&#x27;replicate&#x27;</span>);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[original_image, ~, ~, ~,~] = readPGM(<span class="hljs-string">&#x27;input.pgm&#x27;</span>, <span class="hljs-string">&#x27;ASCII&#x27;</span>);    <br><br><span class="hljs-comment">% 添加高斯噪声</span><br>noisy_lena = imnoise(original_image, <span class="hljs-string">&#x27;gaussian&#x27;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">50</span>/<span class="hljs-number">255</span>^<span class="hljs-number">2</span>);<br><br><span class="hljs-comment">% 使用矩形滤波器进行滤波</span><br>filtered_lena_5x5 = BUPT_rect(noisy_lena, <span class="hljs-number">5</span>);<br>filtered_lena_7x7 = BUPT_rect(noisy_lena, <span class="hljs-number">7</span>);<br><br><span class="hljs-comment">% 显示结果</span><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>);<br>imshow(original_image);<br>title(<span class="hljs-string">&#x27;原始 Lena 图像&#x27;</span>);<br><br>subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>imshow(noisy_lena);<br>title(<span class="hljs-string">&#x27;添加高斯噪声后的 Lena 图像&#x27;</span>);<br><br>subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);<br>imshow(filtered_lena_5x5);<br>title(<span class="hljs-string">&#x27;5x5 矩形滤波器&#x27;</span>);<br><br>subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);<br>imshow(filtered_lena_7x7);<br>title(<span class="hljs-string">&#x27;7x7 矩形滤波器&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Lena_%E7%9F%A9%E5%BD%A2%E6%BB%A4%E6%B3%A2.jpeg" srcset="/img/loading.gif" lazyload alt="经过矩形滤波的Lena图"><figcaption aria-hidden="true">经过矩形滤波的Lena图</figcaption>
+</figure>
+<p>由于所有邻域内像素的权重相等，矩形滤波器容易产生明显的模糊效果，特别是大尺寸核的情况下，图像细节损失严重，边缘变得不清晰。通过加权平均的方式，高斯滤波器在噪声去除的同时，保留了更多的图像细节和边缘信息。随着σ值的增加，图像逐渐变得更平滑，但高斯滤波器整体上在保留图像细节方面优于矩形滤波器。</p>
+<p>矩形滤波器适用于一些对计算要求较低的场景，或对图像细节和边缘不太敏感的场景。高斯滤波器适用于需要平滑图像并保留细节的场景，更适合在图像处理、计算机视觉等领域使用。</p>
+<p>通过上述比较可以看出，高斯滤波器在视觉效果和细节保留上均优于矩形滤波器，尽管计算复杂度略高，但在大多数应用中是更好的选择。</p>
+<h1 id="八边缘检测">八、边缘检测</h1>
+<h2 id="一阶微分算子">1.一阶微分算子</h2>
+<p>边缘检测是图像处理与计算机视觉中的重要技术之一。其目的是检测识别出图像中亮度变化剧烈的像素点构成的集合。图像边缘的正确检测对于分析图像中的内容、实现图像中物体的分割、定位等具有重要的作用。边缘检测大大减少了源图像的数据量，剔除了与目标不相干的信息，保留了图像重要的结构属性。</p>
+<p>图像的边缘指的是图像中像素灰度值突然发生变化的区域，如果将图像的每一行像素和每一列像素都描述成一个关于灰度值的函数，那么图像的边缘对应在灰度值函数中是函数值突然变大的区域。函数值的变化趋势可以用函数的导数描述。当函数值突然变大时，导数也必然会变大，而函数值变化较为平缓区域，导数值也比较小，因此可以通过寻找导数值较大的区域去寻找函数中突然变化的区域，进而确定图像中的边缘位置。</p>
+<p>一阶微分为基础的边缘检测，通过计算图像的梯度值来检测图像的边缘，如Roberts算子、Prewitt算子和Sobel算子等。</p>
+<h3 id="roberts算子">1.1 Roberts算子</h3>
+<p>Roberts算子是一种最简单的算子，它利用局部差分算子寻找边缘。采用对角线相邻两像素之差近似<strong>梯度幅值</strong>检测边缘，检测垂直边缘的效果比斜向边缘要好，定位精度高，但对噪声比较敏感，无法抑制噪声的影响。</p>
+<p>Roberts算子是一个2x2的模板，采用的是对角方向相邻的两个像素之差，如下的2个卷积核形成了Roberts算子，图像中的每一个点都用这2个核做卷积。其中，<code>Gx</code> 用于计算水平方向（对角线方向）的梯度，<code>Gy</code> 用于计算垂直方向（对角线方向）的梯度： <span class="math display">\[
+G_x=\begin{bmatrix}
+1 &amp; 0\\
+0 &amp; -1
+\end{bmatrix},G_y=\begin{bmatrix}
+0 &amp; -1\\
+1 &amp; 0
+\end{bmatrix}
+\]</span> 对于每个像素，使用这两个卷积核分别计算其在两个对角方向上的梯度。假设图像的像素值矩阵为 <code>I</code>，那么在位置 <code>(i, j)</code> 处的梯度计算如下： <span class="math display">\[
+gradient_x = I(i, j) * G_x(1, 1) + I(i, j+1) * G_x(1, 2) + I(i+1, j) * G_x(2, 1) + I(i+1, j+1) * G_x(2, 2)
+\]</span></p>
+<p><span class="math display">\[
+gradient_y = I(i, j) * G_y(1, 1) + I(i, j+1) * G_y(1, 2) + I(i+1, j) * G_y(2, 1) + I(i+1, j+1) * G_y(2, 2)
+\]</span></p>
+<p><span class="math display">\[
+(梯度幅值)magnitude = \sqrt{gradient_x^2 + gradient_y^2)}
+\]</span></p>
+<p>若对于输入图像I(x,y),使用Roberts算子后输出图像为g(x,y),则 <span class="math display">\[
+g(x,y)=\sqrt{(I(x,y)-I(x+1,y+1))^2+(I(x+1,y)-I(x,y+1))^2}
+\]</span> 在Matlab中，Roberts算子主要是通过imfilter()函数实现边缘提取。该函数主要是利用卷积核实现对图像的卷积运算。</p>
+<h3 id="prewitt算子">1.2 Prewitt算子</h3>
+<p>Prewitt是一种图像边缘检测的微分算子，其原理是利用特定区域内像素值产生的差分实现边缘检测。由于Prewitt算子采用3x3模板对区域内的像素值进行计算，而Roberts算子的模板为2x2，故Prewitt算子的边缘检测结果在水平和垂直方向均比Roberts算子更加明显。Prewitt算子适合用来识别噪声较多，灰度渐变的图像。Prewitt算子卷积核如下：</p>
+<p><span class="math display">\[
+G_x=\begin{bmatrix}
+1 &amp; 1 &amp; 1\\
+0 &amp; 0 &amp; 0\\
+-1 &amp; -1 &amp; -1
+\end{bmatrix},G_y=\begin{bmatrix}
+-1 &amp; 0 &amp; 1\\
+-1 &amp; 0 &amp; 1\\
+-1 &amp; 0 &amp; 1
+\end{bmatrix}
+\]</span></p>
+<h3 id="sobel算子">1.3 Sobel算子</h3>
+<p>在边缘检测中，常用的一种模板是Sobel算子。Sobel算子有两个卷积核，一个是检测水平边缘的；另一个是检测垂直边缘的。与Prewitt算子相比，Sobel算子对于像素的位置的影响做了加权，可以降低边缘模糊程度，因此效果更好。</p>
+<p>Sobel算子卷积核如下： <span class="math display">\[
+G_x=\begin{bmatrix}
+-1 &amp; 0 &amp; 1\\
+-2 &amp; 0 &amp; 2\\
+-1 &amp; 0 &amp; 1
+\end{bmatrix},G_y=\begin{bmatrix}
+1 &amp; 2 &amp; 1\\
+0 &amp; 0 &amp; 0\\
+-1 &amp; -2 &amp; -1
+\end{bmatrix}
+\]</span></p>
+<h2 id="代码实现-3">2.代码实现</h2>
+<p>边缘检测函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">edge_image</span> = <span class="hljs-title">edge_detection</span><span class="hljs-params">(image, method)</span></span><br>    <span class="hljs-comment">% 初始化卷积核</span><br>    <span class="hljs-keyword">switch</span> method<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;sobel&#x27;</span><br>            gx = [<span class="hljs-number">-1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>; <span class="hljs-number">-2</span> <span class="hljs-number">0</span> <span class="hljs-number">2</span>; <span class="hljs-number">-1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>];<br>            gy = gx&#x27;;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;roberts&#x27;</span><br>            gx = [<span class="hljs-number">1</span> <span class="hljs-number">0</span>; <span class="hljs-number">0</span> <span class="hljs-number">-1</span>];<br>            gy = [<span class="hljs-number">0</span> <span class="hljs-number">1</span>; <span class="hljs-number">-1</span> <span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;prewitt&#x27;</span><br>            gx = [<span class="hljs-number">-1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>; <span class="hljs-number">-1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>; <span class="hljs-number">-1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>];<br>            gy = gx&#x27;;<br>        <span class="hljs-keyword">otherwise</span><br>            error(<span class="hljs-string">&#x27;Unsupported edge detection method.&#x27;</span>);<br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">% 处理灰度图像</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">size</span>(image, <span class="hljs-number">3</span>) == <span class="hljs-number">1</span><br>        edge_image = apply_filter(image, gx, gy);<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-comment">% 处理RGB图像</span><br><br>        edge_image = <span class="hljs-built_in">zeros</span>(<span class="hljs-built_in">size</span>(image));<br>        <span class="hljs-keyword">for</span> c = <span class="hljs-number">1</span>:<span class="hljs-number">3</span><br>            edge_image(:,:,c) = apply_filter(image(:,:,c), gx, gy);<br>        <span class="hljs-keyword">end</span><br>        edge_image = uint8(edge_image);<br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>滤波器：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">gradient_magnitude</span> = <span class="hljs-title">apply_filter</span><span class="hljs-params">(image, gx, gy)</span></span><br>    <span class="hljs-comment">% 应用卷积</span><br>    <span class="hljs-comment">% 得到在x方向的梯度</span><br>    gradient_x = imfilter(double(image), gx, <span class="hljs-string">&#x27;replicate&#x27;</span>);<br>    <span class="hljs-comment">% 得到在y方向的梯度</span><br>    gradient_y = imfilter(double(image), gy, <span class="hljs-string">&#x27;replicate&#x27;</span>);<br>    <br>    <span class="hljs-comment">% 计算梯度的绝对值</span><br>    gradient_magnitude = <span class="hljs-built_in">sqrt</span>(gradient_x.^<span class="hljs-number">2</span> + gradient_y.^<span class="hljs-number">2</span>);<br>    <br>    <span class="hljs-comment">% 正规化结果以便显示</span><br>    gradient_magnitude = uint8(<span class="hljs-number">255</span> * mat2gray(gradient_magnitude));<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>imfilter</code> 函数用于对图像进行卷积操作，在这里用的是矩形滤波器。</p>
+<p>使用 <code>'replicate'</code> 选项处理图像边缘，使边界外的像素值等于边界上的像素值，从而避免边缘处出现人为的卷积结果。</p>
+<p>在图像卷积过程中，需要处理卷积核超过图像边界的情况。<code>imfilter</code> 提供了多种处理边界的方法，<code>replicate</code> 是其中一种。以下是几种常见的边界处理方法：</p>
+<ul>
+<li><strong><code>replicate</code></strong>： 边界外的像素值复制最近的边界内像素值。这种方法会使边缘部分的卷积结果较为平滑。</li>
+<li><strong><code>circular</code></strong>： 边界外的像素值从图像的另一侧循环复制。例如，左边界外的像素值将从右边界复制。</li>
+<li><strong><code>symmetric</code></strong>： 边界外的像素值对称于边界复制。例如，左边界外第一个像素值与左边界内第一个像素值对称。</li>
+<li><strong><code>fill</code></strong>： 边界外的像素值填充为指定的常数值，默认值为 0。</li>
+</ul>
+</blockquote>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 加载灰度图像（PGM格式）</span><br>gray_image = imread(<span class="hljs-string">&#x27;input.pgm&#x27;</span>);<br><span class="hljs-comment">% 加载RGB图像（PPM格式）</span><br>rgb_image = imread(<span class="hljs-string">&#x27;input.ppm&#x27;</span>);<br><br><span class="hljs-comment">% 对灰度图像进行边缘检测</span><br>gray_sobel = edge_detection(gray_image, <span class="hljs-string">&#x27;sobel&#x27;</span>);<br>gray_roberts = edge_detection(gray_image, <span class="hljs-string">&#x27;roberts&#x27;</span>);<br>gray_prewitt = edge_detection(gray_image, <span class="hljs-string">&#x27;prewitt&#x27;</span>);<br><br><span class="hljs-comment">% 对RGB图像进行边缘检测</span><br>rgb_sobel = edge_detection(rgb_image, <span class="hljs-string">&#x27;sobel&#x27;</span>);<br>rgb_roberts = edge_detection(rgb_image, <span class="hljs-string">&#x27;roberts&#x27;</span>);<br>rgb_prewitt = edge_detection(rgb_image, <span class="hljs-string">&#x27;prewitt&#x27;</span>);<br><br><span class="hljs-comment">% 显示结果</span><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>); imshow(gray_sobel); title(<span class="hljs-string">&#x27;Gray Sobel&#x27;</span>);<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>); imshow(gray_roberts); title(<span class="hljs-string">&#x27;Gray Roberts&#x27;</span>);<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>); imshow(gray_prewitt); title(<span class="hljs-string">&#x27;Gray Prewitt&#x27;</span>);<br><br><span class="hljs-built_in">figure</span>;<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>); imshow(rgb_sobel); title(<span class="hljs-string">&#x27;RGB Sobel&#x27;</span>);<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>); imshow(rgb_roberts); title(<span class="hljs-string">&#x27;RGB Roberts&#x27;</span>);<br>subplot(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>); imshow(rgb_prewitt); title(<span class="hljs-string">&#x27;RGB Prewitt&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Peppers_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_grey-17160136154963.jpeg" srcset="/img/loading.gif" lazyload alt="经过边缘检测后的Peppers灰度图像"><figcaption aria-hidden="true">经过边缘检测后的Peppers灰度图像</figcaption>
+</figure>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/Peppers_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_rgb.jpeg" srcset="/img/loading.gif" lazyload alt="经过边缘检测后的Peppers的RGB图像"><figcaption aria-hidden="true">经过边缘检测后的Peppers的RGB图像</figcaption>
+</figure>
+<p>Roberts 算子边缘检测简单且计算效率高，但对噪声敏感。Sobel 算子在存在噪声时性能较好，并且能够检测到更平滑的边缘，但计算稍复杂。Prewitt 算子类似于 Sobel 算子，但略简单，效果也稍差。在具体应用中可以根据需求选择合适的边缘检测算法。</p>
+<h2 id="二阶微分算子laplacian算子">3.二阶微分算子——Laplacian算子</h2>
+<h3 id="基本原理-3">3.1 基本原理</h3>
+<p>二阶微分为基础的边缘检测，通过寻求二阶导数中的过零点来检测边缘，如Laplacian算子等。</p>
+<p>Laplacian算子是n维欧几里德空间中的一个二阶微分算子，常用于图像增强和边缘提取。它通过灰度差分计算邻域内的像素，基本流程是：判断图像中心像素灰度值与它周围其他像素的灰度值，如果中心像素的灰度更高，则提升中心像素的灰度；反之降低中心像素的灰度，从而实现图像锐化操作。在算法实现过程中，Laplacian算子通过对邻域中心像素的四方向或八方向求梯度，再将梯度相加起来判断中心像素灰度与邻域内其他像素灰度的关系，最后通过梯度运算的结果对像素灰度进行调整。 拉普拉斯滤波器是用于找到图像中的边缘的导数滤波器。由于导数滤波器对噪声非常敏感，因此在应用拉普拉斯之前通常会对图像进行平滑处理。例如，可以使用对图像进行平滑处理。将高斯低通滤波器和拉普拉斯滤波器组合的两步过程称为高斯拉普拉斯（LoG）算子。</p>
+<h3 id="代码实现-4">3.2 代码实现</h3>
+<p>LoG滤波器：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 定义LoG算子函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">result</span> = <span class="hljs-title">LoG</span><span class="hljs-params">(image, sigma)</span></span><br>    <span class="hljs-comment">% 高斯滤波</span><br>    img_smoothed = BUPT_lowpass_1(image, sigma);<br>    <span class="hljs-comment">% 计算拉普拉斯算子</span><br>    laplacian_filter = fspecial(<span class="hljs-string">&#x27;laplacian&#x27;</span>);<br>    result = imfilter(img_smoothed, laplacian_filter,<span class="hljs-string">&#x27;conv&#x27;</span>, <span class="hljs-string">&#x27;replicate&#x27;</span>);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>高斯滤波器(BUPT_lowpass_1)：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filtered_image</span> = <span class="hljs-title">BUPT_lowpass_1</span><span class="hljs-params">(image, sigma)</span></span><br>        kernel_size = <span class="hljs-number">2</span> * <span class="hljs-built_in">ceil</span>(<span class="hljs-number">3</span> * sigma) + <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">% 创建一个高斯核</span><br>        gaussian_kernel = fspecial(<span class="hljs-string">&#x27;gaussian&#x27;</span>, kernel_size, sigma);<br>        <span class="hljs-comment">% 对噪声图像进行高斯滤波</span><br>        filtered_image = imfilter(image, gaussian_kernel,  <span class="hljs-string">&#x27;conv&#x27;</span>,<span class="hljs-string">&#x27;same&#x27;</span>);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<p>main函数：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs matlab">img = imread(<span class="hljs-string">&#x27;input.pgm&#x27;</span>);<br><span class="hljs-comment">% 定义不同方差值</span><br>sigmas = [<span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><br><span class="hljs-comment">% 显示原始图像</span><br><span class="hljs-built_in">figure</span>;<br><br><span class="hljs-comment">% 对不同的方差值进行LoG滤波并显示结果</span><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(sigmas)<br>    <span class="hljs-comment">% 计算LoG结果</span><br>    log_result = LoG(img, sigmas(<span class="hljs-built_in">i</span>));<br>    <br>    <span class="hljs-comment">% 显示LoG结果</span><br>    subplot(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-built_in">i</span>);<br>    imshow(log_result,[]);<br>    title([<span class="hljs-string">&#x27;LoG结果 (标准差=&#x27;</span>, num2str(sigmas(<span class="hljs-built_in">i</span>)), <span class="hljs-string">&#x27;)&#x27;</span>]);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>imshow(log_result, [])</code> 中的 <code>[]</code> 参数是对图像进行缩放和映射的选项。当 <code>[]</code> 参数传递给 <code>imshow</code> 函数时，MATLAB 会自动选择适当的显示范围，使图像的最小值映射到0，最大值映射到255（对于uint8类型的图像）。这意味着函数会根据图像的最小值和最大值自动调整显示的亮度对比度，以使图像更清晰地显示在屏幕上。</p>
+<p>如果不使用 <code>[]</code> 参数，<code>imshow(log_result)</code> 将默认使用图像的原始数据范围进行显示，这可能导致图像在显示时看起来很暗或者很亮。</p>
+</blockquote>
+<figure>
+<img src="/2024/05/11/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF_%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B_Peppers.jpeg" srcset="/img/loading.gif" lazyload alt="经过边缘检测的Peppers图像"><figcaption aria-hidden="true">经过边缘检测的Peppers图像</figcaption>
+</figure>
+<p>增加高斯滤波器的标准差的一般效果是，随着标准差的增加，高斯滤波器的模糊程度增加，导致图像变得更加模糊。这可能会导致一些细节丢失，但也会减少噪声的影响。</p>
+<p>当LoG滤波器的掩模大小（kernel size）对于所选择的高斯宽度（方差）来说太小时，输出的效果是LoG被截断，即只有部分边缘信息被检测到，而不是完整的边缘。这可能导致图像中的边缘检测不准确，因为边缘的某些部分被忽略了。为避免严重的截断，可以根据高斯的方差定义一个经验性规则来确定LoG掩模的大小。一般而言，LoG掩模的大小应至少为高斯滤波器的三倍，以确保边缘信息完整地包含在内。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE/" class="category-chain-item">基础项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/">#图像与视频处理</a>
+      
+        <a href="/tags/PBM/">#PBM</a>
+      
+        <a href="/tags/PGM/">#PGM</a>
+      
+        <a href="/tags/%E7%9B%B4%E6%96%B9%E5%9B%BE/">#直方图</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>图像与视频处理</div>
+      <div>http://example.com/2024/05/11/图像与视频处理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Faceless-person</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/" title="协作非正交多址接入">
+                        <span class="hidden-mobile">协作非正交多址接入</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
