@@ -49,7 +49,7 @@
 <meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240312172224867.png">
 <meta property="og:image" content="http://example.com/2024/03/09/%E5%8D%8F%E4%BD%9C%E9%9D%9E%E6%AD%A3%E4%BA%A4%E5%A4%9A%E5%9D%80%E6%8E%A5%E5%85%A5/image-20240312172636255.png">
 <meta property="article:published_time" content="2024-03-09T01:47:35.000Z">
-<meta property="article:modified_time" content="2024-04-24T03:57:17.707Z">
+<meta property="article:modified_time" content="2024-06-02T09:12:52.650Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="协作非正交多址">
 <meta name="twitter:card" content="summary_large_image">
@@ -257,7 +257,7 @@
         
         
         
-          132 分钟
+          133 分钟
         
       </span>
     
@@ -526,9 +526,9 @@ H_S^{(5,6)}= \begin{bmatrix}
 </figure>
 <h4 id="目的地联合解码">2.3.3 目的地联合解码</h4>
 <p>目的地根据信源和中继的信道观测结果进行联合解码。在双层因子图上实现联合最大似然（ML）解码。解码向量的计算公式为： <span class="math display">\[
-\hat{x}= arg\ max\thinspace p(y_{SD}y_{RD}|x)\qquad (6)
+\hat{x}= \arg \mathop{\min}\limits_{x\in X}p(y_{SD}y_{RD}|x)\qquad (6)
 \]</span> 由于信源—中继链路存在噪声，可能会出现<span class="math inline">\(x_S≠x_R\)</span>的情况。第 k 个用户<span class="math inline">\(x_k\)</span>的信息位和它在中继站的估计<span class="math inline">\(x_k&#39;\)</span>的信息位不同的概率为<span class="math inline">\(p(x_k≠x_k&#39;)=\varepsilon_k\)</span>。那么 (6) 可以写成： <span class="math display">\[
-\hat{x}= arg\ max\thinspace p(y_{SD}|x)p(y_{RD}|x)~\\=arg\ max\thinspace p(y_{SD}|x)\displaystyle\sum_{x&#39;}p(y_{RD}|x&#39;)p(x&#39;|x)\qquad (7)
+\hat{x}= \arg \mathop{\min}\limits_{x\in X}p(y_{SD}|x)p(y_{RD}|x)~\\=\arg \mathop{\min}\limits_{x\in X}p(y_{SD}|x)\displaystyle\sum_{x&#39;}p(y_{RD}|x&#39;)p(x&#39;|x)\qquad (7)
 \]</span> 其中<span class="math inline">\(p(x&#39;|x)=\prod_{k=1}^{K}p(x_k&#39;|x_k)\)</span>。</p>
 <blockquote>
 <ul>
