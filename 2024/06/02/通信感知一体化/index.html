@@ -39,8 +39,11 @@
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20240610105529305.png">
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20240610105541180.png">
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20240615164843798.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/%E5%87%A0%E7%A7%8DCFAR%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95%E7%9A%84%E6%A3%80%E6%B5%8B%E6%A6%82%E7%8E%87%E6%AF%94%E8%BE%83.png">
+<meta property="og:image" content="file:///C:/Users/86131/AppData/Local/Packages/Microsoft.Windows.Photos_8wekyb3d8bbwe/TempState/ShareServiceTempFolder/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240617153004.jpeg">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20240617172625168.png">
 <meta property="article:published_time" content="2024-06-02T05:57:52.000Z">
-<meta property="article:modified_time" content="2024-06-15T13:53:57.029Z">
+<meta property="article:modified_time" content="2024-06-17T13:26:38.093Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信感知一体化">
 <meta property="article:tag" content="目标检测">
@@ -238,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          18k 字
         
       </span>
     
@@ -249,7 +252,7 @@
         
         
         
-          112 分钟
+          153 分钟
         
       </span>
     
@@ -470,7 +473,7 @@ P_{fa}=k\begin{pmatrix} N\\ k\end{pmatrix}\frac{\Gamma[N-k+1+T]\Gamma(k)}{\Gamma
 <p>入射波（Incident Wave）：这是雷达发射的电磁波，到达目标物体前的状态。</p>
 <p>散射波（Scattered Wave）：这是入射波与目标物体相互作用后产生的各个方向的反射和散射波。</p>
 </blockquote>
-<h1 id="三仿真雷达目标cfar检测算法">三、仿真雷达目标CFAR检测算法</h1>
+<h1 id="三仿真比较几种雷达目标cfar检测算法">三、仿真比较几种雷达目标CFAR检测算法</h1>
 <h2 id="概述">1.概述</h2>
 <p>雷达的检测过程可用门限检测来描述。几乎所有的判断都是以接收机的输出与某个门限电平的比较为基础的，如果接收机输出的包络超过了某一设置门限，就认为出现了目标。 雷达在探测时会受到噪声、杂波和干扰的影响，因而采用固定门限进行目标检测时会产生一定的虚警，特别是当<strong>杂波背景起伏变化时虚警率会急剧上升</strong>，严重影响雷达的检测性能。因此，<strong>根据雷达杂波数据动态调整检测门限，在虚警概率保持不变的情况下实现目标检测概率最大化</strong>，这种方法称为恒虚警率（Constant False Alarm Rate，CFAR）检测技术。</p>
 <p>雷达在判决过程中，可能会出现两类错误。第一类是在没有目标时判断为有目标，这类错误称为虚警。另一类是在有目标时判断为没有目标，这类错误称为漏警。以上两类错误以一定的概率出现，分别称为虚警概率和漏警概率。</p>
@@ -514,7 +517,7 @@ f(x)=\beta^{\alpha}x^{\alpha-1}e^{-\beta x}/\Gamma(\alpha)\thinspace ,x\ge0,\alp
 X\sim G(\alpha,\beta)\qquad (4)
 \]</span> X的矩母函数为： <span class="math display">\[
 M_X(u)=(1-u/\beta)^{-\alpha}\qquad (5)
-\]</span> 假设输入信号中的各变量满足独立同分布的条件，则对于2n个随机变量之和的矩母函数等于各随机变量的矩母函数之积，所以有： <span class="math display">\[
+\]</span> 假设输入信号中的各变量满足独立同分布的条件，则对于2n个随机变量之和的矩母函数等于各随机变量的矩母函数之积，所以有变量Z的矩母函数为： <span class="math display">\[
 M_Z(u)=(1-u/\beta)^{-\alpha·2n}\qquad (6)
 \]</span> 将式(6)和<span class="math inline">\(\alpha=1,\beta=1/\mu，u=-T/\mu\)</span>代入式(2)得： <span class="math display">\[
 P_{fa}=M_Z(-T/\mu)=[1-(-T/\mu)/(1/\mu)]^{-2n}=(1+T)^{-2n}\qquad (7)
@@ -552,7 +555,7 @@ i
 \end{pmatrix}(2+T)^{-(n+i)}
 \]</span></p>
 <h3 id="os-cfar检测算法">3.3 OS-CFAR检测算法</h3>
-<p>顺序统计量OS(Order Statistic)CFAR的原理是先对参考单元从小到大排序，再选取第k个样本作为Z。 <span class="math display">\[
+<p>顺序统计量OS(Order Statistic)CFAR的原理是先对参考单元从小到大排序，再选取第k个样本作为Z。n是参考单元的总长度。 <span class="math display">\[
 P_{fa}=k\begin{pmatrix} n\\ k\end{pmatrix}\frac{\Gamma[n-k+1+T]\Gamma(k)}{\Gamma[n+1+T]}
 \]</span> GO、SO、OS三类CFAR检测算法的门限因子T难以用数学表达式表示，可以通过迭代运算的方式求解出来。 当求解出门限因子T后，便可以将其代入检测概率的表达式，得到在不同信噪比的条件下，检测概率的变化情况。</p>
 <h3 id="检测概率p_d的计算方法">3.4 检测概率<span class="math inline">\(P_d\)</span>的计算方法</h3>
@@ -565,6 +568,41 @@ P_{d}=E_Z\{P[Y&gt;TZ|H_0]\}
 \]</span> 其中，将3.1中的<span class="math inline">\(M_Z(u)=(1-u/\beta)^{-\alpha·2n}\)</span>，<span class="math inline">\(\alpha=1,\beta=1/\mu\)</span>，代入得 <span class="math display">\[
 P_d=(1+\frac{T}{1+\lambda&#39;})^{-2n}
 \]</span></p>
+<blockquote>
+<p>通过观察可以看到目标检测概率<span class="math inline">\(P_d\)</span>与虚警概率<span class="math inline">\(P_{fa}\)</span>的差别就在于矩母函数中，u的取值不同。即把<span class="math inline">\(T\)</span>换成<span class="math inline">\(\frac{T}{1+\lambda&#39;}\)</span>。</p>
+<p>上述变换在其他检测算法中同样适用。</p>
+</blockquote>
+<h2 id="代码实现">4.代码实现</h2>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% ------ 程序功能：四类CFAR检测算法的检测概率与SNR的关系 %</span><br>clc<br>clear all;<br>close all;<br><br><span class="hljs-comment">%% 参数设置</span><br>R = <span class="hljs-number">24</span>;                     <span class="hljs-comment">% 参考单元长度</span><br>n = R/<span class="hljs-number">2</span>;                    <span class="hljs-comment">% 半滑窗长度</span><br>k = R*<span class="hljs-number">3</span>/<span class="hljs-number">4</span>;                  <span class="hljs-comment">% os-cfar的参数</span><br>P_fa = <span class="hljs-number">1e-6</span>;                <span class="hljs-comment">% 虚警概率</span><br>SNR_dB = (<span class="hljs-number">0</span>:<span class="hljs-number">30</span>);            <span class="hljs-comment">% 信噪比</span><br>SNR = <span class="hljs-number">10.</span>^(SNR_dB./<span class="hljs-number">10</span>);     <span class="hljs-comment">% 信号功率与噪声功率的比值</span><br>syms T;                     <span class="hljs-comment">% 门限因子的符号变量</span><br><span class="hljs-comment">%% CA-CFAR</span><br>T_CA = P_fa^(<span class="hljs-number">-1</span>/R)<span class="hljs-number">-1</span>;           <span class="hljs-comment">% CA-CFAR的门限因子</span><br>Pd_CA = (<span class="hljs-number">1</span>+T_CA./(<span class="hljs-number">1</span>+SNR)).^(-R);    <span class="hljs-comment">% CA-CFAR的检测概率</span><br><br><span class="hljs-comment">%% SO-CFAR、GO-CFAR</span><br>Pfa_SO = <span class="hljs-number">0</span>;<br>syms T<br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>:n<span class="hljs-number">-1</span><br>    Pfa_SO = Pfa_SO+<span class="hljs-number">2</span>*<span class="hljs-built_in">nchoosek</span>(n+<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">i</span>)*(<span class="hljs-number">2</span>+T)^(-(n+<span class="hljs-built_in">i</span>));     <span class="hljs-comment">% SO-CFAR的虚警概率表达式</span><br><span class="hljs-keyword">end</span><br>T1_SO = solve(Pfa_SO == P_fa, T);       <span class="hljs-comment">% 求解出虚警概率为P_fa时对应的门限因子T</span><br>T2_SO = double(T1_SO);<br>T_SO = T2_SO(T2_SO == <span class="hljs-built_in">abs</span>(T2_SO));      <span class="hljs-comment">% SO-CFAR的门限因子</span><br><br>Pfa_GO = <span class="hljs-number">2</span>*(<span class="hljs-number">1</span>+T)^(-n)-Pfa_SO;           <span class="hljs-comment">% GO-CFAR的虚警概率表达式</span><br>T1_GO = solve(Pfa_GO == P_fa, T);       <span class="hljs-comment">% 求解出虚警概率为P_fa时对应的门限因子T</span><br>T2_GO = double(T1_GO);<br>T_GO = T2_GO(T2_GO == <span class="hljs-built_in">abs</span>(T2_GO));      <span class="hljs-comment">% GO-CFAR的门限因子</span><br><br>Pd_SO = <span class="hljs-number">0</span>;<br>Pd_GO = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">0</span>:n<span class="hljs-number">-1</span><br>    Pd_SO = Pd_SO+<span class="hljs-number">2</span>*<span class="hljs-built_in">nchoosek</span>(n+<span class="hljs-built_in">j</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">j</span>).*(<span class="hljs-number">2</span>+T_SO./(<span class="hljs-number">1</span>+SNR)).^(-(n+<span class="hljs-built_in">j</span>));     <span class="hljs-comment">% SO-CFAR的检测概率</span><br>    Pd_GO = Pd_GO+<span class="hljs-number">2</span>*<span class="hljs-built_in">nchoosek</span>(n+<span class="hljs-built_in">j</span><span class="hljs-number">-1</span>,<span class="hljs-built_in">j</span>).*(<span class="hljs-number">2</span>+T_GO./(<span class="hljs-number">1</span>+SNR)).^(-(n+<span class="hljs-built_in">j</span>));<br><span class="hljs-keyword">end</span><br>Pd_GO = <span class="hljs-number">2.</span>*(<span class="hljs-number">1</span>+T_GO./(<span class="hljs-number">1</span>+SNR)).^(-n)-Pd_GO;         <span class="hljs-comment">% GO-CFAR的检测概率</span><br><br><span class="hljs-comment">%% OS-CFAR</span><br>Pfa_OS = k*<span class="hljs-built_in">nchoosek</span>(R,k)*<span class="hljs-built_in">gamma</span>(R-k+<span class="hljs-number">1</span>+T)*<span class="hljs-built_in">gamma</span>(k)/<span class="hljs-built_in">gamma</span>(R+T+<span class="hljs-number">1</span>);           <span class="hljs-comment">% OS-CFAR的虚警概率表达式</span><br>T1_OS = solve(Pfa_OS == P_fa, T);       <span class="hljs-comment">% 求解出虚警概率为P_fa时对应的门限因子T</span><br>T2_OS = double(T1_OS);<br>T_OS = T2_OS(T2_OS == <span class="hljs-built_in">abs</span>(T2_OS));      <span class="hljs-comment">% OS-CFAR的门限因子</span><br>Pd_OS = k*<span class="hljs-built_in">nchoosek</span>(R,k)*<span class="hljs-built_in">gamma</span>(R-k+<span class="hljs-number">1</span>+T_OS./(<span class="hljs-number">1</span>+SNR))*<span class="hljs-built_in">gamma</span>(k)./<span class="hljs-built_in">gamma</span>(R+T_OS./(<span class="hljs-number">1</span>+SNR)+<span class="hljs-number">1</span>);      <span class="hljs-comment">% OS-CFAR的检测概率</span><br><br><span class="hljs-comment">%% 画图</span><br><span class="hljs-built_in">figure</span>;<br><span class="hljs-built_in">hold</span> on;<br><span class="hljs-built_in">plot</span>(SNR_dB,Pd_CA,<span class="hljs-string">&#x27;r-*&#x27;</span>);<br><span class="hljs-built_in">plot</span>(SNR_dB,Pd_SO,<span class="hljs-string">&#x27;k-^&#x27;</span>);<br><span class="hljs-built_in">plot</span>(SNR_dB,Pd_GO,<span class="hljs-string">&#x27;b-o&#x27;</span>);<br><span class="hljs-built_in">plot</span>(SNR_dB,Pd_OS,<span class="hljs-string">&#x27;m-.&#x27;</span>);<br>grid on;<br>xlabel(<span class="hljs-string">&#x27;SNR&#x27;</span>,<span class="hljs-string">&#x27;FontName&#x27;</span>,<span class="hljs-string">&#x27;Time New Romans&#x27;</span>,<span class="hljs-string">&#x27;FontAngle&#x27;</span>,<span class="hljs-string">&#x27;italic&#x27;</span>);<br>ylabel(<span class="hljs-string">&#x27;P_&#123;d&#125;&#x27;</span>,<span class="hljs-string">&#x27;FontName&#x27;</span>,<span class="hljs-string">&#x27;Time New Romans&#x27;</span>,<span class="hljs-string">&#x27;FontAngle&#x27;</span>,<span class="hljs-string">&#x27;italic&#x27;</span>);<br>title([<span class="hljs-string">&#x27;恒虚警率 P_&#123;fa&#125;= &#x27;</span>,num2str(P_fa),<span class="hljs-string">&#x27;，参考单元 2n= &#x27;</span>,num2str(R)]);<br><span class="hljs-built_in">legend</span>(<span class="hljs-string">&#x27;CA&#x27;</span>,<span class="hljs-string">&#x27;SO&#x27;</span>,<span class="hljs-string">&#x27;GO&#x27;</span>,<span class="hljs-string">&#x27;OS&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/%E5%87%A0%E7%A7%8DCFAR%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95%E7%9A%84%E6%A3%80%E6%B5%8B%E6%A6%82%E7%8E%87%E6%AF%94%E8%BE%83.png" srcset="/img/loading.gif" lazyload alt="几种CFAR检测算法的检测概率比较"><figcaption aria-hidden="true">几种CFAR检测算法的检测概率比较</figcaption>
+</figure>
+<p>可以发现，在均匀杂波背景的条件下：CA-CFAR性能最好，GO-CFAR其次，OS-CFAR多目标检测性能较好，但其在均匀杂波环境下的性能有所下降，SO-CFAR的性能最差。</p>
+<h1 id="四杂波环境中的综合传感与通信">四、杂波环境中的综合传感与通信</h1>
+<p>本文提出了一种实用的综合传感与通信（ISAC）框架，用于从杂波环境中感知动态目标，同时确保用户的通信质量。为了同时实现通信功能和感知功能，我们设计了多个可与用户通信的通信波束和一个可旋转扫描整个空间的感知波束。为了最小化感知波束对现有通信系统的干扰，将服务区域划分为感知波束（S4S）扇区和通信波束（C4S）扇区，并针对每种扇区给出了波束赋形设计和功率分配优化策略，建立了一个同时包含静态环境和动态目标的混合感知信道模型，该方法首先滤除静态环境杂波的干扰，提取有效的动态目标回波，然后设计了一套完整实用的动态目标检测方案，用于检测动态目标的存在并利用角度多普勒谱估计（ADSE）和多个子载波联合检测（MSJD）实现了动态目标检测和角度估计，而距离和速度的估计则采用扩展子空间算法实现，仿真结果表明了该方法的有效性，并优于现有的忽略距离和速度估计的方法环境杂乱。</p>
+<h2 id="引言">1.引言</h2>
+<p>集成传感和通信（ISAC）最近在无线通信领域中吸引了显著的研究兴趣[1]-[3]。ISAC的概念是利用通信信号感知真实的物理世界中的各种信息，如建筑构成、人类活动等，同时保证用户的通信质量。由于ISAC允许感知系统和通信系统共享相同的硬件和频谱资源，并可以服务于各种智能应用，如车联网、数字孪生等，它被认为是第六代（6G）通信的关键技术之一[4]，[5]。</p>
+<p>感知的最终功能是构建从真实的物理世界到数字孪生世界的映射关系，其中物理世界包括静态环境（如道路和建筑物）和动态目标（例如行人和车辆）。因此，ISAC系统的传感任务包括静态环境传感和动态目标传感如图1的左半部分所示。静态环境的变化通常是缓慢的，因此可以应用各种环境重建技术来感知静态环境[6]-[8]。然而，由于动态目标的变化是快速的，动态目标的检测和参数估计的实时更新是一个非常重要的问题，一般来说，动态目标检测问题可以分为两类：1）感知协作通信用户，如移动的手机;以及2）感测不与基站（BS）通信的非协作动态目标，例如移动物体或不处于通信状态的移动的用户。</p>
+<figure>
+<img src="file:///C:/Users/86131/AppData/Local/Packages/Microsoft.Windows.Photos_8wekyb3d8bbwe/TempState/ShareServiceTempFolder/微信图片_20240617153004.jpeg" srcset="/img/loading.gif" lazyload alt="图1.ISAC感知任务分类和所提出的感知回波信号处理过程的流程图"><figcaption aria-hidden="true">图1.ISAC感知任务分类和所提出的感知回波信号处理过程的流程图</figcaption>
+</figure>
+<p>此外，随着对传感需求的不断增长，研究人员致力于使ISAC系统具有超高的传感精度。令人鼓舞的是，由于其高方向性和高时间分辨率，具有大规模多输入多输出（MIMO）阵列的毫米波或太赫兹波段的传感可以实现更高的精度[9]，[10]。因此，基于大规模MIMO阵列的ISAC系统已经得到了广泛的研究。在协同用户感知方面，通过对通信信号进行处理，提取到达时间（TOA）、离开角（AOD）等信道参数，可以估计用户的位置[11]-[14]。另一方面，在ISAC框架下，对非合作目标的感知也进行了研究。例如，Z. Gao等人提出了一种依赖于MIMO阵列的ISAC系统，该系统应用压缩采样来促进目标感测和其他ISAC处理[15]。Z. Wang等人提出了一种同时发射和反射表面使能的ISAC框架，其中利用二维最大似然估计来估计目标角度[16]。Y. Li等人提出了一种两阶段算法，用于利用正交频分复用（OFDM）信号估计多个目标的位置和速度[17]。 P.Kumari等人提出了一种用于车辆互联网的ISAC系统，该系统实现了车对车通信和全双工雷达感知[18]。X.Chen等人提出了一种基于多信号分类的ISAC系统，该系统可以获得动态目标感知的高估计精度[19]。然而，这些工作都忽略了静态环境杂波对动态目标感知的干扰，这与真实的场景不匹配，即目标总是被静态环境干扰淹没而难以与其分离，从而限制了真实的场景和实用ISAC系统的感知性能。</p>
+<p>同时，对于基于MIMO阵列的ISAC系统，应该设计具有多个波束的波束成形以同时实现通信功能和感知功能[20]-[23]。 阐述了多用户ISAC系统中的一个波束成形设计问题，旨在最大化感知方向上的功率，同时在通信方向上保持一定的功率[24]。H. Luo等人提出了一种将BS和可重构智能表面（RIS）相结合的ISAC系统，并联合优化波束形成矩阵，以最大化通信用户的可达和速率，同时满足感知波束约束[25]. X. Wang等人研究了多用户ISAC系统的部分连接波束形成设计，旨在最小化DOA估计的Cramer-Rao界，同时确保通信性能[26]。然而，所有这些工作都需要复杂的优化过程，并且难以在实际系统中实现。</p>
+<p>基于以上分析，现有的ISAC系统研究在波束形成设计上需要复杂的优化方案，在回波信号处理上忽略了环境杂波的严重干扰，难以在实际BS系统中部署和应用。本文提出了一种实用的ISAC框架，用于在保证用户通信质量的同时，从杂波环境中检测动态目标，论文总结如下：</p>
+<ul>
+<li>我们提出了一个实用的ISAC框架来同时实现通信和传感，其中我们设计了多个可以与用户通信的通信光束，同时分配一个可以旋转和扫描整个空间的传感光束。整个过程总结在图1的右半部分。</li>
+<li>基站需要在每个时隙内优化发射波束赋形来传输信号，具体来说，为了最大限度地减少感知波束对现有通信系统的干扰，我们将基站的服务区域划分为用于感知的感知波束（S4S）扇区和用于感知的通信波束（C4S）扇区。为了避免实际系统中难以实现的复杂优化，我们将预编码优化问题转化为通信和传感波束的功率分配问题，并为每种类型的扇区提供有效的功率分配策略。</li>
+<li>通过各种模拟，证明了所提方案的有效性，以及与忽略环境杂波的现有方法相比的优越性。</li>
+</ul>
+<p>本文的其余部分安排如下。在第二节中，我们提出了一个实用的 ISAC 框架，可将传感功能有效集成到现有通信系统中。在第三节中，我们提供了一种低复杂度、实用的波束成形设计和功率分配策略。然后，我们在第四部分设计了一套完整实用的方案，用于从杂波环境中感知动态目标。第五节和第六节分别给出了仿真结果和结论。</p>
+<h2 id="系统模型和isac框架">2.系统模型和ISAC框架</h2>
+<p>在本节中，我们将提出一个实用的ISAC框架，有效地将传感功能集成到现有的通信系统中。</p>
+<h3 id="基站模型">2.1 基站模型</h3>
+<p>在图2中描绘了利用OFDM调制在毫米波或太赫兹频带中操作的基于大规模MIMO的ISAC系统，其采用同时用于无线通信和雷达感测的双功能基站。基站配置有两个平行且紧密放置的<span class="math inline">\(N_T\)</span>和<span class="math inline">\(N_R\)</span>个天线单元的均匀线性阵列（ULAs），分别作为发射阵列和接收阵列，其中天线间距为<span class="math inline">\(d\le\frac{\lambda}{2}\)</span>，<span class="math inline">\(\lambda\)</span>为波长。假设ULA平行于y轴，并且发射和接收ULA中的天线索引是<span class="math inline">\(0,\cdots,N_{T-1}\)</span>和<span class="math inline">\(0,\cdots,N_{R-1}\)</span>。假设通信系统使用总共M个子载波的窄带OFDM信号，并且最低频率和子载波间隔分别为<span class="math inline">\(f_0\)</span>和<span class="math inline">\(\Delta f\)</span>。那么，传输带宽是<span class="math inline">\(W=(M-1)\Delta f\)</span>，并且第m个子载波的频率是<span class="math inline">\(f_m=f_0+m\Delta f\)</span>，其中<span class="math inline">\(m=0,1,\cdots,M-1\)</span>。</p>
+<figure>
+<img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20240617172625168.png" srcset="/img/loading.gif" lazyload alt="图2.系统模型"><figcaption aria-hidden="true">图2.系统模型</figcaption>
+</figure>
+<p>假设基站的服务区域为<span class="math inline">\(\{(r,\theta)|r_{min}\le r\le r_{max},\theta_{min}\le \theta\le \theta_{max}\}\)</span>，</p>
 
                 
               </div>
@@ -656,6 +694,12 @@ P_d=(1+\frac{T}{1+\lambda&#39;})^{-2n}
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="定位和通感相关的基础知识">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">定位和通感相关的基础知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
