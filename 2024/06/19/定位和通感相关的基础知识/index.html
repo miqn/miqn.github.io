@@ -16,15 +16,24 @@
   <meta name="author" content="Faceless-person">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="在研究定位和通感之前，我们需要一些基础知识的准备。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="定位和通感相关的基础知识">
 <meta property="og:url" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="Faceless_blog">
+<meta property="og:description" content="在研究定位和通感之前，我们需要一些基础知识的准备。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/d0fbc7b2007845958fe18d5d2893bbbd.jpeg">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240620210647811.png">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240620223122624.png">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240621213148696.png">
 <meta property="article:published_time" content="2024-06-19T03:24:25.000Z">
-<meta property="article:modified_time" content="2024-06-19T03:24:25.989Z">
+<meta property="article:modified_time" content="2024-06-23T14:42:31.378Z">
 <meta property="article:author" content="Faceless-person">
+<meta property="article:tag" content="通信感知一体化">
+<meta property="article:tag" content="定位">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/d0fbc7b2007845958fe18d5d2893bbbd.jpeg">
   
   
   
@@ -217,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          8.5k 字
         
       </span>
     
@@ -228,7 +237,7 @@
         
         
         
-          1 分钟
+          71 分钟
         
       </span>
     
@@ -271,7 +280,136 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="一ofdm系统收发过程">一、OFDM系统收发过程</h1>
+<p>OFDM系统将多个高速传输的数据流经过串并变换之后，分配到若干个低速率子信道上进行传输，由于多个子信道的<strong>子载波频率</strong>之间严格正交，因此各子信道频谱之间可以互相重叠，如此便可大大提高频谱利用率。若各子载波频率未能达到严格正交，则会引起符号间干扰（Inter Symbol Interference，ISI）和子载波间干扰（Inter Carrier Interference，ICI）,导致接收端解调失败，对系统性能会产生很大的影响。</p>
+<p>本节首先介绍无时频偏的情况下理想接收的OFDM信号模型，然后在此基础上介绍存在时频偏情况下的OFDM接收信号模型，最后对载波相位估计算法中使用的定位参考信号（Positioning Reference Signal，PRS）进行概括性的介绍。</p>
+<h2 id="无时频偏ofdm信号模型">1.无时频偏OFDM信号模型</h2>
+<p>记OFDM信号传输的子载波数为K，子载波间隔为<span class="math inline">\(\Delta f_{SCS}\)</span>，对一个OFDM符号的时域采样点个数为N，由此可以表示出时域采样间隔<span class="math inline">\(T_S=1/(N\Delta f_{SCS})\)</span>。第l个待发送OFDM符号中的第k个子载波上携带的频域数据为<span class="math inline">\(X_k^l,k\in\{0,1,\cdots,K-1\}\)</span>，即第m个符号内的数据矢量可表示为<span class="math inline">\(X^l=[X_0^l,\cdots,X_{K-1}^l]^T\)</span>。针对该频域数据进行快速傅里叶逆变换（Inverse Fast Fourier Transition，IFFT），可得到时域的基带离散信号，然后上变频至载波发送频率<span class="math inline">\(f_c\)</span>，便可得到<strong>待发送的OFDM信号</strong>，如下式所示。也可按照其物理意义理解，先将频域数据放至各子载波上，随后各子载波信号相加得到时域信号，然后采样获得离散信号，<span class="math inline">\(1/\sqrt{(N)}\)</span>为功率归一因子。 <span class="math display">\[
+x_n^l=x^l(t_n)=\frac{1}{\sqrt N}\displaystyle\sum_{k=0}^{K-1}X_k^le^{j2\pi(f_c+k\Delta f_{SCS})t_n}\\=\frac{1}{\sqrt N}\displaystyle\sum_{k=0}^{K-1}X_k^le^{j2\pi(f_c+k\Delta f_{SCS})nT_S}=\frac{1}{\sqrt N}\displaystyle\sum_{k=0}^{K-1}X_k^le^{j2\pi(f_c+k\Delta f_{SCS})n/(N\Delta f_{SCS})}\\=\frac{1}{\sqrt N}\displaystyle\sum_{k=0}^{K-1}X_k^le^{j2\pi f_cnT_S}e^{j2\pi kn/N}
+\]</span></p>
+<blockquote>
+<p>子载波间隔既确定了子载波本身，又确定了待发信号的传输时间，从而决定了信号频谱的主瓣宽度以及旁瓣为0的位置。这也意味着，OFDM系统中一旦选定了子载波间隔，时域上的正交性以及频域上的正交性也就顺理成章的联系起来了。</p>
+<p>在时域上不同子载波需要正交，以正弦信号为例，<span class="math inline">\(\{sin(2\pi·\Delta f·t),sin(2\pi·\Delta f·2t), \cdots,sin(2\pi·\Delta f·kt)\}\)</span>在区间<span class="math inline">\([0,1/\Delta f]\)</span>上正交，<span class="math inline">\(1/\Delta f\)</span>等于每个码元的传输时长T。所以其在频域上的带宽为<span class="math inline">\(\Delta f\)</span>。</p>
+<p>在频域上，在经过傅里叶变换后，各个子载波在频谱上表现为对sinc信号的搬移，不同子载波的频谱形状相同，只是频谱被搬移的位置变了。具体表现为每个子载波的抽样点上，其它的子载波信号抽样值均为0，不同子载波的间隔为<span class="math inline">\(\Delta f\)</span>，如下图所示。这也就保证了频域上的正交性。</p>
+<figure>
+<img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/d0fbc7b2007845958fe18d5d2893bbbd.jpeg" srcset="/img/loading.gif" lazyload alt="i"><figcaption aria-hidden="true">i</figcaption>
+</figure>
+</blockquote>
+<p>信号经过信道到达接收机处，记信道脉冲响应为h(t)，表达式如下 <span class="math display">\[
+h(t)=\displaystyle\sum_{i=0}^{L-1}h_ie^{-j\phi_i}\delta(t-\tau_i)
+\]</span> 其中，L表示多径数，<span class="math inline">\(h_i\)</span>表示第i条多径的衰减系数，<span class="math inline">\(\delta(·)\)</span>表示狄利克雷函数，<span class="math inline">\(\tau_i\)</span>表示第i条多径的传播时延，<span class="math inline">\(\phi_i\)</span>表示信号传输过程中的相位偏转，包括传输时延引起的相位旋转及相位噪声等，考虑理想接收的情况，即传播过程不存在相位噪声，因此相位偏转可以表示为 <span class="math display">\[
+\phi_i=2\pi(f_c+k\Delta f_{SCS})\tau_i
+\]</span></p>
+<blockquote>
+<p>狄利克雷函数：值域为{0,1}，即当自变量为有理数时，函数值为1；当自变量为无理数时，函数值为0。</p>
+</blockquote>
+<p>信号经过信道（即与h(t)卷积)后，先进行下变频，将载波信号换至基带，得到离散时域信号。然后进行快速傅里叶变换（Fast Fourier Transition，FFT），获得频域数据。</p>
+<p>接收机处的离散时域信号可表示为 <span class="math display">\[
+y_n^l=[x^l_n*h(t)]_{下变频}=\displaystyle\sum_{i=0}^{L-1}h_ie^{-j\phi_i}x^l_{n-n_{\tau_i}}+\omega_n\\=\frac{1}{\sqrt{N}}\displaystyle\sum_{i=0}^{L-1}\displaystyle\sum_{k=0}^{K-1}h_ie^{-j\phi_i}X_k^le^{j2\pi k(n-n_{\tau_i)}/N}+\omega_n\\=\frac{1}{\sqrt{N}}\displaystyle\sum_{k=0}^{K-1}(\displaystyle\sum_{i=0}^{L-1}h_ie^{-j\phi_i}e^{-j2\pi\tau_ik/T})X_k^le^{j2\pi kn/N}+\omega_n\\=\frac{1}{\sqrt{N}}\displaystyle\sum_{k=0}^{K-1}H_kX_k^le^{j2\pi kn/N}+\omega_n\\
+\]</span> 其中，<span class="math inline">\(n_{\tau_i}\)</span>表示时延<span class="math inline">\(\tau_i\)</span>对应的时域采样间隔<span class="math inline">\(T_S\)</span>的倍数，<span class="math inline">\(\omega_n\)</span>表示高斯白噪声信号，<span class="math inline">\(H_k\)</span>表示信道频率响应，表示为 <span class="math display">\[
+H_k=\displaystyle\sum_{i=0}^{L-1}h_ie^{-j\phi_i}e^{-j2\pi\tau_ik/T}=\displaystyle\sum_{i=0}^{L-1}h_ie^{-j\phi_i}e^{-j2\pi\tau_ik\Delta f_{SCS}}=\displaystyle\sum_{i=0}^{L-1}h_ie^{-j2\pi(f_c+2k\Delta f_{SCS})\tau_i}
+\]</span> 对时域接收信号进行FFT变换，便可得到接收信号的频域形式， <span class="math display">\[
+R_k^m=H_kX_k^m+W_k,k=0,\cdots,N-1
+\]</span></p>
+<h2 id="存在时频偏ofdm信号模型">2.存在时频偏OFDM信号模型</h2>
+<p>当收发两端时钟不同步、且存在载波频率偏移（包括多普勒频移）时，接收信号的时域形式和频域形式将会产生较大的相位偏转，从而无法解调出正确的信号，严重时可能导致OFDM信号完全不可用。</p>
+<p>记载波频率偏移（Carrier Frequency Offset，CFO）为<span class="math inline">\(\Delta f\)</span>，<span class="math inline">\(\delta_f=\Delta f/\Delta f_{SCS}\)</span>表示归一 化频偏，收发两端采样时钟偏移（Sampling Time Offset，STO）为<span class="math inline">\(\Delta t\)</span>。在前一小节中，由于考虑的场景是理想情况下的信号接收，为简化叙述，未引入循环前缀（Cyclic Prefix，CP），本小节中的CFO和STO会对循环前缀部分的数据产生影响从而影响信号整体的载波相位，因此在此处需要引入CP，记循环前缀的长度为<span class="math inline">\(N_{CP}\)</span>。</p>
+<p>由于公式表述较为复杂，本章将时偏与频偏分开讨论，最后整合，存在频偏情况下的接收信号表达式为</p>
+<figure>
+<img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240620210647811.png" srcset="/img/loading.gif" lazyload alt="存在频偏情况下的频域接收信号表达式"><figcaption aria-hidden="true">存在频偏情况下的频域接收信号表达式</figcaption>
+</figure>
+<p>其中，<span class="math inline">\(ICI_k\)</span>为频偏造成的子载波间干扰，具体表达式为 <span class="math display">\[
+ICI_k=e^{j\pi\delta_f(N-1)/N}\displaystyle\sum_{k&#39;=0,k&#39;≠k}^{K-1}\frac{sin(\pi(k&#39;-k+\delta_f))}{\sqrt{N}sin(\pi(k&#39;-k+\delta_f)/N)}H_{k&#39;}X_{k&#39;}^le^{j\pi(k&#39;-k)(N-1)/N}
+\]</span> 由于OFDM符号是连续发送的，因此频偏造成的相位旋转会随着符号数的增加而不断累积，第l个符号的累积相位偏移为 <span class="math display">\[
+\nu^l=2\pi\delta_f(\displaystyle\sum_{i=0}^{l-1}(N+N_{CP})+N_{CP})/N=2\pi\delta_f(lN_S+N_{CP})/N
+\]</span> 其中，<span class="math inline">\(N_S=N+N_{CP}\)</span>表示加上循环前缀后的一个OFDM符号长度。接下来考虑由采样时钟偏差导致的相位偏转，令<span class="math inline">\(\Delta n=\Delta t/T_S\)</span>表示采样时钟偏差跨越的采样间隔数，引入时钟偏差后的时域接收信号就是在上一章的时域接收信号的基础上，采样点延迟<span class="math inline">\(\Delta n\)</span>，即 <span class="math display">\[
+y&#39;^l_n=y^l_{n-\Delta n}=\frac{1}{\sqrt{N}}\displaystyle\sum_{k=0}^{K-1}H_kX_k^le^{j2\pi k(n-\Delta n)/N}+\omega_n\\
+\]</span> 因此频域接收信号可表示为</p>
+<figure>
+<img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240620223122624.png" srcset="/img/loading.gif" lazyload alt="存在时偏情况下的频域接收信号表达式"><figcaption aria-hidden="true">存在时偏情况下的频域接收信号表达式</figcaption>
+</figure>
+<p>更正，上述结果应为<span class="math inline">\(Y&#39;^l_k=\sqrt{N}e^{-j2\pi k\Delta f_{SCS}\Delta t}H_kX_k^l+ICI&#39;_k+W_k\)</span></p>
+<p>其中，<span class="math inline">\(ICI&#39;_k\)</span>为时钟不同步造成的子载波间干扰，具体表达式为 <span class="math display">\[
+ICI&#39;_k=\displaystyle\sum_{k&#39;=0,k&#39;≠k}^{K-1}\frac{sin(\pi(k&#39;-k))}{\sqrt{N}sin(\pi(k&#39;-k)/N)}H_{k&#39;}X_{k&#39;}^le^{j\pi(k&#39;-k)(N-1)/N}e^{-j2\pi k&#39;\Delta n/N}ICI&#39;_k=
+\]</span></p>
+<blockquote>
+<p>无论是时偏还是频偏导致的相位偏转，都是在前一章得到的时域接收信号<span class="math inline">\(y_n^l\)</span>上进行改动，再对其进行FFT得到其频域接收信号。</p>
+</blockquote>
+<p>综合上面三个式子，可以得出存在时偏及频偏情况下的频域接收信号表达式为 <span class="math display">\[
+Y_k^l=e^{\frac{j\pi\delta_f(N-1)}{N}}e^{\frac{j2\pi\delta_f(lN_S+N_{CP})}{N}}e^{-j2\pi k\Delta f_{SCS}\Delta t}\frac{sin(\pi\delta_f)}{sin(\frac{\pi\delta_f}{N})}H_kX_k^l+ICI_k+ICI&#39;_k+W_k
+\]</span> 由上式可以看出，由载波间频率偏移造成的相位旋转在相邻符号间的增加量是相同的，即频偏导致的相位偏移与OFDM符号数m成正比，同样，由时偏造成的相位偏移在同一符号内是与子载波数k成正比的，该比例关系可以作为后续计算CFO和STO的依据。</p>
+<h1 id="二doa估计music算法">二、DoA估计：MUSIC算法</h1>
+<p>波达方向（Direction of Arrival，DOA）估计是指根据天线阵列的接收信号估计出单个或多个信号源的方位信息。由于激励信号和方向图之间存在傅里叶关系，DoA 估计也可以等效为谱估计问题。</p>
+<blockquote>
+<p>激励信号就是输入信号。</p>
+</blockquote>
+<p>多重信号分类（Mutiple Signal Classification）算法，简称 <strong>MUSIC 算法</strong>，是一种常用的 DoA 估计方法。它的基本思想是基于接收信号协方差矩阵的特征值分解，利用分解后得到的特征矢量构造信号子空间和噪声子空间，<strong>由于天线阵列对于信号的流型矢量与构造的噪声子空间正交</strong>，该正交性便可用来估计信号的波达方向。天线阵列的流型矢量表示天线阵列对于接收信号产生的与波达方向有关的相位旋转。</p>
+<h2 id="远场信源传播模型">1.远场信源传播模型</h2>
+<p>假设有D个窄带远场不相关信号<span class="math inline">\(s_1(t),\cdots,s_D(t)\)</span>到达接收天线处，天线阵列为均匀线性阵列（Uniform Linear Array，ULA），阵元数为M，相邻天线阵元间距表示为d，信号到达天线阵列的示意图如下图所示。</p>
+<figure>
+<img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240621213148696.png" srcset="/img/loading.gif" lazyload alt="天线接收信号模型"><figcaption aria-hidden="true">天线接收信号模型</figcaption>
+</figure>
+<p>记D个信号到达天线阵列的到达角分别为<span class="math inline">\(\{\theta_1,\cdots,\theta_D\}\)</span>，信号波长为<span class="math inline">\(\lambda\)</span>，则上图中信号<span class="math inline">\(s_i(t)\)</span>到达相邻天线接收信号的波程差<span class="math inline">\(\Delta\)</span>可表示为： <span class="math display">\[
+\Delta=dcos\theta_i\qquad(1)
+\]</span> 假设第i个待估计信号以角度<span class="math inline">\(\theta_i\)</span>入射至阵列，将均匀线阵中第一个阵元视为参考阵元。则与到达下标为m的阵元相比，时间差为：<span class="math inline">\(\frac{m·d·cos\theta_i}{c}=\frac{m·\Delta}{c}\)</span></p>
+<p>每个信号的角频率为：<span class="math inline">\(\omega=2\pi f=2\pi/T=\frac{2\pi c}{\lambda}\)</span></p>
+<p>角频率乘以时间差就得到了相位差为：<span class="math inline">\(\frac{m·\Delta}{c}×\frac{2\pi c}{\lambda}=\frac{2\pi m\Delta}{\lambda}\)</span></p>
+<blockquote>
+<p>到达第一个阵元的信号与到达阵元m的信号的相位差，下面需要后者到参考单元的相位差，所以需要加一个负号。</p>
+</blockquote>
+<p>天线阵列的流型矢量表示天线阵列对于接收信号产生的与波达方向有关的相位旋转。因此，天线阵列的流型矩阵可表示为： <span class="math display">\[
+A=[a(\theta_1),\cdots,a(\theta_D)]\qquad(2)
+\]</span> 其中， <span class="math display">\[
+a(\theta_i)=[1,e^{-j2\pi\frac{\Delta}{\lambda}},\cdots,e^{-j2\pi(M-1)\frac{\Delta}{\lambda}}]^T\qquad(3)
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(\Delta\)</span>中包含参数i。</p>
+</blockquote>
+<p>因此，天线阵列接收到的第i个到达信号可表示为： <span class="math display">\[
+x_i(t)=a(\theta_i)s_i(t)+n_i(t),i=1,\cdots,D,t=0,\cdots,T-1\qquad(4)
+\]</span> 其中，T表示信号快拍数，即时域信号的采样点数，<span class="math inline">\(n_i(t)\)</span>表示接收信号中混入的高斯白噪声信号。根据式(4)，接收信号的矩阵形式可写作： <span class="math display">\[
+X=AS+N\qquad(5)
+\]</span> 其中，<span class="math inline">\(S=[s_1(t),\cdots,s_D(t)]^T,S\in C^{D×T}\)</span>表示来波信号的矩阵形式，<span class="math inline">\(A\in C^{M×D}\)</span>表示天线阵列的流型矩阵，<span class="math inline">\(X\in C^{M×T}\)</span>表示接收信号的矩阵形式，<span class="math inline">\(N\in C^{M×T}\)</span>为高斯白噪声矩阵。</p>
+<blockquote>
+<p>X中的一个元素代表在T时刻在第m个天线单元上的接收信号（该时刻该天线单元上D个信号的和）</p>
+</blockquote>
+<h2 id="music算法思想">2.MUSIC算法思想</h2>
+<p>假设<mark>不同信号源的信号之间是相互正交的，噪声与信号之间是正交的</mark>，则接收信号的协方差矩阵为： <span class="math display">\[
+R_X=E[XX^H]=E[(AS+N)(AS+N)^H]=E[(AS+N)[(AS)^H+N^H]]\\=E[(AS+N)((S^HA^H+N^H)]=E[ASS^HA^H+NN^H+ASN^H+NS^HA^H]\\=AR_SA^H+\sigma^2I_M\qquad(6)
+\]</span> 其中，上标<span class="math inline">\((·)^H\)</span>表示矩阵的共轭转置，<span class="math inline">\(\sigma^2\)</span>表示高斯白噪声功率，<span class="math inline">\(I_M\)</span>表示维度为M×M的单位阵，<span class="math inline">\(R_S\)</span>表示来波信号S的协方差矩阵，由于假设来波信号的信号之间是相互正交的，则<span class="math inline">\(R_S\)</span>理想情况下应为对角阵： <span class="math display">\[
+R_S = \begin{bmatrix}
+E[|s_1(t)|^2] &amp; 0 &amp; \cdots &amp; 0 \\ 
+0 &amp; E[|s_2(t)|^2] &amp; \cdots &amp; 0 \\ 
+\vdots &amp; \vdots &amp;\ddots &amp; 0\\
+0 &amp; 0 &amp; \cdots &amp; E[|s_D(t)|^2] \\ 
+\end{bmatrix}
+\]</span> <span class="math inline">\(R_X\)</span>进行特征分解，表示为： <span class="math display">\[
+R_X=E_S\Lambda_SE_S^H+E_N\Lambda_NE_N^H\qquad(7)
+\]</span> 其中，<span class="math inline">\(\Lambda_S\in C^{D×D}\)</span>为<span class="math inline">\(R_X\)</span>进行特征分解后产生的M个特征值中,以较大的前D个特征值为对角线元素组成的对角矩阵，这D个特征值的数值与信号功率之间应有对应关系，<span class="math inline">\(E_S\in C^{M×D}\)</span>为与这前D个较大的特征值相对应的特征向量矩阵，表示信号子空间；同理，<span class="math inline">\(\Lambda_N\in C^{(M-D)×(M-D)}\)</span>为以剩下的<strong>(M-D)个较小的特征值</strong>为对角元素组成的对角阵，该(M-D)个特征值的数值与噪声功率应有对应关系，<span class="math inline">\(E_N\in C^{M×(M-D)}\)</span>为与之对应的特征向量矩阵，表示噪声子空间。可以看出，若要使用MUSIC算法进行DoA估计，要求天线阵元数大于来波信号数量，即M&gt;D。</p>
+<p>式(6)和式(7)相等，因此有： <span class="math display">\[
+AR_SA^H+\sigma^2I_M=E_S\Lambda_SE_S^H+E_N\Lambda_NE_N^H\qquad(8)
+\]</span> 由上述描述可知，噪声子空间的特征值理想情况下应与噪声功率相等，即<span class="math inline">\(\Lambda_N\)</span>可表示为<span class="math inline">\(\sigma^2I_{M-D}\)</span>，因此噪声子空间部分可表示为： <span class="math display">\[
+E_N\Lambda_NE_N^H=\sigma^2E_NI_{M-D}E_N^H=\sigma^2I_M\qquad(9)
+\]</span> 基于式(9)，式(8)可简化为<span class="math inline">\(AR_SA^H=E_S\Lambda_SE_S^H\)</span>。</p>
+<p>令<span class="math inline">\(R_X=AR_SA^H+\sigma^2I_M=R_A+\sigma^2I_M\)</span>。</p>
+<p><span class="math inline">\(A\in C^{M×D},r(A)=D\)</span>，<span class="math inline">\(R_S\in C^{D×D}，r(R_S)=D\)</span>，故<span class="math inline">\(r(R_A)=D\)</span>。但<span class="math inline">\(R_A\in C^{M×M}\)</span>，<strong>故其有M-D个特征值为0</strong>。</p>
+<p>对于<span class="math inline">\(R_A\)</span>的任意特征向量<span class="math inline">\(q_m\)</span>有： <span class="math display">\[
+R_Aq_m=\lambda_mq_m\Rightarrow R_Xq_m=R_Aq_m+\sigma^2I_Mq_m=(\lambda_m+\sigma^2)q_m
+\]</span> 因此，信号协方差矩阵<span class="math inline">\(R_A\)</span>的特征值<span class="math inline">\(\lambda_m\)</span>对应的特征向量与输出信号协方差矩阵<span class="math inline">\(R_X\)</span>的特征值<span class="math inline">\(\lambda_m+\sigma^2\)</span>对应的特征向量相同。</p>
+<p>所以，将输出信号矩阵<span class="math inline">\(R_X\)</span>进行特征分解，得到的M-D个<strong>较小且相等</strong>的特征值对应的特征向量构成的<span class="math inline">\(E_N\)</span>，<strong>对应着<span class="math inline">\(R_A\)</span>的特征值为0的特征向量组</strong>。</p>
+<p>故可以得到<span class="math inline">\(R_AE_N=0·E_N=0\Rightarrow AR_SA^HE_N=0\Rightarrow A^HE_N=0\)</span>。</p>
+<blockquote>
+<p>来波信号协方差矩阵<span class="math inline">\(R_S\)</span>一定不为零矩阵</p>
+</blockquote>
+<p><span class="math display">\[
+A^HE_N=0\qquad(10)
+\]</span> 即，天线阵列流型矩阵与噪声子空间正交，此正交性便可用来构造空间谱函数从而进行DoA估计。利用该正交性构造谱函数如下： <span class="math display">\[
+P_{MUSIC}=\frac{1}{||E_N^Ha(\theta)||^2}=\frac{1}{a^H(\theta)E_NE_N^Ha(\theta)}\qquad(11)
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(||A||\)</span>是取矩阵A的模，就是求A中所有元素的平方和再开根号。<span class="math inline">\(E_N^H\in C^{(M-D)×M}\)</span>，<span class="math inline">\(a(\theta)\in C^{T×1}\)</span>，故<span class="math inline">\(E_N^Ha(\theta)\in C^{(M-D)×1}\)</span>，后面将其转置再乘以原矩阵就是一个求所有元素平方和的过程。</p>
+</blockquote>
+<p>其中，<span class="math inline">\(a(\theta)=[1,e^{-j2\pi\frac{dcos\theta}{\lambda}},\cdots,e^{-j2\pi(M-1)\frac{dcos\theta}{\lambda}}]^T\)</span>为以待测角度值<span class="math inline">\(\theta\)</span>构造的阵列流型矢量，以<span class="math inline">\(\theta\)</span>为自变量在一 定角度范围内对谱函数<span class="math inline">\(P_{MUSIC}\)</span>进行谱峰搜索，当上式中的<span class="math inline">\(\theta\)</span>与信号源方向相同时，分母为零，此时 MUSIC 谱估计为无穷大。因此，<strong>MUSIC 谱估计的尖峰数目与信源数目相同，尖峰对应的方向即为信号源的方向</strong>，其峰值点对应的角度值即为DoA估计值。</p>
 
                 
               </div>
@@ -280,6 +418,36 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE/" class="category-chain-item">基础项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/">#通信感知一体化</a>
+      
+        <a href="/tags/%E5%AE%9A%E4%BD%8D/">#定位</a>
+      
+    </div>
   
 </div>
 
@@ -396,6 +564,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -589,6 +763,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
