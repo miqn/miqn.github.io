@@ -49,7 +49,7 @@
 <meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927114918426.png">
 <meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927182115760.png">
 <meta property="article:published_time" content="2024-06-19T03:24:25.000Z">
-<meta property="article:modified_time" content="2024-09-27T10:44:06.035Z">
+<meta property="article:modified_time" content="2024-09-27T12:56:56.660Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信感知一体化">
 <meta property="article:tag" content="定位">
@@ -258,7 +258,7 @@
         
         
         
-          297 分钟
+          300 分钟
         
       </span>
     
@@ -702,30 +702,28 @@ U_t^{(i)}=2\pi\lambda^{-1}r_{t-1,s}^{(i)}+\varphi_{t,s}^{(i)}-\varphi_{t-1,s}^{(
 <p><span class="math display">\[
 K^{(i)}=4\pi^2\lambda^{-2}((a^{(i)})^2+(b^{(i)})^2+(c^{(i)})^2)\qquad(18)
 \]</span></p>
-公式（16）中存在两个未知量，一个是我们关系的在t时刻待定位移动终端s的位置坐标<span class="math inline">\(v_t\)</span>，另一个是隐含在<span class="math inline">\(r_{t-1,s}^{(i)}\)</span>中的在t-1时刻待定位移动终端s的位置坐标<span class="math inline">\(v_{t-1}\)</span>。这两个未知量分别对应待定位移动终端s在t和t-1两个相邻时刻的位置坐标，因此可以基于时间迭代的思想设计解算算法。假设在t-1时刻待定位移动终端s的位置坐标<span class="math inline">\(v_{t-1}\)</span>已经由前序迭代计算出，将编号为2,3,…,M的无线接入点所得关于公式（16）的方程进行联立并整理成向量矩阵形式 <span class="math display">\[
+<p>公式（16）中存在两个未知量，一个是我们关系的在t时刻待定位移动终端s的位置坐标<span class="math inline">\(v_t\)</span>，另一个是隐含在<span class="math inline">\(r_{t-1,s}^{(i)}\)</span>中的在t-1时刻待定位移动终端s的位置坐标<span class="math inline">\(v_{t-1}\)</span>。这两个未知量分别对应待定位移动终端s在t和t-1两个相邻时刻的位置坐标，因此可以基于时间迭代的思想设计解算算法。假设在t-1时刻待定位移动终端s的位置坐标<span class="math inline">\(v_{t-1}\)</span>已经由前序迭代计算出，将编号为2,3,…,M的无线接入点所得关于公式（16）的方程进行联立并整理成向量矩阵形式 <span class="math display">\[
 Cz_t=q_t\qquad(19)
-\]</span> 其中 $$ C=
-<span class="math display">\[\begin{bmatrix}
--8\pi^2\lambda^{-2}\Delta a^{(2,1)} &amp; -8\pi^2\lambda^{-2}\Delta b^{(2,1)}&amp;-8\pi^2\lambda^{-2}\Delta c^{(2,1)}&amp;-4\pi\lambda^{-1}\Delta U_t^{(2,1)}\\
+\]</span> 其中 <span class="math display">\[
+C=\begin{bmatrix}
+-8\pi^2\lambda^{-2}\Delta a^{(2,1)} &amp; -8\pi^2\lambda^{-2}\Delta b^{(2,1)} &amp; -8\pi^2\lambda^{-2}\Delta c^{(2,1)} &amp; -4\pi\lambda^{-1}\Delta U_t^{(2,1)}\\
 \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
--8\pi^2\lambda^{-2}\Delta a^{(M,1)} &amp; -8\pi^2\lambda^{-2}\Delta b^{(M,1)}&amp;-8\pi^2\lambda^{-2}\Delta c^{(M,1)}&amp;-4\pi\lambda^{-1}\Delta U_t^{(M,1)}
-
-\end{bmatrix}\]</span>
-<p>(20) $$</p>
+-8\pi^2\lambda^{-2}\Delta a^{(M,1)} &amp; -8\pi^2\lambda^{-2}\Delta b^{(M,1)}&amp;-8\pi^2\lambda^{-2}\Delta c^{(M,1)}&amp;-4\pi\lambda^{-1}\Delta U_t^{(M,1)}\\
+\end{bmatrix}\qquad(20)
+\]</span></p>
 <p><span class="math display">\[
 z_t=[v_t,r_{t,s}^{(1)}]\qquad(21)
 \]</span></p>
 <blockquote>
 <p><span class="math inline">\(v_t\)</span>是列向量，故<span class="math inline">\(z_t\)</span>也是列向量。</p>
 </blockquote>
-$$ q_t=
-<span class="math display">\[\begin{bmatrix}
+<p><span class="math display">\[
+q_t = \begin{bmatrix}
 (\Delta U_t^{(2,1)})^2-\Delta K^{(2,1)}\\
 \vdots \\
 (\Delta U_t^{(M,1)})^2-\Delta K^{(M,1)}
-
-\end{bmatrix}\]</span>
-<p>(22) $$</p>
+\end{bmatrix}\qquad(22)
+\]</span></p>
 <p>公式（19）可以利用最小二乘法进行解算，下面介绍一下最小二乘法的原理。</p>
 <blockquote>
 <p><mark><strong>最小二乘法</strong></mark></p>
@@ -792,12 +790,12 @@ w=(X^TX)^{-1}X^Ty
 \]</span> 在t时刻利用TDoA测量值对待定位移动终端ｓ的位置坐标进行估计可以得到估计结果<span class="math inline">\(\xi_t=(x_t,y_t,z_t)\)</span>，<strong>该结果受环境影响较大，会产生较大波动</strong>，但是TDoA测量服从零均值高斯分布且定位过程是独立的，所 以<strong>定位结果无偏的</strong>。而利用三差载波相位观测值<strong>估计待定位移动终端ｓ在相邻时刻的位置变化却非常准确</strong>，但会<strong>受到０时刻定位结果的影响而存在难以消除的偏置</strong>。因此考虑使用基于三差载波相位观测值的位置变化估计平滑基于TDoA观测值的绝对位置估计，来减小绝对位置估计的波动，进而得到较为精确的绝对位置估计。融合定位算法具体执行步骤总结如下：</p>
 <ol type="1">
 <li><p>初始化定位结果：在定位开始前，即０时刻，初始化载波相位定位结果<span class="math inline">\(\tilde{v}_0=\xi_0\)</span>与融合定位结果<span class="math inline">\(\hat{v}_0=\xi_0\)</span>， 其中<span class="math inline">\(\xi_0\)</span>为TDoA在０时刻的定位结果；</p></li>
-<li><p>相对位置变化估计：在t（t为正整数）时刻，根据公式（23）计算得到载波相位定位结果<span class="math inline">\(\tilde{v}_t\)</span>， 进一 步根据 公式（24）计算得到<span class="math inline">\(\Delta\tilde{v}_{t,t-1}\)</span>；</p></li>
+<li><p>相对位置变化估计：在t（t为正整数）时刻，根据公式（23）计算得到载波相位定位结果<span class="math inline">\(\tilde{v}_t\)</span>， 进一步根据公式（24）计算得到<span class="math inline">\(\Delta\tilde{v}_{t,t-1}\)</span>；</p></li>
 <li><p>更新载波相位定位结果：根据前序迭代所得融合定位结果<span class="math inline">\(\hat{v}_{t-1}\)</span>和本轮所得相对位置变化估计<span class="math inline">\(\Delta\tilde{v}_{t,t-1}\)</span>，将<span class="math inline">\(\tilde{v}_t\)</span>更新为 <span class="math display">\[
 \tilde{v}_t=\hat{v}_{t-1}+\Delta\tilde{v}_{t,t-1}\qquad(25)
 \]</span></p></li>
 <li><p>融合定位结果：在t时刻根据TDoA观测值计算得到定位结果<span class="math inline">\(\xi_t\)</span>，通过 <span class="math display">\[
-\hat{v}_t=w_{TDoA}\xi_t+w_{CARR}\tilde{v}_t
+\hat{v}_t=w_{TDoA}\xi_t+w_{CARR}\tilde{v}_t\qquad(26)
 \]</span> 对TDoA定位结果和载波相位定位结果进行融合。其中<span class="math inline">\(w_{TDoA}\)</span>和<span class="math inline">\(w_{CARR}\)</span>分别为TDoA定位结果的权重和载波相位定位结果的权重，两个权重满足且为０到１之间的小数。不同的权重选取可能会导致不同的定位效果，为了达到更好的定位性能，应该根据室内定位场景的信道条件来选取最优的权重；</p></li>
 <li><p>迭代解算：随着时间迭代执行上述步骤。</p></li>
 </ol>
@@ -830,60 +828,60 @@ w=(X^TX)^{-1}X^Ty
 <p>基于公式（29），编号为i的无线接入点对参考无线接入点进行无线接入点维度的差分可得 <span class="math display">\[
 \Delta\varPsi_t^{(i,1)}=2\pi\lambda^{-1}(\Delta\alpha_t^{(i,1)}x_t+\Delta\beta_t^{(i,1)}y_t+\Delta\chi_t^{(i,1)}z_t)-2\pi\Delta N^{(i,1)}+\gamma^{(i,1)}\qquad(30)
 \]</span> 其中<span class="math inline">\(\gamma^{(i,1)}=\Delta\gamma^{(i)}-\Delta\gamma^{(1)}\)</span>，<span class="math inline">\(\varPsi_t^{(i)}=\varphi_{t,s}^{(i)}-\varphi_{t,r}^{(i)}+2\pi\lambda^{-1}(r_{t,r}^{(i)}-\theta_t^{(i)})\)</span>，<span class="math inline">\(\Delta N^{(i,1)}\)</span>为终端域-接入点域双差整周模糊度。基于公式（30），将编号为2,3,…,M的无线接入点进行联立并写成向量矩阵形式 <span class="math display">\[
-\bold{\varPsi_t}=\bold{H_t }v_t-2\pi\bold{N}+\bold{\gamma_t}\qquad(31)
+\boldsymbol{\varPsi_t}=\boldsymbol{H_t} v_t-2\pi \boldsymbol{N}+\boldsymbol{\gamma_t}\qquad(31)
 \]</span> 其中 <span class="math display">\[
-\bold{\varPsi_t}=[\Delta\varPsi_t^{(2,1)},\Delta\varPsi_t^{(3,1)},\cdots,\Delta\varPsi_t^{(M,1)}]^T\qquad(32)
+\boldsymbol{\varPsi_t}=[\Delta\varPsi_t^{(2,1)},\Delta\varPsi_t^{(3,1)},\cdots,\Delta\varPsi_t^{(M,1)}]^T\qquad(32)
 \]</span></p>
 <p><span class="math display">\[
-\bold{H_t}=2\pi\lambda^{-1}\begin{bmatrix}
+\boldsymbol{H_t}=2\pi\lambda^{-1}\begin{bmatrix}
 \Delta\alpha_t^{(2,1)}&amp;\Delta\beta_t^{(2,1)}&amp;\Delta\chi_t^{(2,1)}\\
 \vdots&amp;\vdots&amp;\vdots \\
-\Delta\alpha_t^{(M,1)}&amp;\Delta\beta_t^{(M,1)}&amp;\Delta\chi_t^{(M,1)}
+\Delta\alpha_t^{(M,1)}&amp;\Delta\beta_t^{(M,1)}&amp;\Delta\chi_t^{(M,1)}\\
 \end{bmatrix}\qquad(33)
 \]</span></p>
 <p><span class="math display">\[
-\bold{N}=[\Delta N^{(2,1)},\Delta N^{(3,1)},\cdots,\Delta N^{(M,1)}]^T\qquad(34)
+\boldsymbol{N}=[\Delta N^{(2,1)},\Delta N^{(3,1)},\cdots,\Delta N^{(M,1)}]^T\qquad(34)
 \]</span></p>
 <p><span class="math display">\[
-\bold{\gamma_t}=[\gamma^{(2,1)},\gamma^{(3,1)},\cdots,\gamma^{(M,1)}]^T\qquad(35)
+\boldsymbol{\gamma_t}=[\gamma^{(2,1)},\gamma^{(3,1)},\cdots,\gamma^{(M,1)}]^T\qquad(35)
 \]</span></p>
-<p><span class="math inline">\(v_t=(x_t,y_t,z_t)^T\)</span>，公式（31）的未知变量<span class="math inline">\(v_t\)</span>和<span class="math inline">\(\bold{N}\)</span>，共M+2个未知数，而方程组中方程数为M-1，不可以唯一解算未知数的值。因此可以联立K个采样时间点的观测方程并整理成向量矩阵形式 <span class="math display">\[
-\bold{\varPsi}=\bold{H}\bold{\zeta}+\bold{\gamma}\qquad(36)
+<p><span class="math inline">\(v_t=(x_t,y_t,z_t)^T\)</span>，公式（31）的未知变量<span class="math inline">\(v_t\)</span>和<span class="math inline">\(\boldsymbol{N}\)</span>，共M+2个未知数，而方程组中方程数为M-1，不可以唯一解算未知数的值。因此可以联立K个采样时间点的观测方程并整理成向量矩阵形式 <span class="math display">\[
+\boldsymbol{\varPsi}=\boldsymbol{H}\boldsymbol{\zeta}+\boldsymbol{\gamma}\qquad(36)
 \]</span> 其中 <span class="math display">\[
-\bold{\varPsi}=[\varPsi_1,\varPsi_2,\cdots,\varPsi_K]^T\qquad(37)
+\boldsymbol{\varPsi}=[\boldsymbol{\varPsi_1},\boldsymbol{\varPsi_2},\cdots,\boldsymbol{\varPsi_K}]^T\qquad(37)
 \]</span></p>
 <p><span class="math display">\[
-\bold{H}=\begin{bmatrix}
-\bold{H_1} &amp; \cdots &amp; 0 &amp; -2\pi \bold{I} \\ 
+\boldsymbol{H}=\begin{bmatrix}
+\boldsymbol{H_1} &amp; \cdots &amp; 0 &amp; -2\pi \boldsymbol{I} \\ 
 \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\ 
-0 &amp; \cdots &amp;\bold{H_K}&amp; -2\pi \bold{I}\\
+0 &amp; \cdots &amp;\boldsymbol{H_K}&amp; -2\pi \boldsymbol{I}\\
 \end{bmatrix}\qquad(38)
 \]</span></p>
 <p><span class="math display">\[
-\bold{\zeta}=[v_1,\cdots,v_K,\bold{N}]^T\qquad(39)
+\boldsymbol{\zeta}=[v_1,\cdots,v_K,\boldsymbol{N}]^T\qquad(39)
 \]</span></p>
 <p><span class="math display">\[
-\bold{\gamma}=[\bold{\gamma_1},\bold{\gamma_2},\cdots,\bold{\gamma_K}]^T\qquad(40)
+\boldsymbol{\gamma}=[\boldsymbol{\gamma_1},\boldsymbol{\gamma_2},\cdots,\boldsymbol{\gamma_K}]^T\qquad(40)
 \]</span></p>
 <blockquote>
 <p>把一个采样时间点的各种矩阵看成一个数，也就是在上面的这些式子里，矩阵里的元素都看成数，然后去做矩阵的转置运算还有乘除加减运算。然后再把各个元素看成它们本身的矩阵取算乘法。</p>
 </blockquote>
-<p>矩阵<span class="math inline">\(\bold{I}\)</span>表示(M-1)×(M-1)的单位矩阵。公式（36）使用加权最小二乘法进行求解可得 <span class="math display">\[
-\hat{\bold{\zeta}}=(\bold{H}^T\bold{Q_{\varPsi}^{-1}}\bold{H})^{-1}\bold{H}^T\bold{Q_{\varPsi}^{-1}}\bold{\varPsi}\qquad(41)
+<p>矩阵<span class="math inline">\(\boldsymbol{I}\)</span>表示(M-1)×(M-1)的单位矩阵。公式（36）使用加权最小二乘法进行求解可得 <span class="math display">\[
+\hat{\boldsymbol{\zeta}}=(\boldsymbol{H}^T\boldsymbol{Q_{\varPsi}^{-1}}\boldsymbol{H})^{-1}\boldsymbol{H}^T\boldsymbol{Q_{\varPsi}^{-1}}\boldsymbol{\varPsi}\qquad(41)
 \]</span> 其中 <span class="math display">\[
-\bold{Q_{\varPsi}}=E(\bold{\gamma}\bold{\gamma}^T)\qquad(42)
-\]</span> <span class="math inline">\(E(·)\)</span>表示对该矩阵中的每一个元素取期望。整周模糊度的估计值位于<span class="math inline">\(\hat{\bold{\zeta}}\)</span>的后M-1个元素，且该估计值为实数，因此可以将该估计结果定义为整周模糊度的浮动解 <span class="math display">\[
-\bold{N}_{float}=[\hat{\bold{\zeta}}]_{(3K+1):(3K+M-1)}\qquad(43)
+\boldsymbol{Q_{\varPsi}}=E(\boldsymbol{\gamma}\boldsymbol{\gamma}^T)\qquad(42)
+\]</span> <span class="math inline">\(E(·)\)</span>表示对该矩阵中的每一个元素取期望。整周模糊度的估计值位于<span class="math inline">\(\hat{\boldsymbol{\zeta}}\)</span>的后M-1个元素，且该估计值为实数，因此可以将该估计结果定义为整周模糊度的浮动解 <span class="math display">\[
+\boldsymbol{N}_{float}=[\hat{\boldsymbol{\zeta}}]_{(3K+1):(3K+M-1)}\qquad(43)
 \]</span></p>
 <blockquote>
-<p>观测误差<span class="math inline">\(\bold{\gamma}\)</span>服从零均值高斯分布，不同观测时刻的<span class="math inline">\(\bold{\gamma_i}\)</span>相互独立，故<span class="math inline">\(Q_{\varPsi}\)</span>为一对角矩阵，对角线上的元素为<span class="math inline">\(\bold{\gamma}_i^2\)</span>。因为<span class="math inline">\(\gamma\)</span>均值为0，故<span class="math inline">\(E(\bold{\gamma}\bold{\gamma}^T)\)</span>也相当于在求<span class="math inline">\(\bold{\gamma}\)</span>的协方差矩阵。</p>
+<p>观测误差<span class="math inline">\(\boldsymbol{\gamma}\)</span>服从零均值高斯分布，不同观测时刻的<span class="math inline">\(\boldsymbol{\gamma_i}\)</span>相互独立，故<span class="math inline">\(\boldsymbol{Q_{\varPsi}}\)</span>为一对角矩阵，对角线上的元素为<span class="math inline">\(\boldsymbol{\gamma}_i^2\)</span>。因为<span class="math inline">\(\boldsymbol{\gamma}\)</span>均值为0，故<span class="math inline">\(E(\boldsymbol{\gamma}\boldsymbol{\gamma}^T)\)</span>也相当于在求<span class="math inline">\(\boldsymbol{\gamma}\)</span>的协方差矩阵。</p>
 </blockquote>
-<p>由于整周模糊度浮动解中各个元素可能不全为整数，因此需要进一步利用最小二乘模糊度解相关调整算法（Least-Square Ambiguity Decorrelation Adjustment，LAMBDA）来确定整数向量形式的整周模糊度，并将其定义为整周模糊度的固定解。LAMBDA算法的原理是结合协方差矩阵去搜索一个与浮动解之差的加权平方和最小的整数向量<span class="math inline">\(N_{fix}\)</span>。利用最小二乘法可以得到<span class="math inline">\(\hat{\bold{\zeta}}\)</span>的协方差矩阵并写成分块矩阵的形式</p>
+<p>由于整周模糊度浮动解中各个元素可能不全为整数，因此需要进一步利用最小二乘模糊度解相关调整算法（Least-Square Ambiguity Decorrelation Adjustment，LAMBDA）来确定整数向量形式的整周模糊度，并将其定义为整周模糊度的固定解。LAMBDA算法的原理是结合协方差矩阵去搜索一个与浮动解之差的加权平方和最小的整数向量<span class="math inline">\(N_{fix}\)</span>。利用最小二乘法可以得到<span class="math inline">\(\hat{\boldsymbol{\zeta}}\)</span>的协方差矩阵并写成分块矩阵的形式</p>
 <p><img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927182115760.png" srcset="/img/loading.gif" lazyload></p>
 <p>总之根据LAMBDA算法我们得到了整周模糊度的固定解<span class="math inline">\(N_{fix}\)</span>。根据上文可以得到N是终端域-接入点域双差的整周模糊度，故终端域-接入点域载波相位双差观测值<span class="math inline">\(\phi^{(t)}=[\Delta (\varphi_{t,s}-\varphi_{t,r})^{(2,1)},\cdots,\Delta (\varphi_{t,s}-\varphi_{t,r})^{(M,1)}]^T\)</span>可以被<span class="math inline">\(N_{fix}\)</span>修正为接入点间的距离差向量 <span class="math display">\[
-l_{modif}^{(t)}=\frac{\lambda\phi^{(t)}}{2\pi}+\lambda N_{fix}+\bold{r_{r,t}}\qquad(45)
+l_{modif}^{(t)}=\frac{\lambda\phi^{(t)}}{2\pi}+\lambda N_{fix}+\boldsymbol{r_{r,t}}\qquad(45)
 \]</span> 其中 <span class="math display">\[
-\bold{r_{r,t}}=[\Delta r_{t,r}^{(2,1)},\cdots,\Delta r_{t,r}^{(M,1)}]^T
+\boldsymbol{r_{r,t}}=[\Delta r_{t,r}^{(2,1)},\cdots,\Delta r_{t,r}^{(M,1)}]^T
 \]</span> 通过载波相位观测值转换的距离差和基于TDoA测量值转换的距离差相比具有更高的测距精度。</p>
 
                 
