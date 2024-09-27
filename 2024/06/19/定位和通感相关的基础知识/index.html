@@ -43,8 +43,13 @@
 <meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240701110724664.png">
 <meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240701111342386.png">
 <meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240701113943397.png">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240922173214794.png">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240923151324526.png">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240924213322284.png">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927114918426.png">
+<meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927182115760.png">
 <meta property="article:published_time" content="2024-06-19T03:24:25.000Z">
-<meta property="article:modified_time" content="2024-09-17T02:55:34.131Z">
+<meta property="article:modified_time" content="2024-09-27T10:40:44.014Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信感知一体化">
 <meta property="article:tag" content="定位">
@@ -242,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          20k 字
+          36k 字
         
       </span>
     
@@ -253,7 +258,7 @@
         
         
         
-          163 分钟
+          297 分钟
         
       </span>
     
@@ -609,6 +614,277 @@ r(t)=\displaystyle\sum_{i=1}^na_i(t)cos\omega_c[t-\tau_i(t)]=\displaystyle\sum_{
 <p>通过控制发送信号的带宽<span class="math inline">\(B_s\)</span>小于信道的相干带宽，那么利用调制技术</p>
 <p>总能选取一段不经过零点的频带来传输信号，从而保证衰落是平坦的。而工程上的要求会更加严苛，会选取靠近峰值的这一段更加平坦的频带来传输信号，就要求带宽是1/5到1/3的信道相干带宽。对应的符号持续时间是3到5倍的最大传输时延差，也就是说，要降低传输速率来有效地避免多径效应。</p>
 <p><img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240701113943397.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<h1 id="五载波相位定位原理">五、载波相位定位原理</h1>
+<h2 id="系统模型">1.系统模型</h2>
+<p>定位场景设定在一个长度为L、宽度为W、高度为H的室内三维空间，该空间内部署M个位置已知且固定的无线接入点，其中编号为i(i=1,2,3,…,M)的无线接入点的位置坐标为<span class="math inline">\(u^{(i)}=(a^{(i)},b^{(i)},c^{(i)})^T\)</span>，设置<strong>编号为1的无线接入点为参考无线接入点</strong>。一个在该三维空间内自由移动的位置未知的<strong>待定位移动终端s</strong>在移动过程中始终处于这M个无线接入点的通信范围内，假设在t时刻，待定位移动终端s的位置坐标为<span class="math inline">\(v_t=(x_t,y_t,z_t)^T\)</span>。此外，还需要在这M个无线接入点的通信范围内设置一个<strong>位置已知且固定的参考终端r</strong>用于后续钟差克服算法的实施。假设在定位过程中，待定位移动终端s和参考终端r可始终可以和各个无线接入点进行直接通信，各个无线接入点可以接收两个终端发射的 频率为<span class="math inline">\(f_c\)</span>的载波相位定位参考信号，并利用相关技术获取参考信号的<strong>TDoA测量值和载波相位观测值</strong>。</p>
+<blockquote>
+<p>ToA即时间，TDoA即时间差值。</p>
+</blockquote>
+<h3 id="tdoa测距模型">1.1 TDoA测距模型</h3>
+<p>TDoA测量值需要两个无线接入点参与，可以表示为待定位移动终端s到两个无线接入点的ToA测量值的差值。在t时刻，待定位移动终端s向各个无线接入点发送连续的载波相位定位参考信号，编号为i的无线接入点接收到信号并利用相关技术测量得到<mark>ToA值</mark>，可以表示为 <span class="math display">\[
+d_{t,s}^{(i)}=c^{-1}r_{t,s}^{(i)}+n_{t,s}^{(i)}+b_{t,s}^{(i)}\qquad(1)
+\]</span> 其中d表示ToA测量值，下角标t表示当前时刻，下角标s表示待定位移动终端s，上角标i表示编号为i的无线接入点，c表示载波相位定位参考信号的传播速度，<mark><span class="math inline">\(r_{t,s}^{(i)}=||v_t-u^{(i)}||\)</span></mark>表示在t时刻待定位移动终端s到编号为i的无线接入点的真实物理距离，<span class="math inline">\(n_{t,s}^{(i)}\)</span>表示在t时刻无线接入点在测量ToA时引入的<strong>测量误差</strong>，假设该测量误差服从方差为<span class="math inline">\(\sigma_\tau^2\)</span>的零均值高斯分布，即<span class="math inline">\(n_{t,s}^{(i)}\sim N(0,\sigma_\tau^2)\)</span>，<span class="math inline">\(b_{t,s}^{(i)}\)</span>表示在t时刻待定位移动终端s和编号为i的无线接入点存在的<strong>时变钟差</strong>。<strong>将编号为i的无线接入点测量得到的ToA值分别与参考无线接入点测量得到的ToA值进行差分可以得到两个无线接入点的TDoA值</strong>，可以表示为 <span class="math display">\[
+\Delta d_{t,s}^{(i,1)}=c^{-1}\Delta r_{t,s}^{(i,1)}+\Delta n_{t,s}^{(i,1)}+\Delta b_{t,s}^{(i,1)}\qquad(2)
+\]</span> 其中<span class="math inline">\(\Delta(·)^{(i,1)}=(·)^{(i)}-(·)^{(1)}\)</span>。参考终端r与待定位移动终端s在信号收发过程中扮演相同的角色，因此无线接入点观测到的关于参考终端r的TDoA值可以表示为 <span class="math display">\[
+\Delta d_{t,r}^{(i,1)}=c^{-1}\Delta r_{t,r}^{(i,1)}+\Delta n_{t,r}^{(i,1)}+\Delta b_{t,r}^{(i,1)}\qquad(3)
+\]</span> 为了方便后续整周模糊度解算算法的介绍，将编号为2,3,…,M的无线接入点分别在t时刻与参考无线接入点的TDoA值表示成向量形式 <span class="math display">\[
+\Delta d_{t}=c^{-1}\Delta r_{t}+\Delta n_{t}+\Delta b_{t}\qquad(4)
+\]</span> 其中<span class="math inline">\(\Delta d_{t}=[\Delta d_{t,x}^{(2,1)},\cdots,\Delta d_{t,x}^{(M,1)}]^T\)</span>，<span class="math inline">\(\Delta n_{t}=[\Delta n_{t,x}^{(2,1)},\cdots,\Delta n_{t,x}^{(M,1)}]^T\)</span>，<span class="math inline">\(\Delta b_{t}=[\Delta b^{(2,1)},\cdots,\Delta b^{(M,1)}]^T\)</span>，x表示待定位移动终端s或参考终端r。注意，TDoA测量值降低了对于系统时钟同步的要求，引入的时变钟差项只与编号为i的无线接入点和参考无线接入点有关，而与终端无关。因此，公式（2）中的时变钟差项<span class="math inline">\(\Delta b_{t,s}^{(i,1)}\)</span>和公式（3）中的时变钟差项<span class="math inline">\(\Delta b_{t,r}^{(i,1)}\)</span>相等，为了方便后续算法推导，在这里将它们进行统一，即<span class="math inline">\(\Delta b_{t}^{(i,1)}=\Delta b_{t,s}^{(i,1)}=\Delta b_{t,r}^{(i,1)}\)</span>。</p>
+<blockquote>
+<p><span class="math display">\[
+\Delta b_{t,s}^{(i,1)}= b_{t,s}^{(i)}- b_{t,s}^{(1)}=\theta_t^i-\tau_t^s-(\theta_t^1-\tau_t^s)=\theta_t^i-\theta_t^1
+\]</span></p>
+<p><span class="math display">\[
+\Delta b_{t,r}^{(i,1)}= b_{t,r}^{(i)}- b_{t,r}^{(1)}=\theta_t^i-\tau_t^r-(\theta_t^1-\tau_t^r)=\theta_t^i-\theta_t^1
+\]</span></p>
+<p><span class="math inline">\(\theta_t^i\)</span>表示编号为i的无线接入点在t时刻的系统时钟，<span class="math inline">\(\tau_t^s\)</span>表示待定位移动终端s在t时刻的系统时钟，<span class="math inline">\(\tau_t^r\)</span>表示待定位移动终端r在t时刻的系统时钟。</p>
+</blockquote>
+<h3 id="载波相位测距模型">1.2 载波相位测距模型</h3>
+<p>载波相位观测值需要接收机可以有效持续地追踪接收到信号的载波相位。接收机通过观测从发射机到接收机信号的载波相位变化来获取信号的传播距离信息，可以达到较高的测距精度。基于载波相位的测距原理下图所示</p>
+<figure>
+<img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240922173214794.png" srcset="/img/loading.gif" lazyload alt="载波相位测距原理图"><figcaption aria-hidden="true">载波相位测距原理图</figcaption>
+</figure>
+<p>待定位移动终端发射载波相位定位参考信号后，无线接入点对信号的载波相位进行持续追踪并进行观测，无线接入点和待定位移动终端间的相位差可以分解成整数部分和小数部分，即 <span class="math display">\[
+\Delta \varphi=2\pi N+\varphi\qquad(5)
+\]</span> 其中相位的单位为弧度。因此，测量距离和相位差之间的对应关系可以表示为 <span class="math display">\[
+l=\frac{\Delta\varphi}{2\pi}·\lambda=N·\lambda+\frac{\varphi}{2\pi}·\lambda\qquad(6)
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(\varphi=2\pi ft=2\pi\frac{c}{\lambda}\frac{l}{c}=\frac{2\pi l}{\lambda}\)</span></p>
+</blockquote>
+<p>将无线接入点和待定位移动终端间的相位差分解成整数部分和小数部分是因为接收机在进行载波相位观测时会在内部复制一个与发射信号同频同相的连续信号，用于计算发射信号和接收信号间的相位差。在初次观测时，因为载波相位定位参考信号具有周期性，接收机只能观测到一个小于一个周期的相位，即相位差的小数部分，而无法直接获得相位差的整数部分，该整数部分被称为<strong>整周模糊度</strong>。整周模糊度的解算是否准确将直接影响到载波相位的测距精度，进而影响基于载波相位定位方法的定位性能，因此，整周模糊度的解算是基于载波相位的定位技术中需要解决的关键问题，也是本节所提算法需要重点解决的。如果在定位过程中无线接入点和待定位移动终端间发生相对运动 ，接收机会对载波相位进行持续追踪，即使两者的相对位移距离超过一 个周期的波长，相位变化也将被记录下来，因此只要接收机能够对载波相位保持持续有效的追踪不失锁，那么在初次观测时锁定的整周模糊度就不会改变，这也是本节所提算法中所作关键假设。</p>
+<p>考虑到接收机的观测误差和系统间的时变钟差等因素，编号为i的无线接入点在t时刻观测到来自待定位移动终端s的载波相位可以表示为 <span class="math display">\[
+\varphi_{t,s}^{(i)}=2\pi\lambda^{-1}r_{t,s}^{(i)}-2\pi N_s^{(i)}+\gamma_{t,s}^{(i)}+2\pi f_cb_{t,s}^{(i)}\qquad(7)
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(\varphi\)</span>是小数部分。</p>
+</blockquote>
+<p>其中<span class="math inline">\(\lambda\)</span>表示载波相位定位参考信号的波长，<span class="math inline">\(r_{t,s}^{(i)}=||v_t-u^{(i)}||\)</span>表示在t时刻待定位移动终端s到编号为i的无线接入点的真实物理距离，<span class="math inline">\(N_s^{(i)}\)</span>表示编号为i的无线接入点接收机在初次锁定时遗留下来关于待定位移动终端ｓ的整周模糊度，且<span class="math inline">\(N_s^{(i)}\)</span>均为整数，<span class="math inline">\(\gamma_{t,s}^{(i)}\)</span>表示编号为i的无线接入点接收机在t时刻的载波相位<strong>观测误差</strong>，假设该观测误差服从方差为<span class="math inline">\(\sigma_{\phi}^2\)</span>的零均值高斯分布，即<span class="math inline">\(\gamma_{t,s}^{(i)}\sim N(0,\sigma_\phi^2)\)</span>，<span class="math inline">\(f_c\)</span>表示载波相位定位参考信号的载频，<span class="math inline">\(b_{t,s}^{(i)}\)</span>表示在t时刻编号为i的无线接入点和待定位移动终端s间的<strong>时变钟差</strong>。</p>
+<h2 id="基于钟差消除的室内载波相位定位方案设计">2.基于钟差消除的室内载波相位定位方案设计</h2>
+<h3 id="钟差克服算法">2.1 钟差克服算法</h3>
+<p>不管是TDoA测距模型还是载波相位测距模型均会受到系统中时变钟差的影响，而时变钟差对于测距的精度会产生负面影响，进而影响定位的性能，因此本节提出了一种钟差克服算法，目标是<strong>完全消除时变钟差的影响</strong>。下面对该算法进行介绍。</p>
+<h4 id="时域终端域接入点域三差分">2.1.1 时域—终端域—接入点域三差分</h4>
+<p>基于公式（7），将编号为i的无线接入点关于待定位移动终端s在t时刻和t-1时刻的载波相位观测值<strong>进行时间维度的差分</strong>，可以得到时域单差载波相位观测值 <span class="math display">\[
+\varphi_{t,s}^{(i)}-\varphi_{t-1,s}^{(i)}=2\pi\lambda^{-1}(r_{t,s}^{(i)}-r_{t-1,s}^{(i)})+\gamma_{t,s}^{(i)}-\gamma_{t-1,s}^{(i)}+2\pi f_c(b_{t,s}^{(i)}-b_{t-1,s}^{(i)})\qquad(8)
+\]</span> 在定位过程中，接收机内锁相环对信号的载波相位进行持续追踪且不失锁，那么该链路的整周模糊度就是一个不随时间变化的定值。可见<strong>时间维度的差分可以临时消除未知的整周模糊度的影响</strong>。同理，编号为i的无线接入点关于参考终端r的时域单差载波相位观测值可以表示为 <span class="math display">\[
+\varphi_{t,r}^{(i)}-\varphi_{t-1,r}^{(i)}=2\pi\lambda^{-1}(r_{t,r}^{(i)}-r_{t-1,r}^{(i)})+\gamma_{t,r}^{(i)}-\gamma_{t-1,r}^{(i)}+2\pi f_c(b_{t,r}^{(i)}-b_{t-1,r}^{(i)})\qquad(9)
+\]</span> <strong>由于参考终端r的位置固定，所以距离编号为i的无线接入点的真实物理距离不会改变，即<span class="math inline">\(r_{t,r}^{(i)}=r_{t-1,r}^{(i)}\)</span>，公式中这两项的差为零</strong>。基于公式（8）和（9），将编号为i的无线接入点关于待定位移动终端s和参考终端r的时域单差载波相位观测值<strong>进行终端维度的差分</strong>，可以得到时域-终端域双差载波相位观测值 <span class="math display">\[
+\varphi_{t,s}^{(i)}-\varphi_{t-1,s}^{(i)}-\varphi_{t,r}^{(i)}+\varphi_{t-1,r}^{(i)}=2\pi\lambda^{-1}(r_{t,s}^{(i)}-r_{t-1,s}^{(i)})+\gamma_{t,s}^{(i)}-\gamma_{t-1,s}^{(i)}-\gamma_{t,r}^{(i)}+\gamma_{t-1,r}^{(i)}+2\pi f_c(b_{t,s}^{(i)}-b_{t-1,s}^{(i)}-b_{t,r}^{(i)}+b_{t-1,r}^{(i)})\qquad(10)
+\]</span></p>
+<blockquote>
+<p>这步可以消除<span class="math inline">\(\theta\)</span>。</p>
+</blockquote>
+<p>将编号为i的无线接入点和参考无线接入点的时域-终端域双差载波相位观测值进一步<strong>做无线接入点维度的差分</strong>，可以得到时域-终端域-接入点域的三差载波相位观测值 <span class="math display">\[
+\Delta\varphi_{t,s}^{(i,1)}-\Delta\varphi_{t-1,s}^{(i,1)}-\Delta\varphi_{t,r}^{(i,1)}+\Delta\varphi_{t-1,r}^{(i,1)}=2\pi\lambda^{-1}(\Delta r_{t,s}^{(i,1)}-\Delta r_{t-1,s}^{(i,1)})+\Delta\gamma_{t,s}^{(i,1)}-\Delta\gamma_{t-1,s}^{(i,1)}-\Delta\gamma_{t,r}^{(i,1)}+\Delta\gamma_{t-1,r}^{(i,1)}\qquad(11)
+\]</span></p>
+<blockquote>
+<p>这步可以消除<span class="math inline">\(\tau\)</span>。</p>
+</blockquote>
+<p>其中时变钟差项为 <span class="math display">\[
+\Delta b_{t,s}^{(i,1)}-\Delta b_{t-1,s}^{(i,1)}-\Delta b_{t,r}^{(i,1)}+\Delta b_{t-1,r}^{(i,1)}\\=b_{t,s}^{(i)}-b_{t,s}^{(1)}-(b_{t-1,s}^{(i)}-b_{t-1,s}^{(1)})-(b_{t,r}^{(i)}-b_{t,r}^{(1)})+b_{t-1,r}^{(i)}-b_{t-1,r}^{(1)}\\\theta_t^i-\tau_t^s-(\theta_t^1-\tau_t^s)-(\theta_{t-1}^i-\tau_t^s-(\theta_{t-1}^1-\tau_t^s))\\-(\theta_t^i-\tau_t^r-(\theta_t^1-\tau_t^r))+(\theta_{t-1}^i-\tau_t^r-(\theta_{t-1}^1-\tau_t^r))=0\qquad(12)
+\]</span> <span class="math inline">\(\theta_t^i\)</span>表示编号为i的无线接入点在t时刻的系统时钟，<span class="math inline">\(\tau_t^s\)</span>表示待定位移动终端s在t时刻的系统时钟，<span class="math inline">\(\tau_t^r\)</span>表示待定位移动终端r在t时刻的系统时钟。经过推导可知，通过时域-终端域-接入点域的三差分可以完全消除系统时变钟差的影响，此外，该三差载波相位观测值中不存在未知的整周模糊度，为后续相对位置的精确解算奠定基础。</p>
+<h4 id="tdoa单差分">2.1.2 TDoA单差分</h4>
+<p>对照公式（2）和（3）可知，TDoA测量值降低了对于终端侧系统时钟的要求（即消除了<span class="math inline">\(\tau\)</span>），两个公式中的时变钟差只与无线接入点有关而与终端无关，因此也可以利用差分的方法对时变钟差进行处理。将公式（2）和（3）做差可得TDoA单差测量值 <span class="math display">\[
+\Delta d_{t,s}^{(i,1)}-\Delta d_{t,r}^{(i,1)}=c^{-1}\Delta r_{t,s}^{(i,1)}-c^{-1}\Delta r_{t,r}^{(i,1)}+\Delta n_{t,s}^{(i,1)}-\Delta n_{t,r}^{(i,1)}\qquad(13)
+\]</span> 其中时变钟差项为<span class="math inline">\(\Delta b_{t,s}^{(i,1)}-\Delta b_{t,r}^{(i,1)}=0\)</span>。因为参考终端r的位置已知，所以<span class="math inline">\(\Delta r_{t,r}^{(i,1)}\)</span>为已知量。将公式（13）中的已知量进行移项可以得到完全消除时变钟差下待定位移动终端s的TDoA测量值 <span class="math display">\[
+\Delta d_{t}^{(i,1)}=c^{-1}\Delta r_{t,s}^{(i,1)}+\Delta n_{t}^{(i,1)}\qquad(14)
+\]</span> 其中<span class="math inline">\(\Delta d_{t}^{(i,1)}=\Delta d_{t,s}^{(i,1)}-\Delta d_{t,r}^{(i,1)}+c^{-1}\Delta r_{t,r}^{(i,1)}\)</span>，<span class="math inline">\(\Delta n_{t}^{(i,1)}=\Delta n_{t,s}^{(i,1)}-\Delta n_{t,r}^{(i,1)}\)</span>。通过与未消除时变钟差的TDoA测量值，即公式（2）进行对比，可知消除时变钟差后会在测量值中引入更多的<strong>测量误差</strong>（即<span class="math inline">\(\Delta n_{t,r}^{(i,1)}\)</span>）。同理，通过三差分消除时变钟差的载波相位观测值也引入了更多的观测误差，但是由于系统节点间的钟差通常在50ns-100ns，转换成距离则在数米，要远大于引入的误差。因此，消除时变钟差仍然是十分必要的。</p>
+<h3 id="融合定位算法">2.2 融合定位算法</h3>
+<p>通过公式（11）和（14）可以得到完全消除时变钟差的三差载波相位观测值和TDoA测量值，接下来可以通过相关定位算法对位置进行估计。TDoA测量值乘上无线信号的传播速度可以得到距离差信息，进而可以代入基于距离差的定位算法进行定位，本节中基于距离差的定位算法采用Chan算法，这里不在赘述。下面详细介绍针对三差载波相位观测值设计的定位方案及融合定位方案。</p>
+<p>基于公式（11），为了方便算法推导，<strong>暂时不在公式中显示观测误差项</strong>，考虑到待定位移动终端s在t时刻的位置坐标隐含在<span class="math inline">\(\Delta r_{t,s}^{(i,1)}\)</span>中的<span class="math inline">\(r_{t,s}^{i}\)</span>中，因此，将该项移项到公式的一侧，其余移项到公式的另一侧，并同时对等式两侧进行完全平方可得 <span class="math display">\[
+(\Delta\varphi_{t,s}^{(i,1)}-\Delta\varphi_{t-1,s}^{(i,1)}-\Delta\varphi_{t,r}^{(i,1)}+\Delta\varphi_{t-1,r}^{(i,1)}+2\pi\lambda^{-1}\Delta r_{t-1,s}^{(i,1)}+2\pi\lambda^{-1}r_{t,s}^{(1)})^2=(2\pi\lambda^{-1} r_{t,s}^{(i)})^2\qquad(15)
+\]</span> 将<span class="math inline">\(r_{t,s}^{(i)}=||v_t-u^{(i)}||\)</span>代入公式（15）并做简单数学整理可得 <span class="math display">\[
+-8\pi^2\lambda^{-2}\Delta a^{(i,1)}x_t--8\pi^2\lambda^{-2}\Delta b^{(i,1)}y_t-8\pi^2\lambda^{-2}\Delta c^{(i,1)}z_t-4\pi\lambda^{-1}\Delta U_t^{(i,1)}r_{t,s}^{(1)}=(\Delta U_t^{(i,1)})^2-\Delta K^{(i,1)}\qquad(16)
+\]</span> <img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240923151324526.png" srcset="/img/loading.gif" lazyload alt="简单数学整理"></p>
+<p>其中 <span class="math display">\[
+U_t^{(i)}=2\pi\lambda^{-1}r_{t-1,s}^{(i)}+\varphi_{t,s}^{(i)}-\varphi_{t-1,s}^{(i)}-\varphi_{t,r}^{(i)}+\varphi_{t-1,r}^{(i)}\qquad(17)
+\]</span></p>
+<p><span class="math display">\[
+K^{(i)}=4\pi^2\lambda^{-2}((a^{(i)})^2+(b^{(i)})^2+(c^{(i)})^2)\qquad(18)
+\]</span></p>
+公式（16）中存在两个未知量，一个是我们关系的在t时刻待定位移动终端s的位置坐标<span class="math inline">\(v_t\)</span>，另一个是隐含在<span class="math inline">\(r_{t-1,s}^{(i)}\)</span>中的在t-1时刻待定位移动终端s的位置坐标<span class="math inline">\(v_{t-1}\)</span>。这两个未知量分别对应待定位移动终端s在t和t-1两个相邻时刻的位置坐标，因此可以基于时间迭代的思想设计解算算法。假设在t-1时刻待定位移动终端s的位置坐标<span class="math inline">\(v_{t-1}\)</span>已经由前序迭代计算出，将编号为2,3,…,M的无线接入点所得关于公式（16）的方程进行联立并整理成向量矩阵形式 <span class="math display">\[
+Cz_t=q_t\qquad(19)
+\]</span> 其中 $$ C=
+<span class="math display">\[\begin{bmatrix}
+-8\pi^2\lambda^{-2}\Delta a^{(2,1)} &amp; -8\pi^2\lambda^{-2}\Delta b^{(2,1)}&amp;-8\pi^2\lambda^{-2}\Delta c^{(2,1)}&amp;-4\pi\lambda^{-1}\Delta U_t^{(2,1)}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+-8\pi^2\lambda^{-2}\Delta a^{(M,1)} &amp; -8\pi^2\lambda^{-2}\Delta b^{(M,1)}&amp;-8\pi^2\lambda^{-2}\Delta c^{(M,1)}&amp;-4\pi\lambda^{-1}\Delta U_t^{(M,1)}
+
+\end{bmatrix}\]</span>
+<p>(20) $$</p>
+<p><span class="math display">\[
+z_t=[v_t,r_{t,s}^{(1)}]\qquad(21)
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\(v_t\)</span>是列向量，故<span class="math inline">\(z_t\)</span>也是列向量。</p>
+</blockquote>
+$$ q_t=
+<span class="math display">\[\begin{bmatrix}
+(\Delta U_t^{(2,1)})^2-\Delta K^{(2,1)}\\
+\vdots \\
+(\Delta U_t^{(M,1)})^2-\Delta K^{(M,1)}
+
+\end{bmatrix}\]</span>
+<p>(22) $$</p>
+<p>公式（19）可以利用最小二乘法进行解算，下面介绍一下最小二乘法的原理。</p>
+<blockquote>
+<p><mark><strong>最小二乘法</strong></mark></p>
+<p><span class="math inline">\(Xw=y\)</span>求解<span class="math inline">\(w\)</span>。</p>
+<p>误差方程为： <span class="math display">\[
+Error(w|X,y)=(Xw-y)^T(Xw-y)
+\]</span> 求最优解<span class="math inline">\(w\)</span>，即求Error的最小值。其中X为m×n的样本输入矩阵： <span class="math display">\[
+X = \begin{bmatrix}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1n} \\ 
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2n} \\ 
+\vdots &amp; \vdots &amp;\ddots &amp; \vdots\\
+x_{m1} &amp; x_{m2} &amp; \cdots &amp; x_{mn} \\ 
+\end{bmatrix}
+\]</span> y为m×1列向量，对应于简单函数，其实就是指函数值f(x)： <span class="math display">\[
+y=\begin{bmatrix}
+y_1 \\ 
+y_2 \\ 
+\vdots\\
+y_m \\ 
+\end{bmatrix}
+\]</span> <span class="math inline">\(w\)</span>为n×1列向量，就是待求的拟合权重参数： <span class="math display">\[
+w=\begin{bmatrix}
+w_1 \\ 
+w_2 \\ 
+\vdots\\
+w_m \\ 
+\end{bmatrix}
+\]</span> 将误差方程展开： <span class="math display">\[
+(Xw-y)^T(Xw-y)\\=((Xw)^T-y^T)(Xw-y)\\=w^TX^TXw-(Xw)^Ty-y^TXw+y^Ty\\=w^TX^TXw-2(Xw)^Ty+y^Ty
+\]</span></p>
+<blockquote>
+<p><span class="math inline">\((AB)^T=B^TA^T\)</span></p>
+<p>对于任意两个列向量<span class="math inline">\(\alpha^T\beta=\beta^T\alpha\)</span></p>
+</blockquote>
+<p>它的极小值在对<span class="math inline">\(w\)</span>求导为零处。对向量求导等价于以对向量的每个分量求偏导而形成新的向量。我们将上式展开分别对<span class="math inline">\(w\)</span>的每个分量求偏导，先看第二部分：</p>
+<p><img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240924213322284.png" srcset="/img/loading.gif" lazyload></p>
+<p>对每一个分量求偏导： <span class="math display">\[
+\frac{\partial P(w)}{\partial w_1}=2(x_{11}y_1+x_{21}y_2+\cdots+x_{m1}y_m)
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial P(w)}{\partial w_2}=2(x_{12}y_1+x_{22}y_2+\cdots+x_{m2}y_m)
+\]</span></p>
+<p><span class="math display">\[
+\vdots
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial P(w)}{\partial w_n}=2(x_{1n}y_1+x_{2n}y_2+\cdots+x_{mn}y_m)
+\]</span></p>
+<p>合并整理后可得： <span class="math display">\[
+\frac{\partial P(w)}{\partial w}=\frac{\partial [2(Xw)^Ty]}{\partial w}=2X^Ty
+\]</span> 同理展开第一部分有： <span class="math display">\[
+\frac{\partial Q(w)}{\partial w}=\frac{\partial [w^TX^TXw]}{\partial w}=2X^TXw
+\]</span> 所以求导可得： <span class="math display">\[
+2X^TXw-2X^Ty=0
+\]</span></p>
+<p><span class="math display">\[
+w=(X^TX)^{-1}X^Ty
+\]</span></p>
+</blockquote>
+<p>故得到在t时刻待定位移动终端s的位置坐标<span class="math inline">\(v_t\)</span>可以估计为 <span class="math display">\[
+\tilde{v}_t=[(C^TC)^{-1}C^Tq_t]_{(1:3)}\qquad(23)
+\]</span> 其中<span class="math inline">\([·]_{(1:3)}\)</span>表示去向量<span class="math inline">\([·]\)</span>中的第1到第3个元素组成新的向量。可以看出，该绝对位置估计值<span class="math inline">\(\tilde{v}_t\)</span>受前序迭代解算结果<span class="math inline">\(\tilde{v}_{t-1}\)</span>的影响存在偏置，而将这两个估计值做差得到的相对位置变化估计却很准确，这是因为三差载波相位观测值临时消除了未知的整周模糊度。待定位移动终端s从t-1时刻到t时刻的位置变化可以表示为 <span class="math display">\[
+\Delta v_{t,t-1}=v_t-v_{t-1}\qquad(24)
+\]</span> 在t时刻利用TDoA测量值对待定位移动终端ｓ的位置坐标进行估计可以得到估计结果<span class="math inline">\(\xi_t=(x_t,y_t,z_t)\)</span>，<strong>该结果受环境影响较大，会产生较大波动</strong>，但是TDoA测量服从零均值高斯分布且定位过程是独立的，所 以<strong>定位结果无偏的</strong>。而利用三差载波相位观测值<strong>估计待定位移动终端ｓ在相邻时刻的位置变化却非常准确</strong>，但会<strong>受到０时刻定位结果的影响而存在难以消除的偏置</strong>。因此考虑使用基于三差载波相位观测值的位置变化估计平滑基于TDoA观测值的绝对位置估计，来减小绝对位置估计的波动，进而得到较为精确的绝对位置估计。融合定位算法具体执行步骤总结如下：</p>
+<ol type="1">
+<li><p>初始化定位结果：在定位开始前，即０时刻，初始化载波相位定位结果<span class="math inline">\(\tilde{v}_0=\xi_0\)</span>与融合定位结果<span class="math inline">\(\hat{v}_0=\xi_0\)</span>， 其中<span class="math inline">\(\xi_0\)</span>为TDoA在０时刻的定位结果；</p></li>
+<li><p>相对位置变化估计：在t（t为正整数）时刻，根据公式（23）计算得到载波相位定位结果<span class="math inline">\(\tilde{v}_t\)</span>， 进一 步根据 公式（24）计算得到<span class="math inline">\(\Delta\tilde{v}_{t,t-1}\)</span>；</p></li>
+<li><p>更新载波相位定位结果：根据前序迭代所得融合定位结果<span class="math inline">\(\hat{v}_{t-1}\)</span>和本轮所得相对位置变化估计<span class="math inline">\(\Delta\tilde{v}_{t,t-1}\)</span>，将<span class="math inline">\(\tilde{v}_t\)</span>更新为 <span class="math display">\[
+\tilde{v}_t=\hat{v}_{t-1}+\Delta\tilde{v}_{t,t-1}\qquad(25)
+\]</span></p></li>
+<li><p>融合定位结果：在t时刻根据TDoA观测值计算得到定位结果<span class="math inline">\(\xi_t\)</span>，通过 <span class="math display">\[
+\hat{v}_t=w_{TDoA}\xi_t+w_{CARR}\tilde{v}_t
+\]</span> 对TDoA定位结果和载波相位定位结果进行融合。其中<span class="math inline">\(w_{TDoA}\)</span>和<span class="math inline">\(w_{CARR}\)</span>分别为TDoA定位结果的权重和载波相位定位结果的权重，两个权重满足且为０到１之间的小数。不同的权重选取可能会导致不同的定位效果，为了达到更好的定位性能，应该根据室内定位场景的信道条件来选取最优的权重；</p></li>
+<li><p>迭代解算：随着时间迭代执行上述步骤。</p></li>
+</ol>
+<blockquote>
+<p>三差法重点关注的是载波相位（接收机测的是载波相位），在t=0时刻进行第一次载波相位的测量，由于只能观测到一个小于一个周期的相位，故存在整周模糊度，其定位结果就会存在偏置，导致后面时刻的定位结果都会不准，但由于偏置相同，两个时刻间目标位置的相对变化是准的。</p>
+<p>TDoA重点关注的是时间（接收机测的是时间），能够实现每个时刻的准确定位，但正如文中所说其定位结果受环境影响较大，会产生较大的波动，故需要三差法的帮助。</p>
+<p>至于为什么TDoA定位结果受环境影响较大，可能是对于接收机来说，载波相位比时间更加稳定。</p>
+<p>三差法比TDoA多的就是一个时刻域上的差分，但TDoA每一个时刻的定位结果准确，但都会受到来自环境不同的影响，故对TDoA来说时刻域上的差分是没有意义的。而这就是为什么要用载波相位进行时刻域上的差分。</p>
+<p>注意区分上面说的两个时间，一个是TDoA测得信号从目标到接收机之间的时间，一个是对目标进行定位的不同时刻。已用时间和时刻来区分。</p>
+<p>总的来说，就是三差法和TDoA在优缺点上互补，进行融合定位，能得到更好的效果。</p>
+</blockquote>
+<h3 id="整周模糊度解算算法及最终定位">2.3 整周模糊度解算算法及最终定位</h3>
+<p>上一节介绍的<strong>融合定位算法输出结果</strong>相较于基于TDoA的定位算法在定位精度上有所提升，为方便后续算法介绍，将这个结果取名为<strong>绝对位置的粗估计</strong>。观察公式（7）可知，载波相位观测方程中存在未知的非线性元素<span class="math inline">\(r_{t,s}^{(i)}\)</span>，这不利于后续整周模糊度的解算。因此，在解算整周模糊度之前需要通过相关方法对载波相位观测方程进行线性化处理。由于己经得到待定位移动终端ｓ绝对位置的粗估计，该结果与待定位移动终端ｓ的真实位置较为接近，那么可以利用泰勒展开法对载波相位观测方程进行线性化，选取绝对位置粗估计为泰勒展开点可以有效降低载波相位观测方程中非线性元素在线性化过程中的高阶误差。</p>
+<p>基于公式（7），在t时刻，将待定位移动终端s和参考终端r的载波相位观测值进行终端维度的差分可以得到 <span class="math display">\[
+\varphi_{t,s}^{(i)}-\varphi_{t,r}^{(i)}=2\pi\lambda^{-1}(r_{t,s}^{(i)}-r_{t,r}^{(i)})-2\pi N^{(i)}+\Delta\gamma^{(i)}+2\pi f_c\Delta b^{(i)}\qquad(27)
+\]</span> 其中<span class="math inline">\(N^{(i)}=N_s^{(i)}-N_r^{(i)}\)</span>，<span class="math inline">\(\Delta\gamma^{(i)}=\gamma_{t,s}^{(i)}-\gamma_{t,r}^{(i)}\)</span>，<span class="math inline">\(\Delta b^{(i)}=b_{t,s}^{(i)}-b_{t,r}^{(i)}\)</span>。将公式（27）中非线性元素展开并进行简单数学整理可得 <span class="math display">\[
+\varphi_{t,s}^{(i)}-\varphi_{t,r}^{(i)}+2\pi\lambda^{-1}r_{t,r}^{(i)}=2\pi\lambda^{-1}||v_t-u^{(i)}||-2\pi N^{(i)}+\Delta\gamma^{(i)}+2\pi f_c\Delta b^{(i)}\qquad(28)
+\]</span> 将公式（28）在绝对位置粗估计<span class="math inline">\(\hat{v}_t\)</span>上进行泰勒展开并忽略高阶项仅保留到一阶项可得 <span class="math display">\[
+\varphi_{t,s}^{(i)}-\varphi_{t,r}^{(i)}+2\pi\lambda^{-1}(r_{t,r}^{(i)}-\theta_t^{(i)})=2\pi\lambda^{-1}(\alpha_t^{(i)}x_t+\beta_t^{(i)}y_t+\chi_t^{(i)}z_t)-2\pi N^{(i)}+\Delta\gamma^{(i)}+2\pi f_c\Delta b^{(i)}\qquad(28)
+\]</span> 其中<span class="math inline">\(\theta_t^{(i)}=\frac{a^{(i)2}+b^{(i)2}+c^{(i)2}-a^{(i)}\hat{x}_t-b^{(i)}\hat{y}_t-c^{(i)}\hat{z}_t}{||\hat{v}_t-u^{(i)}||}\)</span>，<span class="math inline">\(\alpha_t^{(i)}=\frac{\hat{x}_t-a^{(i)}}{||\hat{v}_t-u^{(i)}||}\)</span>，<span class="math inline">\(\beta_t^{(i)}=\frac{\hat{y}_t-b^{(i)}}{||\hat{v}_t-u^{(i)}||}\)</span>，<span class="math inline">\(\chi_t^{(i)}=\frac{\hat{z}_t-c^{(i)}}{||\hat{v}_t-u^{(i)}||}\)</span>。</p>
+<p>计算过程：</p>
+<figure>
+<img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927114918426.png" srcset="/img/loading.gif" lazyload alt="泰勒展开并保留到一阶项"><figcaption aria-hidden="true">泰勒展开并保留到一阶项</figcaption>
+</figure>
+<blockquote>
+<p>向量内积： <span class="math display">\[
+\overrightarrow{a}·\overrightarrow{b}=|\overrightarrow{a}||\overrightarrow{b}|cos\theta=x_1x_2+y_1y_2
+\]</span> 向量内积就相当于实数运算里的乘法，对向量求导，求导法则同样适用。</p>
+</blockquote>
+<p>基于公式（29），编号为i的无线接入点对参考无线接入点进行无线接入点维度的差分可得 <span class="math display">\[
+\Delta\varPsi_t^{(i,1)}=2\pi\lambda^{-1}(\Delta\alpha_t^{(i,1)}x_t+\Delta\beta_t^{(i,1)}y_t+\Delta\chi_t^{(i,1)}z_t)-2\pi\Delta N^{(i,1)}+\gamma^{(i,1)}\qquad(30)
+\]</span> 其中<span class="math inline">\(\gamma^{(i,1)}=\Delta\gamma^{(i)}-\Delta\gamma^{(1)}\)</span>，<span class="math inline">\(\varPsi_t^{(i)}=\varphi_{t,s}^{(i)}-\varphi_{t,r}^{(i)}+2\pi\lambda^{-1}(r_{t,r}^{(i)}-\theta_t^{(i)})\)</span>，<span class="math inline">\(\Delta N^{(i,1)}\)</span>为终端域-接入点域双差整周模糊度。基于公式（30），将编号为2,3,…,M的无线接入点进行联立并写成向量矩阵形式 <span class="math display">\[
+\bold{\varPsi_t}=\bold{H_t }v_t-2\pi\bold{N}+\bold{\gamma_t}\qquad(31)
+\]</span> 其中 <span class="math display">\[
+\bold{\varPsi_t}=[\Delta\varPsi_t^{(2,1)},\Delta\varPsi_t^{(3,1)},\cdots,\Delta\varPsi_t^{(M,1)}]^T\qquad(32)
+\]</span></p>
+<p><span class="math display">\[
+\bold{H_t}=2\pi\lambda^{-1}\begin{bmatrix}
+\Delta\alpha_t^{(2,1)}&amp;\Delta\beta_t^{(2,1)}&amp;\Delta\chi_t^{(2,1)}\\
+\vdots&amp;\vdots&amp;\vdots \\
+\Delta\alpha_t^{(M,1)}&amp;\Delta\beta_t^{(M,1)}&amp;\Delta\chi_t^{(M,1)}
+\end{bmatrix}\qquad(33)
+\]</span></p>
+<p><span class="math display">\[
+\bold{N}=[\Delta N^{(2,1)},\Delta N^{(3,1)},\cdots,\Delta N^{(M,1)}]^T\qquad(34)
+\]</span></p>
+<p><span class="math display">\[
+\bold{\gamma_t}=[\gamma^{(2,1)},\gamma^{(3,1)},\cdots,\gamma^{(M,1)}]^T\qquad(35)
+\]</span></p>
+<p><span class="math inline">\(v_t=(x_t,y_t,z_t)^T\)</span>，公式（31）的未知变量<span class="math inline">\(v_t\)</span>和<span class="math inline">\(\bold{N}\)</span>，共M+2个未知数，而方程组中方程数为M-1，不可以唯一解算未知数的值。因此可以联立K个采样时间点的观测方程并整理成向量矩阵形式 <span class="math display">\[
+\bold{\varPsi}=\bold{H}\bold{\zeta}+\bold{\gamma}\qquad(36)
+\]</span> 其中 <span class="math display">\[
+\bold{\varPsi}=[\varPsi_1,\varPsi_2,\cdots,\varPsi_K]^T\qquad(37)
+\]</span></p>
+<p><span class="math display">\[
+\bold{H}=\begin{bmatrix}
+\bold{H_1} &amp; \cdots &amp; 0 &amp; -2\pi \bold{I} \\ 
+\vdots &amp; \ddots &amp; \vdots &amp; \vdots \\ 
+0 &amp; \cdots &amp;\bold{H_K}&amp; -2\pi \bold{I}\\
+\end{bmatrix}\qquad(38)
+\]</span></p>
+<p><span class="math display">\[
+\bold{\zeta}=[v_1,\cdots,v_K,\bold{N}]^T\qquad(39)
+\]</span></p>
+<p><span class="math display">\[
+\bold{\gamma}=[\bold{\gamma_1},\bold{\gamma_2},\cdots,\bold{\gamma_K}]^T\qquad(40)
+\]</span></p>
+<blockquote>
+<p>把一个采样时间点的各种矩阵看成一个数，也就是在上面的这些式子里，矩阵里的元素都看成数，然后去做矩阵的转置运算还有乘除加减运算。然后再把各个元素看成它们本身的矩阵取算乘法。</p>
+</blockquote>
+<p>矩阵<span class="math inline">\(\bold{I}\)</span>表示(M-1)×(M-1)的单位矩阵。公式（36）使用加权最小二乘法进行求解可得 <span class="math display">\[
+\hat{\bold{\zeta}}=(\bold{H}^T\bold{Q_{\varPsi}^{-1}}\bold{H})^{-1}\bold{H}^T\bold{Q_{\varPsi}^{-1}}\bold{\varPsi}\qquad(41)
+\]</span> 其中 <span class="math display">\[
+\bold{Q_{\varPsi}}=E(\bold{\gamma}\bold{\gamma}^T)\qquad(42)
+\]</span> <span class="math inline">\(E(·)\)</span>表示对该矩阵中的每一个元素取期望。整周模糊度的估计值位于<span class="math inline">\(\hat{\bold{\zeta}}\)</span>的后M-1个元素，且该估计值为实数，因此可以将该估计结果定义为整周模糊度的浮动解 <span class="math display">\[
+\bold{N}_{float}=[\hat{\bold{\zeta}}]_{(3K+1):(3K+M-1)}\qquad(43)
+\]</span></p>
+<blockquote>
+<p>观测误差<span class="math inline">\(\bold{\gamma}\)</span>服从零均值高斯分布，不同观测时刻的<span class="math inline">\(\bold{\gamma_i}\)</span>相互独立，故<span class="math inline">\(Q_{\varPsi}\)</span>为一对角矩阵，对角线上的元素为<span class="math inline">\(\bold{\gamma}_i^2\)</span>。因为<span class="math inline">\(\gamma\)</span>均值为0，故<span class="math inline">\(E(\bold{\gamma}\bold{\gamma}^T)\)</span>也相当于在求<span class="math inline">\(\bold{\gamma}\)</span>的协方差矩阵。</p>
+</blockquote>
+<p>由于整周模糊度浮动解中各个元素可能不全为整数，因此需要进一步利用最小二乘模糊度解相关调整算法（Least-Square Ambiguity Decorrelation Adjustment，LAMBDA）来确定整数向量形式的整周模糊度，并将其定义为整周模糊度的固定解。LAMBDA算法的原理是结合协方差矩阵去搜索一个与浮动解之差的加权平方和最小的整数向量<span class="math inline">\(N_{fix}\)</span>。利用最小二乘法可以得到<span class="math inline">\(\hat{\bold{\zeta}}\)</span>的协方差矩阵并写成分块矩阵的形式</p>
+<p><img src="/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20240927182115760.png" srcset="/img/loading.gif" lazyload></p>
+<p>总之根据LAMBDA算法我们得到了整周模糊度的固定解<span class="math inline">\(N_{fix}\)</span>。根据上文可以得到N是终端域-接入点域双差的整周模糊度，故终端域-接入点域载波相位双差观测值<span class="math inline">\(\phi^{(t)}=[\Delta (\varphi_{t,s}-\varphi_{t,r})^{(2,1)},\cdots,\Delta (\varphi_{t,s}-\varphi_{t,r})^{(M,1)}]^T\)</span>可以被<span class="math inline">\(N_{fix}\)</span>修正为接入点间的距离差向量 <span class="math display">\[
+l_{modif}^{(t)}=\frac{\lambda\phi^{(t)}}{2\pi}+\lambda N_{fix}+\bold{r_{r,t}}\qquad(45)
+\]</span> 其中 <span class="math display">\[
+\bold{r_{r,t}}=[\Delta r_{t,r}^{(2,1)},\cdots,\Delta r_{t,r}^{(M,1)}]^T
+\]</span> 通过载波相位观测值转换的距离差和基于TDoA测量值转换的距离差相比具有更高的测距精度。</p>
 
                 
               </div>
