@@ -288,7 +288,8 @@
             
               <div class="markdown-body">
                 
-                <p>2024/3/30 11:18 今天上午面试终于结束了，我感觉说的过去，不知道最后结果咋样。</p>
+                <p>2024/3/30 11:18
+今天上午面试终于结束了，我感觉说的过去，不知道最后结果咋样。</p>
 <h1 id="一通信原理">一、通信原理</h1>
 <h2 id="高斯白噪声">1.高斯白噪声</h2>
 <ul>
@@ -437,7 +438,8 @@
 <p>DSB：</p>
 <ol type="1">
 <li>频谱的上下边带含有相同的信息，与SSB相比有效性较差；</li>
-<li><span class="math inline">\(\pm f_c\)</span>处没有载波分量，相干解调时需要提取载波；</li>
+<li><span class="math inline">\(\pm
+f_c\)</span>处没有载波分量，相干解调时需要提取载波；</li>
 <li>信号带宽为基带带宽的两倍，与FM相比有效性较高；</li>
 <li>FM牺牲了有效性换取了可靠性的提高，因此与FM相比可靠性较低。</li>
 </ol>
@@ -640,7 +642,9 @@
 <li><strong><u>码间串扰，无码间串扰条件？</u></strong></li>
 </ul>
 <p>码间串扰是由于系统传输总特性（包括收、发滤波器和信道的特性）不理想，导致前后码元的波形畸变、展宽，并使前面波形出现很长的拖尾，蔓延到当前码元的抽样时刻上，从而对当前码元的判决造成干扰。码间串扰严重时会造成错误判决。</p>
-<p>无码间干扰的时域条件：<span class="math inline">\(h(kT_b)= \begin{cases} 1 &amp;k=0\\ 0 &amp;k\text{为其他整数}\\ \end{cases}\)</span></p>
+<p>无码间干扰的时域条件：<span class="math inline">\(h(kT_b)=
+\begin{cases} 1 &amp;k=0\\ 0 &amp;k\text{为其他整数}\\
+\end{cases}\)</span></p>
 <p>无码间干扰的频域条件：<span class="math inline">\(\displaystyle\sum_{k=1}^{\infty}H(f+\frac{k}{T_s})=T_s\)</span></p>
 <p>若对h(t)在时刻<span class="math inline">\(t=KT_s\)</span>抽样，h(t)的抽样值除了在t=0时不为零外，在其他所有抽样点上均为零，就不存在码间串扰。一个系统的频谱特性若能等效成一个理想（矩形）低通滤波器，则可以实现无码间串扰。</p>
 <blockquote>
@@ -749,7 +753,8 @@
 <ul>
 <li><strong><u>CDMA技术？</u></strong></li>
 </ul>
-<p>CDMA是码分多址的英文缩写（Code Division Multiple Access），它是在数字技术的分支——扩频通信技术上发展起来的一种崭新而成熟的无线通信技术。CDMA技术的原理是基于扩频技术，即将需传送的具有一定信号带宽的信息数据，用一个带宽远大于信号带宽的高速伪随机码进行调制，使原数据信号的带宽被扩展，再经载波调制并发送出去。接收端使用完全相同的伪随机码，与接收的带宽信号作相关处理，把宽带信号换成原信息数据的窄带信号即解扩，以实现信息通信。</p>
+<p>CDMA是码分多址的英文缩写（Code Division Multiple
+Access），它是在数字技术的分支——扩频通信技术上发展起来的一种崭新而成熟的无线通信技术。CDMA技术的原理是基于扩频技术，即将需传送的具有一定信号带宽的信息数据，用一个带宽远大于信号带宽的高速伪随机码进行调制，使原数据信号的带宽被扩展，再经载波调制并发送出去。接收端使用完全相同的伪随机码，与接收的带宽信号作相关处理，把宽带信号换成原信息数据的窄带信号即解扩，以实现信息通信。</p>
 <ul>
 <li><strong><u>简述OFDM调制的原理和特点？</u></strong></li>
 </ul>
@@ -850,7 +855,8 @@
 </ul>
 <p>傅里叶变换是最基本的变换，由傅里叶级数推导出。傅里叶级数只适用于周期信号，把非周期信号看成周期T趋于无穷的周期信号，就推导出傅里叶变换，能很好的处理非周期信号的频谱。但是傅里叶变换的弱点是原信号必须绝对可积，因此适用范围不广。</p>
 <p>拉普拉斯变换是傅里叶变换的推广，傅里叶变换不适用于指数级增长的函数，而拉氏变换相当于是带有一个指数收敛因子的傅里叶变换，把频域推广到复频域，能分析的信号更广。然而缺点是从拉普拉斯变换的式子中，只能看到变量s，没有频率f的概念，要看幅频响应和相频响应，还得令<span class="math inline">\(s=j2\pi f\)</span>。</p>
-<p>Z变换的本质是离散时间傅里叶变换（DTFT），<strong>如果说拉普拉斯变换专门分析模拟信号，那Z变换就是专门分析数字信号，Z变换可以把离散卷积变成多项式乘法，对离散数字系统能发挥很好的作用</strong>。Z变换看系统频率响应，就是令Z在复频域的单位圆上跑一圈，即<span class="math inline">\(Z=e^{j2\pi f}\)</span>，即可得到频率响应。由于傅里叶变换的特性“时域离散，则频域周期”，因此离散信号的频谱必定是周期的，就是以这个单位圆为周期，Z在单位圆上不停地绕圈，就是周期重复。单位圆0°位置是实际频率0HZ，单位圆180°的实际频率就是采样频率的一半，fs/2。</p>
+<p>Z变换的本质是离散时间傅里叶变换（DTFT），<strong>如果说拉普拉斯变换专门分析模拟信号，那Z变换就是专门分析数字信号，Z变换可以把离散卷积变成多项式乘法，对离散数字系统能发挥很好的作用</strong>。Z变换看系统频率响应，就是令Z在复频域的单位圆上跑一圈，即<span class="math inline">\(Z=e^{j2\pi
+f}\)</span>，即可得到频率响应。由于傅里叶变换的特性“时域离散，则频域周期”，因此离散信号的频谱必定是周期的，就是以这个单位圆为周期，Z在单位圆上不停地绕圈，就是周期重复。单位圆0°位置是实际频率0HZ，单位圆180°的实际频率就是采样频率的一半，fs/2。</p>
 <p>总结一下：拉普拉斯变换是傅里叶变换的扩展，傅里叶变换是拉普拉斯变换的特例，z变换是离散的傅里叶变换在复平面上的扩展。</p>
 <h1 id="三计算机网络">三、计算机网络</h1>
 <h2 id="三次握手">1.三次握手</h2>
@@ -940,7 +946,8 @@
 </ul>
 <h2 id="计算机网络体系结构分层">4.计算机网络体系结构分层</h2>
 <figure>
-<img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113588706576.webp" srcset="/img/loading.gif" lazyload alt="OSI模型"><figcaption aria-hidden="true">OSI模型</figcaption>
+<img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113588706576.webp" srcset="/img/loading.gif" lazyload alt="OSI模型">
+<figcaption aria-hidden="true">OSI模型</figcaption>
 </figure>
 <p>TCP/IP分层：网络接口层、网际层、运输层、应用层。</p>
 <p>五层协议：物理层、数据链路层、网络层、运输层、应用层。</p>
@@ -952,7 +959,8 @@
 <p>表示层：解决通信双方交换信息的表示问题。</p>
 <p>应用层：通过应用进程之间的交互来实现特定网络应用。</p>
 <figure>
-<img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113588369094.webp" srcset="/img/loading.gif" lazyload alt="协议数据单元"><figcaption aria-hidden="true">协议数据单元</figcaption>
+<img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113588369094.webp" srcset="/img/loading.gif" lazyload alt="协议数据单元">
+<figcaption aria-hidden="true">协议数据单元</figcaption>
 </figure>
 <h2 id="tcp和udp协议">5.TCP和UDP协议</h2>
 <ul>
@@ -984,7 +992,8 @@
 <li><strong><u>TCP与UDP传输协议有哪些区别？</u></strong></li>
 </ul>
 <figure>
-<img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113433199182.webp" srcset="/img/loading.gif" lazyload alt="UDP和TCP的对比"><figcaption aria-hidden="true">UDP和TCP的对比</figcaption>
+<img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/webp-17113433199182.webp" srcset="/img/loading.gif" lazyload alt="UDP和TCP的对比">
+<figcaption aria-hidden="true">UDP和TCP的对比</figcaption>
 </figure>
 <ol type="1">
 <li>TCP基于连接，而UDP基于无连接的；</li>
@@ -1012,7 +1021,8 @@
 <ul>
 <li><strong><u>IP是指什么？</u></strong></li>
 </ul>
-<p>网络之间互连的协议（IP）是 Internet Protocol 的外语缩写，在因特网中，它是能使连接到网上的所有计算机网络实现相互通信的一套规则，规定了计算机在因特网上进行通信时应当遵守的规则。</p>
+<p>网络之间互连的协议（IP）是 Internet Protocol
+的外语缩写，在因特网中，它是能使连接到网上的所有计算机网络实现相互通信的一套规则，规定了计算机在因特网上进行通信时应当遵守的规则。</p>
 <ul>
 <li><strong><u>MAC地址和IP的区别？</u></strong></li>
 </ul>
@@ -1094,12 +1104,34 @@
 <p>通过不同的码序列来划分物理信道，信道在时间和频率上重合，在码字上分离；在CDMA系统中，码不但可以区分信道，还可以区分基站或用户，区分基站或用户的码统称为扰码；CDMA系统为每个用户分配了各自特定的地址码，无论从频域还是时域来看，各用户的信号都是混杂在一起的，因为这些地址码具有准正交性，接收端唯有使用完全一致的本地地址码才能解调信号。</p>
 <h1 id="五英语">五、英语</h1>
 <h2 id="自我介绍">1.自我介绍</h2>
-<p>Good morning, dear teachers! I am glad to be here for this interview. My name is QinMian. I like this name because it stands for diligence. I am from Beijing University of Posts and Telecommunications, and my major is Information Engineering.</p>
-<p>I would like to choose the word diligence to describe myself. I spent more than eight hours on learning almost every day during my preparation of this exam, and that's why I am here. I don't believe luck, I don't believe talent, but I do believe diligence can take me there.</p>
-<p>During my college years, I always take study seriously and did well in most of my specialized courses, and I got some precious learning experience. Accordingly, I was awarded the scholarship for three times. In my junior year, I successfully passed CET-6, and working hard on English equipped me with basic reading and writing abilities.</p>
-<p>When I was a junior, I made the decision to take the postgraduate entrance examination because I hope I can get in-depth study in my major. In addition, I think to be a postgraduate can make myself more competitive in society. During the preparation for the preliminary exam, I collected a lot of major-related materials and had a better understanding of my major. It made me more convinced that I was interested in Communications Engineering, and it also strengthened my belief in attending graduate school.</p>
-<p>Finally, I love our university. You know, it is selective and famous, especially in my field. What's more, our university is beautiful and famous for its academic atmosphere. If I won the chance to study here, I would try my best to be a good student and a pride of our university in the future.</p>
-<p>Thank you for listening. This opportunity is so important to me that I hope you can give me a high score. Thank you!</p>
+<p>Good morning, dear teachers! I am glad to be here for this interview.
+My name is QinMian. I like this name because it stands for diligence. I
+am from Beijing University of Posts and Telecommunications, and my major
+is Information Engineering.</p>
+<p>I would like to choose the word diligence to describe myself. I spent
+more than eight hours on learning almost every day during my preparation
+of this exam, and that's why I am here. I don't believe luck, I don't
+believe talent, but I do believe diligence can take me there.</p>
+<p>During my college years, I always take study seriously and did well
+in most of my specialized courses, and I got some precious learning
+experience. Accordingly, I was awarded the scholarship for three times.
+In my junior year, I successfully passed CET-6, and working hard on
+English equipped me with basic reading and writing abilities.</p>
+<p>When I was a junior, I made the decision to take the postgraduate
+entrance examination because I hope I can get in-depth study in my
+major. In addition, I think to be a postgraduate can make myself more
+competitive in society. During the preparation for the preliminary exam,
+I collected a lot of major-related materials and had a better
+understanding of my major. It made me more convinced that I was
+interested in Communications Engineering, and it also strengthened my
+belief in attending graduate school.</p>
+<p>Finally, I love our university. You know, it is selective and famous,
+especially in my field. What's more, our university is beautiful and
+famous for its academic atmosphere. If I won the chance to study here, I
+would try my best to be a good student and a pride of our university in
+the future.</p>
+<p>Thank you for listening. This opportunity is so important to me that
+I hope you can give me a high score. Thank you!</p>
 <h2 id="常见问题">2.常见问题</h2>
 <p>听到问题先说，Thank you for your question.</p>
 <p>Can you talk about your plans in the postgraduate period?</p>
@@ -1108,16 +1140,30 @@
 <p><img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240326202953128.png" srcset="/img/loading.gif" lazyload></p>
 <p>How do you usually deal with your pressure?</p>
 <p><img src="/2024/03/03/%E5%A4%8D%E8%AF%95%E5%B8%B8%E8%A7%81%E9%A2%98%E6%B1%87%E6%80%BB/image-20240326205706105.png" srcset="/img/loading.gif" lazyload></p>
-<p>《Green Book》: Whatever you do, do it a hundred percent, when you work, work, when you laugh, laugh, when you eat, eat like it is your last meal.</p>
-<p>I'm so sorry, teacher! I didn't hear the question clearly. Could you please repeat it？</p>
+<p>《Green Book》: Whatever you do, do it a hundred percent, when you
+work, work, when you laugh, laugh, when you eat, eat like it is your
+last meal.</p>
+<p>I'm so sorry, teacher! I didn't hear the question clearly. Could you
+please repeat it？</p>
 <ul>
-<li><strong><u>What research direction you are interested in?</u></strong></li>
+<li><strong><u>What research direction you are interested
+in?</u></strong></li>
 </ul>
-<p>I want to research in the field of six generation mobile networks. Because it can bring faster transmission rates and lower latency. In the future, it will be applied in all aspects of our life. If I am admitted, I will continue to be strict with myself and work hard in my research direction.</p>
+<p>I want to research in the field of six generation mobile networks.
+Because it can bring faster transmission rates and lower latency. In the
+future, it will be applied in all aspects of our life. If I am admitted,
+I will continue to be strict with myself and work hard in my research
+direction.</p>
 <ul>
-<li><strong><u>Introduce your favorite course during your undergraduate studies.</u></strong></li>
+<li><strong><u>Introduce your favorite course during your undergraduate
+studies.</u></strong></li>
 </ul>
-<p>My favourite course is Principles of Communication. It is the most important course in my major. I took the course seriously in my junior and did well in it, and I got some precious major-related knowledge. What's more, because I like this course, in the preliminary exam, I got a high score in the course. I will continue to be strict with myself and apply the knowledge of this course to future research.</p>
+<p>My favourite course is Principles of Communication. It is the most
+important course in my major. I took the course seriously in my junior
+and did well in it, and I got some precious major-related knowledge.
+What's more, because I like this course, in the preliminary exam, I got
+a high score in the course. I will continue to be strict with myself and
+apply the knowledge of this course to future research.</p>
 <h1 id="六项目提问">六、项目提问</h1>
 <ul>
 <li><strong><u>蒙特卡洛拒绝采样？</u></strong></li>
@@ -1131,14 +1177,16 @@
 <p>我用matlab对加入中继节点和不加入中继节点时的传输速率进行了仿真，发现加入中继节点后系统的传输速率得到了提高。</p>
 <p>另外，中继点在对来自源端的信息进行解码时可能会产生错误，这个错误率会影响传输速率，我也对这种情况进行了仿真，发现即使存在一定的错误率，有中继节点时的传输速率，依然要大于无中继节点时的传输速率。</p>
 <p>应用遗传算法（GA）可以实现优化。</p>
-<p>遗传算法（Genetic Algorithm，GA）是模拟生物在自然环境中的遗传和进化的过程而形成的自适应全局优化搜索算法。</p>
+<p>遗传算法（Genetic
+Algorithm，GA）是模拟生物在自然环境中的遗传和进化的过程而形成的自适应全局优化搜索算法。</p>
 <p>遗传算法借鉴了达尔文的进化论和孟德尔的遗传学说。其本质是一种并行、高效、全局搜索的方法，它能在搜索过程中自动获取和积累有关搜索空间的知识，并自适应地控制搜索过程以求得最优解。</p>
 <p>叠加矩阵被视为种群中的个体，相应的互信息就是个体的适应度。矩阵中的元素是基因，基因的排列构成染色体。通过个体选择、基因交叉和基因突变可以获得最优解。</p>
 <ul>
 <li><strong><u>基于文本和图像的多媒体检索系统？</u></strong></li>
 </ul>
 <p>使用jieba分词对每首歌进行分词并统计所有词。</p>
-<p>关键词的提取使用TF-IDF算法<strong>（term frequency–inverse document frequency，词频-逆文档频率）</strong>。TF是词频，表示词在文本中出现的频率；IDF是逆文档频率，表示词的常见程度。将两者相乘得到TF-IDF值，其大小表示了词对文本的重要程度，因此可以选取TF-IDF值大的作为文本的关键词。</p>
+<p>关键词的提取使用TF-IDF算法<strong>（term frequency–inverse document
+frequency，词频-逆文档频率）</strong>。TF是词频，表示词在文本中出现的频率；IDF是逆文档频率，表示词的常见程度。将两者相乘得到TF-IDF值，其大小表示了词对文本的重要程度，因此可以选取TF-IDF值大的作为文本的关键词。</p>
 <p>VSM模型即向量空间模型，把提取文本内容中的关键词作为向量空间中的向量，并将向量间的相似度作为衡量文本相似度的标准。所以便可以通过求余弦相似度，来表征文本相似度。</p>
 <p>Bag-of-words基础流程：</p>
 <p>特征提取：使图像形成不同的图像块，并获得各图像块处的特征。</p>

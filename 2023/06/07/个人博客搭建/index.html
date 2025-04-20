@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://example.com/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/image-20230608101831956.png">
 <meta property="og:image" content="http://example.com/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/5cdaf60e1fda7a3b8fb67be354a35485.png">
 <meta property="article:published_time" content="2023-06-07T14:26:34.000Z">
-<meta property="article:modified_time" content="2024-01-17T09:01:29.361Z">
+<meta property="article:modified_time" content="2025-04-20T15:08:46.722Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="初级">
@@ -301,25 +301,30 @@
 <li><p><a target="_blank" rel="noopener" href="https://lanweixiao.gitee.io/2020/08/18/hexo+gitee%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">一些详细资料可以看这里</a></p></li>
 </ul>
 <hr>
-<p>2023/6/7 22:49 快要考试了，但是我还是想花点时间这里这个东西，等整理完这个，再去整理专业课程</p>
+<p>2023/6/7 22:49
+快要考试了，但是我还是想花点时间这里这个东西，等整理完这个，再去整理专业课程</p>
 <hr>
 <h1 id="一前期准备">一、前期准备</h1>
 <h2 id="注意事项">1.注意事项</h2>
 <ul>
-<li><p>很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行</p></li>
+<li><p>很多命令既可以用Windows的cmd来完成，也可以使用git
+bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git
+bash来执行</p></li>
 <li><p>hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导</p></li>
 <li><p>hexo有2种_config.yml文件，一个是根目录下的全局的_config.yml，一个是各个theme下的</p></li>
 </ul>
 <h2 id="下载并安装node.js">2.下载并安装node.js</h2>
 <p>Hexo 是基于Node.js 的博客框架，就像 Java 要依赖 JDK 环境一样。</p>
 <ul>
-<li>node下载地址：http://nodejs.cn/download/ ，傻瓜式安装，这里不再详述</li>
+<li>node下载地址：http://nodejs.cn/download/
+，傻瓜式安装，这里不再详述</li>
 </ul>
 <p><strong>NodeJS环境安装重点拓展：</strong></p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 确认node.js安装成功：运行下面两个命令打印版本号即可</span><br>node -v<br>npm  -v<br><br><span class="hljs-comment"># 安装 Node.js 淘宝镜像加速器 （cnpm）</span><br>npm install -g cnpm <span class="hljs-attribute">--registry</span>=https://registry.npm.taobao.org<br><br><span class="hljs-comment"># 修改 node 类库默认安装位置</span><br><span class="hljs-comment"># 默认是在 C:\Users\lingStudy\AppData\Roaming\npm</span><br><br>npm<span class="hljs-built_in"> config </span><span class="hljs-built_in">set</span><span class="hljs-built_in"> prefix </span><span class="hljs-string">&quot;D:\nodejs安装路径\node_global&quot;</span><br>npm<span class="hljs-built_in"> config </span><span class="hljs-built_in">set</span> cache <span class="hljs-string">&quot;D:\nodejs安装路径\node_cache&quot;</span><br><span class="hljs-comment"># 查看修改是否成功</span><br>npm root -g<br><span class="hljs-comment"># 然后把D:\install\node\node_global配置到环境变量的 PATH 下即可</span><br><br></code></pre></td></tr></table></figure>
 <h2 id="安装版本控制工具-git">3.安装版本控制工具 Git</h2>
 <p>用来将本地项目托管到码云，所以还需要自己注册一个码云的账号。</p>
-<p>下载地址：https://git-scm.com/download 学程序的，在工作中 Git 是必知必会的，还没学的建议去看看，所以这里不再详细介绍 Git。</p>
+<p>下载地址：https://git-scm.com/download 学程序的，在工作中 Git
+是必知必会的，还没学的建议去看看，所以这里不再详细介绍 Git。</p>
 <p>下面是部署到gitee（码云）上所需要的配置，我们<strong>不需要</strong>进行下面的步骤：</p>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-meta"># Git一些重要配置</span><br>git config --<span class="hljs-keyword">global</span> user.name <span class="hljs-string">&quot;lxxxxdy&quot;</span>  <span class="hljs-meta">#码云用户名</span><br>git config --<span class="hljs-keyword">global</span> user.email <span class="hljs-string">&quot;xxx83@qq.com&quot;</span>   <span class="hljs-meta">#邮箱</span><br><br><span class="hljs-meta"># 生成SSH公钥并添加到码云，实现免密码登录</span><br><span class="hljs-meta"># 1、生成公钥</span><br>ssh-keygen -t rsa<br><span class="hljs-meta"># 2、进入 C:\Users\主机名\.ssh 目录，把 id_rsa.pub 里面的信息复制到码云的 SSH公钥 中即可</span><br><br></code></pre></td></tr></table></figure>
 <h2 id="hexo安装">4.Hexo安装</h2>
@@ -330,7 +335,9 @@
 <h3 id="创建">1.1 创建：</h3>
 <ul>
 <li><p>新建一个名为你的用户名.github.io的仓库。</p></li>
-<li><p>比如说，如果你的github用户名是miqn，那么你就新建miqn.github.io的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 http://miqn.github.io 了，是不是很方便？由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。</p></li>
+<li><p>比如说，如果你的github用户名是miqn，那么你就新建miqn.github.io的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是
+http://miqn.github.io
+了，是不是很方便？由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。</p></li>
 </ul>
 <h3 id="注意">1.2 注意：</h3>
 <ul>
@@ -344,22 +351,32 @@
 <h2 id="绑定域名这步可省略">2.绑定域名（这步可省略）</h2>
 <p>这里就不详细赘述了，想了解看相关资料。</p>
 <h1 id="三配置ssh免密登录">三、配置SSH免密登录</h1>
-<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
+<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh
+key来解决本地和服务器的连接问题。</p>
 <ul>
 <li><p>首先打开电脑文件夹，找到C:\86131 .ssh文件夹并删除 。</p></li>
-<li><p>在C:\86131 文件夹下右键打开Git Bash Here输入命令：ssh-keygen -t rsa -C github邮件地址 生成.ssh秘钥，输入后连敲三次回车，出现下图情况代表成功：</p>
+<li><p>在C:\86131 文件夹下右键打开Git Bash Here输入命令：ssh-keygen -t
+rsa -C github邮件地址
+生成.ssh秘钥，输入后连敲三次回车，出现下图情况代表成功：</p>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/f8fb9a4ff9e0410bdbb1e4b89f34208ae2c6ecfd.jpg@942w_407h_progressive.webp" srcset="/img/loading.gif" lazyload></p></li>
-<li><p>最终生成了一个新的 C:\86131 .ssh文件夹，打开这个文件夹，找到.ssh_rsa.pub文件，记事本打开并复制里面的内容。</p></li>
-<li><p>打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key，把复制的内容粘贴进去，title随便填，保存即可，我们的公钥就添加成功了，设置好如下图：</p>
+<li><p>最终生成了一个新的 C:\86131
+.ssh文件夹，打开这个文件夹，找到.ssh_rsa.pub文件，记事本打开并复制里面的内容。</p></li>
+<li><p>打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New
+SSH
+key，把复制的内容粘贴进去，title随便填，保存即可，我们的公钥就添加成功了，设置好如下图：</p>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/cae65261511e4bf7e4ea0e7838a5bfc5f3560d20.png@942w_509h_progressive.webp" srcset="/img/loading.gif" lazyload></p></li>
 <li><p>检测是否设置成功：</p>
 <p>输入命令： $ ssh -T git@github.com # 注意邮箱地址不用改</p>
-<p>如果提示Are you sure you want to continue connecting (yes/no)?，输入yes，然后会看到：</p>
-<p>Hi liuxianan! You've successfully authenticated, but GitHub does not provide shell access.</p>
+<p>如果提示Are you sure you want to continue connecting
+(yes/no)?，输入yes，然后会看到：</p>
+<p>Hi liuxianan! You've successfully authenticated, but GitHub does not
+provide shell access.</p>
 <p>看到这个信息说明SSH已配置成功！</p></li>
 <li><p>此时你还需要配置：</p>
-<p>$ git config --global user.name "liuxianan"// 你的github用户名，非昵称;</p>
-<p>$ git config --global user.email "xxx@qq.com"// 填写你的github注册邮箱。</p></li>
+<p>$ git config --global user.name "liuxianan"//
+你的github用户名，非昵称;</p>
+<p>$ git config --global user.email "xxx@qq.com"//
+填写你的github注册邮箱。</p></li>
 </ul>
 <h1 id="四使用hexo搭建博客">四、使用hexo搭建博客</h1>
 <h2 id="初始化">1.初始化</h2>
@@ -371,8 +388,11 @@
 </ul>
 <p>第三步：执行以下命令之后，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去的：</p>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/f8d1a66cf00c3dfabb1bff69c531398ef0a33679.png@942w_56h_progressive.webp" srcset="/img/loading.gif" lazyload></p>
-<p>第四步：hexo s 是开启本地预览服务，打开浏览器访问 http://localhost:4000 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/windows-finds-port-usage.html">这篇文章</a></p>
-<h2 id="将博客部署到-github-个人主页上">2.将博客部署到 github 个人主页上</h2>
+<p>第四步：hexo s 是开启本地预览服务，打开浏览器访问
+http://localhost:4000
+即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/windows-finds-port-usage.html">这篇文章</a></p>
+<h2 id="将博客部署到-github-个人主页上">2.将博客部署到 github
+个人主页上</h2>
 <p>第一步：在D:hexo-deployer-git 插件</p>
 <ul>
 <li><p>安装命令： npm install hexo-deployer-git --save</p></li>
@@ -382,12 +402,15 @@
 <p>第二步：编辑D:_config.yml 文件, 在文件末尾添加如下内容:</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repository:</span> git@github.com:miqn/miqn.github.io.git<br><span class="hljs-symbol">  branch:</span> master<br></code></pre></td></tr></table></figure>
 <ul>
-<li>注意：其中 repository 中的内容即为 github 个人主页链接地址，具体看下图：</li>
+<li>注意：其中 repository 中的内容即为 github
+个人主页链接地址，具体看下图：</li>
 </ul>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/9cc1855324f9f968aa56d8a94a913475b3bc1d70.png@942w_437h_progressive.webp" srcset="/img/loading.gif" lazyload></p>
-<p>第三步：在D:，输入命令：hexo d 将本地 blog 推送到 github仓库，也可能需要输入 username &amp; pwd。</p>
+<p>第三步：在D:，输入命令：hexo d 将本地 blog 推送到
+github仓库，也可能需要输入 username &amp; pwd。</p>
 <ul>
-<li>推送成功后, 在浏览器中输入对应域名, 即可访问 https://miqn.github.io/</li>
+<li>推送成功后, 在浏览器中输入对应域名, 即可访问
+https://miqn.github.io/</li>
 </ul>
 <h1 id="五更换主题">五、更换主题</h1>
 <h2 id="寻找主题">1.寻找主题</h2>
@@ -403,13 +426,18 @@
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/dc6cf704d5d468a2f02dcd044fc4a0b4daf78960.png@942w_507h_progressive.webp" srcset="/img/loading.gif" lazyload></p>
 <p>注意：</p>
 <ul>
-<li>D:theme 文件夹下存放的就是博客的主题，主题是否下载成功可到该目录下查看：</li>
+<li>D:theme
+文件夹下存放的就是博客的主题，主题是否下载成功可到该目录下查看：</li>
 </ul>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/075cf0ecdb17fd480e0a705242cf9b6cf28510ee.png@942w_225h_progressive.webp" srcset="/img/loading.gif" lazyload></p>
 <h2 id="使用主题">3.使用主题</h2>
 <ul>
-<li><p>打开D:_config.yml文件，在里面找到theme: landscape改为theme: blinkfox （blinkfox为我们要使用的主题名）,然后重新执行hexo g来重新生成。</p></li>
-<li><p>如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再执行hexo g 和 hexo s 重新生成和发布。</p></li>
+<li><p>打开D:_config.yml文件，在里面找到theme: landscape改为theme:
+blinkfox （blinkfox为我们要使用的主题名）,然后重新执行hexo
+g来重新生成。</p></li>
+<li><p>如果出现一些莫名其妙的问题，可以先执行hexo
+clean来清理一下public的内容，然后再执行hexo g 和 hexo s
+重新生成和发布。</p></li>
 <li><p>再次在浏览器中输入对应域名, 即可发现主题已更换。</p></li>
 </ul>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/b122a24f4e848f12e98c105e30e57fdc770d6690.png@942w_251h_progressive.webp" srcset="/img/loading.gif" lazyload></p>
@@ -417,17 +445,22 @@
 <p>在这里我使用的是blinkfox主题，后期相关修改参考这个<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">主题文档</a></p>
 <ul>
 <li><p>注意：一些非md文件可以把他们放到source文件夹下，这里的所有文件都会原样复制（除了md文件）到public目录的。</p></li>
-<li><p>大致在下图的文件夹里面修改文件，记得修改后的文件需要关闭后，再在hexocode根目录右键打开Git Bash Here，输入两个命令：hexo g 重新生成，hexo s 开启本地预览服务,等修改的符合要求了，再输入 hexo d 推送到github仓库即可。</p></li>
+<li><p>大致在下图的文件夹里面修改文件，记得修改后的文件需要关闭后，再在hexocode根目录右键打开Git
+Bash Here，输入两个命令：hexo g 重新生成，hexo s
+开启本地预览服务,等修改的符合要求了，再输入 hexo d
+推送到github仓库即可。</p></li>
 <li><p>这样就可以输入网址查看更改后的内容了。</p></li>
 </ul>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/426b2c5a296d531dcae228493e6d63868179f132.png@942w_353h_progressive.webp" srcset="/img/loading.gif" lazyload></p>
 <p>文档上没有提及的修改：</p>
 <ul>
-<li>返回按钮样式修改：在主题下面的 blinkfox_partial 文件夹中的 back-top.esj 文件中修改</li>
+<li>返回按钮样式修改：在主题下面的 blinkfox_partial 文件夹中的
+back-top.esj 文件中修改</li>
 </ul>
 <p>特别注意：</p>
 <ul>
-<li>修改生成的默认页面信息，要到主题下面的_config.yml文件里面去改，而不是根目录下的 _config.yml文件</li>
+<li>修改生成的默认页面信息，要到主题下面的_config.yml文件里面去改，而不是根目录下的
+_config.yml文件</li>
 </ul>
 <p><img src="/2023/06/07/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/312648b8eabe0b58395774e2742277f9690a94c6.png@942w_288h_progressive.webp" srcset="/img/loading.gif" lazyload></p>
 <ul>
@@ -439,9 +472,13 @@
 <p>配置留言功能（利用Valine）：</p>
 <ul>
 <li><p>我们的评论系统其实是放在Leancloud上的，因此首先需要去注册一个账号</p></li>
-<li><p>注册完以后需要创建一个应用，名字可以随便起，然后 进入应用-&gt;设置-&gt;应用key，获取你的appid 和 appkey，复制到主题下面的 _config.yml 文件里面搜索 valine，填入appid 和 appkey</p></li>
-<li><p>最后！记得在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名加进去就可以了</p></li>
-<li><p>主题页面显示的内容在主题下面的 layout 文件夹中的 contact.ejs 文件里面更改</p></li>
+<li><p>注册完以后需要创建一个应用，名字可以随便起，然后
+进入应用-&gt;设置-&gt;应用key，获取你的appid 和 appkey，复制到主题下面的
+_config.yml 文件里面搜索 valine，填入appid 和 appkey</p></li>
+<li><p>最后！记得在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web
+安全域名 把你的域名加进去就可以了</p></li>
+<li><p>主题页面显示的内容在主题下面的 layout 文件夹中的 contact.ejs
+文件里面更改</p></li>
 </ul>
 <h1 id="六利用typora软件来写博客">六、利用Typora软件来写博客</h1>
 <h2 id="typora介绍">1.Typora介绍</h2>
@@ -469,16 +506,21 @@
 <p>部署到服务器github。</p>
 <p>补充：hexo new page 'postName'命令和hexo new 'postName'的区别？</p>
 <ul>
-<li>hexo new page 'My-second-blog'最终部署时生成：hexo-second-blog.html，但是它不会作为文章出现在博文目录。</li>
+<li>hexo new page
+'My-second-blog'最终部署时生成：hexo-second-blog.html，但是它不会作为文章出现在博文目录。</li>
 </ul>
-<h2 id="所使用的主题的文章-front-matter-语法">4.所使用的主题的文章 Front-matter 语法</h2>
-<p>依据使用的不同主题，一些文章功能所使用的语法可能不一样，例如写博客时给文章添加标签的语法等等，这些都要看所使用的主题的文档，例如我们这里使用的是 blinkfox 主题，打开<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md#%E6%96%87%E7%AB%A0-front-matter-%E4%BB%8B%E7%BB%8D">blinkfox主题文档</a>，往下翻找到" 文章 Front-matter 介绍 "即可。</p>
+<h2 id="所使用的主题的文章-front-matter-语法">4.所使用的主题的文章
+Front-matter 语法</h2>
+<p>依据使用的不同主题，一些文章功能所使用的语法可能不一样，例如写博客时给文章添加标签的语法等等，这些都要看所使用的主题的文档，例如我们这里使用的是
+blinkfox 主题，打开<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md#%E6%96%87%E7%AB%A0-front-matter-%E4%BB%8B%E7%BB%8D">blinkfox主题文档</a>，往下翻找到"
+文章 Front-matter 介绍 "即可。</p>
 <h1 id="七如何向hexo博客中插入图片">七、如何向hexo博客中插入图片</h1>
 <h2 id="前言">1.前言</h2>
 <p>Hexo是个静态博客程序，使用markdown语法。而Typero是个编辑预览于一身的md编辑器。</p>
 <p>在Typero写文章时候，如果能复制网络图片，或者是截图粘贴到Typero，并且可以<strong>直接在网站上查看该图片</strong>，这样是非常方便的。</p>
 <h2 id="修改hexo">2.修改Hexo</h2>
-<p>首先确认站点配置文件 _config.yml 中有 post_asset_folder:true 这个需要去手动修改</p>
+<p>首先确认站点配置文件 _config.yml 中有 post_asset_folder:true
+这个需要去手动修改</p>
 <p>接着打开git bash，在 hexo 站点目录，执行</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">npm install https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/CodeFalling/</span>hexo-asset-image --save<br></code></pre></td></tr></table></figure>
 <p>这样每次新建一篇文章，hexo同时会创建一个与文章名同名的文件夹，用来放图片。</p>
@@ -489,16 +531,22 @@
 <h1 id="八常见问题汇总">八、常见问题汇总</h1>
 <h2 id="spawn-failed">1.spawn failed</h2>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73820275/article/details/132088528">Hexo部署博客时出现spawn failed问题解决方法</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lutheran/p/15915295.html">github连接报"ssh: connect to host github.com port 22: Connection timed out"错误</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73820275/article/details/132088528">Hexo部署博客时出现spawn
+failed问题解决方法</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lutheran/p/15915295.html">github连接报"ssh:
+connect to host github.com port 22: Connection timed out"错误</a></li>
 </ul>
-<p>首先我通过查阅资料，试了先把目录下的.deploy_git目录删除，然后使用命令<code>git config --global core.autocrlf false</code>取消git网络代理，接着依次使用hexo clean/g/d的方法，发现问题依旧没有解决，但我看我没试把.deploy_git目录和public都删除，下次可以试一试。</p>
-<p>但是通过查阅资料，我知道了问题出在我执行hexo d时在访问github时出现了问题，所以我就追溯到安装时候的第三步即配置SSH免密登录，我输入<code>ssh -T git@github.com</code>命令时，出现了<code>ssh: connect to host github.com port 22: Connection timed out</code>的错误，通过查阅资料，我找到了解决办法。</p>
+<p>首先我通过查阅资料，试了先把目录下的.deploy_git目录删除，然后使用命令<code>git config --global core.autocrlf false</code>取消git网络代理，接着依次使用hexo
+clean/g/d的方法，发现问题依旧没有解决，但我看我没试把.deploy_git目录和public都删除，下次可以试一试。</p>
+<p>但是通过查阅资料，我知道了问题出在我执行hexo
+d时在访问github时出现了问题，所以我就追溯到安装时候的第三步即配置SSH免密登录，我输入<code>ssh -T git@github.com</code>命令时，出现了<code>ssh: connect to host github.com port 22: Connection timed out</code>的错误，通过查阅资料，我找到了解决办法。</p>
 <p>在存放公钥私钥(id_rsa和id_rsa.pub)的文件里，新建config文本，内容如下：</p>
 <p>第一步：打开终端并打开存放ssh的目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/.ssh<br></code></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
-<p>查看是否存在这些文件 若不存在，则可能是ssh没配置对，首先需要配置ssh（看上面第三步）很简单 若存在则在继续在终端输入以下命令新建一个文件</p>
+<p>查看是否存在这些文件
+若不存在，则可能是ssh没配置对，首先需要配置ssh（看上面第三步）很简单
+若存在则在继续在终端输入以下命令新建一个文件</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino">vim config<br></code></pre></td></tr></table></figure>
 <p>接着输入下面内容</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">Host github.com<br><span class="hljs-keyword">User</span> <span class="hljs-title">注册github</span>的邮箱<br>Hostname ssh.github.com<br>PreferredAuthentications publickey<br>IdentityFile ~/.ssh/id_rsa<br>Port <span class="hljs-number">443</span><br></code></pre></td></tr></table></figure>

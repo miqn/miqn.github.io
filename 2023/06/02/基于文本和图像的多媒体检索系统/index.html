@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233130164.png">
 <meta property="og:image" content="http://example.com/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233219873.png">
 <meta property="article:published_time" content="2023-06-02T14:36:08.000Z">
-<meta property="article:modified_time" content="2024-03-28T11:10:23.090Z">
+<meta property="article:modified_time" content="2025-03-14T06:01:10.663Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="专业课程">
 <meta property="article:tag" content="多媒体">
@@ -298,7 +298,8 @@
 <li><a target="_blank" rel="noopener" href="http://www.zzvips.com/article/214469.html">在pycharm中配置pyqt5</a></li>
 </ul>
 <hr>
-<p>2023/6/2 22:44 这是我基于《多媒体信息检索课程设计》所作的一个项目，涉及到了计算机视觉方面的知识，主要用到了BOW模型。代码语言为python，运行环境为pycharm。废话不多说，开始操作。</p>
+<p>2023/6/2 22:44
+这是我基于《多媒体信息检索课程设计》所作的一个项目，涉及到了计算机视觉方面的知识，主要用到了BOW模型。代码语言为python，运行环境为pycharm。废话不多说，开始操作。</p>
 <hr>
 <h1 id="一所需安装的软件及库">一、所需安装的软件及库</h1>
 <h2 id="anaconda及pycharm的安装">1.Anaconda及pycharm的安装</h2>
@@ -313,7 +314,8 @@
 <p>将 jieba 的整个目录放置于python的site-packages 目录中。</p>
 <h2 id="在pycharm中配置pyqt5">3.在pycharm中配置pyqt5</h2>
 <h3 id="pyqt5简介">3.1 PyQt5简介</h3>
-<p>1.什么是<a target="_blank" rel="noopener" href="http://www.zzvips.com/article/106394.html">GUI</a>：Graphical User Interface，图形用户界面，用于人机交互。</p>
+<p>1.什么是<a target="_blank" rel="noopener" href="http://www.zzvips.com/article/106394.html">GUI</a>：Graphical User
+Interface，图形用户界面，用于人机交互。</p>
 <p>2.怎么设计GUI：Qt。</p>
 <p>3.什么是Qt：Qt是一种基于C++的跨平台图形用户界面应用程序开发框架。</p>
 <p>4.学习python的我们怎么用Qt：PyQt5模块。</p>
@@ -321,19 +323,22 @@
 <h3 id="安装pyqt5模块">3.2 安装PyQt5模块</h3>
 <p>(包括pyqt5,pyqt5-tools,pyqt5designer）</p>
 <p>依次点击 文件-设置-项目-解释器-“加号” 来添加。</p>
-<h3 id="配置pyqt5设计器qt-designer及转换工具">3.3 配置PyQt5设计器（Qt Designer）及转换工具</h3>
+<h3 id="配置pyqt5设计器qt-designer及转换工具">3.3 配置PyQt5设计器（Qt
+Designer）及转换工具</h3>
 <h4 id="qt-designer">(1)Qt Designer</h4>
 <p>用途：方便我们打开设计器。</p>
 <p>首先同样是在file里面打开settings：</p>
 <p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/0046403193-6.png" srcset="/img/loading.gif" lazyload></p>
 <p>Name：我们自己给这个tool起的名字。</p>
-<p>Program：填入designer.exe的路径，每个人路径不同，找到自己计算机上的 路径输进去。一般来说是在D:-packages.exe这里。</p>
+<p>Program：填入designer.exe的路径，每个人路径不同，找到自己计算机上的
+路径输进去。一般来说是在D:-packages.exe这里。</p>
 <p>Working directory:填入$ProjectFileDir$，表示文件所在的项目路径。</p>
 <h4 id="pyuic">(2)PyUIC</h4>
 <p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/0046402509-7.png" srcset="/img/loading.gif" lazyload></p>
 <p>Name:自己起的名字。</p>
 <p>Program:python.exe所在的位置，一般在D:.exe这里。</p>
-<p>Arguements:填入-m PyQt5.uic.pyuic $FileName$ -o $FileNameWithoutExtension$.py 是将.ui文件转化成.py文件的语句。</p>
+<p>Arguements:填入-m PyQt5.uic.pyuic $FileName$ -o
+$FileNameWithoutExtension$.py 是将.ui文件转化成.py文件的语句。</p>
 <p>Working directory:$FileDir$,表示文件所在路径。</p>
 <h2 id="pcv包的安装">4.PCV包的安装</h2>
 <p>1.下载PCV包：https://codeload.github.com/Li-Shu14/PCV/zip/master；</p>
@@ -344,31 +349,45 @@
 <p><strong>注：</strong> 压缩包不用解压，直接pip install即可。</p>
 </blockquote>
 <h2 id="vlfeat包安装">5.vlfeat包安装</h2>
-<p>1.下载安装vlfeat包，版本0.9.20 官方下载连接：http://www.vlfeat.org/download/（注意要下载20版本，不然会出现找不到.sift文件）</p>
+<p>1.下载安装vlfeat包，版本0.9.20
+官方下载连接：http://www.vlfeat.org/download/（注意要下载20版本，不然会出现找不到.sift文件）</p>
 <p>2.下载完成过后，把vlfeat里win64里的vl.dll和sift.exe和vl.lib复制粘贴到项目目录下：这样子环境配置基本上已完成。</p>
 <blockquote>
 <p><strong>注：</strong>vlfeat0.9.21版本太高导致部分电脑提取特征为空，要用9.20版本。</p>
 </blockquote>
 <h2 id="pysqlite3库安装">6.pysqlite3库安装</h2>
 <ul>
-<li><p>访问 https://www.sqlite.org/download.html 页面，下载 Windows 版 SQLite 预编译二进制文件。</p>
-<p>注意要下载与你 Python 版本和操作系统位数（32 位或 64 位）对应的版本。</p></li>
+<li><p>访问 https://www.sqlite.org/download.html 页面，下载 Windows 版
+SQLite 预编译二进制文件。</p>
+<p>注意要下载与你 Python 版本和操作系统位数（32 位或 64
+位）对应的版本。</p></li>
 <li><p>解压缩下载的 SQLite 文件。</p>
-<p>在解压后的文件夹中，你将看到一些静态库和工具，以及一个名为 sqlite3.dll 的共享库文件。这个文件是 <code>pysqlite3</code> 包所依赖的 SQLite 动态链接库。</p></li>
-<li><p>访问 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pysqlite 页面，找到 <code>pysqlite3</code> 的适用于你的 Python 版本和操作系统位数的安装包并下载。</p>
-<p>下载后的文件名一般是这样的：<code>pysqlite3-x.x.x-cpXX-cpXXm-win_amd64.whl</code>，其中 <code>x.x.x</code> 是版本号，<code>cpXX</code> 是 Python 主版本和次版本号，例如 <code>cp39</code> 代表 Python 3.9，<code>win_amd64</code> 表示 64 位 Windows 平台。</p></li>
-<li><p>在命令提示符中使用 pip 安装刚才下载的 <code>pysqlite3</code> 安装包。</p>
+<p>在解压后的文件夹中，你将看到一些静态库和工具，以及一个名为
+sqlite3.dll 的共享库文件。这个文件是 <code>pysqlite3</code> 包所依赖的
+SQLite 动态链接库。</p></li>
+<li><p>访问 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pysqlite
+页面，找到 <code>pysqlite3</code> 的适用于你的 Python
+版本和操作系统位数的安装包并下载。</p>
+<p>下载后的文件名一般是这样的：<code>pysqlite3-x.x.x-cpXX-cpXXm-win_amd64.whl</code>，其中
+<code>x.x.x</code> 是版本号，<code>cpXX</code> 是 Python
+主版本和次版本号，例如 <code>cp39</code> 代表 Python
+3.9，<code>win_amd64</code> 表示 64 位 Windows 平台。</p></li>
+<li><p>在命令提示符中使用 pip 安装刚才下载的 <code>pysqlite3</code>
+安装包。</p>
 <p>进入 <code>pysqlite3</code> 安装包所在的目录，然后运行以下命令：</p>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">`Copy Codepip install pysqlite<span class="hljs-number">3</span>-<span class="hljs-keyword">x</span>.<span class="hljs-keyword">x</span>.<span class="hljs-keyword">x</span>-cpXX-cpXXm-win_amd<span class="hljs-number">64</span>.whl`<br></code></pre></td></tr></table></figure></li>
 </ul>
 <blockquote>
-<p>如果你 Python 版本为 32 位，请下载适用于 32 位 Python 的安装包，并将含有 <code>win_amd64</code> 的部分替换为 <code>win32</code> 即可。</p>
+<p>如果你 Python 版本为 32 位，请下载适用于 32 位 Python
+的安装包，并将含有 <code>win_amd64</code> 的部分替换为
+<code>win32</code> 即可。</p>
 <p>pysqlite3这个库下载比较麻烦，下载之后需要重新编译python，并且要注意pycharm中的编译环境最好设置为python所在的python.exe这个环境，否则之前安装的一些库会不在列表中。</p>
 <p>也要注意python3版本使用的是sqlite3这个库，尽管编辑器报错的时候会提醒一个跟pysqlite2有关的错误，最后解决的方法是同时更换文件中和PCV中imagesearch.py的import，尝试更改那里即可成功。</p>
 </blockquote>
 <h1 id="二文本检索部分算法说明">二、文本检索部分算法说明</h1>
 <h2 id="文本爬取">1.文本爬取</h2>
-<p>我对https://www.8lrc.com/ 网站的经典歌词进行了爬取，并将爬取到的歌词，用’lyrics’+歌名+歌手的命名方式，以记事本的文件类型保存在了当前文件夹里。并将标题与歌词的对应关系进行了保存。</p>
+<p>我对https://www.8lrc.com/
+网站的经典歌词进行了爬取，并将爬取到的歌词，用’lyrics’+歌名+歌手的命名方式，以记事本的文件类型保存在了当前文件夹里。并将标题与歌词的对应关系进行了保存。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">lyrics_urls</span>():<br>    titles = []  <span class="hljs-comment"># 用于保存标题</span><br>    urls = []  <span class="hljs-comment"># 用于保存每首歌的链接</span><br>    qianzhui = <span class="hljs-string">&#x27;https://www.8lrc.com/&#x27;</span>  <span class="hljs-comment"># 爬取网站</span><br>    <span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">50</span>):  <span class="hljs-comment"># 共49页</span><br>        link = <span class="hljs-string">&#x27;https://www.8lrc.com/jingdian/32/&#x27;</span> + <span class="hljs-built_in">str</span>(index) + <span class="hljs-string">&#x27;.htm&#x27;</span>  <span class="hljs-comment"># 每页链接</span><br>        req = requests.get(link)    <span class="hljs-comment"># 发起get请求</span><br>        html = req.text     <span class="hljs-comment"># 获取信息</span><br>        soup = BeautifulSoup(html, <span class="hljs-string">&#x27;lxml&#x27;</span>)  <span class="hljs-comment"># 提取排行榜中的30首歌信息</span><br>        lrcList = soup.find(<span class="hljs-string">&#x27;ul&#x27;</span>, class_=<span class="hljs-string">&#x27;lrcList&#x27;</span>)<br>        lrcList = BeautifulSoup(<span class="hljs-built_in">str</span>(lrcList), <span class="hljs-string">&#x27;lxml&#x27;</span>)<br>        r = lrcList.find_all(<span class="hljs-string">&#x27;li&#x27;</span>, class_=<span class="hljs-string">&#x27;clearfix&#x27;</span>)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> r:     <span class="hljs-comment"># 对于每首歌</span><br>            lrc = BeautifulSoup(<span class="hljs-built_in">str</span>(i), <span class="hljs-string">&#x27;lxml&#x27;</span>)<br>            Singer = lrc.find(<span class="hljs-string">&#x27;a&#x27;</span>, class_=<span class="hljs-string">&#x27;tGeshou&#x27;</span>).get_text()  <span class="hljs-comment"># 获取歌手名</span><br>            Song = lrc.find(<span class="hljs-string">&#x27;a&#x27;</span>, class_=<span class="hljs-string">&#x27;tGequ&#x27;</span>).get_text().split(<span class="hljs-string">&#x27;[&#x27;</span>)[<span class="hljs-number">0</span>]  <span class="hljs-comment"># 获取歌名</span><br>            urls.append(qianzhui + lrc.find(<span class="hljs-string">&#x27;a&#x27;</span>, class_=<span class="hljs-string">&#x27;tGequ&#x27;</span>).get(<span class="hljs-string">&#x27;href&#x27;</span>))  <span class="hljs-comment"># 获取链接</span><br>            titles.append((Song + <span class="hljs-string">&#x27; &#x27;</span> + Singer).replace(<span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>))  <span class="hljs-comment"># 标题记为歌名+歌手名</span><br>    <span class="hljs-keyword">return</span> titles, urls<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">titles, urls</span>):<br>    lyrics_set = &#123;&#125;  <span class="hljs-comment"># 用于保存标题与歌词的对应关系</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(urls)):  <span class="hljs-comment"># 对于每页歌词链接</span><br>        req = requests.get(urls[i])     <span class="hljs-comment"># 发起get请求</span><br>        html = req.text     <span class="hljs-comment"># 获取信息</span><br>        soup = BeautifulSoup(html, <span class="hljs-string">&#x27;lxml&#x27;</span>)  <span class="hljs-comment"># 提取内容</span><br>        <span class="hljs-keyword">if</span> soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;fl&#x27;</span>) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:   <span class="hljs-comment"># 排除没有歌词或链接失效等情况</span><br>            lrc = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;fl&#x27;</span>).text    <span class="hljs-comment"># 获取歌词</span><br>            lrc = lrc.split(<span class="hljs-string">&#x27;编辑于&#x27;</span>)[<span class="hljs-number">0</span>]   <span class="hljs-comment"># 去掉每首歌都包含的编辑信息</span><br>            lyrics_set[titles[i]] = lrc   <span class="hljs-comment"># 保存标题与歌词的对应冠词</span><br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>((<span class="hljs-string">&#x27;lyrics&#x27;</span> + titles[i] + <span class="hljs-string">&#x27;.txt&#x27;</span>), <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:  <span class="hljs-comment"># 将歌词以txt的格式下载</span><br>                f.writelines(lrc)  <span class="hljs-comment"># 写入歌词</span><br>    <span class="hljs-keyword">return</span> lyrics_set<br>titles, urls = lyrics_urls()<br>lyrics_set = download(titles, urls)<br><br></code></pre></td></tr></table></figure>
 <h2 id="jieba分词">2.jieba分词</h2>
 <p>使用jieba分词对每首歌进行分词并统计所有词(每个词的长度大于1)记为一个集合。</p>
@@ -377,8 +396,10 @@
 <p>每个歌词文本都可以用一系列关键词来表示，如果按关键词建立到文本的倒排索引便可以实现根据关键词快速地检索到相关文本。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">invert_index = &#123;&#125;  <span class="hljs-comment"># 倒排索引</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> set_all_words:  <span class="hljs-comment"># 对于每个词</span><br>        temp = []  <span class="hljs-comment"># 用于保存包含词的歌名</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> lyrics_set.keys():  <span class="hljs-comment"># 对于每首歌</span><br>            <span class="hljs-keyword">if</span> i <span class="hljs-keyword">in</span> split_lyric[j]:  <span class="hljs-comment"># 若词在歌中</span><br>                temp.append(j)  <span class="hljs-comment"># 保存歌名</span><br>        invert_index[i] = tempvert_index[i] = temp<br>        <br></code></pre></td></tr></table></figure>
 <h2 id="建立vsm模型">4.建立VSM模型</h2>
-<p>向量空间模型(Vector Space Model, VSM)可以把提取文本内容中的关键词作为向量空间中的向量，并将向量间的相似度作为衡量文本相似度的标准。</p>
-<p>关键词的提取使用TF-IDF算法<strong>（term frequency–inverse document frequency，词频-逆文档频率）</strong>。TF是词频，表示词在文本中出现的频率；IDF是逆文档频率，表示词的常见程度。将两者相乘得到TF-IDF值，其大小表示了词对文本的重要程度，因此可以选取TF-IDF值大的作为文本的关键词。</p>
+<p>向量空间模型(Vector Space Model,
+VSM)可以把提取文本内容中的关键词作为向量空间中的向量，并将向量间的相似度作为衡量文本相似度的标准。</p>
+<p>关键词的提取使用TF-IDF算法<strong>（term frequency–inverse document
+frequency，词频-逆文档频率）</strong>。TF是词频，表示词在文本中出现的频率；IDF是逆文档频率，表示词的常见程度。将两者相乘得到TF-IDF值，其大小表示了词对文本的重要程度，因此可以选取TF-IDF值大的作为文本的关键词。</p>
 <p>我们取TF-IDF值最大的10个作为关键词。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">VSM</span>(<span class="hljs-params">invert_index, split_lyric</span>):<br><br>    IDF = &#123;&#125;  <span class="hljs-comment"># 统计每次词的逆文档频率</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> invert_index.keys():  <span class="hljs-comment"># 对于每个词</span><br>        IDF[j] = math.log(<span class="hljs-built_in">len</span>(split_lyric) / (<span class="hljs-built_in">len</span>(invert_index[j]) + <span class="hljs-number">1</span>))<br><br>    TF = &#123;&#125;  <span class="hljs-comment"># 统计词频</span><br>    TF_IDF = &#123;&#125;   <span class="hljs-comment"># 统计TF-IDF值</span><br>    key_word = &#123;&#125;   <span class="hljs-comment"># 统计每首歌的关键词</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> split_lyric.keys():  <span class="hljs-comment"># 对于每首歌</span><br>        count = <span class="hljs-built_in">dict</span>(Counter(split_lyric[j]))   <span class="hljs-comment"># 统计每个词在歌词中的出现次数</span><br>        temp_TF = &#123;&#125;<br>        temp_TI = &#123;&#125;<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> count.keys():  <span class="hljs-comment"># 对于每次词</span><br>            temp_TF[i] = count[i] / <span class="hljs-built_in">max</span>(count.values())  <span class="hljs-comment"># 计算TF</span><br>            temp_TI[i] = temp_TF[i] * IDF[i]    <span class="hljs-comment"># 计算TF-IDF</span><br>        TF[j] = temp_TF<br>        TF_IDF[j] = temp_TI<br>        all_sorted = <span class="hljs-built_in">sorted</span>(TF_IDF[j].items(), key=<span class="hljs-keyword">lambda</span> item: item[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 将每个词的TF-IDF值从大到小排序</span><br>        key_word[j] = [x[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> all_sorted <span class="hljs-keyword">if</span> x <span class="hljs-keyword">in</span> all_sorted[:<span class="hljs-number">10</span>]]    <span class="hljs-comment"># 取其中前10个作为关键词</span><br>    <span class="hljs-keyword">return</span> TF, key_word<br><br></code></pre></td></tr></table></figure>
 <h2 id="计算余弦相似度">5.计算余弦相似度</h2>
@@ -388,7 +409,8 @@
 cos(q,d_j)=\frac{\sum_{i=1}^{m}w_{ij}*w_{iq}}{\sqrt{\sum_{i=1}^{m}w_{ij}^2}*\sqrt{\sum_{i=1}^{m}w_{iq}^2}}
 \]</span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">compare</span>(<span class="hljs-params">song1, song2</span>):<br>    keyword = <span class="hljs-built_in">set</span>(key_word[song1] + key_word[song2]) <span class="hljs-comment"># 获取两首歌的关键词集合</span><br>    keyword = <span class="hljs-built_in">list</span>(keyword)<br><br>    tf1 = get_tf(keyword, song1)<br>    tf2 = get_tf(keyword, song2)<br><br><br>    result = dot(tf1, tf2) / (norm(tf1) * norm(tf2))    <span class="hljs-comment"># 计算其余弦相似度</span><br>    <span class="hljs-keyword">return</span> result<br><br></code></pre></td></tr></table></figure>
-<h2 id="检索和输入歌曲相似度最高的十首歌曲">6. 检索和输入歌曲相似度最高的十首歌曲</h2>
+<h2 id="检索和输入歌曲相似度最高的十首歌曲">6.
+检索和输入歌曲相似度最高的十首歌曲</h2>
 <p>首先用get_tf函数得到输入歌曲和每首歌曲的关键词的词频，然后计算输入歌曲和每首歌曲的余弦相似度。</p>
 <p>最后比较余弦相似度，余弦相似度越高，则该歌曲与输入歌曲的歌词越相似，输出前十首余弦相似度最大的歌曲。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">search</span>(<span class="hljs-params">song</span>):<br>    score = &#123;&#125;<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> TF.keys():  <span class="hljs-comment"># 对于每首歌</span><br>        score[j] = compare(song, j)  <span class="hljs-comment"># 获取与指定歌曲比对所得的余弦相似度作为得分</span><br>    score_sorted = <span class="hljs-built_in">sorted</span>(score.items(), key=<span class="hljs-keyword">lambda</span> item: item[<span class="hljs-number">1</span>], reverse=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 将得分从大到小排序</span><br>    result = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> score_sorted <span class="hljs-keyword">if</span> x <span class="hljs-keyword">in</span> score_sorted[<span class="hljs-number">1</span>:<span class="hljs-number">11</span>]]<br><span class="hljs-comment"># 取其中得分最高的10个</span><br>    <span class="hljs-keyword">return</span> result<br><br></code></pre></td></tr></table></figure>
@@ -399,14 +421,20 @@ cos(q,d_j)=\frac{\sum_{i=1}^{m}w_{ij}*w_{iq}}{\sqrt{\sum_{i=1}^{m}w_{ij}^2}*\sqr
 <h2 id="计算机视觉中的bag-of-words基础流程">2.计算机视觉中的Bag-of-words基础流程</h2>
 <h3 id="特征提取-sift">2.1 特征提取 （SIFT）</h3>
 <p>过分割、密集或随机采集、关键点或稳定区域、显著区域等方式使图像形成不同的图像块，并获得各图像块处的特征。</p>
-<h3 id="学习-视觉词典visual-vocabulary-k-means">2.2 学习 “视觉词典（visual vocabulary）” （k-means）</h3>
+<h3 id="学习-视觉词典visual-vocabulary-k-means">2.2 学习
+“视觉词典（visual vocabulary）” （k-means）</h3>
 <p>在上面提取完SIFT特征的步骤后,利用K-means聚类算法将提取的SIFT特征聚类生成视觉词典。</p>
 <p>K-means算法是度量样本间相似性的一种方法，该算法设置参数为K，把N个对象分成K个簇，簇内之间的相似度较高，而簇间的相似度较低。聚类中心有K个，视觉词典为K。</p>
-<h3 id="针对输入特征集根据视觉词典进行量化">2.3 针对输入特征集，根据视觉词典进行量化</h3>
-<h3 id="把输入图像转化成视觉单词visual-words的频率直方图">2.4 把输入图像转化成视觉单词（visual words）的频率直方图</h3>
+<h3 id="针对输入特征集根据视觉词典进行量化">2.3
+针对输入特征集，根据视觉词典进行量化</h3>
+<h3 id="把输入图像转化成视觉单词visual-words的频率直方图">2.4
+把输入图像转化成视觉单词（visual words）的频率直方图</h3>
 <p>这一步骤通过对图像特征提取，然后将提取出来的特征点，根据第三步，转换为频率直方图。</p>
-<p>这里在转换为频率直方图时候，有使用到TF-IDF，即词频(Term Frequency，TF)与逆文档频率(Inverse Document Frequency，IDF)乘积作为权值。引入这个权值的目的是为了降低一些重复特征所带来的影响。比如在BOW中，一些常用词汇譬如the，it，do等等词汇，不能体现文本内容特征，但是出现频率却很高，利用tf-idf可以降低这种不必要词汇的影响。同理，在BOF图像搜索中，图像之间也会有这样的无意义的特征出现，所以需要降低这类特征的权值。</p>
-<h3 id="构造特征到图像的倒排表通过倒排表快速索引相关图像">2.5 构造特征到图像的倒排表，通过倒排表快速索引相关图像</h3>
+<p>这里在转换为频率直方图时候，有使用到TF-IDF，即词频(Term
+Frequency，TF)与逆文档频率(Inverse Document
+Frequency，IDF)乘积作为权值。引入这个权值的目的是为了降低一些重复特征所带来的影响。比如在BOW中，一些常用词汇譬如the，it，do等等词汇，不能体现文本内容特征，但是出现频率却很高，利用tf-idf可以降低这种不必要词汇的影响。同理，在BOF图像搜索中，图像之间也会有这样的无意义的特征出现，所以需要降低这类特征的权值。</p>
+<h3 id="构造特征到图像的倒排表通过倒排表快速索引相关图像">2.5
+构造特征到图像的倒排表，通过倒排表快速索引相关图像</h3>
 <p>倒排表是一种逆向的查找方式，在BOW中大体的思路是通过已经提取出来的词汇，反向查找出现过这个词汇的文章。</p>
 <h3 id="根据索引结果进行直方图匹配">2.6 根据索引结果进行直方图匹配</h3>
 <p>当我们做完上面的步骤，就需要对直方图进行匹配。直方图的匹配给出输入图像的频率直方图，在数据库中查找K个最近邻的图像，根据这K个近邻来投票图像的分类结果。</p>
@@ -440,38 +468,45 @@ cos(q,d_j)=\frac{\sum_{i=1}^{m}w_{ij}*w_{iq}}{\sqrt{\sum_{i=1}^{m}w_{ij}^2}*\sqr
 <p>还有一个问题，导致如果匹配到前九张图片，就会显示不出来，原因是我的if语句用错了，应该是if,elif,else，而不是if,if,else。</p>
 </blockquote>
 <h1 id="三操作界面设计">三、操作界面设计</h1>
-<p>利用了pyqt，点击工具中的QTdesigner，利用到了Push Button、Lable、Text Browser。</p>
+<p>利用了pyqt，点击工具中的QTdesigner，利用到了Push Button、Lable、Text
+Browser。</p>
 <p>然后保存得到一个.ui文件，然后利用工具中的PyUIC，将.ui文件转换为.py文件。</p>
 <p>将输入的歌曲和图像显示在界面上，然后输出前十个候选结果，且将余弦相似度和得分显示在界面上。</p>
 <p>图像显示和文本显示用的方法是不同的，文本显示直接用setText即可将结果写入：</p>
 <p><img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232530108.png" srcset="/img/loading.gif" lazyload></p>
 <p>图像显示首先使用QtGui模块中的QPixmap类创建一个名为jpg的Pixmap对象，该对象表示Name路径指定的图像文件；然后使用.scaled()方法将图像缩放到与label标签具有相同的宽度和高度。这是为了确保图像适应标签的大小；最后用setPixmap()方法将缩放后的图像设置为label标签的当前图像。这将在界面上显示图像。</p>
 <figure>
-<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232558759.png" srcset="/img/loading.gif" lazyload alt="image-20230603232558759"><figcaption aria-hidden="true">image-20230603232558759</figcaption>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232558759.png" srcset="/img/loading.gif" lazyload alt="image-20230603232558759">
+<figcaption aria-hidden="true">image-20230603232558759</figcaption>
 </figure>
 <p>代码中在显示图片的输出结果时我没有用循环，只是笨拙的罗列，所以我就不都放完整代码了。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QMainWindow, QFileDialog, QApplication<br><span class="hljs-keyword">from</span> gui <span class="hljs-keyword">import</span> Ui_MainWindow<br><span class="hljs-keyword">from</span> PyQt5 <span class="hljs-keyword">import</span> QtGui<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyWindow</span>(QMainWindow, Ui_MainWindow):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, parent=<span class="hljs-literal">None</span></span>):<br>        <span class="hljs-built_in">super</span>(MyWindow, self).__init__(parent)<br>        self.setupUi(self)<br>        self.pushButton.clicked.connect(self.<span class="hljs-built_in">open</span>)  <span class="hljs-comment"># 将点击按钮与函数open连接</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open</span>(<span class="hljs-params">self</span>):<br>        Name, TYPE = QFileDialog.getOpenFileName(self, <span class="hljs-string">&quot;选择歌词&quot;</span>, <span class="hljs-string">&quot;./lyrics/&quot;</span>, <span class="hljs-string">&quot;Text Files (*.txt)&quot;</span>)  <span class="hljs-comment"># 获取选择的歌曲名字</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(Name, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:    <span class="hljs-comment"># 打开所选歌曲的歌词</span><br>            data = f.read()     <span class="hljs-comment"># 获取歌词</span><br>            self.textBrowser.setText(data)      <span class="hljs-comment"># 将歌词显示在textBrowser上</span><br>        Name = <span class="hljs-built_in">str</span>(Name).split(<span class="hljs-string">&quot;/&quot;</span>)[-<span class="hljs-number">1</span>]     <span class="hljs-comment"># 去掉歌名的位置信息</span><br>        Name = Name[<span class="hljs-number">6</span>:-<span class="hljs-number">4</span>]    <span class="hljs-comment"># 去掉歌名的后缀(.txt)</span><br><br>        self.label.setText(Name)    <span class="hljs-comment"># 将歌名显示在label上</span><br>        self.label_4.setText(get_keyword(Name)) <span class="hljs-comment">#将歌的关键词显示在label_4上</span><br>        result = search(Name)   <span class="hljs-comment"># 检索与所选歌歌词最相似的十首歌</span><br>        best = result[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]     <span class="hljs-comment"># 最相似的一首歌</span><br>        result = <span class="hljs-string">&#x27;\n&#x27;</span>.join([<span class="hljs-built_in">str</span>(x[<span class="hljs-number">1</span>]) + <span class="hljs-number">8</span> * <span class="hljs-string">&#x27; &#x27;</span> + <span class="hljs-built_in">str</span>(x[<span class="hljs-number">0</span>]) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> result])  <span class="hljs-comment"># 调整检索结果</span><br>        self.label_2.setText(result)  <span class="hljs-comment"># 将检索结果显示在label_2上</span><br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;lyrics&#x27;</span> + best + <span class="hljs-string">&#x27;.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:   <span class="hljs-comment"># 打开相似效果最好的歌词</span><br>            data = f.read()  <span class="hljs-comment"># 获取歌词</span><br>            self.textBrowser_2.setText(data)  <span class="hljs-comment"># 将歌词显示在textBrowser_2上</span><br>        self.label_5.setText(get_keyword(best)) <span class="hljs-comment">#将歌的关键词显示在label_5上</span><br><br>        Name0, TYPE = QFileDialog.getOpenFileName(self, <span class="hljs-string">&quot;选择图片&quot;</span>, <span class="hljs-string">&quot;D:/pycharm/picture/paris_invalides/&quot;</span>, <span class="hljs-string">&quot;Text Files (*.jpg)&quot;</span>)  <span class="hljs-comment"># 获取选择的图片名字</span><br>        jpg = QtGui.QPixmap(Name0).scaled(self.label_8.width(), self.label_8.height())<br>        self.label_8.setPixmap(jpg)     <span class="hljs-comment"># 将输入图片显示在label_8上</span><br><br>        Name0 = <span class="hljs-built_in">str</span>(Name0).split(<span class="hljs-string">&quot;/&quot;</span>)[-<span class="hljs-number">1</span>]     <span class="hljs-comment"># 去掉图片的位置信息</span><br>        Name0 = Name0[-<span class="hljs-number">6</span>:-<span class="hljs-number">4</span>]    <span class="hljs-comment"># 去掉图片的后缀(.txt)</span><br>        i=<span class="hljs-built_in">int</span>(Name0)<br>        src, res, score=get(i)<br>        self.label_10.setText(<span class="hljs-built_in">str</span>(score))  <span class="hljs-comment"># 将搜索得分显示在label_10上</span><br>        <span class="hljs-comment">#将搜索到的10张图片显示</span><br>        <span class="hljs-keyword">if</span> res[<span class="hljs-number">1</span>]&lt;<span class="hljs-number">10</span>:<br>                Name1 = <span class="hljs-string">&quot;D:/pycharm/picture/paris_invalides_00000&quot;</span>+<span class="hljs-built_in">str</span>(res[<span class="hljs-number">1</span>])+<span class="hljs-string">&quot;.jpg&quot;</span><br>                jpg1 = QtGui.QPixmap(Name1).scaled(self.label_12.width(), self.label_12.height())<br>                self.label_12.setPixmap(jpg1)<br>        <span class="hljs-keyword">else</span>:<br>                Name1 = <span class="hljs-string">&quot;D:/pycharm/picture/paris_invalides_0000&quot;</span> + <span class="hljs-built_in">str</span>(res[<span class="hljs-number">1</span>]) + <span class="hljs-string">&quot;.jpg&quot;</span><br>                jpg1 = QtGui.QPixmap(Name1).scaled(self.label_12.width(), self.label_12.height())<br>                self.label_12.setPixmap(jpg1)<br>……<br><br></code></pre></td></tr></table></figure>
 <h1 id="四程序运行结果图">四、程序运行结果图</h1>
 <h2 id="歌词爬取结果">1.歌词爬取结果</h2>
 <figure>
-<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232945163.png" srcset="/img/loading.gif" lazyload alt="所有歌词"><figcaption aria-hidden="true">所有歌词</figcaption>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603232945163.png" srcset="/img/loading.gif" lazyload alt="所有歌词">
+<figcaption aria-hidden="true">所有歌词</figcaption>
 </figure>
 <figure>
-<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233009341.png" srcset="/img/loading.gif" lazyload alt="单个歌词"><figcaption aria-hidden="true">单个歌词</figcaption>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233009341.png" srcset="/img/loading.gif" lazyload alt="单个歌词">
+<figcaption aria-hidden="true">单个歌词</figcaption>
 </figure>
 <h2 id="图片爬取结果">2.图片爬取结果</h2>
 <p>猫：</p>
 <figure>
-<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233058696.png" srcset="/img/loading.gif" lazyload alt="“猫”的爬取结果"><figcaption aria-hidden="true">“猫”的爬取结果</figcaption>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233058696.png" srcset="/img/loading.gif" lazyload alt="“猫”的爬取结果">
+<figcaption aria-hidden="true">“猫”的爬取结果</figcaption>
 </figure>
 <p>车：</p>
 <figure>
-<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233130164.png" srcset="/img/loading.gif" lazyload alt="“车”的爬取结果"><figcaption aria-hidden="true">“车”的爬取结果</figcaption>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233130164.png" srcset="/img/loading.gif" lazyload alt="“车”的爬取结果">
+<figcaption aria-hidden="true">“车”的爬取结果</figcaption>
 </figure>
 <p>......</p>
 <h2 id="最终效果">3.最终效果</h2>
 <figure>
-<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233219873.png" srcset="/img/loading.gif" lazyload alt="最终运行结果"><figcaption aria-hidden="true">最终运行结果</figcaption>
+<img src="/2023/06/02/%E5%9F%BA%E4%BA%8E%E6%96%87%E6%9C%AC%E5%92%8C%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%9A%E5%AA%92%E4%BD%93%E6%A3%80%E7%B4%A2%E7%B3%BB%E7%BB%9F/image-20230603233219873.png" srcset="/img/loading.gif" lazyload alt="最终运行结果">
+<figcaption aria-hidden="true">最终运行结果</figcaption>
 </figure>
 <h2 id="总结与不足">4.总结与不足</h2>
 <p>可以看出文本检索实现的很好，图像检索有八个正确结果，还算不错。</p>

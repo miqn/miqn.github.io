@@ -336,7 +336,8 @@
             
               <div class="markdown-body">
                 
-                <p>2023/6/14 12:15 昨天结束了生物信息基础的期末考试，而在今天终于把生物信息学的知识整理完毕，历时一个星期，收工！</p>
+                <p>2023/6/14 12:15
+昨天结束了生物信息基础的期末考试，而在今天终于把生物信息学的知识整理完毕，历时一个星期，收工！</p>
 <h1 id="一序列分析">一、序列分析</h1>
 <h2 id="序列的相似性">1.序列的相似性</h2>
 <h3 id="序列比较">1.1 序列比较</h3>
@@ -357,9 +358,11 @@
 <p>子序列的描述</p>
 <ul>
 <li>子序列 <sub>0</sub>:s:<sub>i</sub> 称为前缀，即prefix(s,i)</li>
-<li>子序列 <sub>i</sub>:s:<sub>|s|</sub>称为后缀，即suffix(s, |s|-i)</li>
+<li>子序列 <sub>i</sub>:s:<sub>|s|</sub>称为后缀，即suffix(s,
+|s|-i)</li>
 <li><sub>i</sub>:s: <sub>i</sub> — 为空序列</li>
-<li><sub>j-1</sub>:s:<sub>j</sub> —表示s 中的第j 个字符，简记为s<sub>j</sub></li>
+<li><sub>j-1</sub>:s:<sub>j</sub> —表示s 中的第j
+个字符，简记为s<sub>j</sub></li>
 </ul>
 <p>子序列：选取s中的某些字符或删除s中的某些字符而形成s的一部分。</p>
 <p>子串： 由s中相继的字符所组成</p>
@@ -369,11 +372,13 @@
 <h3 id="序列相似性比较">1.3 序列相似性比较</h3>
 <p>相似程度的刻画：</p>
 <ol type="1">
-<li>两个序列的相似度: 它是两个序列的函数，其值越大，表示两个序列越相似</li>
+<li>两个序列的相似度:
+它是两个序列的函数，其值越大，表示两个序列越相似</li>
 <li>两个序列的距离：距离越大，则两个序列的相似度就越小。</li>
 </ol>
 <blockquote>
-<p>汉明(Hamming)距离：对于两条长度相等的序列，汉明距离等于对应位点 上字符不同的数目</p>
+<p>汉明(Hamming)距离：对于两条长度相等的序列，汉明距离等于对应位点
+上字符不同的数目</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608114003804.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <p>序列比对(Alignment)是序列比较的基本操作。是关于序列相似性的定性描述。</p>
@@ -392,9 +397,12 @@
 </ul>
 <ol type="1">
 <li>Match (a，a)：字符匹配</li>
-<li>Delete (a，-) ：从第一条序列删除字符a (或在第二条序列相应的位置插入空位字符)</li>
-<li>Insert (-，b)：在第一条序列插入空位字符(或删除第二条序列中的对应字符b)</li>
-<li>Replace (a，b)：以第二条序列中的字符b替换第一条序列中的字符a，且a和b不相同</li>
+<li>Delete (a，-) ：从第一条序列删除字符a
+(或在第二条序列相应的位置插入空位字符)</li>
+<li>Insert
+(-，b)：在第一条序列插入空位字符(或删除第二条序列中的对应字符b)</li>
+<li>Replace
+(a，b)：以第二条序列中的字符b替换第一条序列中的字符a，且a和b不相同</li>
 </ol>
 <p>编辑距离的定义：两个字符串之间，由一个字符串转换成另一个字符串所需要进行的<strong>最少</strong>编辑操作次数；其中的编辑操作包括把一个字符替换成另一个字符、插入一个字符和删除一个字符。</p>
 <blockquote>
@@ -424,7 +432,8 @@
 </ul></li>
 </ul>
 <blockquote>
-<p>对于核酸序列或蛋白质序列的比对，打分函数 的定义需要考虑其生物学意义。</p>
+<p>对于核酸序列或蛋白质序列的比对，打分函数
+的定义需要考虑其生物学意义。</p>
 </blockquote>
 <h4 id="序列比对与最优序列比对">1.5.3 序列比对与最优序列比对</h4>
 <p>序列比对：通过字符匹配、替换、插入或删除，使两个序列的长度相等；但不能出现两者全为空位的列，且每一列只能出现匹配、失配和出现1个空位这3种可能情形之一。</p>
@@ -462,18 +471,21 @@
 <p>改进策略：滑动窗口技术</p>
 <p>使用滑动窗口之间的比较去代替单个位点之间的比较。</p>
 <ul>
-<li>比如设窗口大小(window size)为10，相似度阈值为8，则每次比较取10个连续的字符，若相同字符数超过8个，则进行标记为窗口相似。</li>
+<li>比如设窗口大小(window
+size)为10，相似度阈值为8，则每次比较取10个连续的字符，若相同字符数超过8个，则进行标记为窗口相似。</li>
 </ul>
 <p>优点：基于滑动窗口的点矩阵方法可以明显地降低点阵图的噪声，且明确无误的指示出两条序列具有显著相似性的区域。</p>
 <p>滑动窗口法的效果比较：</p>
 <ul>
-<li>下图的(b)为人类(Homosapiens)与黑猩猩(Pongo pygmaeus)的β球蛋白基因序列进行比较的完整点阵图。</li>
+<li>下图的(b)为人类(Homosapiens)与黑猩猩(Pongo
+pygmaeus)的β球蛋白基因序列进行比较的完整点阵图。</li>
 <li>(c)为利用滑动窗口对以上的两种球蛋白基因序列进行比较的点阵图，其中窗口大小为10个核苷酸，相似度阈值(threshold)为8。</li>
 </ul>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608181834815.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="两条序列的比较">2.两条序列的比较</h2>
 <h3 id="序列比对打分矩阵">2.1 序列比对打分矩阵</h3>
-<p>两条序列 s 和 t 的比对得分等于将 s 转化为 t 所用的所有编辑操作的得分总和。</p>
+<p>两条序列 s 和 t 的比对得分等于将 s 转化为 t
+所用的所有编辑操作的得分总和。</p>
 <p>详细列出各种字符替换的得分，并排列成表格(或矩阵)，即为打分矩阵。</p>
 <blockquote>
 <p>定义打分矩阵是进行序列比较的基础。</p>
@@ -509,10 +521,12 @@
 <li>分别计分</li>
 <li>选取最高得分者</li>
 </ul>
-<p>两条序列可能的比对数目是<strong>序列长度的指数函数</strong>；随着序列长度的增长，计算量呈指数增长。穷举法不可行！ <span class="math display">\[
+<p>两条序列可能的比对数目是<strong>序列长度的指数函数</strong>；随着序列长度的增长，计算量呈指数增长。穷举法不可行！
+<span class="math display">\[
 比对数目=\sum_{k=0}^{min(m,n)}\frac{(m+n-k)!}{(n-k)!(m-k)!k!}
 \]</span></p>
-<h3 id="动态规划dynamic-programming全局序列比对">2.3 动态规划（Dynamic Programming）—全局序列比对</h3>
+<h3 id="动态规划dynamic-programming全局序列比对">2.3 动态规划（Dynamic
+Programming）—全局序列比对</h3>
 <h4 id="认识动态规划算法">2.3.1 认识动态规划算法</h4>
 <p>动态规划算法是寻找最优比对的一个方法。</p>
 <p>利用同一问题已计算出的局部解求解<strong>全局解</strong>。</p>
@@ -567,7 +581,8 @@
 </ul></li>
 <li>根据状态变量确定得分函数和总的目标函数：
 <ul>
-<li>序列前缀串的得分作为各阶段的得分函数，完整 序列的得分函数即构成总的目标函数</li>
+<li>序列前缀串的得分作为各阶段的得分函数，完整
+序列的得分函数即构成总的目标函数</li>
 </ul></li>
 <li>建立各阶段状态变量的转移过程，确定状态转移方程：
 <ul>
@@ -577,19 +592,22 @@
 <h4 id="动态规划辅助矩阵">2.3.3 动态规划辅助矩阵</h4>
 <p>在开始算法之前，我们还要理解一个概念是<strong>动态规划辅助矩阵</strong>：考虑两个序列s与t</p>
 <ul>
-<li><p>设 m = |s|, n= |t|, 则s共有m + 1个前缀串, t共有n + 1个前缀(包括空串)</p></li>
+<li><p>设 m = |s|, n= |t|, 则s共有m + 1个前缀串, t共有n +
+1个前缀(包括空串)</p></li>
 <li><p>动态规划辅助矩阵A为：(m + 1) × (n + 1)</p></li>
 <li><p>矩阵A的(i,j)元素为前缀的最优比对得分: <span class="math display">\[
 A(i,j)=sim(prefix(s,j),prefix(t,j))或A(i,j)=sim(s[0..i],t[0..j])
 \]</span></p></li>
 <li><p><strong>算法的核心步骤</strong>：通过状态转移方程，维护一个动态规划辅助矩阵A用以存放这些得分。</p>
 <ul>
-<li>算法从最短的前缀开始，递推地得到更长的前缀串的相似度，并不直接计算 sim(s,t)</li>
+<li>算法从最短的前缀开始，递推地得到更长的前缀串的相似度，并不直接计算
+sim(s,t)</li>
 </ul></li>
 <li><p>全局序列比对也称为Needleman-Wunsch(NW)算法。</p></li>
 </ul>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png" srcset="/img/loading.gif" lazyload alt="动态规划辅助矩阵A"><figcaption aria-hidden="true">动态规划辅助矩阵A</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png" srcset="/img/loading.gif" lazyload alt="动态规划辅助矩阵A">
+<figcaption aria-hidden="true">动态规划辅助矩阵A</figcaption>
 </figure>
 <p><strong>计算A(i,j)的方法</strong>：</p>
 <ul>
@@ -609,7 +627,8 @@ A(i,j)=sim(prefix(s,j),prefix(t,j))或A(i,j)=sim(s[0..i],t[0..j])
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608195946697.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p></li>
 </ul></li>
 <li><p>状态转移方程： <span class="math display">\[
-A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\end{cases}
+A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\
+A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\end{cases}
 \]</span></p></li>
 </ul>
 <h4 id="辅助矩阵的初始化">2.3.4 辅助矩阵的初始化</h4>
@@ -631,28 +650,33 @@ A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p
 <blockquote>
 <p>注意：各轴第一个元素的索引下标为0, 且初始化A(0,0)=0。</p>
 </blockquote>
-<h4 id="动态规划辅助矩阵的维护过程">2.3.5 动态规划辅助矩阵的维护过程</h4>
+<h4 id="动态规划辅助矩阵的维护过程">2.3.5
+动态规划辅助矩阵的维护过程</h4>
 <p>计算顺序：</p>
 <ol type="1">
 <li>计算过程从A(0,0)开始，到A(m, n)结束。</li>
-<li>计算A(i,j)时，只要已知A(i-1,j), A(i-1,j-1), A(i,j-1)即可使用递推公式计算。
+<li>计算A(i,j)时，只要已知A(i-1,j), A(i-1,j-1),
+A(i,j-1)即可使用递推公式计算。
 <ul>
 <li>可按行计算——每行从左到右，也可按列计算—— 每列从上到下。</li>
 <li>第一行第一列可以单纯的-2来计算，因为矩阵横向的移动表示在纵轴序列中加入一个空位，纵向的移动表示在横轴序列中加入了一个空位。</li>
 </ul></li>
-<li>在计算A(i,j)后，需要<strong>保存</strong>A(i,j)是从(i − 1,j), (i − 1,j − 1), (i,j − 1) 中的哪一个位置推进的。
+<li>在计算A(i,j)后，需要<strong>保存</strong>A(i,j)是从(i − 1,j), (i −
+1,j − 1), (i,j − 1) 中的哪一个位置推进的。
 <ul>
 <li>保存计算路径，以便于后续处理</li>
 </ul></li>
 </ol>
-<h4 id="用序列比对的动态规划求解问题的实例">2.3.6 用序列比对的动态规划求解问题的实例</h4>
+<h4 id="用序列比对的动态规划求解问题的实例">2.3.6
+用序列比对的动态规划求解问题的实例</h4>
 <p>给定序列s和t，打分函数定义如下。请使用NW算法找出最优比对：s=AAAC，t=AGC</p>
 <p>打分函数：<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608202753737.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>基本求解步骤：</strong></p>
 <ul>
 <li><p>建立动态规划辅助矩阵</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png" srcset="/img/loading.gif" lazyload alt="动态规划辅助矩阵A"><figcaption aria-hidden="true">动态规划辅助矩阵A</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608194456553.png" srcset="/img/loading.gif" lazyload alt="动态规划辅助矩阵A">
+<figcaption aria-hidden="true">动态规划辅助矩阵A</figcaption>
 </figure></li>
 <li><p>初始化动态规划辅助矩阵</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203000442.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"></p></li>
@@ -664,7 +688,8 @@ A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p
 <li><p>回溯计算的路径，以找到最优比对</p>
 <ul>
 <li><p>从A(m,n)开始，反推</p></li>
-<li><p>假设在反推到达A(i,j)时，根据保存的计算路径判断A(i,j)究竟是利用A(i-1,j), A(i-1,j-1), A(i,j-1)中的哪一个计算而得到的</p></li>
+<li><p>假设在反推到达A(i,j)时，根据保存的计算路径判断A(i,j)究竟是利用A(i-1,j),
+A(i-1,j-1), A(i,j-1)中的哪一个计算而得到的</p></li>
 <li><p>找到这个点后，由从此点出发，一直到A(0,0)为止</p></li>
 <li><p>矩阵横向的移动表示在纵轴序列中加入一个空位，纵向的移动表示在横轴序列中加入了一个空位；而斜对角向的移动表示两序列各自相应的字符进行比对。</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230608203832883.png" srcset="/img/loading.gif" lazyload></p></li>
@@ -676,7 +701,8 @@ A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p
 </ul></li>
 </ul></li>
 </ul>
-<h3 id="最优局部比对子序列与完整序列的比对">2.4 最优局部比对—子序列与完整序列的比对</h3>
+<h3 id="最优局部比对子序列与完整序列的比对">2.4
+最优局部比对—子序列与完整序列的比对</h3>
 <h4 id="认识最优局部比对">2.4.1 认识最优局部比对</h4>
 <p>最优全局比对：两条长度相近的序列进行比对。</p>
 <p>最优局部比对：</p>
@@ -693,24 +719,33 @@ A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p
 </ul>
 <p>把一个较短的序列与一个较长的完整序列进行比对，试图找出<strong>最优的局部匹配</strong>。</p>
 <ul>
-<li>给定两条序列 <sub>0</sub>:s:<sub>m</sub>和<sub>0</sub>:t:<sub>n</sub> ，<strong>从<sub>0</sub>:t:<sub>n</sub>中寻找一个子序列</strong>，使得两条序列 sim(s, <sub>i</sub>:t:<sub>j</sub>)最大</li>
+<li>给定两条序列
+<sub>0</sub>:s:<sub>m</sub>和<sub>0</sub>:t:<sub>n</sub>
+，<strong>从<sub>0</sub>:t:<sub>n</sub>中寻找一个子序列</strong>，使得两条序列
+sim(s, <sub>i</sub>:t:<sub>j</sub>)最大</li>
 </ul>
 <h4 id="最优局部序列比对的实现">2.4.2 最优局部序列比对的实现</h4>
 <p>寻找最优的局部比对时，需要避免对序列一端或者两端出现的空位进行罚分。</p>
-<p>由于不计删除序列t前缀的得分，因此在对动态规划辅助矩阵初始化时，按照下述方式处理： <span class="math display">\[
+<p>由于不计删除序列t前缀的得分，因此在对动态规划辅助矩阵初始化时，按照下述方式处理：
+<span class="math display">\[
 A(_0:s:_0,_0:t:_j)=0
 \]</span> 局部比对也不计删除序列t后缀的得分，因此: <span class="math display">\[
-A(i,j)=max\begin{cases} A(i,j-1)\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\end{cases}
+A(i,j)=max\begin{cases} A(i,j-1)\\
+A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\end{cases}
 \]</span> 动态规划辅助矩阵最后一行的更新公式: <span class="math display">\[
-A(m,j)=max\begin{cases} A(m,j-1)+0\\ A(m-1,j-1)+p(s[m],t[j])\\A(m-1,j)+p(s[m],-)\end{cases}
+A(m,j)=max\begin{cases} A(m,j-1)+0\\
+A(m-1,j-1)+p(s[m],t[j])\\A(m-1,j)+p(s[m],-)\end{cases}
 \]</span> 局部最优序列比对路径：</p>
 <ul>
 <li>从最后一行(第m行)中寻找最大值，反推最优路径到达第一行
 <ul>
-<li>由位置(m, j) 出发，反推最优比对路径，最终通过<strong>斜线</strong>(非空位)到达(1, i)，其中 j 是第 m 行中取得最大分值的最小列下标。</li>
+<li>由位置(m, j)
+出发，反推最优比对路径，最终通过<strong>斜线</strong>(非空位)到达(1,
+i)，其中 j 是第 m 行中取得最大分值的最小列下标。</li>
 </ul></li>
 </ul>
-<h3 id="最优局部比对寻找最大的相似子序列">2.5 最优局部比对——寻找最大的相似子序列</h3>
+<h3 id="最优局部比对寻找最大的相似子序列">2.5
+最优局部比对——寻找最大的相似子序列</h3>
 <p>对两条序列都进行部分比对，以寻找最大的相似子串。</p>
 <ul>
 <li>初始化
@@ -724,7 +759,8 @@ A(m,j)=max\begin{cases} A(m,j-1)+0\\ A(m-1,j-1)+p(s[m],t[j])\\A(m-1,j)+p(s[m],-)
 </blockquote>
 <ul>
 <li><p>状态转移方程 <span class="math display">\[
-A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\\0\end{cases}
+A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\
+A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p(s[i],-)\\0\end{cases}
 \]</span></p>
 <ul>
 <li>对于每个A(i,j)，一定存在一个得分为“0”的空后缀比对，因此矩阵A中的所有元素大于或等于“0”</li>
@@ -735,7 +771,8 @@ A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p
 <li>该值是最优局部比对得分</li>
 <li>该值对应的位置为序列局部比对的末点</li>
 <li>反向推演前面的最优路径，直到局部比对的起点——局部比对的起点取值为0</li>
-<li>矩阵A中元素的含义与基本算法有所不同：A(i,j)中每个元素的值代表序列<sub>0</sub>:s:<sub>i</sub> 某个后缀和序列<sub>0</sub>:t:<sub>j</sub> 某个后缀的最佳比对</li>
+<li>矩阵A中元素的含义与基本算法有所不同：A(i,j)中每个元素的值代表序列<sub>0</sub>:s:<sub>i</sub>
+某个后缀和序列<sub>0</sub>:t:<sub>j</sub> 某个后缀的最佳比对</li>
 </ul></li>
 </ul>
 <h3 id="准全局比对">2.6 准全局比对</h3>
@@ -784,7 +821,9 @@ A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p
 <li>当给定一个新序列时，根据序列特征，可以判断这个序列是否属于该家族。</li>
 </ul></li>
 </ul>
-<p>多序列比对定义：有k ( &gt; 2 ) 个序列s<sub>1</sub> , s<sub>2</sub> , ... ,s<sub>k</sub>，每个序列由同一个字母表中的字符组成。通过插入字符操作，使得各序列达到一样的长度，从而形成这些序列的多重比对。</p>
+<p>多序列比对定义：有k ( &gt; 2 ) 个序列s<sub>1</sub> , s<sub>2</sub> ,
+...
+,s<sub>k</sub>，每个序列由同一个字母表中的字符组成。通过插入字符操作，使得各序列达到一样的长度，从而形成这些序列的多重比对。</p>
 <p>目标：</p>
 <p>发现多个序列的共性</p>
 <p>发现与结构和功能相关的保守序列片段</p>
@@ -804,7 +843,9 @@ A(i,j)=max\begin{cases} A(i,j-1)+p(-,t[j])\\ A(i-1,j-1)+p(s[i],t[j])\\A(i-1,j)+p
 SP(c_1,c_2,...,c_k)=\sum_{i=1}^{k-1}\sum_{j=i+1}^{k}p(c_i,c_j)
 \]</span></p>
 <ul>
-<li><p>其中c<sub>1</sub> ,c<sub>2</sub> ,…,c<sub>k</sub>是一列中的k个字符，p(. , . )是关于一对字符相似性的打分函数。</p>
+<li><p>其中c<sub>1</sub> ,c<sub>2</sub>
+,…,c<sub>k</sub>是一列中的k个字符，p(. , .
+)是关于一对字符相似性的打分函数。</p>
 <p>总得分基于字符两两比较得分。</p>
 <p>把一个多重比对所有列的得分全部加起来，其和即为该多重序列比对的得分。</p></li>
 </ul>
@@ -818,7 +859,8 @@ SP(c_1,c_2,...,c_k)=\sum_{i=1}^{k-1}\sum_{j=i+1}^{k}p(c_i,c_j)
 </ul>
 <p>基于SP打分函数的逐对比对：</p>
 <ul>
-<li><p>引入打分函数的定义域扩充p(−,−) = 0后,则可以先对每一对序列进行两两比对，再求和： <span class="math display">\[
+<li><p>引入打分函数的定义域扩充p(−,−) =
+0后,则可以先对每一对序列进行两两比对，再求和： <span class="math display">\[
 SP(s_1,s_2,...,s_k)=\sum_{i&lt;j}^{k}sim(s_i,s_j)
 \]</span></p>
 <ul>
@@ -829,7 +871,8 @@ SP(s_1,s_2,...,s_k)=\sum_{i&lt;j}^{k}sim(s_i,s_j)
 <h3 id="多条序列比对的方法">3.2 多条序列比对的方法</h3>
 <p>精确比对：多重比对的动态规划算法</p>
 <p>渐进比对：星形比对、树形比对</p>
-<h4 id="多重序列比对的动态规划算法">3.2.1 多重序列比对的动态规划算法</h4>
+<h4 id="多重序列比对的动态规划算法">3.2.1
+多重序列比对的动态规划算法</h4>
 <p>对于3条序列，每1种可能的比对可以用3维晶格中的1条路径来表示，每1维对应于1条序列。</p>
 <ul>
 <li>路径的起点为晶格的<strong>左上后角</strong>，终点为晶格的<strong>右下前角</strong>。</li>
@@ -837,7 +880,8 @@ SP(s_1,s_2,...,s_k)=\sum_{i&lt;j}^{k}sim(s_i,s_j)
 <li>对于两条序列比对，其得分矩阵相当于2维晶格(平面)。</li>
 </ul>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609103503859.png" srcset="/img/loading.gif" lazyload alt="三条序列比对"><figcaption aria-hidden="true">三条序列比对</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609103503859.png" srcset="/img/loading.gif" lazyload alt="三条序列比对">
+<figcaption aria-hidden="true">三条序列比对</figcaption>
 </figure>
 <h5 id="多重比对的动态规划的基本原理">（1）多重比对的动态规划的<strong>基本原理</strong>：</h5>
 <ul>
@@ -846,12 +890,15 @@ SP(s_1,s_2,...,s_k)=\sum_{i&lt;j}^{k}sim(s_i,s_j)
 <li>实际计算时可按先低维再高维(对应于先行后列)。</li>
 <li>二重序列比对时，可将动态规划算法的计算过程看成是在二维平面上按照一定顺序访问每个节点，每个节点的得分代表两个序列前缀的最优比对的得分。</li>
 </ul></li>
-<li>当前位点的得分计算取决于与它相邻的(2k – 1)条边，分别对应于匹配、替换或引入空位等3种编辑操作。</li>
+<li>当前位点的得分计算取决于与它相邻的(2k –
+1)条边，分别对应于匹配、替换或引入空位等3种编辑操作。</li>
 <li>计算各操作的得分时，选择一个得分最大的操作，将得分和存放于该节点。</li>
 </ul>
 <h5 id="状态转移方程">（2）状态转移方程：</h5>
 <p><span class="math display">\[
-s_{i,j,k}=max\begin{cases} s_{i-1,j,k} \enspace +\delta(\upsilon_i,-,-) \\ s_{i,j-1,k} \enspace +\delta(-,\omega_j,-)\\s_{i,j,k-1} \enspace +\delta(-,-,\mu_k)\\s_{i-1,j-1,k}  +\delta(\upsilon_i,\omega_j,-)\\s_{i-1,j,k-1}  +\delta(\upsilon_i,-,\mu_k)\\s_{i,j-1,k-1}  +\delta(-,\omega_j,\mu_k)\\s_{i-1,j-1,k-1}  +\delta(\upsilon_i,\omega_j,\mu_k)\end{cases}
+s_{i,j,k}=max\begin{cases} s_{i-1,j,k} \enspace +\delta(\upsilon_i,-,-)
+\\ s_{i,j-1,k} \enspace +\delta(-,\omega_j,-)\\s_{i,j,k-1} \enspace
++\delta(-,-,\mu_k)\\s_{i-1,j-1,k}  +\delta(\upsilon_i,\omega_j,-)\\s_{i-1,j,k-1}  +\delta(\upsilon_i,-,\mu_k)\\s_{i,j-1,k-1}  +\delta(-,\omega_j,\mu_k)\\s_{i-1,j-1,k-1}  +\delta(\upsilon_i,\omega_j,\mu_k)\end{cases}
 \]</span></p>
 <h5 id="dp算法的计算过程">（3）DP算法的计算过程：</h5>
 <p>动态规划的计算过程是一个递推更新动态规划辅助矩阵的过程。</p>
@@ -866,7 +913,8 @@ s_{i,j,k}=max\begin{cases} s_{i-1,j,k} \enspace +\delta(\upsilon_i,-,-) \\ s_{i,
 <ul>
 <li>对于k条序列，动态算法需要处理k维空间的每个节点，计算量与节点数成正比（与各序列长度的乘积的乘积）。
 <ul>
-<li>注意到前趋节点的个数为2<sup>k</sup> – 1，因此动态规划算法复杂度为O(2<sup>k</sup> N<sup>k</sup>)。</li>
+<li>注意到前趋节点的个数为2<sup>k</sup> –
+1，因此动态规划算法复杂度为O(2<sup>k</sup> N<sup>k</sup>)。</li>
 <li>随着待比对的序列数目k的增加，动态规划的计算量和所要求的计算空间呈<strong>指数</strong>形式猛增。</li>
 </ul></li>
 </ul>
@@ -927,7 +975,8 @@ sim(s_j,s_c)
 <li>把多重比对转化为k个两两比对。</li>
 <li>聚合过程：从某一个两两比对开始，比如sc和s1，然后逐步加上其他的两两比对。
 <ul>
-<li>对于空位采用”一次加入空白，次次保留空白”原则: 逐增加 s<sub>c</sub>中的空位字符，以适应其他的比对，但不删除s<sub>c</sub>中已经存在的空位字符。</li>
+<li>对于空位采用”一次加入空白，次次保留空白”原则: 逐增加
+s<sub>c</sub>中的空位字符，以适应其他的比对，但不删除s<sub>c</sub>中已经存在的空位字符。</li>
 </ul></li>
 </ol>
 <h4 id="渐进方法树形比对">3.2.3 渐进方法—树形比对</h4>
@@ -937,7 +986,8 @@ sim(s_j,s_c)
 <ul>
 <li>该矩阵反映逐对序列之间的关系。</li>
 </ul></li>
-<li>利用该相似性矩阵，构建一棵“<strong>指导树(guide tree)</strong>”。</li>
+<li>利用该相似性矩阵，构建一棵“<strong>指导树(guide
+tree)</strong>”。</li>
 <li>从<strong>最接近的一对序列出发</strong>，根据指导树逐步填加序列，聚合成多重比对；直到所有序列处理完毕为止。</li>
 </ol>
 <h2 id="在数据库中进行序列同源搜索">4.在数据库中进行序列同源搜索</h2>
@@ -958,7 +1008,8 @@ sim(s_j,s_c)
 <li>BLAST及其相关算法</li>
 <li>FASTA及其相关算法</li>
 </ul>
-<h3 id="常用的搜索方法blast搜索算法">4.2 常用的搜索方法—BLAST搜索算法</h3>
+<h3 id="常用的搜索方法blast搜索算法">4.2
+常用的搜索方法—BLAST搜索算法</h3>
 <p>主要特征：原始的BLAST算法是<strong>不带空位的局部比对方法</strong>。</p>
 <p>给定一个查询序列，BLAST返回所有查询序列与数据库序列得分<strong>超过某个阈值S</strong>的片段对。</p>
 <blockquote>
@@ -985,7 +1036,8 @@ sim(s_j,s_c)
 <li><p>对匹配上的单词串，逐步向两端延伸该匹配，直到得分低于某个阈值为止。</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609165100296.png" srcset="/img/loading.gif" lazyload style="zoom:67%;"></p></li>
 </ol>
-<h3 id="常用的搜索方法fasta搜索算法">4.3 常用的搜索方法—FASTA搜索算法</h3>
+<h3 id="常用的搜索方法fasta搜索算法">4.3
+常用的搜索方法—FASTA搜索算法</h3>
 <p>FASTA是另一种常用的序列比对及搜索工具：</p>
 <ul>
 <li>能够进行<strong>带空位的局部比对</strong>。</li>
@@ -1002,7 +1054,8 @@ sim(s_j,s_c)
 <p>例：“单词”长度为1的序列如下：</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609170226299.png" srcset="/img/loading.gif" lazyload alt="查询序列" style="zoom:67%;"></p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609171158162.png" srcset="/img/loading.gif" lazyload alt="查询序列表格"><figcaption aria-hidden="true">查询序列表格</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609171158162.png" srcset="/img/loading.gif" lazyload alt="查询序列表格">
+<figcaption aria-hidden="true">查询序列表格</figcaption>
 </figure></li>
 <li><p>对目标序列建立另一个表格，用于比较目标序列与查询序列中各残基的位置之差。</p>
 <p>查询序列：<strong>FAMLGFIKYLPGCM</strong></p>
@@ -1015,11 +1068,13 @@ sim(s_j,s_c)
 <blockquote>
 <p>由于FASTA是对已知区域进行比对，较原始算法(即用动态规划算法进行查询序列与所有目标序列间的比对)要快得多。</p>
 </blockquote>
-<h3 id="数据库搜索结果得分及统计显著性">4.4 数据库搜索结果得分及统计显著性</h3>
+<h3 id="数据库搜索结果得分及统计显著性">4.4
+数据库搜索结果得分及统计显著性</h3>
 <p>提出原因：</p>
 <ul>
 <li>数据库搜索总会产生结果，<strong>但找到的序列未必真与查询序列相关</strong>。</li>
-<li>比对得分可以说明搜索的结果与查询序列之间的相似程度，但由于数据库搜索算法不同、比对打分标准不统一 ，因此<strong>比对得分值</strong>本身并不能充分指明两序列间的关系。</li>
+<li>比对得分可以说明搜索的结果与查询序列之间的相似程度，但由于数据库搜索算法不同、比对打分标准不统一
+，因此<strong>比对得分值</strong>本身并不能充分指明两序列间的关系。</li>
 </ul>
 <p>设某个数据库搜索结果的比对得分为S，我们可以提出一个<strong>基本问题</strong>：</p>
 <ul>
@@ -1033,13 +1088,15 @@ sim(s_j,s_c)
 </ul>
 <blockquote>
 <p>当E值&lt; 10<sup>-3</sup>时，通常认为搜索结果具有统计上的显著性；</p>
-<p>–搜索得到的匹配序列在E值上可以低到<strong>10<sup>-50</sup></strong> ，表明查询序列与搜索结果间<strong>具有进化关系的可能性极大</strong>。</p>
+<p>–搜索得到的匹配序列在E值上可以低到<strong>10<sup>-50</sup></strong>
+，表明查询序列与搜索结果间<strong>具有进化关系的可能性极大</strong>。</p>
 </blockquote>
 <h2 id="dna片段组装">5.DNA片段组装</h2>
 <h3 id="问题提出与定义">5.1 问题提出与定义</h3>
 <p>问题描述：给定一组取自特定字母表的字符串集合F，寻找一个最短的字符串s，使得F中的每一个字符串均为s的一个连续子串。</p>
 <ul>
-<li>其中，集合F中的字符串是待组装的序列片段，s 是序列片段组装的结果。</li>
+<li>其中，集合F中的字符串是待组装的序列片段，s
+是序列片段组装的结果。</li>
 </ul>
 <p>DNA片段组装任务的提出：大规模基因组测序时，得到待测序列的<strong>一系列片段</strong>，这些序列片段<strong>覆盖待测序列</strong>，且序列片段之间存在相互覆盖或重叠；根据这些存在相互覆盖或重叠的序列片段，<strong>重建</strong>目标DNA序列。</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609192717156.png" srcset="/img/loading.gif" lazyload></p>
@@ -1069,7 +1126,8 @@ sim(s_j,s_c)
 <p>最大似然 (Maximum Likelihood)准则：以可能性最高为判断标准。</p>
 </blockquote>
 <h4 id="未知片段方向">5.2.2 未知片段方向</h4>
-<p>如果一个片段是一条链的子串， 根据互补原则，该片段的反向互补片段是另一条链的子串。</p>
+<p>如果一个片段是一条链的子串，
+根据互补原则，该片段的反向互补片段是另一条链的子串。</p>
 <p>对于一条输入的片段，在进行组装时，既可以用其本身，也可以用其<strong>反向互补片段</strong>。</p>
 <p>解决方案：按两个方向分别尝试。</p>
 <h4 id="存在重复区域">5.2.3 存在重复区域</h4>
@@ -1077,11 +1135,13 @@ sim(s_j,s_c)
 <h4 id="缺少覆盖">5.2.4 缺少覆盖</h4>
 <p>覆盖强度：定义为目标序列上某个位点上覆盖此位点的片段个数。</p>
 <blockquote>
-<p>平均覆盖强度: 计算求所有覆盖片段的长度和，再除以目标序列长度的估计值。</p>
+<p>平均覆盖强度:
+计算求所有覆盖片段的长度和，再除以目标序列长度的估计值。</p>
 </blockquote>
 <p>如果对于目标序列上的某个位点，覆盖该点的序列片段个数为零，则没有相关的序列信息来重建该点附近的目标序列。</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230609194833195.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="dna片段组装的基本过程与组装模型">5.3 DNA片段组装的基本过程与组装模型</h3>
+<h3 id="dna片段组装的基本过程与组装模型">5.3
+DNA片段组装的基本过程与组装模型</h3>
 <h4 id="dna片段组装的基本过程">5.3.1 DNA片段组装的基本过程</h4>
 <ol type="1">
 <li>首先进行序列片段的两两比对，确定可能的片段之间的覆盖（或者重叠）。</li>
@@ -1089,34 +1149,45 @@ sim(s_j,s_c)
 <li>最后确定片段组装结果，即确定目标序列。</li>
 </ol>
 <h4 id="最短公共超串模型">5.3.2 最短公共超串模型</h4>
-<p>给定一个字符串集合F，求出一个<strong>最短</strong>的字符串S，使得对于所有属于F 的字符串<em>f</em>，S是<em>f</em>的超串(或者<em>f</em>是S的子串)。</p>
+<p>给定一个字符串集合F，求出一个<strong>最短</strong>的字符串S，使得对于所有属于F
+的字符串<em>f</em>，S是<em>f</em>的超串(或者<em>f</em>是S的子串)。</p>
 <p>设F={ACT,CTA,AGT}，则S=ACTAGT是F的超串。</p>
 <p>其中，S要求是各片段的严格超串，不允许片段中存在实验误差，而且<strong>各片段的方向必须已知</strong>。</p>
 <h4 id="重建模型">5.3.3 重建模型</h4>
 <h5 id="近似子串">（1）近似子串</h5>
 <p>考虑到片段的误差和未知方向的问题，对于判别子串的序列比较不需要完全匹配，而是根据相似程度进行处理，需要引入“近似子串”的概念。</p>
-<p>假设 <em>f</em>, <em>g</em>是代表两条序列的字符串，<em>f</em>作为<em>g</em>近似子串的代价为： <span class="math display">\[
+<p>假设 <em>f</em>,
+<em>g</em>是代表两条序列的字符串，<em>f</em>作为<em>g</em>近似子串的代价为：
+<span class="math display">\[
 d_s(f,g)=\min_{s\in S(g)}d(f,s)
 \]</span></p>
 <ul>
-<li>其中，S(<em>g</em>)代表<em>g</em>的所有子串的集合，<em>d</em>(⋅ , ⋅)为一般编辑距离。</li>
+<li>其中，S(<em>g</em>)代表<em>g</em>的所有子串的集合，<em>d</em>(⋅ ,
+⋅)为一般编辑距离。</li>
 </ul>
-<p>设0 &lt; ε &lt; 1，如果<em>d<sub>s</sub>(f,g)</em> ≤ ε|<em>f</em>| , 则称字符串 <em>f</em>是误差 ε 下 <em>S</em> 的近似子串。</p>
+<p>设0 &lt; ε &lt; 1，如果<em>d<sub>s</sub>(f,g)</em> ≤ ε|<em>f</em>| ,
+则称字符串 <em>f</em>是误差 ε 下 <em>S</em> 的近似子串。</p>
 <h5 id="重建模型的定义">（2）重建模型的定义</h5>
-<p>给定一个字符串集合<em>F</em>，求一个最短的字符串<em>S</em>，使得对于所有字符串<em>f∈F</em>，有: <span class="math display">\[
+<p>给定一个字符串集合<em>F</em>，求一个最短的字符串<em>S</em>，使得对于所有字符串<em>f∈F</em>，有:
+<span class="math display">\[
 d_s(f,S)\le \epsilon|f|
 \]</span> 或者 <span class="math display">\[
 d_s(f^{&#39;},S)\le \epsilon|f|
 \]</span> 其中 <em>f′</em> 是 <em>f</em> 的反向互补串。</p>
-<p>主要思路: 寻找一个尽可能短的字符串<em>S</em>，使得每一个<em>f</em>或其反向 互补串<em>f′</em>成为<em>S</em>的近似子串。</p>
+<p>主要思路:
+寻找一个尽可能短的字符串<em>S</em>，使得每一个<em>f</em>或其反向
+互补串<em>f′</em>成为<em>S</em>的近似子串。</p>
 <p>该模型可同时处理序列误差、未知序列方向的问题，但不能处理目标序列中的重复区域和缺少覆盖问题。</p>
 <h4 id="多重连续区模型">5.3.4 多重连续区模型</h4>
 <p>t-contig：在多重序列比对中，如果其<strong>最弱连接的交叠长度至少为t</strong>，则称为一个t-contig。</p>
-<p><em>F</em> 允许一个t-contig：在多重序列比对中，如果能够根据序列片段集合<em>F</em>构造一个t-contig，则称<em>F</em>允许1个t-contig。</p>
+<p><em>F</em>
+允许一个t-contig：在多重序列比对中，如果能够根据序列片段集合<em>F</em>构造一个t-contig，则称<em>F</em>允许1个t-contig。</p>
 <p>多重连续区模型：</p>
 <ul>
 <li>通过构造t-contig来定义具体不同覆盖强度的序列组装结果。</li>
-<li>给定一个片段集合<em>F</em>和一个整数 t ≥ 0, 将<em>F</em>分割为最小数目的片段子集C<sub>i</sub>，其中1 ≤ i ≤ k，且 每个C<sub>i</sub>允许一个t-contig。</li>
+<li>给定一个片段集合<em>F</em>和一个整数 t ≥ 0,
+将<em>F</em>分割为最小数目的片段子集C<sub>i</sub>，其中1 ≤ i ≤ k，且
+每个C<sub>i</sub>允许一个t-contig。</li>
 </ul>
 <blockquote>
 <p>把F分割为k个子集C<sub>i</sub>，根据序列片段子集C<sub>i</sub>构造出一个t-contig，进而完成最小覆盖强度为t的组装结果。</p>
@@ -1139,7 +1210,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <p>在生物生长发育过程中，生物信息传递有两种方式：</p>
 <ol type="1">
 <li>自我复制——在繁衍过程中传递遗传信息。</li>
-<li>基因通过转录和翻译，使遗传信息在生物个体 中表达，使后代表现出与亲代相似的生物性状。
+<li>基因通过转录和翻译，使遗传信息在生物个体
+中表达，使后代表现出与亲代相似的生物性状。
 <ul>
 <li>DNA→RNA→蛋白质</li>
 <li>基因控制着蛋白质的合成，基因的DNA序列到蛋白质序列存在着一种明确的对应关系——遗传密码。</li>
@@ -1152,7 +1224,9 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <p>第22：吡咯赖氨酸(Pyl, O), 由终止密码子UAG的有义编码Pyl。</p>
 </blockquote>
 <h3 id="人类基因组">1.2 人类基因组</h3>
-<p>人类基因组计划（Human Genome Project / HGP）：测定组成人类染色体（指单倍体）中所包含的30亿个碱基对组成的核苷酸序列，绘制人类基因组图谱， 辨识其载有的基因及其序列，破译人类遗传信息。</p>
+<p>人类基因组计划（Human Genome Project /
+HGP）：测定组成人类染色体（指单倍体）中所包含的30亿个碱基对组成的核苷酸序列，绘制人类基因组图谱，
+辨识其载有的基因及其序列，破译人类遗传信息。</p>
 <blockquote>
 <p>截止到2005年，人类基因组计划的测序工作已经完成。</p>
 </blockquote>
@@ -1167,8 +1241,11 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 </blockquote>
 <h4 id="人类基因组图谱">1.2.1 人类基因组图谱</h4>
 <p>序列图谱：通过测序得到基因组的序列图谱。</p>
-<p>遗传图谱（genetic map）：也叫连锁图谱(linkage map)，它是以具有遗传多态性的遗传标记为“路标” ，以遗传学距离为图距的基因组图。</p>
-<p>物理图谱（physical map）：是指有关构成基因组的全部基因的排列和间距的信息，通过对构成基因组的DNA分子进行测定而绘制。</p>
+<p>遗传图谱（genetic map）：也叫连锁图谱(linkage
+map)，它是以具有遗传多态性的遗传标记为“路标”
+，以遗传学距离为图距的基因组图。</p>
+<p>物理图谱（physical
+map）：是指有关构成基因组的全部基因的排列和间距的信息，通过对构成基因组的DNA分子进行测定而绘制。</p>
 <ul>
 <li>DNA物理图谱是指DNA链的限制性酶切片段的排列顺序，即酶切片段在DNA链上的定位。</li>
 <li>目的是把有关基因的遗传信息及其在每条染色体上的相对位置线性而系统地排列出来。</li>
@@ -1182,10 +1259,12 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <p>97%是非编码序列：主要包括启动子、增强子、内含子、简单重复序列、移动元件及其遗留物、伪基因等。</p>
 <p>对于非编码序列，目前了解得比较少，尚不完全清楚其含义或功能。</p>
 <ul>
-<li>从生物进化的观点来看，这部分序列具有重要的生物学功能；目前普遍认为: 它们与基因在四维时空的表达调控有关。</li>
+<li>从生物进化的观点来看，这部分序列具有重要的生物学功能；目前普遍认为:
+它们与基因在四维时空的表达调控有关。</li>
 </ul>
 <h4 id="遗传语言">1.2.3 遗传语言</h4>
-<p>科学家认为：基因组DNA序列并非是一种简单的生物分子序列，而是一种<strong>遗传语言</strong>, 用于描述遗传信息、控制生物体的性状、甚至规定生物体的生老病死。</p>
+<p>科学家认为：基因组DNA序列并非是一种简单的生物分子序列，而是一种<strong>遗传语言</strong>,
+用于描述遗传信息、控制生物体的性状、甚至规定生物体的生老病死。</p>
 <ul>
 <li>科学家们开始测序人类及其他模式生物基因组，希望解读和破译遗传信息。</li>
 <li>迄今为止，用于理解DNA翻译成蛋白质的编码规律的<strong>遗传密码</strong>是人们对于生物体遗传语言了解最多的部分。</li>
@@ -1195,11 +1274,14 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <ul>
 <li>人类自然语言，用于人类之间描述、记录和交流思想，可以被转换成二进制序列，存放在数字图书馆中。</li>
 <li>计算机高级程序语言经编译被转换成二进制机器指令，形成可执行程序。</li>
-<li>遗传语言的代码实际上就是DNA序列，是由A/C/G/T(U) 4种字符组成的一种四进制代码。</li>
+<li>遗传语言的代码实际上就是DNA序列，是由A/C/G/T(U)
+4种字符组成的一种四进制代码。</li>
 </ul>
 <h3 id="生物体的信息加工">1.3 生物体的信息加工</h3>
 <p>从信息工程的角度来看：</p>
-<p>蛋白质编码区域所包含的信息相当于待加工的“数据” ，经加工处理后产生对应的氨基酸序列；非编码区域相当于“程序” ，确定如何对数据进行处理，控制基因的表达和蛋白质的合成。</p>
+<p>蛋白质编码区域所包含的信息相当于待加工的“数据”
+，经加工处理后产生对应的氨基酸序列；非编码区域相当于“程序”
+，确定如何对数据进行处理，控制基因的表达和蛋白质的合成。</p>
 <p>计算机中数据与程序是相对分立；在染色体上，数据与程序相互嵌套，染色体上的基因经过调控程序的转录和翻译，产生蛋白质的氨基酸序列，从而发挥生物学功能。</p>
 <blockquote>
 <p>一维线性的DNA分子在特定环境下，通过复杂而准确的信息程序处理，拓展为一个四维时空生命体。</p>
@@ -1218,7 +1300,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <h3 id="原核基因的典型结构">2.1 原核基因的典型结构</h3>
 <p>原核基因结构非常简单</p>
 <ul>
-<li><p>完整的基因结构从基因的5’ -端启动子区域开始，到3’ -端终止区结束。</p></li>
+<li><p>完整的基因结构从基因的5’ -端启动子区域开始，到3’
+-端终止区结束。</p></li>
 <li><p>基因的转录开始位置由转录起始位点确定，转录过程直至遇到转录终止位点。</p></li>
 <li><p>转录的内容包括5’-端不翻译区（UTR）、开放阅读框及3’-端不翻译区。</p></li>
 <li><p>基因翻译的准确起止位置由起始密码子和终止密码子决定，翻译的对象即为介于这两者之间的开放阅读框。</p></li>
@@ -1227,7 +1310,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <p>原核基因作为连续基因，其编码区是一个完整的DNA片段。</p>
 <ul>
 <li>负责基因表达的蛋白质可以识别各种调控信号。</li>
-<li>调控信号是一些相对较短的核苷酸序列, 这些信号的微妙差别可以影响到: 基因表达与否、基因的表达水平。</li>
+<li>调控信号是一些相对较短的核苷酸序列, 这些信号的微妙差别可以影响到:
+基因表达与否、基因的表达水平。</li>
 </ul>
 <p>启动子位点：长度为<strong>13个</strong>核苷酸的特定序列</p>
 <ul>
@@ -1244,7 +1328,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <p>—(A)TTC GAT AAC AA</p>
 <p>—(AT)TCG ATA ACA A</p></li>
 <li><p>这3种阅读顺序称为阅读框(reading frames)</p></li>
-<li><p>不含终止密码子且有比较多的三联密码子的长序列被称为开放阅读框(Open Reading Frame: ORF)</p></li>
+<li><p>不含终止密码子且有比较多的三联密码子的长序列被称为开放阅读框(Open
+Reading Frame: ORF)</p></li>
 </ul>
 <blockquote>
 <p>存在ORF表明该区域可能对应于一个原核生物基因的编码序列。</p>
@@ -1284,7 +1369,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <p>真核生物的<strong>复杂性与灵活性</strong>：</p>
 <ul>
 <li>细胞的内部膜系统允许在细胞内维持各种变化较大的化学环境。</li>
-<li>几乎全为多细胞生物，虽然每个细胞有相同的遗传“指令” ，但其表达方式与表达水平可以有显著差异。</li>
+<li>几乎全为多细胞生物，虽然每个细胞有相同的遗传“指令”
+，但其表达方式与表达水平可以有显著差异。</li>
 <li>存在有大量的不表达区域（也被称为junk DNA区域）。</li>
 </ul>
 <blockquote>
@@ -1316,13 +1402,15 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <li>转录起始位点(TSS)</li>
 <li>5‘- 非翻译区</li>
 <li>翻译起始位点(TLSS)</li>
-<li>外显子(exon), E-I剪切位点(doner),内含子(intron),I-E剪切位(acceptor),外显子, …</li>
+<li>外显子(exon),
+E-I剪切位点(doner),内含子(intron),I-E剪切位(acceptor),外显子, …</li>
 <li>翻译终止位点TLSTOP</li>
 <li>3 ‘- 非翻译区</li>
 <li>转录终止位点</li>
 </ol>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230610093843123.png" srcset="/img/loading.gif" lazyload alt="真核生物基因的结构"><figcaption aria-hidden="true">真核生物基因的结构</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230610093843123.png" srcset="/img/loading.gif" lazyload alt="真核生物基因的结构">
+<figcaption aria-hidden="true">真核生物基因的结构</figcaption>
 </figure>
 <blockquote>
 <p>各部分的序列形态和长度并不确定，不同物种间的基因差别很大。</p>
@@ -1386,7 +1474,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <li>不同种属所偏爱的密码子不同：
 <ul>
 <li>人类基因组中，密码子第三位取A、U的情况占90%。</li>
-<li>酵母基因组中的精氨酸：密码子AGA占48%，其它密码子CGT, CGC, CGA, CGG和AGG各约占10%。</li>
+<li>酵母基因组中的精氨酸：密码子AGA占48%，其它密码子CGT, CGC, CGA,
+CGG和AGG各约占10%。</li>
 <li>果蝇基因组中的精氨酸CGC约占33%。</li>
 </ul></li>
 </ul></li>
@@ -1400,11 +1489,13 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <li>具有特定密码子使用偏好的开放阅读框。</li>
 <li>与其它生物体EST或基因序列的相似程度。</li>
 </ul>
-<p>真核生物基因识别的解决方案: 通过寻找已经注释的序列数据集的统计特性，来预测相关、但未经注释的序列数据的特性。</p>
+<p>真核生物基因识别的解决方案:
+通过寻找已经注释的序列数据集的统计特性，来预测相关、但未经注释的序列数据的特性。</p>
 <h2 id="基因组序列分析基因识别">4. 基因组序列分析—基因识别</h2>
 <p>基因识别：也被称为基因组注释(genome annotation)。</p>
 <ul>
-<li>从基因组序列之中找到基因及其表达调控信息， 包括识别基因编码区域(即外显子所在区域)和功能位点。</li>
+<li>从基因组序列之中找到基因及其表达调控信息，
+包括识别基因编码区域(即外显子所在区域)和功能位点。</li>
 </ul>
 <blockquote>
 <p>功能位点：存放基因表达调控信息的DNA片段，比如基因的启动子、剪切位点等。</p>
@@ -1459,7 +1550,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <p>给定的观测数据：训练数据集。</p>
 <p>新的观测数据：测试数据集。</p>
 </blockquote>
-<h4 id="一个典型的模式识别问题分成下面4个步骤">4.1.1 一个典型的模式识别问题分成下面4个步骤：</h4>
+<h4 id="一个典型的模式识别问题分成下面4个步骤">4.1.1
+一个典型的模式识别问题分成下面4个步骤：</h4>
 <ol type="1">
 <li>收集待解决问题的观测数据，进行特征抽取。
 <ul>
@@ -1520,7 +1612,8 @@ d_s(f^{&#39;},S)\le \epsilon|f|
 <li>从已知前提(或假设是正确的前提)出发，得出符合逻辑的结论的过程。</li>
 <li>通过事实的模式的观测，间接地看到用于理解的某种新意义或上下文联系。</li>
 </ul>
-<p>对于模式分类来说，推理就是基于给定的数据，确定联合分布密度或者后验分布密度的过程。 <span class="math display">\[
+<p>对于模式分类来说，推理就是基于给定的数据，确定联合分布密度或者后验分布密度的过程。
+<span class="math display">\[
 D=\{(x_i,t_i)\}\to p(x,t)或p(t|x)
 \]</span> 决策：给定输入数据 x, 确定最优的输出 t。</p>
 <p>贝叶斯决策：根据平均错误率最小的准则进行决策。</p>
@@ -1529,11 +1622,14 @@ D=\{(x_i,t_i)\}\to p(x,t)或p(t|x)
 <li>贝叶斯错误率是理论上可获得的最小错误率。</li>
 </ul>
 <p><span class="math display">\[
-P(mistake)=P(x\in R_1,C_2)+P(x\in R_2,C_1)=\int_{R_1}^{}p(x,C_2)dx+\int_{R_2}^{}p(x,C_1)dx
+P(mistake)=P(x\in R_1,C_2)+P(x\in
+R_2,C_1)=\int_{R_1}^{}p(x,C_2)dx+\int_{R_2}^{}p(x,C_1)dx
 \]</span></p>
 <p>贝叶斯公式：贝叶斯公式用于把先验概率转化为后验概率。 <span class="math display">\[
-P(M|D)=\frac{P(D|M)P(M)}{P(D)}\qquad 后验概率=\frac{似然度×先验概率}{边缘概率}
-\]</span> 贝叶斯公式的意义：通过贝叶斯公式，我们把先验概率和从观测数据上得到的似然度相结合，从而得到后验概率。</p>
+P(M|D)=\frac{P(D|M)P(M)}{P(D)}\qquad
+后验概率=\frac{似然度×先验概率}{边缘概率}
+\]</span>
+贝叶斯公式的意义：通过贝叶斯公式，我们把先验概率和从观测数据上得到的似然度相结合，从而得到后验概率。</p>
 <blockquote>
 <p>先验概率: 在获得观测数据之前对判别结果的认识。</p>
 <p>后验概率: 基于观测数据而对判别结果的更新认识。</p>
@@ -1542,11 +1638,13 @@ P(M|D)=\frac{P(D|M)P(M)}{P(D)}\qquad 后验概率=\frac{似然度×先验概率}
 <h3 id="朴素贝叶斯方法">4.3 朴素贝叶斯方法</h3>
 <p>在基因编码区，三联密码子出现的频率具有一定统计规律。</p>
 <ul>
-<li>在随机序列中 ，三联密码子出现的频率是相同的——可认为每个密码子出现的频率均为1/64。</li>
+<li>在随机序列中
+，三联密码子出现的频率是相同的——可认为每个密码子出现的频率均为1/64。</li>
 <li>在基因编码区域 ，三联密码子出现的频率并不是均匀的。</li>
 </ul>
 <p>根据这个差异，可以计算不同的阅读框属于基因编码序列的概率，并由此判断是否为基因编码区域。</p>
-<h4 id="基于密码子的出现频率区分编码区">4.3.1 基于密码子的出现频率区分编码区</h4>
+<h4 id="基于密码子的出现频率区分编码区">4.3.1
+基于密码子的出现频率区分编码区</h4>
 <ul>
 <li><p>基本原理：在DNA序列的编码区和非编码区，三联密码子出现的频率不同；因此基于三联密码子出现频率的差异，可以建立概率模型完成区分。</p></li>
 <li><p>基本步骤：</p>
@@ -1557,8 +1655,10 @@ P(M|D)=\frac{P(D|M)P(M)}{P(D)}\qquad 后验概率=\frac{似然度×先验概率}
 </ol></li>
 </ul>
 <h4 id="朴素贝叶斯方法-1">4.3.2 朴素贝叶斯方法</h4>
-<p>基本思路：假设各个特征相互条件独立，我们把联合分布或联合概率转化为各个边缘分布或边缘概率的乘积。 <span class="math display">\[
-P(C_j|S)=\frac{P(S|C_j)P(C_j)}{P(S)}\xrightarrow{S=s_1s_2...s_m} P(C_j|S)=\frac{P(C_j)\prod_{i=1}^{m}P(s_i|C_j)}{P(S)}
+<p>基本思路：假设各个特征相互条件独立，我们把联合分布或联合概率转化为各个边缘分布或边缘概率的乘积。
+<span class="math display">\[
+P(C_j|S)=\frac{P(S|C_j)P(C_j)}{P(S)}\xrightarrow{S=s_1s_2...s_m}
+P(C_j|S)=\frac{P(C_j)\prod_{i=1}^{m}P(s_i|C_j)}{P(S)}
 \]</span> 判别规则：基于最大后验概率准则确定出序列S所属于的类别k <span class="math display">\[
 k=arg\thinspace \max_{j}\{P(C_j|S,j=1,...K\},其中C_j为类别j
 \]</span></p>
@@ -1566,26 +1666,36 @@ k=arg\thinspace \max_{j}\{P(C_j|S,j=1,...K\},其中C_j为类别j
 <li>设计分类器，即构造一个从给定的数据S到各个类别的映射规则。</li>
 </ul>
 <h4 id="基于序列s建立概率模型">4.3.3 基于序列S建立概率模型</h4>
-<p>考虑2个类别C<sub>1</sub> 和 C<sub>2</sub>：其中用C<sub>1</sub>表示非编码区，C<sub>2</sub>表示编码区。</p>
+<p>考虑2个类别C<sub>1</sub> 和
+C<sub>2</sub>：其中用C<sub>1</sub>表示非编码区，C<sub>2</sub>表示编码区。</p>
 <p>对于给定序列S，要判断S属于编码区还是非编码区，可以计算P(C<sub>1</sub>|S)和P(C<sub>2</sub>|S)。</p>
 <ul>
 <li>根据贝叶斯公式： <span class="math display">\[
   P(C_1|S)=\frac{P(C_1,S)}{P(S)}∝P(S|C_1)P(C_1)\\\\P(C_2|S)=\frac{P(C_2,S)}{P(S)}∝P(S|C_2)P(C_2)
   \]</span></li>
 </ul>
-<p>对于给定序列S，把S表示成 A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>（A<sub>i</sub>为三联密码子），则序列S的出现概率为：P(S) =P(A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>)。</p>
-<p>假设序列中的3联密码子相互独立(且忽略3联密码子的顺序)，则序列S的出现概率可以转化为：P(S) = P(A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>) = P(A<sub>1</sub>)P(A<sub>2</sub> )…P(A<sub>L</sub>）</p>
+<p>对于给定序列S，把S表示成 A<sub>1</sub> A<sub>2</sub>
+…A<sub>L</sub>（A<sub>i</sub>为三联密码子），则序列S的出现概率为：P(S)
+=P(A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>)。</p>
+<p>假设序列中的3联密码子相互独立(且忽略3联密码子的顺序)，则序列S的出现概率可以转化为：P(S)
+= P(A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>) =
+P(A<sub>1</sub>)P(A<sub>2</sub> )…P(A<sub>L</sub>）</p>
 <blockquote>
-<p>若要计算P(S)，则需要估计出P(A<sub>1</sub>)，P(A<sub>2</sub>), …, P(A<sub>L</sub>）</p>
+<p>若要计算P(S)，则需要估计出P(A<sub>1</sub>)，P(A<sub>2</sub>), …,
+P(A<sub>L</sub>）</p>
 </blockquote>
 <p>计算条件概率P(S|C<sub>2</sub>)：</p>
-<p>在编码区(C<sub>2</sub>)观测到序列S的概率，把S表示成三联密码子序列 A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>，则 P(S|C<sub>2</sub>)表达为: <span class="math display">\[
+<p>在编码区(C<sub>2</sub>)观测到序列S的概率，把S表示成三联密码子序列
+A<sub>1</sub> A<sub>2</sub> …A<sub>L</sub>，则 P(S|C<sub>2</sub>)表达为:
+<span class="math display">\[
 P(S|C_2)=P(A_1A_2...A_L|C_2)=P(A_1|C_2)P(A_2|C_2)...P(A_L|C_2)
 \]</span></p>
 <blockquote>
 <p>这里假设了编码区的序列中的3联密码子相互独立(且忽略3联密码子的顺序)。</p>
 </blockquote>
-<p>则计算P(S|C<sub>2</sub>)需要估计出P(A<sub>1</sub>|C<sub>2</sub>) , P(A<sub>2</sub>|C<sub>2</sub>) , …, P(A<sub>L</sub>|C<sub>2</sub>) 。</p>
+<p>则计算P(S|C<sub>2</sub>)需要估计出P(A<sub>1</sub>|C<sub>2</sub>) ,
+P(A<sub>2</sub>|C<sub>2</sub>) , …, P(A<sub>L</sub>|C<sub>2</sub>)
+。</p>
 <blockquote>
 <p>也就是基于编码区的序列去估计各个三联密码子的出现概率。</p>
 </blockquote>
@@ -1594,19 +1704,25 @@ P(S|C_2)=P(A_1A_2...A_L|C_2)=P(A_1|C_2)P(A_2|C_2)...P(A_L|C_2)
 P(C_j|S)=\frac{P(S|C_j)P(C_j)}{P(S)}∝P(S|C_j)P(C_j)
 \]</span> <mark>分类规则：</mark></p>
 <ul>
-<li>如果P(C<sub>2</sub>|S) &gt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>2</sub></li>
-<li>如果P(C<sub>2</sub>|S) &lt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>1</sub></li>
+<li>如果P(C<sub>2</sub>|S)
+&gt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>2</sub></li>
+<li>如果P(C<sub>2</sub>|S)
+&lt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>1</sub></li>
 </ul>
-<h4 id="基于朴素贝叶斯方法识别编码区与非编码区4.3.3的总结">4.3.4 基于朴素贝叶斯方法识别编码区与非编码区（4.3.3的总结）</h4>
+<h4 id="基于朴素贝叶斯方法识别编码区与非编码区4.3.3的总结">4.3.4
+基于朴素贝叶斯方法识别编码区与非编码区（4.3.3的总结）</h4>
 <p>具体步骤：</p>
 <ol type="1">
 <li><p>基于训练数据集, 估计各个三联密码子的出现概率 <span class="math display">\[
 P(C_j|S)∝P(C_j)P(A_1A_2...A_L|C_j)=P(C_j)P(A_1|C_j)P(A_2|C_j)...P(A_L|C_j)
-\]</span> 其中, P(A<sub>i</sub>|C<sub>j</sub>)为类别C<sub>j</sub>中3联密码子A<sub>i</sub>的出现概率，需要基于给定的训练样本序列去估计。</p>
+\]</span> 其中,
+P(A<sub>i</sub>|C<sub>j</sub>)为类别C<sub>j</sub>中3联密码子A<sub>i</sub>的出现概率，需要基于给定的训练样本序列去估计。</p>
 <ul>
-<li>计算每个三联体密码子出现的频率f<sub>AAA,</sub> f<sub>AAC</sub>, f<sub>AAG</sub>…, 用频率去估计三联密码子在当前序列中的出现概率。</li>
+<li>计算每个三联体密码子出现的频率f<sub>AAA,</sub> f<sub>AAC</sub>,
+f<sub>AAG</sub>…, 用频率去估计三联密码子在当前序列中的出现概率。</li>
 </ul></li>
-<li><p>利用三联密码子出现频率，对于基因序列样本集中的每条序列S，计算S的出现概率 P(S|C<sub>1</sub>)和P(S|C<sub>2</sub>）。 <span class="math display">\[
+<li><p>利用三联密码子出现频率，对于基因序列样本集中的每条序列S，计算S的出现概率
+P(S|C<sub>1</sub>)和P(S|C<sub>2</sub>）。 <span class="math display">\[
 P(S|C_j)=P(A_1A_2...A_L|C_j)=P(A_1|C_j)P(A_2|C_j)...P(A_L|C_j)
 \]</span></p></li>
 <li><p>估计非编码区和编码区的先验概率P(C<sub>1</sub>)和P(C<sub>2</sub>)，计算后验概率P(S|C<sub>1</sub>)P(C<sub>1</sub>)和P(S|C<sub>2</sub>)P(C<sub>2</sub>)。</p>
@@ -1617,8 +1733,10 @@ P(S|C_j)=P(A_1A_2...A_L|C_j)=P(A_1|C_j)P(A_2|C_j)...P(A_L|C_j)
 <p>测试阶段：</p>
 <p>给定序列S，计算P(C<sub>1</sub>|S)和P(C<sub>2</sub>|S)</p>
 <ul>
-<li>如果P(C<sub>2</sub>|S) &gt;P(C<sub>1</sub>|S)，则判断序列S属于<mark>编码区</mark>。</li>
-<li>如果P(C<sub>2</sub>|S) &lt;P(C<sub>1</sub>|S)，则判断序列S属于<mark>非编码区</mark>。</li>
+<li>如果P(C<sub>2</sub>|S)
+&gt;P(C<sub>1</sub>|S)，则判断序列S属于<mark>编码区</mark>。</li>
+<li>如果P(C<sub>2</sub>|S)
+&lt;P(C<sub>1</sub>|S)，则判断序列S属于<mark>非编码区</mark>。</li>
 </ul>
 <p>该方法优点：模型简便，易于实现。</p>
 <p>该方法缺点：识别率较低。</p>
@@ -1628,22 +1746,28 @@ P(S|C_j)=P(A_1A_2...A_L|C_j)=P(A_1|C_j)P(A_2|C_j)...P(A_L|C_j)
 <li>考虑描述序列的高维向量。</li>
 </ul>
 <h3 id="马尔科夫链markov-chain">4.4 马尔科夫链(Markov Chain）</h3>
-<p>考虑一个具有多个状态的系统S，令O<sub>1</sub>, O<sub>2</sub>, ⋯, O<sub>n</sub>为系统在各个时刻的状态变量，即<mark>状态链</mark>。</p>
+<p>考虑一个具有多个状态的系统S，令O<sub>1</sub>, O<sub>2</sub>, ⋯,
+O<sub>n</sub>为系统在各个时刻的状态变量，即<mark>状态链</mark>。</p>
 <p>无后效性：</p>
 <ul>
-<li><p>1阶马氏链: 系统在时间步 t 处于哪个状态, 仅与时间t-1时系统所处的状态有关。 <span class="math display">\[
+<li><p>1阶马氏链: 系统在时间步 t 处于哪个状态,
+仅与时间t-1时系统所处的状态有关。 <span class="math display">\[
 P(O_1O_2O_3...O_n)=P(O_1)P(O_2|O_1)P(O_3|O_2)...P(O_n|O_n-1)
 \]</span></p>
 <ul>
 <li>系统未来的状态仅依赖于当前状态。</li>
 <li>一条马尔可夫链完全决定于初始分布和状态转换概率。</li>
 </ul></li>
-<li><p>k阶马氏链：时间步t的状态仅与时间t-1, t-2, … , t-k时刻的历史状态有关。</p></li>
+<li><p>k阶马氏链：时间步t的状态仅与时间t-1, t-2, … ,
+t-k时刻的历史状态有关。</p></li>
 </ul>
 <h4 id="考虑三联密码子的1阶马尔科夫性">考虑三联密码子的1阶马尔科夫性：</h4>
 <ul>
-<li><p>给定DNA序列片段S =A<sub>1</sub>A<sub>2</sub> …A<sub>n</sub> ，其中A<sub>i</sub>为3联密码子。</p></li>
-<li><p>在计算P(A<sub>1</sub>A<sub>2</sub> …A<sub>n</sub>)时，我们<mark>引入1阶马尔可夫模型</mark>，把P(A<sub>1</sub>A<sub>2</sub> …A<sub>n</sub>)转化为: <span class="math display">\[
+<li><p>给定DNA序列片段S =A<sub>1</sub>A<sub>2</sub> …A<sub>n</sub>
+，其中A<sub>i</sub>为3联密码子。</p></li>
+<li><p>在计算P(A<sub>1</sub>A<sub>2</sub>
+…A<sub>n</sub>)时，我们<mark>引入1阶马尔可夫模型</mark>，把P(A<sub>1</sub>A<sub>2</sub>
+…A<sub>n</sub>)转化为: <span class="math display">\[
 P(A_1A_2...A_n)=P(A_1)P(A_2|A_1)...P(A_n|A_{n-1})
 \]</span></p>
 <ul>
@@ -1652,17 +1776,21 @@ P(A_1A_2...A_n)=P(A_1)P(A_2|A_1)...P(A_n|A_{n-1})
 </ul>
 <p>状态转移概率P(A<sub>j</sub>|A<sub>i</sub>)的估计:</p>
 <ul>
-<li><p>以编码区为例:A<sub>i</sub>到A<sub>j</sub>的转移概率，需要统计A<sub>i</sub>到A<sub>j</sub>的转移次数，除以所有以A<sub>i</sub>为起始状态转变为A<sub>k</sub>的转移次数: <span class="math display">\[
-\widetilde{P} (A_j|A_i)=\frac{T_{A_i\to A_j}}{\sum_{k=1}^{64}T_{A_i\to A_k}}
+<li><p>以编码区为例:A<sub>i</sub>到A<sub>j</sub>的转移概率，需要统计A<sub>i</sub>到A<sub>j</sub>的转移次数，除以所有以A<sub>i</sub>为起始状态转变为A<sub>k</sub>的转移次数:
+<span class="math display">\[
+\widetilde{P} (A_j|A_i)=\frac{T_{A_i\to A_j}}{\sum_{k=1}^{64}T_{A_i\to
+A_k}}
 \]</span></p>
 <ul>
 <li>其中T<sub>Ai→Aj</sub>表示从状态A<sub>i</sub>转移到状态A<sub>j</sub>的次数。</li>
 </ul></li>
 <li><p>第1个密码子和最后1个密码子需要单独统计: <span class="math display">\[
-开头:\widetilde{P} (A_i)=\widetilde{P} (A_i|[])=\frac{T_{[]\to A_i}}{\sum_{k=1}^{64}T_{[]\to A_k}}
+开头:\widetilde{P} (A_i)=\widetilde{P} (A_i|[])=\frac{T_{[]\to
+A_i}}{\sum_{k=1}^{64}T_{[]\to A_k}}
 \]</span></p>
 <p><span class="math display">\[
-结尾:\widetilde{P} (A_j)=\widetilde{P} ([]|A_j)=\frac{T_{A_j\to []}}{\sum_{k=1}^{64}T_{A_k\to []}}
+结尾:\widetilde{P} (A_j)=\widetilde{P} ([]|A_j)=\frac{T_{A_j\to
+[]}}{\sum_{k=1}^{64}T_{A_k\to []}}
 \]</span></p>
 <ul>
 <li>即从训练样本序列中统计密码子A<sub>i</sub>出现在开始位置的频率和密码子A<sub>j</sub>出现在末尾的频率。</li>
@@ -1672,16 +1800,22 @@ P(A_1A_2...A_n)=P(A_1)P(A_2|A_1)...P(A_n|A_{n-1})
 P(C_j|A_1A_2...A_n)=\frac{P(A_1A_2...A_n|C_j)P(C_j)}{P(A_1A_2...A_n)}
 \]</span> 分类规则：</p>
 <ul>
-<li>如果P(C<sub>2</sub>|S) &gt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>2</sub></li>
-<li>如果P(C<sub>2</sub>|S) &lt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>1</sub></li>
+<li>如果P(C<sub>2</sub>|S)
+&gt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>2</sub></li>
+<li>如果P(C<sub>2</sub>|S)
+&lt;P(C<sub>1</sub>|S)，则判断序列S属于类别C<sub>1</sub></li>
 </ul>
-<p>在计算P(C<sub>1</sub>|A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub> ) 和 P(C<sub>2</sub>|A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub> )时，引入<mark>1 阶马尔可夫链</mark>考虑三联密码子之间的依赖关系，即： <span class="math display">\[
+<p>在计算P(C<sub>1</sub>|A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub> ) 和
+P(C<sub>2</sub>|A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub>
+)时，引入<mark>1 阶马尔可夫链</mark>考虑三联密码子之间的依赖关系，即：
+<span class="math display">\[
 P(A_1A_2...A_n|C_j)=P(A_1|C_j)P(A_2|A_1,C_j)...P(A_n|A_{n-1},C_j)
 \]</span></p>
 <ul>
 <li>需要在编码区和非编码区分别估计出三联密码子的转移概率。</li>
 </ul>
-<p>如果S是编码区，那么序列<mark>S=A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub>出现的概率P(S)用马氏链</mark>来刻画如下： <span class="math display">\[
+<p>如果S是编码区，那么序列<mark>S=A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub>出现的概率P(S)用马氏链</mark>来刻画如下：
+<span class="math display">\[
 P(S|C_2)=P(A_1|C_2)\prod_{i=2}^{n}P(A_i|A_{i-1},C_2)
 \]</span></p>
 <ul>
@@ -1698,11 +1832,13 @@ P(S|C_2)=P(A_1|C_2)\prod_{i=2}^{n}P(A_i|A_{i-1},C_2)
 <li>序列属于非编码区的先验概率P(C<sub>1</sub>)</li>
 </ul>
 <p>状态转移概率：</p>
-<p>需要根据训练数据, 分别估计编码区C<sub>2</sub>和非编码区C<sub>1</sub>中各个3联密码子A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub>之间的状态转移概率矩阵。</p>
+<p>需要根据训练数据,
+分别估计编码区C<sub>2</sub>和非编码区C<sub>1</sub>中各个3联密码子A<sub>1</sub>A<sub>2</sub>…A<sub>n</sub>之间的状态转移概率矩阵。</p>
 <h3 id="基于同源序列比对的方法">4.5 基于同源序列比对的方法</h3>
 <p>基本动机：</p>
 <ul>
-<li>部分物种的基因组中有大量基因已被实验证实， 并在相应数据库中有注释(annotation)信息。</li>
+<li>部分物种的基因组中有大量基因已被实验证实，
+并在相应数据库中有注释(annotation)信息。</li>
 <li>亲缘关系很近的生物体之间可能具有相似的基因。</li>
 <li>用某个物种中的未知基因与亲缘关系相近的其它物种的基因作比较，对揭示未知基因的信息会有帮助。</li>
 </ul>
@@ -1740,20 +1876,23 @@ P(S|C_2)=P(A_1|C_2)\prod_{i=2}^{n}P(A_i|A_{i-1},C_2)
 <ul>
 <li>从生物学家来看，现有的基因识别程序还不可靠，需要结合分子生物学、比较基因组学等其他方面研究。</li>
 </ul>
-<h1 id="三隐马尔可夫模型-hidden-markov-model-hmm">三、隐马尔可夫模型 (Hidden Markov Model: HMM)</h1>
+<h1 id="三隐马尔可夫模型-hidden-markov-model-hmm">三、隐马尔可夫模型
+(Hidden Markov Model: HMM)</h1>
 <h2 id="hmm的定义">1.HMM的定义</h2>
 <p>一阶阶离散HMM是一个关于离散序列的随机生成模型。</p>
 <p>基本要素：</p>
 <ul>
 <li>离散明字符集合：V = {V<sub>1</sub> , …, 𝑉<sub>M</sub>}</li>
 <li>有限隐状态集合：S = {S<sub>1</sub> , …, 𝑆<sub>N</sub>}</li>
-<li>初始状态概率向量：<em>π</em> = (<em>π</em><sub>1</sub> , …, <em>π</em><sub>N</sub>)</li>
+<li>初始状态概率向量：<em>π</em> = (<em>π</em><sub>1</sub> , …,
+<em>π</em><sub>N</sub>)</li>
 <li>状态转移概率矩阵： A = { a<sub>ij</sub>, i,j = 1, …N}</li>
 <li>明字符生成概率矩阵： B = { b<sub>jk</sub>, j = 1, …N, k=1,...M}</li>
 </ul>
 <p>HMM记作<em>λ</em>=(S,V,π,A,B)或<em>λ</em>=(π,A,B)</p>
 <ul>
-<li>一个HMM模型是一个三元组(S, V, λ)，其中λ为模型参数的集合，S 是明字符集V是有限状态集合——每个状态可以产生明字符集中的字符。</li>
+<li>一个HMM模型是一个三元组(S, V, λ)，其中λ为模型参数的集合，S
+是明字符集V是有限状态集合——每个状态可以产生明字符集中的字符。</li>
 </ul>
 <h2 id="评估问题">2.评估问题</h2>
 <h3 id="前向算法">2.1 前向算法</h3>
@@ -1770,10 +1909,13 @@ P(O|\lambda)=\sum_{i=1}^{N}\alpha(T,i)
 \]</span></p></li>
 </ol>
 <h3 id="前向算法例题">2.2 前向算法例题</h3>
-<p>考虑一个包含两个字符的字符表{C, T}和包含3个状态的状态集{S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub>}，HMM的转移概率和字符生成概率如下表。请计算序列O = CCT的全概率。</p>
+<p>考虑一个包含两个字符的字符表{C,
+T}和包含3个状态的状态集{S<sub>1</sub>, S<sub>2</sub>,
+S<sub>3</sub>}，HMM的转移概率和字符生成概率如下表。请计算序列O =
+CCT的全概率。</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;"></th>
 <th style="text-align: center;">→0</th>
 <th style="text-align: center;">→S<sub>1</sub></th>
@@ -1784,7 +1926,7 @@ P(O|\lambda)=\sum_{i=1}^{N}\alpha(T,i)
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">1/3</td>
@@ -1793,7 +1935,7 @@ P(O|\lambda)=\sum_{i=1}^{N}\alpha(T,i)
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">S<sub>1</sub></td>
 <td style="text-align: center;">0.2</td>
 <td style="text-align: center;">0.3</td>
@@ -1802,7 +1944,7 @@ P(O|\lambda)=\sum_{i=1}^{N}\alpha(T,i)
 <td style="text-align: center;">0.5</td>
 <td style="text-align: center;">0.5</td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">S<sub>2</sub></td>
 <td style="text-align: center;">0.2</td>
 <td style="text-align: center;"></td>
@@ -1811,7 +1953,7 @@ P(O|\lambda)=\sum_{i=1}^{N}\alpha(T,i)
 <td style="text-align: center;">0.1</td>
 <td style="text-align: center;">0.9</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">S<sub>3</sub></td>
 <td style="text-align: center;">0.4</td>
 <td style="text-align: center;"></td>
@@ -1846,7 +1988,8 @@ P(O|\lambda)=\sum_{i=1}^{N}\alpha(T,i)
 \end{cases}
 \]</span></p>
 <p><span class="math display">\[
-\Rightarrow P(O)=P(CCT)=\sum_{i=1}^{3}\alpha(3,i)=0.0037125+0.0376596+0.0076989=0.049071
+\Rightarrow
+P(O)=P(CCT)=\sum_{i=1}^{3}\alpha(3,i)=0.0037125+0.0376596+0.0076989=0.049071
 \]</span></p>
 <h3 id="后向算法">2.3 后向算法</h3>
 <p>算法过程：</p>
@@ -1881,7 +2024,8 @@ q^*_T=arg\:\max_{1\le i\le N}[\delta_T(i)
 <h3 id="解码问题例题">3.2 解码问题例题</h3>
 <p>从3个盒子中随机摸出1个球，盒子中的球有黑白两个颜色，重复实验多次，观察球的颜色构成观测序列。</p>
 <ul>
-<li><p>隐含状态集合: {盒子1，盒子2，盒子3} = {S<sub>1</sub>,S<sub>2</sub>,S<sub>3</sub>}</p></li>
+<li><p>隐含状态集合: {盒子1，盒子2，盒子3} =
+{S<sub>1</sub>,S<sub>2</sub>,S<sub>3</sub>}</p></li>
 <li><p>观测集合：{黑球，白球} = {Black, White}</p></li>
 <li><p>N=3,M=2</p></li>
 <li><p>初始状态概率:<em>π</em> = (0.3 , 0.5, 0.2)<sup>T</sup></p></li>
@@ -1896,20 +2040,25 @@ A = \begin{bmatrix}
 B = \begin{bmatrix}
 0.2 &amp; 0.8\\
 0.6 &amp; 0.4\\
-0.4 &amp; 0.6 
+0.4 &amp; 0.6
 \end{bmatrix}
 \]</span></p></li>
-<li><p>请计算观测到序列<mark>O = {o<sub>1</sub> , o<sub>2</sub>, o<sub>3</sub>} = {′黑球′ ， ‘白球’ ， ‘黑球’ }</mark>的最可能的盒子序列。</p></li>
+<li><p>请计算观测到序列<mark>O = {o<sub>1</sub> , o<sub>2</sub>,
+o<sub>3</sub>} = {′黑球′ ， ‘白球’ ， ‘黑球’
+}</mark>的最可能的盒子序列。</p></li>
 </ul>
 <p><strong>解：</strong></p>
-<p><strong>t = 1观测到o<sub>1</sub>的概率δ<sub>1</sub>(i)：</strong> <span class="math display">\[
+<p><strong>t = 1观测到o<sub>1</sub>的概率δ<sub>1</sub>(i)：</strong>
+<span class="math display">\[
 \Rightarrow\begin{cases}
 \delta_1(1)=\pi_1b_{1o_1}=0.3*0.2=0.06\\
 \delta_1(2)=\pi_2b_{2o_1}=0.5*0.6=0.3\\
 \delta_1(3)=\pi_3b_{3o_1}=0.2*0.4=0.08
 \end{cases}
-\]</span> <img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614120605011.png" srcset="/img/loading.gif" lazyload alt="t = 1 时的观测概率示意图" style="zoom:67%;"></p>
-<p><strong>t = 2观测到o<sub>1</sub>o<sub>2</sub>的概率δ<sub>2</sub>(i)：</strong> <span class="math display">\[
+\]</span>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614120605011.png" srcset="/img/loading.gif" lazyload alt="t = 1 时的观测概率示意图" style="zoom:67%;"></p>
+<p><strong>t =
+2观测到o<sub>1</sub>o<sub>2</sub>的概率δ<sub>2</sub>(i)：</strong> <span class="math display">\[
 \Rightarrow\begin{cases}
 \delta_2(1)=max[\delta_1(j)a_{j1}]b_{1o_2}=max\{\delta_1(1)a_{11},\delta_1(2)a_{21},\delta_1(3)a_{31}\}b_{1o_2}=max\{0.06*0.4,0.3*0.3,0.08*0.2\}*0.8
 =max\{0.024,0.09,0.016\}*0.8=0.072,同时记录t=1时的回溯为j=2(对应0.09的取值)\\
@@ -1921,7 +2070,9 @@ B = \begin{bmatrix}
 \]</span> $$</p>
 <p>$$</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614120633023.png" srcset="/img/loading.gif" lazyload alt="t = 2 时的观测概率示意图" style="zoom:50%;"></p>
-<p><strong>t = 3观测到o<sub>1</sub>o<sub>2</sub>o<sub>3</sub>的概率δ<sub>3</sub>(i)：</strong> <span class="math display">\[
+<p><strong>t =
+3观测到o<sub>1</sub>o<sub>2</sub>o<sub>3</sub>的概率δ<sub>3</sub>(i)：</strong>
+<span class="math display">\[
 \Rightarrow\begin{cases}
 \delta_3(1)=max[\delta_2(j)a_{j1}]b_{1o_3}=max\{\delta_2(1)a_{11},\delta_2(2)a_{21},\delta_2(3)a_{31}\}b_{1o_3}=max\{0.072*0.4,0.024*0.3,0.09*0.2\}*0.2
 =max\{0.0288,0.0072,0.018\}*0.2=0.00576,同时记录t=2时的回溯为j=1(对应0.0288的取值)\\
@@ -1930,7 +2081,8 @@ B = \begin{bmatrix}
 \delta_3(3)=max[\delta_2(j)a_{j3}]b_{3o_3}=max\{\delta_2(1)a_{13},\delta_2(2)a_{23},\delta_2(3)a_{33}\}b_{3o_3}=max\{0.072*0.2,0.024*0.5,0.09*0.2\}*0.4
 =max\{0.0144,0.012,0.018\}*0.4=0.0072,同时记录t=2时的回溯为j=3(对应0.018的取值)
 \end{cases}
-\]</span> <img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614121258299.png" srcset="/img/loading.gif" lazyload alt="t = 3 时的观测概率示意图" style="zoom:50%;"></p>
+\]</span>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230614121258299.png" srcset="/img/loading.gif" lazyload alt="t = 3 时的观测概率示意图" style="zoom:50%;"></p>
 <p>解码出的隐含状态序列是: <mark>盒子2，盒子3，盒子2</mark></p>
 <h1 id="四系统发育分析">四、系统发育分析</h1>
 <h2 id="系统发育树">1.系统发育树</h2>
@@ -1940,7 +2092,8 @@ B = \begin{bmatrix}
 </blockquote>
 <p>分子进化树：从DNA或蛋白质序列数据出发构建而成，用以揭示不同物种之间的进化联系的一种树状图。</p>
 <blockquote>
-<p>分子钟假设：两个物种的同源基因之间的差异程度与它们的共同祖先的存在时间有一定关系, 分子进化速度大体恒定。</p>
+<p>分子钟假设：两个物种的同源基因之间的差异程度与它们的共同祖先的存在时间有一定关系,
+分子进化速度大体恒定。</p>
 </blockquote>
 <h2 id="基因树和物种树">2.基因树和物种树</h2>
 <p>基因树(gene tree)：基于单个同源基因差异构建的系统树。</p>
@@ -1963,7 +2116,8 @@ B = \begin{bmatrix}
 <p>结点分两类：</p>
 <ul>
 <li>叶结点代表一个分类单元（比如类群、物种或序列）。</li>
-<li>内部结点(祖先结点)代表推断出的共同祖先, 祖先结点可以对应于一种已知的物种，也可以没有对应的物种。</li>
+<li>内部结点(祖先结点)代表推断出的共同祖先,
+祖先结点可以对应于一种已知的物种，也可以没有对应的物种。</li>
 </ul>
 <p>分枝用以显示不同的遗传路线。</p>
 <p>进化树在本质上包含两类信息：</p>
@@ -1980,11 +2134,13 @@ B = \begin{bmatrix}
 <h3 id="标度树与非标度树">3.1 标度树与非标度树</h3>
 <p>非标度树：枝长无意义；叶结点排列整齐，内部结点可以反映进化时间的顺序。</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222054188.png" srcset="/img/loading.gif" lazyload alt="非标度树"><figcaption aria-hidden="true">非标度树</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222054188.png" srcset="/img/loading.gif" lazyload alt="非标度树">
+<figcaption aria-hidden="true">非标度树</figcaption>
 </figure>
 <p>标度树：枝长有意义；分枝长度与物种/序列的进化时间成正比。</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222309737.png" srcset="/img/loading.gif" lazyload alt="标度树"><figcaption aria-hidden="true">标度树</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611222309737.png" srcset="/img/loading.gif" lazyload alt="标度树">
+<figcaption aria-hidden="true">标度树</figcaption>
 </figure>
 <p>两种树都可在分枝上标注信息(分支长度、进化时间以及其它数值)。</p>
 <h3 id="k-叉树">3.2 k −叉树</h3>
@@ -1997,7 +2153,8 @@ B = \begin{bmatrix}
 <li>从祖先结点只有唯一的路径进化到达叶结点。</li>
 </ul>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223144654.png" srcset="/img/loading.gif" lazyload alt="有根树（可以明确进化路径）"><figcaption aria-hidden="true">有根树（可以明确进化路径）</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223144654.png" srcset="/img/loading.gif" lazyload alt="有根树（可以明确进化路径）">
+<figcaption aria-hidden="true">有根树（可以明确进化路径）</figcaption>
 </figure>
 <p>无根进化树：</p>
 <ul>
@@ -2005,7 +2162,8 @@ B = \begin{bmatrix}
 <li>没有关于进化方向的信息。</li>
 </ul>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223708792.png" srcset="/img/loading.gif" lazyload alt="无根树（无进化方向）"><figcaption aria-hidden="true">无根树（无进化方向）</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611223708792.png" srcset="/img/loading.gif" lazyload alt="无根树（无进化方向）">
+<figcaption aria-hidden="true">无根树（无进化方向）</figcaption>
 </figure>
 <p>有些进化树构造算法产生有根树，也有些算法只能产生无根树。</p>
 <p>无根树→有根树的转换</p>
@@ -2026,7 +2184,8 @@ B = \begin{bmatrix}
 <li>刻画多条同源序列的差异</li>
 <li>构建反映序列间差异的树状图
 <ul>
-<li>从现有数据出发, 试图<mark>推断(或重构)</mark>进化树——真实的进化树是未知的。</li>
+<li>从现有数据出发,
+试图<mark>推断(或重构)</mark>进化树——真实的进化树是未知的。</li>
 </ul></li>
 </ol>
 <p>推断分子进化树的关键：刻画出序列之间由进化造成的与进化时间成正比的差异。</p>
@@ -2042,7 +2201,8 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 </ul>
 <p>进化树构建算法：</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611233724121.png" srcset="/img/loading.gif" lazyload alt="进化树构建算法"><figcaption aria-hidden="true">进化树构建算法</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230611233724121.png" srcset="/img/loading.gif" lazyload alt="进化树构建算法">
+<figcaption aria-hidden="true">进化树构建算法</figcaption>
 </figure>
 <h3 id="非加权组算术平均法upgma">4.2 非加权组算术平均法(UPGMA)</h3>
 <p>最早的基于距离矩阵的方法，最初产生于20世纪60年代早期。</p>
@@ -2059,13 +2219,16 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <li>初始化：每条序列自成一个组C<sub>i</sub>，分别对应于树中的一个叶结点。</li>
 <li>迭代：
 <ul>
-<li>寻找具有最小距离值d<sub>ij</sub>的两个组C<sub>i</sub>和C<sub>j</sub> , 合并成 一个新组C<sub>k</sub> = C<sub>i</sub>∪ C<sub>j</sub></li>
-<li>更新C<sub>k</sub>与各旧组C<sub>ℓ</sub>的距离为d<sub>k,ℓ</sub> = (d<sub>i,ℓ</sub>+ d<sub>j,ℓ</sub>)/2</li>
+<li>寻找具有最小距离值d<sub>ij</sub>的两个组C<sub>i</sub>和C<sub>j</sub>
+, 合并成 一个新组C<sub>k</sub> = C<sub>i</sub>∪ C<sub>j</sub></li>
+<li>更新C<sub>k</sub>与各旧组C<sub>ℓ</sub>的距离为d<sub>k,ℓ</sub> =
+(d<sub>i,ℓ</sub>+ d<sub>j,ℓ</sub>)/2</li>
 <li>在树中增加一个分支点，同时与C<sub>i</sub>和C<sub>j</sub>相连接，<strong>两条分枝各为d<sub>i,j</sub>/2</strong></li>
 </ul></li>
 <li>终止：直到所有序列聚为一个组时终止，最终得到的分枝点为树的根。</li>
 </ol>
-<h4 id="例-利用非加权组算数平均法进行进化树构建">例: 利用非加权组算数平均法进行进化树构建</h4>
+<h4 id="例-利用非加权组算数平均法进行进化树构建">例:
+利用非加权组算数平均法进行进化树构建</h4>
 <p>A: GTGCTGCACGG CTCAGTATA GCATTTACCC TTCCATCTTC AGATCCTGAA</p>
 <p>B: ACGCTGCACGG CTCAGTGCG GTGCTTACCC TCCCATCTTC AGATCCTGAA</p>
 <p>C: GTGCTCGCAGG CTCGGCGCA GCATTTACCC TCCCATCTTC AGATCCTATC</p>
@@ -2075,7 +2238,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <p>得到初始距离矩阵：</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">物种</th>
 <th style="text-align: center;">A</th>
 <th style="text-align: center;">B</th>
@@ -2085,7 +2248,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">A</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;"></td>
@@ -2093,7 +2256,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">B</td>
 <td style="text-align: center;">9</td>
 <td style="text-align: center;">-</td>
@@ -2101,7 +2264,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">C</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">11</td>
@@ -2109,7 +2272,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">D</td>
 <td style="text-align: center;">12</td>
 <td style="text-align: center;">15</td>
@@ -2117,7 +2280,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;">-</td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">E</td>
 <td style="text-align: center;">15</td>
 <td style="text-align: center;">18</td>
@@ -2130,51 +2293,60 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <p>2.迭代：选择最近结点进行合并，更新距离矩阵，更新进化树</p>
 <p>第1次迭代：更新距离矩阵；合并分支（叶节点）</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201442420.png" srcset="/img/loading.gif" lazyload alt="第一次迭代"><figcaption aria-hidden="true">第一次迭代</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201442420.png" srcset="/img/loading.gif" lazyload alt="第一次迭代">
+<figcaption aria-hidden="true">第一次迭代</figcaption>
 </figure>
 <p>进化树上标注进化距离：两条分枝各为d<sub><em>ij</em></sub>/2</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201549550.png" srcset="/img/loading.gif" lazyload alt="第一次迭代得到进化树"><figcaption aria-hidden="true">第一次迭代得到进化树</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201549550.png" srcset="/img/loading.gif" lazyload alt="第一次迭代得到进化树">
+<figcaption aria-hidden="true">第一次迭代得到进化树</figcaption>
 </figure>
 <p>第2次迭代：</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201712875.png" srcset="/img/loading.gif" lazyload alt="第二次迭代"><figcaption aria-hidden="true">第二次迭代</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201712875.png" srcset="/img/loading.gif" lazyload alt="第二次迭代">
+<figcaption aria-hidden="true">第二次迭代</figcaption>
 </figure>
 <p>进化树：</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201747559.png" srcset="/img/loading.gif" lazyload alt="第二次迭代得到进化树"><figcaption aria-hidden="true">第二次迭代得到进化树</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201747559.png" srcset="/img/loading.gif" lazyload alt="第二次迭代得到进化树">
+<figcaption aria-hidden="true">第二次迭代得到进化树</figcaption>
 </figure>
 <p>第3次迭代：</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201825651.png" srcset="/img/loading.gif" lazyload alt="第二次迭代"><figcaption aria-hidden="true">第二次迭代</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201825651.png" srcset="/img/loading.gif" lazyload alt="第二次迭代">
+<figcaption aria-hidden="true">第二次迭代</figcaption>
 </figure>
 <p>进化树：</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201951538.png" srcset="/img/loading.gif" lazyload alt="第三次迭代得到进化树"><figcaption aria-hidden="true">第三次迭代得到进化树</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612201951538.png" srcset="/img/loading.gif" lazyload alt="第三次迭代得到进化树">
+<figcaption aria-hidden="true">第三次迭代得到进化树</figcaption>
 </figure>
 <blockquote>
 <p>左侧中间结点((A,C),B) 到中间结点 (A,C)的距离是: 10/2 – 4 = 1</p>
 </blockquote>
 <p>第4次迭代：</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202054031.png" srcset="/img/loading.gif" lazyload alt="第四次迭代"><figcaption aria-hidden="true">第四次迭代</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202054031.png" srcset="/img/loading.gif" lazyload alt="第四次迭代">
+<figcaption aria-hidden="true">第四次迭代</figcaption>
 </figure>
 <p>进化树：</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202212962.png" srcset="/img/loading.gif" lazyload alt="第四次迭代得到进化树"><figcaption aria-hidden="true">第四次迭代得到进化树</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202212962.png" srcset="/img/loading.gif" lazyload alt="第四次迭代得到进化树">
+<figcaption aria-hidden="true">第四次迭代得到进化树</figcaption>
 </figure>
 <p>3.算法终止：完成进化树构建</p>
 <p><img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202320043.png" srcset="/img/loading.gif" lazyload></p>
 <p>不带标度的文本表示法：(((A,C),B),(D,E))</p>
 <p>带标度的文本表示法：(((A:4,C:4):1,B:5):2.25,(D:2.5,E:2.5):4.75)</p>
 <figure>
-<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202350905.png" srcset="/img/loading.gif" lazyload alt="最终进化树"><figcaption aria-hidden="true">最终进化树</figcaption>
+<img src="/2023/06/08/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/image-20230612202350905.png" srcset="/img/loading.gif" lazyload alt="最终进化树">
+<figcaption aria-hidden="true">最终进化树</figcaption>
 </figure>
 <ul>
 <li><p>初始距离矩阵：</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">物种</th>
 <th style="text-align: center;">A</th>
 <th style="text-align: center;">B</th>
@@ -2184,7 +2356,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">A</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;"></td>
@@ -2192,7 +2364,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">B</td>
 <td style="text-align: center;">9</td>
 <td style="text-align: center;">-</td>
@@ -2200,7 +2372,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">C</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">11</td>
@@ -2208,7 +2380,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">D</td>
 <td style="text-align: center;">12</td>
 <td style="text-align: center;">15</td>
@@ -2216,7 +2388,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;">-</td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">E</td>
 <td style="text-align: center;">15</td>
 <td style="text-align: center;">18</td>
@@ -2229,7 +2401,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <li><p>进化距离矩阵：</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: center;">物种</th>
 <th style="text-align: center;">A</th>
 <th style="text-align: center;">B</th>
@@ -2239,7 +2411,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">A</td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;"></td>
@@ -2247,7 +2419,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">B</td>
 <td style="text-align: center;">10</td>
 <td style="text-align: center;">-</td>
@@ -2255,7 +2427,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">C</td>
 <td style="text-align: center;">8</td>
 <td style="text-align: center;">10</td>
@@ -2263,7 +2435,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: center;">D</td>
 <td style="text-align: center;">14.5</td>
 <td style="text-align: center;">14.5</td>
@@ -2271,7 +2443,7 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <td style="text-align: center;">-</td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr>
 <td style="text-align: center;">E</td>
 <td style="text-align: center;">14.5</td>
 <td style="text-align: center;">14.5</td>
@@ -2285,7 +2457,8 @@ d_{ij}=-\frac{3}{4}log(1-\frac{4f}{3})
 <blockquote>
 <p>两个距离矩阵中的数值 并不严格匹配</p>
 </blockquote>
-<p>超度量(Ultrametric)：如果任何3个不同序列S<sub>i</sub>,S<sub>j</sub>,S<sub>k</sub>，距离函数d<sub>ij</sub>,d<sub>ik</sub>,d<sub>jk</sub>中的两个相等且不小于第3个, 则称距离函数为超度量。</p>
+<p>超度量(Ultrametric)：如果任何3个不同序列S<sub>i</sub>,S<sub>j</sub>,S<sub>k</sub>，距离函数d<sub>ij</sub>,d<sub>ik</sub>,d<sub>jk</sub>中的两个相等且不小于第3个,
+则称距离函数为超度量。</p>
 <p>若初始距离矩阵为超度量矩阵，则UPGMA算法总能产生正确的进化树。即初始距离矩阵与所构造进化树对应的距离矩阵一致。</p>
 <h1 id="五蛋白质结构分析与预测">五、蛋白质结构分析与预测</h1>
 <h2 id="引言蛋白质">1.引言—蛋白质</h2>

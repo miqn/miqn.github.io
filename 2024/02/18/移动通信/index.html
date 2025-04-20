@@ -289,7 +289,8 @@
               <div class="markdown-body">
                 
                 <ul>
-<li>视频教程<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/HDU-1464128174?tid=1471185461#/learn/content?type=detail&amp;id=1256070370&amp;cid=1288761743">杭州电子科技大学 移动通信公开课</a></li>
+<li>视频教程<a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/HDU-1464128174?tid=1471185461#/learn/content?type=detail&amp;id=1256070370&amp;cid=1288761743">杭州电子科技大学
+移动通信公开课</a></li>
 </ul>
 <h1 id="一移动通信基础知识">一、移动通信基础知识</h1>
 <h2 id="多址方式">1.多址方式</h2>
@@ -304,7 +305,8 @@
 <li>TDMA的定义：指一个信道由一连串周期性的时隙构成，<strong>不同信号被分配到不同的时隙里</strong>，利用定时选通来限制邻近信道的干扰，从而在规定时隙中只让有用的信号通过。</li>
 </ul>
 <figure>
-<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218160118592.png" srcset="/img/loading.gif" lazyload alt="FDMA和TDMA相结合的多址方式"><figcaption aria-hidden="true">FDMA和TDMA相结合的多址方式</figcaption>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240218160118592.png" srcset="/img/loading.gif" lazyload alt="FDMA和TDMA相结合的多址方式">
+<figcaption aria-hidden="true">FDMA和TDMA相结合的多址方式</figcaption>
 </figure>
 <p>CDMA的定义：每一个信号被分配一个伪随机二进制序列进行扩频，<strong>不同信号的能量被分配到不同的伪随机序列里</strong>。</p>
 <blockquote>
@@ -331,18 +333,28 @@
 <ul>
 <li>非正交多址技术（NOMA）的<strong>基本思想</strong>是在发送端采用非正交发送，主动引入干扰信息，在接收端通过串行干扰删除（SIC）接收机实现正确解调。虽然，采用SIC技术的接收机复杂度有一定的提高，但是可以<strong>很好地提高频谱效率</strong>。</li>
 <li><strong>用提高接收机的复杂度来换取频谱效率，这就是NOMA技术的本质</strong>。</li>
-<li>非正交多址接入(Non-Orthogonal Multiple Access, NOMA) 技术以<strong>不同功率</strong>将多个信息流在时域/频域/码域重叠的信道上传输，在相同无线资源上为多个用户同时提供无线业务。</li>
+<li>非正交多址接入(Non-Orthogonal Multiple Access, NOMA)
+技术以<strong>不同功率</strong>将多个信息流在时域/频域/码域重叠的信道上传输，在相同无线资源上为多个用户同时提供无线业务。</li>
 <li>在正交多址技术（OMA）中，只能为一个用户分配单一的无线资源，例如按频率分割或按时间分割，而NOMA方式可将一个资源分配给多个用户。在某些场景中，比如远近效应场景和广覆盖多节点接入的场景，特别是上行密集场景，采用功率复用的非正交接入多址方式较传统的正交接入有明显的性能优势，更适合未来系统的部署。目前已经有研究验证了在城市地区采用NOMA的效果，并已证实，采用该方法可使无线接入宏蜂窝的总吞吐量提高50%左右。非正交多址复用通过结合串行干扰消除或类最大似然解调才能取得容量极限，因此技术实现的难点在于是否能设计出低复杂度且有效的接收机算法。</li>
 </ul>
-<p><strong><mark>注意NOMA指的是非正交多址，而不是非正交频分，即NOMA的子信道传输依然采用正交频分复用（OFDM）技术，子信道之间是正交的</mark>，互不干扰，但是一个子信道上不再只分配给一个用户，而是多个用户共享，同一子信道上不同用户之间是非正交传输 <mark>（即非正交多址）</mark>，这样就会产生用户间干扰问题，这也就是在接收端要采用SIC技术进行多用户检测的目的。在发送端，对同一子信道上的不同用户采用功率复用技术进行发送，不同的用户的信号功率按照相关的算法进行分配，这样到达接收端每个用户的信号功率都不一样。SIC接收机再根据不同户用信号功率大小按照一定的顺序进行干扰消除，实现正确解调，同时也达到了区分用户的目的。</strong></p>
+<p><strong><mark>注意NOMA指的是非正交多址，而不是非正交频分，即NOMA的子信道传输依然采用正交频分复用（OFDM）技术，子信道之间是正交的</mark>，互不干扰，但是一个子信道上不再只分配给一个用户，而是多个用户共享，同一子信道上不同用户之间是非正交传输
+<mark>（即非正交多址）</mark>，这样就会产生用户间干扰问题，这也就是在接收端要采用SIC技术进行多用户检测的目的。在发送端，对同一子信道上的不同用户采用功率复用技术进行发送，不同的用户的信号功率按照相关的算法进行分配，这样到达接收端每个用户的信号功率都不一样。SIC接收机再根据不同户用信号功率大小按照一定的顺序进行干扰消除，实现正确解调，同时也达到了区分用户的目的。</strong></p>
 <blockquote>
 <p>总之，记住一句话，NOMA就是多个用户共享一份资源，目的便是<strong>提升频谱效率</strong>。</p>
 </blockquote>
-<h3 id="协作非正交多址接入co-noma">1.1 协作非正交多址接入（Co-NOMA）</h3>
-<p>协作非正交多址接入（Cooperative Non-Orthogonal Multiple Access，简称Co-NOMA）是一种新型的多用户接入技术，它结合了NOMA 和协作通信的思想。在 Co-NOMA 中，多个用户之间可以通过相互协作来提高系统性能和频谱效率。</p>
-<p>Co-NOMA 的基本原理是，当一个用户的信号在到达接收器之前受到严重干扰时，其他用户可以通过协作来帮助该用户，以提高其信号的可靠性和质量。这种协作可以通过不同用户之间的合作传输、信号处理或者干扰抑制等方式实现。</p>
-<p>Co-NOMA 技术可以应用于不同的通信场景，包括蜂窝通信系统、物联网（IoT）、车联网（V2X）等。通过协作，Co-NOMA 可以提高系统容量、覆盖范围和用户体验，同时有效地利用有限的频谱资源。</p>
-<p>总的来说，Co-NOMA 是一种结合了 NOMA 和协作通信思想的新型多用户接入技术，可以提高系统性能和频谱效率，并在未来的通信系统中具有广泛的应用前景。</p>
+<h3 id="协作非正交多址接入co-noma">1.1
+协作非正交多址接入（Co-NOMA）</h3>
+<p>协作非正交多址接入（Cooperative Non-Orthogonal Multiple
+Access，简称Co-NOMA）是一种新型的多用户接入技术，它结合了NOMA
+和协作通信的思想。在 Co-NOMA
+中，多个用户之间可以通过相互协作来提高系统性能和频谱效率。</p>
+<p>Co-NOMA
+的基本原理是，当一个用户的信号在到达接收器之前受到严重干扰时，其他用户可以通过协作来帮助该用户，以提高其信号的可靠性和质量。这种协作可以通过不同用户之间的合作传输、信号处理或者干扰抑制等方式实现。</p>
+<p>Co-NOMA
+技术可以应用于不同的通信场景，包括蜂窝通信系统、物联网（IoT）、车联网（V2X）等。通过协作，Co-NOMA
+可以提高系统容量、覆盖范围和用户体验，同时有效地利用有限的频谱资源。</p>
+<p>总的来说，Co-NOMA 是一种结合了 NOMA
+和协作通信思想的新型多用户接入技术，可以提高系统性能和频谱效率，并在未来的通信系统中具有广泛的应用前景。</p>
 <h2 id="分集技术及复用技术">2.分集技术及复用技术</h2>
 <p>分集技术利用多条独立的通道传输相同的数据，而复用技术利用多条独立的通道传输不同的数据。</p>
 <h3 id="分集技术">2.1 分集技术</h3>
@@ -352,11 +364,16 @@
 <p>核心思想即寻找无线传播环境中的独立（或高度不相关）路径，传输同一信号。</p>
 </blockquote>
 <p>常用分集：时间分集、频率分集、空间分集、极化分集</p>
-<p>时间分集：以超过信道相干时间的时间间隔重复发送信号，以便让再次收到的信号具有独立的衰落环境，从而产生分集效果。重发的时间间隔要满足： <span class="math display">\[
+<p>时间分集：以超过信道相干时间的时间间隔重复发送信号，以便让再次收到的信号具有独立的衰落环境，从而产生分集效果。重发的时间间隔要满足：
+<span class="math display">\[
 \Delta T \gg \frac{1}{2f_m}=\frac{1}{2(v/\lambda)}
-\]</span> 频率分集：在<strong>多于一个的载频</strong>上传送信号，其工作原理为，<strong>相隔超过信道相干带宽的两个信号是不相关的，并且不会出现相同的衰落</strong>。理论上，如果信道是不相关的，那么同时衰减的概率将是单独衰减概率的乘积。相干带宽的公式为： <span class="math display">\[
-B_c=\frac{1}{2\pi \Delta}(其中\Delta为时延扩展:最大传输时延和最小传输时延的差值)
-\]</span> 空间分集：从不同的天线上获得非相关的接收信号，要求天线间的间隔距离等于或大于半个波长。</p>
+\]</span>
+频率分集：在<strong>多于一个的载频</strong>上传送信号，其工作原理为，<strong>相隔超过信道相干带宽的两个信号是不相关的，并且不会出现相同的衰落</strong>。理论上，如果信道是不相关的，那么同时衰减的概率将是单独衰减概率的乘积。相干带宽的公式为：
+<span class="math display">\[
+B_c=\frac{1}{2\pi
+\Delta}(其中\Delta为时延扩展:最大传输时延和最小传输时延的差值)
+\]</span>
+空间分集：从不同的天线上获得非相关的接收信号，要求天线间的间隔距离等于或大于半个波长。</p>
 <blockquote>
 <p>在市区，<span class="math inline">\(d\)</span>通常取0.5<span class="math inline">\(\lambda\)</span>，而在郊区，<span class="math inline">\(d\)</span>通常取0.8<span class="math inline">\(\lambda\)</span>。</p>
 </blockquote>
@@ -371,16 +388,19 @@ B_c=\frac{1}{2\pi \Delta}(其中\Delta为时延扩展:最大传输时延和最�
 <h3 id="复用技术">2.2 复用技术</h3>
 <p>复用技术是对信道进行划分，一个信道划分为多个独立通道，传输多路<strong>不同信号</strong>。包括时分复用(TDM)、频分复用(FDM)、码分复用(CDM)、波分复用(WDM)。</p>
 <figure>
-<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240219103435103.png" srcset="/img/loading.gif" lazyload alt="几种资源分配技术的比较"><figcaption aria-hidden="true">几种资源分配技术的比较</figcaption>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/image-20240219103435103.png" srcset="/img/loading.gif" lazyload alt="几种资源分配技术的比较">
+<figcaption aria-hidden="true">几种资源分配技术的比较</figcaption>
 </figure>
 <h2 id="性能指标定义">3.性能指标定义</h2>
-<h3 id="中继事件中继概率与分集增益">3.1 中继事件、中继概率与分集增益</h3>
+<h3 id="中继事件中继概率与分集增益">3.1
+中继事件、中继概率与分集增益</h3>
 <p>在通信系统中，中断事件、中断概率和分集增益是评估通信系统在衰落信道条件下稳定性和传输可靠性的重要指标。</p>
 <p><strong>中断事件</strong>：在给定的通信方案下，由于信道衰落等因素导致无法达到所需的目标速率而发生的事件。</p>
 <p><strong>中断概率</strong>：在通信过程中，中断事件发生的概率。对于固定的通信实现方案，该通信方案的可达容量为随机信道<span class="math inline">\(h\)</span>的函数<span class="math inline">\(I(h)\)</span>。如果<span class="math inline">\(I(h)&lt;R\)</span>，其中<span class="math inline">\(R\)</span>是目标速率，则发生中断事件。中断概率可以表示为<span class="math inline">\(Pr(I(h)&lt;R)\)</span>。</p>
 <p><strong>分集增益</strong>：分集增益表示通过分集技术在高信噪比下提高信号质量的能力。在高信噪比条件下，分集系统可以通过收集多个独立接收的信号并将它们合并来提高信号质量。分集增益通常用<span class="math inline">\(G\)</span>表示，可以通过中断概率<span class="math inline">\(d\)</span>在高信噪比下的渐进行为来给出。 <span class="math display">\[
 d=Pr(I_h&lt;R_t)\infty \frac{1}{SNR},SNR\to+\infty
-\]</span> 方程式表明，在高信噪比条件下，中断事件发生的概率趋近于零，即随着信噪比的增加，中断事件的概率几乎为零。这是因为在高信噪比条件下，信号相对于噪声更容易被正确地接收，从而降低了中断事件的发生概率，提高了通信系统的可靠性。</p>
+\]</span>
+方程式表明，在高信噪比条件下，中断事件发生的概率趋近于零，即随着信噪比的增加，中断事件的概率几乎为零。这是因为在高信噪比条件下，信号相对于噪声更容易被正确地接收，从而降低了中断事件的发生概率，提高了通信系统的可靠性。</p>
 <h3 id="遍历速率复用增益">3.2 遍历速率、复用增益</h3>
 <p>与中断性能代表的可靠性不同，遍历和速率、复用增益两项指标通常用来衡量通信系统最大可达速率。</p>
 <p><strong>遍历速率<span class="math inline">\(R_E\)</span></strong>：遍历速率表示系统在所有可能的随机状态下的平均速率。具体地，如果即时可达速率<span class="math inline">\(R(h)\)</span>是随机信道<span class="math inline">\(h\)</span>的函数，则遍历速率<span class="math inline">\(R_E\)</span>可以表示为<span class="math inline">\(R_E=E[R(h)]\)</span>,其中<span class="math inline">\(E\)</span>表示期望运算。这意味着遍历速率是所有可能的随机状态下的即时可达速率的期望值。</p>
@@ -390,37 +410,49 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 <h2 id="多天线技术mimo">4. 多天线技术（MIMO）</h2>
 <h3 id="基本概念">4.1 基本概念</h3>
 <p><strong>MIMO技术</strong>属于多天线技术，利用<strong>空间分集/复用</strong>来提高吞吐量，多个<strong>独立的</strong>的数据流<strong>同时传输</strong>。</p>
-<p>MIMO分为<strong>point-to-point MIMO</strong>和<strong>MU-MIMO</strong>两类，其中<strong>point-to-point MIMO</strong>即属于<strong>利用空间分集来提高吞吐量</strong>，虽然在point-to-point MIMO中，接收机和发射机都配备有多个天线，但是在每个时刻，只有一个用户可以被服务；<strong>MU-MIMO</strong>属于<strong>利用空间复用来提高吞吐量</strong>。</p>
+<p>MIMO分为<strong>point-to-point
+MIMO</strong>和<strong>MU-MIMO</strong>两类，其中<strong>point-to-point
+MIMO</strong>即属于<strong>利用空间分集来提高吞吐量</strong>，虽然在point-to-point
+MIMO中，接收机和发射机都配备有多个天线，但是在每个时刻，只有一个用户可以被服务；<strong>MU-MIMO</strong>属于<strong>利用空间复用来提高吞吐量</strong>。</p>
 <p><mark><strong>下面只关注使用空间复用的MIMO。</strong></mark></p>
 <p>与<strong>SISO</strong>相比，<strong>MIMO</strong>：</p>
 <ul>
 <li>获得了吞吐量的增益</li>
 <li>没有可靠性的增益</li>
 </ul>
-<h3 id="mimo的数学模型以22的mimo下行链路为例">4.2 MIMO的数学模型（以2×2的MIMO下行链路为例）</h3>
+<h3 id="mimo的数学模型以22的mimo下行链路为例">4.2
+MIMO的数学模型（以2×2的MIMO下行链路为例）</h3>
 <p><strong>2个用户的MIMO下行场景</strong>：</p>
 <figure>
-<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-7eaddb44830608b37cb87b80274c6d2b_720w.webp" srcset="/img/loading.gif" lazyload alt="2x2的MIMO的模型"><figcaption aria-hidden="true">2x2的MIMO的模型</figcaption>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-7eaddb44830608b37cb87b80274c6d2b_720w.webp" srcset="/img/loading.gif" lazyload alt="2x2的MIMO的模型">
+<figcaption aria-hidden="true">2x2的MIMO的模型</figcaption>
 </figure>
 <p>其中，<span class="math inline">\(h_{11},h_{12},h_{21},h_{22}\)</span>为四条可能的传输路径，是<strong>系数</strong>，其大小表示<strong>从该路径传输的数据量的大小</strong>，数值越大，表示从该条路径传输的数据量越多。</p>
 <blockquote>
 <p><span class="math inline">\(h_{ij}\)</span>中的<span class="math inline">\(i\)</span>表示的是第<span class="math inline">\(i\)</span>个接收天线(<span class="math inline">\(R_x\)</span>)，<span class="math inline">\(j\)</span>表示第<span class="math inline">\(j\)</span>个发射天线(<span class="math inline">\(T_x\)</span>)。</p>
 </blockquote>
-<p>四个系数构成一个<strong>信道矩阵</strong>：<span class="math inline">\(H=\begin{bmatrix} h_{11} &amp; h_{12}\\ h_{21} &amp; h_{22} \end{bmatrix}\)</span>。</p>
-<p>用矩阵表示MIMO的过程：<span class="math inline">\(y=Hx\)</span>。其中，<span class="math inline">\(y\)</span>为<strong>接收机接收到的数据构成的矩阵</strong>，维度为<span class="math inline">\(N_{R_x}×1\)</span>，<span class="math inline">\(y=\begin{bmatrix} y_1\\ y_2 \end{bmatrix}\)</span>；<span class="math inline">\(x\)</span>为<strong>发射机发送的数据构成的矩阵</strong>，维度为<span class="math inline">\(N_{T_x}×1\)</span>，<span class="math inline">\(x=\begin{bmatrix} x_1\\ x_2 \end{bmatrix}\)</span>。接收数据表示为发送数据经过<strong>信道矩阵</strong>变换后得到。</p>
+<p>四个系数构成一个<strong>信道矩阵</strong>：<span class="math inline">\(H=\begin{bmatrix} h_{11} &amp; h_{12}\\ h_{21}
+&amp; h_{22} \end{bmatrix}\)</span>。</p>
+<p>用矩阵表示MIMO的过程：<span class="math inline">\(y=Hx\)</span>。其中，<span class="math inline">\(y\)</span>为<strong>接收机接收到的数据构成的矩阵</strong>，维度为<span class="math inline">\(N_{R_x}×1\)</span>，<span class="math inline">\(y=\begin{bmatrix} y_1\\ y_2
+\end{bmatrix}\)</span>；<span class="math inline">\(x\)</span>为<strong>发射机发送的数据构成的矩阵</strong>，维度为<span class="math inline">\(N_{T_x}×1\)</span>，<span class="math inline">\(x=\begin{bmatrix} x_1\\ x_2
+\end{bmatrix}\)</span>。接收数据表示为发送数据经过<strong>信道矩阵</strong>变换后得到。</p>
 <p><strong>传播矩阵</strong><span class="math inline">\(H\)</span>的维度是<span class="math inline">\(N_{R_x}×N_{T_x}\)</span>。</p>
 <blockquote>
-<p>信道矩阵的行数 = 接收天线的个数；信道矩阵的列数 = 发射天线的个数。</p>
+<p>信道矩阵的行数 = 接收天线的个数；信道矩阵的列数 =
+发射天线的个数。</p>
 </blockquote>
 <p><strong>接收机的目的</strong>：从接收到的数据<span class="math inline">\(y\)</span>中提取得到原始数据<span class="math inline">\(x\)</span>。</p>
 <p><strong>如何实现接收机的目的？</strong></p>
-<p>概念上，可以直接通过对<strong>传播矩阵</strong>求逆得到，即<span class="math inline">\(\begin{bmatrix} x_1\\ x_2 \end{bmatrix}=\begin{bmatrix} h_{11} &amp; h_{12}\\ h_{21} &amp; h_{22} \end{bmatrix}^{-1}\begin{bmatrix} y_1\\ y_2 \end{bmatrix}\)</span>。</p>
+<p>概念上，可以直接通过对<strong>传播矩阵</strong>求逆得到，即<span class="math inline">\(\begin{bmatrix} x_1\\ x_2
+\end{bmatrix}=\begin{bmatrix} h_{11} &amp; h_{12}\\ h_{21} &amp; h_{22}
+\end{bmatrix}^{-1}\begin{bmatrix} y_1\\ y_2 \end{bmatrix}\)</span>。</p>
 <p>然而，<strong>存在如下的问题</strong>：</p>
 <ol type="1">
 <li><strong>传播矩阵的逆不一定存在</strong>，只有在<strong>富杂散</strong>，即传播路径各不相干，各自独立，的环境中，<span class="math inline">\(H^{-1}\)</span>才存在；</li>
 <li>即使<span class="math inline">\(H^{-1}\)</span>存在，求解矩阵的逆也是一个很复杂的事，是否存在一种方式可以<strong>预处理</strong>数据，使得<strong>UE</strong>（统一编码）可以在不对传播矩阵进行求逆的情况下，对数据进行译码。</li>
 </ol>
-<p><strong>解决方法</strong> -- 使用<strong>SVD，将对信道矩阵求逆化简为对对角矩阵求逆，引入Precoding（预编码）。</strong></p>
+<p><strong>解决方法</strong> --
+使用<strong>SVD，将对信道矩阵求逆化简为对对角矩阵求逆，引入Precoding（预编码）。</strong></p>
 <blockquote>
 <p>因此，引入预编码的目的视为让矩阵求逆变得简单。</p>
 </blockquote>
@@ -431,23 +463,28 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 </blockquote>
 <p>预编码矩阵<span class="math inline">\(V\)</span>的维度是<span class="math inline">\(N_{T_x}×N_{T_x}\)</span>。</p>
 <figure>
-<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-66028592dd8732d512b75e78c1e901d9_r.jpg" srcset="/img/loading.gif" lazyload alt="MIMO_SVD"><figcaption aria-hidden="true">MIMO_SVD</figcaption>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-66028592dd8732d512b75e78c1e901d9_r.jpg" srcset="/img/loading.gif" lazyload alt="MIMO_SVD">
+<figcaption aria-hidden="true">MIMO_SVD</figcaption>
 </figure>
 <blockquote>
 <p>在发射端和接收端分别加上<strong>预编码矩阵</strong><span class="math inline">\(V\)</span>和<strong>合并矩阵</strong><span class="math inline">\(U^H\)</span>，<strong>这两个都是信道矩阵分解后得到的酉矩阵</strong>，因此最后剩下的新的信道矩阵是一个对角矩阵。</p>
 </blockquote>
-<p>在这种情况下，<span class="math inline">\(y=U^H(U\varSigma V^H)Vx=\varSigma x\)</span>。</p>
-<p>通过SVD，将<strong>信道矩阵</strong>可以简单表达为一个<strong>对角矩阵</strong>，<span class="math inline">\(\varSigma=\begin{bmatrix} \sigma_1 &amp; 0\\ 0 &amp; \sigma_2 \end{bmatrix}\)</span>，其中<span class="math inline">\(\sigma_i\)</span>为信道矩阵<span class="math inline">\(H\)</span>的<strong>奇异值</strong>，<span class="math inline">\(\sigma_i^2\)</span>为<span class="math inline">\(H^*H\)</span>的<strong>特征值</strong>。</p>
+<p>在这种情况下，<span class="math inline">\(y=U^H(U\varSigma
+V^H)Vx=\varSigma x\)</span>。</p>
+<p>通过SVD，将<strong>信道矩阵</strong>可以简单表达为一个<strong>对角矩阵</strong>，<span class="math inline">\(\varSigma=\begin{bmatrix} \sigma_1 &amp; 0\\ 0
+&amp; \sigma_2 \end{bmatrix}\)</span>，其中<span class="math inline">\(\sigma_i\)</span>为信道矩阵<span class="math inline">\(H\)</span>的<strong>奇异值</strong>，<span class="math inline">\(\sigma_i^2\)</span>为<span class="math inline">\(H^*H\)</span>的<strong>特征值</strong>。</p>
 <p>此时，2×2的MIMO图示可以简化为：</p>
 <figure>
-<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-0295e95d931f1a1090c2ccb3108b37f1_720w.webp" srcset="/img/loading.gif" lazyload alt="简化的MIMO"><figcaption aria-hidden="true">简化的MIMO</figcaption>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-0295e95d931f1a1090c2ccb3108b37f1_720w.webp" srcset="/img/loading.gif" lazyload alt="简化的MIMO">
+<figcaption aria-hidden="true">简化的MIMO</figcaption>
 </figure>
 <h3 id="发射机如何得到预编码矩阵v">4.3 发射机如何得到预编码矩阵<span class="math inline">\(V\)</span></h3>
 <p><strong>思考过程：</strong>接收机(UE)可以基于发射机(eNB)发送的特定的参考信号进行<strong>信道估计</strong>，得到<strong>信道矩阵</strong>。然而，预编码矩阵是在发射机(eNB侧)被需要，那么，<strong>发射机如何知道预编码矩阵V呢</strong>？概念上，<strong>接收机(UE侧)告知发射机(eNB侧)预编码矩阵</strong>。但是，<strong>上述方法不可行</strong>，因为，<strong>将整个预编码矩阵发送给eNB是一个巨大的开销</strong>。</p>
 <p>3GPP，对此给出的做法如下：在标准化过程中，对无线电信道进行了广泛的调查，预先定义了一组矩阵，UE侧和eNB侧均已知这组矩阵。之后，UE基于信道估计选择一个最合适的预编码矩阵，然后通知eNB所选的预编码矩阵在CodeBook中的下标。</p>
 <p>上述的描述，即为TM4，即带有反馈的MIMO：</p>
 <figure>
-<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-308da06fad3f4952b9b8df042112e95b_720w.webp" srcset="/img/loading.gif" lazyload alt="带有反馈的MIMO"><figcaption aria-hidden="true">带有反馈的MIMO</figcaption>
+<img src="/2024/02/18/%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1/v2-308da06fad3f4952b9b8df042112e95b_720w.webp" srcset="/img/loading.gif" lazyload alt="带有反馈的MIMO">
+<figcaption aria-hidden="true">带有反馈的MIMO</figcaption>
 </figure>
 <p>UE侧在具体的时刻选择最适合信道的CodeBook的步骤：</p>
 <ol type="1">
@@ -457,15 +494,24 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 </ol>
 <h3 id="rank-indicator">4.4 Rank Indicator</h3>
 <p>Rank Indicator是UE侧一种特殊的测量，得到的是Rank Index。</p>
-<p>从实际的角度来看，Rank Indicator表明了MIMO的工作质量，如：对于一个2×2的MIMO，如果<span class="math inline">\(RI=2\)</span>，表示数据块有2个传输通道，即表明它以真正的MIMO方式运行，但是，如果<span class="math inline">\(RI=1\)</span>，表明数据块只有1个传输通道，即表示它实际只是在单天线通信，即2×2MIMO没有发挥出最佳效率。</p>
-<p>从<strong>奇异值矩阵</strong>Σ中，我们可以得到RI。以2×2MIMO为例：<span class="math inline">\(\varSigma=\begin{bmatrix} \sigma_1 &amp; 0\\ 0 &amp; \sigma_2 \end{bmatrix}\)</span>，<span class="math inline">\(RI\)</span>等于<span class="math inline">\(\varSigma\)</span>中对角元素非0的个数。</p>
+<p>从实际的角度来看，Rank
+Indicator表明了MIMO的工作质量，如：对于一个2×2的MIMO，如果<span class="math inline">\(RI=2\)</span>，表示数据块有2个传输通道，即表明它以真正的MIMO方式运行，但是，如果<span class="math inline">\(RI=1\)</span>，表明数据块只有1个传输通道，即表示它实际只是在单天线通信，即2×2MIMO没有发挥出最佳效率。</p>
+<p>从<strong>奇异值矩阵</strong>Σ中，我们可以得到RI。以2×2MIMO为例：<span class="math inline">\(\varSigma=\begin{bmatrix} \sigma_1 &amp; 0\\ 0
+&amp; \sigma_2 \end{bmatrix}\)</span>，<span class="math inline">\(RI\)</span>等于<span class="math inline">\(\varSigma\)</span>中对角元素非0的个数。</p>
 <p><strong>RI的物理意义</strong>：表示独立通信的信道数目。</p>
 <p>如果<span class="math inline">\(RI=2\)</span>，表示<span class="math inline">\(\sigma_1≠0\)</span>且<span class="math inline">\(\sigma_2≠0\)</span>，即有2条独立的信道；</p>
 <p>如果<span class="math inline">\(RI=1\)</span>，表示<span class="math inline">\(\sigma_1=0\)</span><span class="math inline">\(或\sigma_2=0\)</span>，即虽然有2根天线，但只有一个数据流在工作，意味着其中一根天线的信号完全丢失或被埋在噪声中，无法decode。</p>
-<h3 id="条件数----正确估计mimo信道的真实性能">4.5 条件数 -- 正确估计MIMO信道的真实性能</h3>
-<p>Rank Indicator只关注了奇异值矩阵中的<strong>非零元素的数目</strong>，但其中<strong>非零元素的数值大小</strong>也同样重要。</p>
-<p>如，<span class="math inline">\(\varSigma_1=\begin{bmatrix} 2 &amp; 0\\ 0 &amp; 1 \end{bmatrix}\)</span>，<span class="math inline">\(\varSigma_1=\begin{bmatrix} 2 &amp; 0\\ 0 &amp; 0.1 \end{bmatrix}\)</span>，虽然两个奇异值矩阵的RI是一样的，但是他们对应的MIMO的性能是完全不同的，用<strong>条件数</strong>来衡量。</p>
-<p><strong>条件数的定义</strong>：<span class="math inline">\(K(H)=\frac{\lambda_{max}}{\lambda_{min}}\begin{cases} 当K(H)\approx 1时为空间复用的最佳方法\\当K(H)\gg 1时不是空间复用的最佳方法 \\ \end{cases}\)</span></p>
+<h3 id="条件数----正确估计mimo信道的真实性能">4.5 条件数 --
+正确估计MIMO信道的真实性能</h3>
+<p>Rank
+Indicator只关注了奇异值矩阵中的<strong>非零元素的数目</strong>，但其中<strong>非零元素的数值大小</strong>也同样重要。</p>
+<p>如，<span class="math inline">\(\varSigma_1=\begin{bmatrix} 2 &amp;
+0\\ 0 &amp; 1 \end{bmatrix}\)</span>，<span class="math inline">\(\varSigma_1=\begin{bmatrix} 2 &amp; 0\\ 0 &amp;
+0.1
+\end{bmatrix}\)</span>，虽然两个奇异值矩阵的RI是一样的，但是他们对应的MIMO的性能是完全不同的，用<strong>条件数</strong>来衡量。</p>
+<p><strong>条件数的定义</strong>：<span class="math inline">\(K(H)=\frac{\lambda_{max}}{\lambda_{min}}\begin{cases}
+当K(H)\approx 1时为空间复用的最佳方法\\当K(H)\gg
+1时不是空间复用的最佳方法 \\ \end{cases}\)</span></p>
 <h1 id="二noma和ofdma的性能对比">二、NOMA和OFDMA的性能对比</h1>
 <h2 id="noma采用的关键技术">1.NOMA采用的关键技术</h2>
 <h3 id="串行干扰删除sic">1.1 串行干扰删除（SIC）</h3>
@@ -493,20 +539,31 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 参数</span><br>order_psk = [<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">8</span>,<span class="hljs-number">16</span>,<span class="hljs-number">64</span>];      <span class="hljs-comment">% PSK符号阶数，2表示BPSK，4表示4PSK，以此类推</span><br><span class="hljs-keyword">for</span> order = <span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(order_psk)<br>    sym_total = <span class="hljs-number">2.048e4</span>*<span class="hljs-number">52</span>; <span class="hljs-comment">% 总符号数</span><br>    len_turbo = <span class="hljs-number">1280</span>;   <span class="hljs-comment">% Turbo码长</span><br>    bit_total = sym_total * <span class="hljs-built_in">log2</span>(order_psk(order));<br>    N_ofdma_u1 = <span class="hljs-number">26</span>;    <span class="hljs-comment">% OFDMA用户1的子载波数</span><br>    N_ofdma_u2 = <span class="hljs-number">26</span>;    <span class="hljs-comment">% OFDMA用户2的子载波数</span><br>    p1 = <span class="hljs-number">0.1</span>;           <span class="hljs-comment">% NOMA用户1的功率</span><br>    p2 = <span class="hljs-number">0.9</span>;           <span class="hljs-comment">% NOMA用户2的功率</span><br><br>    N_ofdm = <span class="hljs-number">64</span>;        <span class="hljs-comment">% OFDM子载波数</span><br>    N_data = <span class="hljs-number">52</span>;        <span class="hljs-comment">% 数据载波数</span><br>    <span class="hljs-comment">% N_data 表示的是实际用于数据传输的子载波数量，而 N_ofdm 表示的是整个 OFDM 符号中的所有子载波的总数量。</span><br>    <span class="hljs-comment">% 通常情况下，N_data 是 N_ofdm 的一个子集。</span><br>    N_GB = [<span class="hljs-number">4</span>; <span class="hljs-number">3</span>];      <span class="hljs-comment">% 载波间隔参数</span><br>    N_P = [<span class="hljs-number">12</span>; <span class="hljs-number">26</span>; <span class="hljs-number">40</span>; <span class="hljs-number">54</span>]; <span class="hljs-comment">% 导频参数</span><br>    CP = <span class="hljs-number">1</span>/<span class="hljs-number">4</span>;           <span class="hljs-comment">% CP占比</span><br><br>    Ts = <span class="hljs-number">1</span>/<span class="hljs-number">10000</span>;<br>    FD = <span class="hljs-number">500</span>;           <span class="hljs-comment">% 瑞利信道参数</span><br>    SNR = <span class="hljs-number">25</span>:<span class="hljs-number">1</span>:<span class="hljs-number">60</span>;           <span class="hljs-comment">% 信噪比 </span><br></code></pre></td></tr></table></figure>
 <h4 id="参数合理性判断">3.1.2 参数合理性判断</h4>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 参数合理性判断</span><br><span class="hljs-keyword">if</span> (<span class="hljs-built_in">mod</span>(bit_total, len_turbo)~=<span class="hljs-number">0</span>)<br>    error(<span class="hljs-string">&#x27;总比特数必须是Turbo编码长度的整数倍&#x27;</span>);<br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">if</span> (<span class="hljs-built_in">mod</span>((<span class="hljs-number">3</span>*len_turbo+<span class="hljs-number">12</span>)*bit_total/len_turbo, N_data)~=<span class="hljs-number">0</span>)<br>    error(<span class="hljs-string">&#x27;总比特数必须保证OFDM符号完整&#x27;</span>);<br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">if</span> (N_ofdma_u1+N_ofdma_u2~=N_data)<br>    error(<span class="hljs-string">&#x27;OFDMA中两用户的子载波数目之和必须等于数据载波总数&#x27;</span>);<br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">if</span> (p1+p2~=<span class="hljs-number">1</span>)<br>    error(<span class="hljs-string">&#x27;功率系数p1与p2之和必须等于1&#x27;</span>);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-<h4 id="生成两个用户的发射符号序列加入turbo编码">3.1.3 生成两个用户的发射符号序列，加入Turbo编码</h4>
+<h4 id="生成两个用户的发射符号序列加入turbo编码">3.1.3
+生成两个用户的发射符号序列，加入Turbo编码</h4>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% 生成两个用户的发射符号序列，加入Turbo编码</span><br>[sym_seq_u1, bit_seq_u1] = data_gen(bit_total, len_turbo, order_psk(order));<br>[sym_seq_u2, bit_seq_u2] = data_gen(bit_total, len_turbo, order_psk(order));<br></code></pre></td></tr></table></figure>
 <h4 id="noma编码和ofdma编码">3.1.4 NOMA编码和OFDMA编码</h4>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% NOMA和OFDMA</span><br>sym_seq_noma = noma_enc(sym_seq_u1, sym_seq_u2, p1, p2);<br><span class="hljs-comment">% 对两用户数据进行NOMA编码</span><br>sym_seq_ofdma = ofdma_enc(sym_seq_u1, sym_seq_u2, N_ofdma_u1, N_ofdma_u2);<br><span class="hljs-comment">% 对两用户数据进行OFDMA编码</span><br></code></pre></td></tr></table></figure>
 <h4 id="ofdm调制">3.1.5 OFDM调制</h4>
 <p>创建OFDM调制器：</p>
-<p><code>comm.OFDMModulator</code> 是 MATLAB 中用于创建 <strong>OFDM（正交频分多址）调制器</strong>对象的通信工具箱中的一个类。OFDM 调制器通常包括以下功能和属性（以第一个NOMA调制器为例）：</p>
+<p><code>comm.OFDMModulator</code> 是 MATLAB 中用于创建
+<strong>OFDM（正交频分多址）调制器</strong>对象的通信工具箱中的一个类。OFDM
+调制器通常包括以下功能和属性（以第一个NOMA调制器为例）：</p>
 <ul>
-<li><code>'FFTLength',N_ofdm</code>：设置了 FFT（快速傅里叶变换）的长度为 <code>N_ofdm</code>。FFT长度决定了每个 OFDM 符号中使用的子载波数量。</li>
-<li><code>'NumGuardBandCarriers',N_GB</code>：设置了保护带宽子载波数量为 <code>N_GB</code>。保护带宽是指在每个 OFDM 符号的两端分配的用于保护子载波的数量，通常用于减小符号之间的干扰。</li>
+<li><code>'FFTLength',N_ofdm</code>：设置了
+FFT（快速傅里叶变换）的长度为 <code>N_ofdm</code>。FFT长度决定了每个
+OFDM 符号中使用的子载波数量。</li>
+<li><code>'NumGuardBandCarriers',N_GB</code>：设置了保护带宽子载波数量为
+<code>N_GB</code>。保护带宽是指在每个 OFDM
+符号的两端分配的用于保护子载波的数量，通常用于减小符号之间的干扰。</li>
 <li><code>'PilotInputPort',true</code>：启用了插入导频的功能。</li>
 <li><code>'PilotCarrierIndices',N_P</code>：设置了导频（Pilot）子载波的索引。导频子载波用于信道估计和补偿，在信道估计过程中，将发送导频信号并通过接收到的信号与其进行比较以估计信道特性。</li>
-<li><code>'NumSymbols',num_ofdmsym_noma</code>：设置了要生成的 OFDM 符号的数量，这里使用了之前计算得到的 <code>num_ofdmsym_noma</code>。</li>
-<li><code>'CyclicPrefixLength',N_ofdm*CP</code>：设置了循环前缀（Cyclic Prefix）的长度为 <code>N_ofdm*CP</code>。循环前缀是在每个 OFDM 符号的头部插入的一段重复的信号，用于抵消多径传播引起的符号间的码间干扰。</li>
+<li><code>'NumSymbols',num_ofdmsym_noma</code>：设置了要生成的 OFDM
+符号的数量，这里使用了之前计算得到的
+<code>num_ofdmsym_noma</code>。</li>
+<li><code>'CyclicPrefixLength',N_ofdm*CP</code>：设置了循环前缀（Cyclic
+Prefix）的长度为 <code>N_ofdm*CP</code>。循环前缀是在每个 OFDM
+符号的头部插入的一段重复的信号，用于抵消多径传播引起的符号间的码间干扰。</li>
 <li><code>'InsertDCNull',true</code>：启用了插入直流（DC）空子载波的功能。直流空子载波用于消除直流偏移，以提高系统的性能。</li>
 </ul>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs matlab">num_ofdmsym_noma = <span class="hljs-built_in">length</span>(sym_seq_noma)/N_data;<br>mod_ofdm_noma = comm.OFDMModulator(...<br><span class="hljs-string">&#x27;FFTLength&#x27;</span>,N_ofdm,...<br><span class="hljs-string">&#x27;NumGuardBandCarriers&#x27;</span>,N_GB,...<br><span class="hljs-string">&#x27;PilotInputPort&#x27;</span>,<span class="hljs-built_in">true</span>,...<br><span class="hljs-string">&#x27;PilotCarrierIndices&#x27;</span>,N_P,...<br><span class="hljs-string">&#x27;NumSymbols&#x27;</span>,num_ofdmsym_noma,...<br><span class="hljs-string">&#x27;CyclicPrefixLength&#x27;</span>,N_ofdm*CP,...<br><span class="hljs-string">&#x27;InsertDCNull&#x27;</span>,<span class="hljs-built_in">true</span>);<br><span class="hljs-comment">% 构造NOMA的OFDM调制器</span><br>num_ofdmsym_ofdma = <span class="hljs-built_in">length</span>(sym_seq_ofdma)/N_data;<br>mod_ofdm_ofdma = comm.OFDMModulator(...<br><span class="hljs-string">&#x27;FFTLength&#x27;</span>,N_ofdm,...<br><span class="hljs-string">&#x27;NumGuardBandCarriers&#x27;</span>,N_GB,...<br><span class="hljs-string">&#x27;PilotInputPort&#x27;</span>,<span class="hljs-built_in">true</span>,...<br><span class="hljs-string">&#x27;PilotCarrierIndices&#x27;</span>,N_P,...<br><span class="hljs-string">&#x27;NumSymbols&#x27;</span>,num_ofdmsym_ofdma,...<br><span class="hljs-string">&#x27;CyclicPrefixLength&#x27;</span>,N_ofdm*CP,...<br><span class="hljs-string">&#x27;InsertDCNull&#x27;</span>,<span class="hljs-built_in">true</span>);<br><span class="hljs-comment">% 构造OFDMA的OFDM调制器</span><br></code></pre></td></tr></table></figure>
@@ -518,15 +575,20 @@ m=\lim\limits_{SNR \to \infty}\frac{R_E}{log_2(SNR)}
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%% OFDM解调</span><br>sym_seq_noma_mat = ofdm_rx(rx_noma, mod_ofdm_noma);<br>sym_seq_noma = <span class="hljs-built_in">reshape</span>(sym_seq_noma_mat, <span class="hljs-built_in">numel</span>(sym_seq_noma_mat), <span class="hljs-number">1</span>);<br><span class="hljs-comment">% 将解调后的数据符号序列矩阵重塑成列向量，以便后续的处理</span><br>sym_seq_ofdma_mat = ofdm_rx(rx_ofdma, mod_ofdm_ofdma);<br>sym_seq_ofdma = <span class="hljs-built_in">reshape</span>(sym_seq_ofdma_mat, <span class="hljs-built_in">numel</span>(sym_seq_ofdma_mat), <span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
 <h4 id="noma和ofdma解码及绘图">3.1.8 NOMA和OFDMA解码及绘图</h4>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs matlab">        <span class="hljs-comment">%% NOMA和OFDMA解码</span><br>        <span class="hljs-keyword">if</span> (p1&gt;p2)<br>            [bit_u1, bit_u2] = noma_dec(sym_seq_noma, len_turbo, order_psk(order), p1, p2);<br>        <span class="hljs-keyword">else</span><br>            [bit_u2, bit_u1] = noma_dec(sym_seq_noma, len_turbo, order_psk(order), p2, p1);<br>        <span class="hljs-keyword">end</span><br><br>        [n1,r1(order, snr)] = biterr(bit_u1,bit_seq_u1);<br>        <span class="hljs-comment">% 解构赋值语法，将biterr函数的第一个返回值赋给变量n1，而将第二个返回值赋给矩阵r1中的特定位置，n1变量将包含比特误码数，而r1(order, snr)将包含比特误码率。</span><br>        [n2,r2(order, snr)] = biterr(bit_u2,bit_seq_u2);<br>        <span class="hljs-comment">% 按照功率顺序解码用户1和用户2的符号序列</span><br>        <br>        [bit_u11, bit_u22] = ofdma_dec(sym_seq_ofdma, len_turbo, order_psk(order), N_ofdma_u1, N_ofdma_u2);<br><br>        [n11,r11(order,snr)] = biterr(bit_u11,bit_seq_u1(<span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(bit_u11)));<br>        [n22,r22(order,snr)] = biterr(bit_u22,bit_seq_u2(<span class="hljs-number">1</span>:<span class="hljs-built_in">length</span>(bit_u22)));<br>        [r1(order,snr), r2(order,snr), r11(order,snr), r22(order,snr)]<br>    <span class="hljs-keyword">end</span><br>    <br><span class="hljs-keyword">end</span><br><span class="hljs-comment">% </span><br>save(<span class="hljs-string">&#x27;ber.mat&#x27;</span>,<span class="hljs-string">&#x27;r1&#x27;</span>,<span class="hljs-string">&#x27;r2&#x27;</span>,<span class="hljs-string">&#x27;r11&#x27;</span>,<span class="hljs-string">&#x27;r22&#x27;</span>);<br>plot_ber(order_psk, SNR, N_data, p1, p2, N_ofdma_u1, N_ofdma_u2);<br></code></pre></td></tr></table></figure>
-<h3 id="生成两个用户的发射符号序列加入turbo编码-1">3.2 生成两个用户的发射符号序列，加入Turbo编码</h3>
+<h3 id="生成两个用户的发射符号序列加入turbo编码-1">3.2
+生成两个用户的发射符号序列，加入Turbo编码</h3>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ symbol_seq, bit_seq ]</span> = <span class="hljs-title">data_gen</span><span class="hljs-params">( bit_num, len_turbo, M )</span></span><br><span class="hljs-comment">% 输入总比特数、Turbo码长和PSK阶数，生成符号序列，同时返回原始比特序列。</span><br><span class="hljs-comment">% 输出一个包含两个元素的元组，其中第一个元素是经过 PSK 调制后的符号序列，第二个元素是原始的随机生成的二进制比特序列。</span><br>bit_seq = <span class="hljs-built_in">round</span>(<span class="hljs-built_in">rand</span>(bit_num, <span class="hljs-number">1</span>));<br><span class="hljs-comment">% 生成大小为 bit_num 的随机比特序列</span><br><br>[turbo_seq] = turbo_enc(bit_seq, len_turbo);<br><span class="hljs-comment">% Turbo编码，编码后长度为3*len+12</span><br><br>hModulator = comm.PSKModulator(M,<span class="hljs-string">&#x27;BitInput&#x27;</span>,<span class="hljs-built_in">true</span>);<br><span class="hljs-comment">% 创建了一个 PSK 调制器对象，用于将输入的二进制序列转换为 PSK 调制信号。</span><br><span class="hljs-comment">% PSK 调制器在数字通信中经常用于将数字数据转换为调制信号，用于传输到通信信道中。</span><br>hModulator.PhaseOffset = <span class="hljs-built_in">pi</span>/M;<br><span class="hljs-comment">% 将 PSK 调制器对象的相位偏移属性设置为 π/M，以确保调制信号的相位偏移符合预期，并与接收端的解调器相匹配。</span><br>symbol_seq = step(hModulator, turbo_seq);<br><span class="hljs-comment">% 进行PSK调制</span><br><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <p>Turbo编码：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ turbo_seq ]</span> = <span class="hljs-title">turbo_enc</span><span class="hljs-params">( bit_seq, len )</span></span><br><span class="hljs-comment">% 对输入比特序列进行Turbo编码</span><br><br>bit_mat = <span class="hljs-built_in">reshape</span>(bit_seq, len, <span class="hljs-built_in">numel</span>(bit_seq)/len);<br><span class="hljs-comment">% 将二进制序列bit_seq重新塑造</span><br>turbo_seq = [];<br><span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> = <span class="hljs-number">1</span>:<span class="hljs-built_in">numel</span>(bit_seq)/len<br>    turbo_seq0 = lteTurboEncode(bit_mat(:,<span class="hljs-built_in">i</span>));<br>    <span class="hljs-comment">% 对 bit_mat 中的第 i 列数据进行 Turbo 编码</span><br>    turbo_seq = [turbo_seq; turbo_seq0];<br>    <span class="hljs-comment">% 经过每次循环迭代将一个长度为 len 的子序列经过 Turbo 编码后的结果存储到 turbo_seq 中</span><br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <h3 id="noma编码">3.3 NOMA编码</h3>
-<p>用户1的信号 <code>seq_u1</code> 被放大到功率水平 <code>p1</code>，用户2的信号 <code>seq_u2</code> 被放大到功率水平 <code>p2</code>，然后这两个信号相加得到 <code>seq_noma</code>，以便在 NOMA 系统中进行传输。</p>
+<p>用户1的信号 <code>seq_u1</code> 被放大到功率水平
+<code>p1</code>，用户2的信号 <code>seq_u2</code> 被放大到功率水平
+<code>p2</code>，然后这两个信号相加得到 <code>seq_noma</code>，以便在
+NOMA 系统中进行传输。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ seq_noma ]</span> = <span class="hljs-title">noma_enc</span><span class="hljs-params">( seq_u1, seq_u2, p1, p2 )</span></span><br><span class="hljs-comment">% 将用户1和用户2的数据序列按照p1和p2的功率分配合成NOMA序列</span><br><br>seq_noma = <span class="hljs-built_in">sqrt</span>(p1) * seq_u1 + <span class="hljs-built_in">sqrt</span>(p2) * seq_u2;<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <h3 id="ofdma编码">3.4 OFDMA编码</h3>
-<p>根据给定的子载波分配，将多个用户的数据合成为一个 OFDMA 序列，以便在 OFDMA 系统中进行传输。</p>
+<p>根据给定的子载波分配，将多个用户的数据合成为一个 OFDMA 序列，以便在
+OFDMA 系统中进行传输。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ seq_ofdma ]</span> = <span class="hljs-title">ofdma_enc</span><span class="hljs-params">( seq_u1, seq_u2, N_u1, N_u2 )</span></span><br><span class="hljs-comment">% 将用户1和用户2的数据分别按照N_u1和N_u2的子载波数合成OFDMA序列，只保留部分序列。</span><br><br>sym_total = <span class="hljs-built_in">length</span>(seq_u1);<br>sym_u1 = sym_total * (N_u1/(N_u1+N_u2));<br>sym_u2 = sym_total * (N_u2/(N_u1+N_u2));<br>seq_u1_r = seq_u1(<span class="hljs-number">1</span>:sym_u1);<br>seq_u2_r = seq_u2(<span class="hljs-number">1</span>:sym_u2);<br><span class="hljs-comment">% 截取用户1和用户2的部分序列，保证序列总长度和NOMA的一致</span><br><br>mat_u1_r = <span class="hljs-built_in">reshape</span>(seq_u1_r, N_u1, <span class="hljs-built_in">numel</span>(seq_u1_r)/N_u1);<br>mat_u2_r = <span class="hljs-built_in">reshape</span>(seq_u2_r, N_u2, <span class="hljs-built_in">numel</span>(seq_u1_r)/N_u2);<br><br>mat_ofdma = [mat_u1_r; mat_u2_r];<br>seq_ofdma = <span class="hljs-built_in">reshape</span>(mat_ofdma, <span class="hljs-built_in">numel</span>(mat_ofdma), <span class="hljs-number">1</span>);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <h3 id="ofdm调制-1">3.5 OFDM调制</h3>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ tx_data ]</span> = <span class="hljs-title">ofdm_tx</span><span class="hljs-params">( sym_seq, mod_ofdm )</span></span><br><br><span class="hljs-comment">% OFDM调制，mod为调制器</span><br><br>N_data = mod_ofdm.FFTLength - sum(mod_ofdm.NumGuardBandCarriers) - <span class="hljs-number">1</span> - <span class="hljs-built_in">length</span>(mod_ofdm.PilotCarrierIndices);<br><span class="hljs-comment">% 计算 OFDM 符号中用于传输数据的子载波数量</span><br>N_P = <span class="hljs-built_in">length</span>(mod_ofdm.PilotCarrierIndices);<br>num_ofdmsym = mod_ofdm.NumSymbols;<br><br>pilot_seq = <span class="hljs-built_in">complex</span>(<span class="hljs-built_in">rand</span>(N_P, num_ofdmsym),<span class="hljs-built_in">rand</span>(N_P, num_ofdmsym));<br><span class="hljs-comment">% 生成导频序列，每一列代表一个 OFDM 符号中的导频序列。</span><br>sym_mat = <span class="hljs-built_in">reshape</span>(sym_seq, N_data, num_ofdmsym);<br><span class="hljs-comment">% 重塑数据符号序列，每一列代表一个 OFDM 符号中的数据符号序列。</span><br><br>tx_data = step(mod_ofdm,sym_mat,pilot_seq);<br><span class="hljs-comment">% 调用了 mod_ofdm 对象的 step 方法。在调用过程中，OFDM 调制器将对每一列的数据符号序列和导频序列进行处理，并将它们合并成最终的 OFDM 符号序列 tx_data。</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>

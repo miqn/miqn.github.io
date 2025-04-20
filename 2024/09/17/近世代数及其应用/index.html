@@ -276,14 +276,22 @@
                 
                 <h1 id="一预备知识">一、预备知识</h1>
 <p>幂集：A是集合，A的所有子集构成的集合，记P(A)。</p>
-<p>集合的对称差：<span class="math inline">\(A\oplus B=(A\cup B)-(A\cap B)\)</span></p>
+<p>集合的对称差：<span class="math inline">\(A\oplus B=(A\cup B)-(A\cap
+B)\)</span></p>
 <p><strong>容斥原理</strong>：设<span class="math inline">\(A_1,A_2,\cdots ,A_n\)</span>​是有限集合，则 <span class="math display">\[
-|\overline{A_1}\cap\overline{A_2}\cap\cdots \overline{A_n}|=|\overline{A_1\cup A_2\cup\cdots\cup A_n}|=N-|A_1\cup A_2\cup\cdots\cup A_n|\\=N-\Bigg(\displaystyle\sum_{i=1}^n|A_i|-\displaystyle\sum_{i=1}^n\displaystyle\sum_{j&gt;i}|A_i\cap A_j|+\displaystyle\sum_{i=1}^n\displaystyle\sum_{j&gt;i}\displaystyle\sum_{k&gt;j}|A_i\cap A_j\cap A_k|-\cdots+(-1)^{n-1}|A_1\cap A_2\cap\cdots\cap A_n|\Bigg)
+|\overline{A_1}\cap\overline{A_2}\cap\cdots
+\overline{A_n}|=|\overline{A_1\cup A_2\cup\cdots\cup A_n}|=N-|A_1\cup
+A_2\cup\cdots\cup
+A_n|\\=N-\Bigg(\displaystyle\sum_{i=1}^n|A_i|-\displaystyle\sum_{i=1}^n\displaystyle\sum_{j&gt;i}|A_i\cap
+A_j|+\displaystyle\sum_{i=1}^n\displaystyle\sum_{j&gt;i}\displaystyle\sum_{k&gt;j}|A_i\cap
+A_j\cap A_k|-\cdots+(-1)^{n-1}|A_1\cap A_2\cap\cdots\cap A_n|\Bigg)
 \]</span></p>
 <blockquote>
 <p>|A|表示集合A中元素的个数。</p>
 </blockquote>
-<p>二元关系：设A,B是两个集合，A×B的子集R称为A,B间的一个二元关系。当<span class="math inline">\((a,b)\in R\)</span>时，称a与b具有关系R，记作aRb；当<span class="math inline">\((a,b)\not\in R\)</span>时，称a与b不具有关系R，记作aR'b。</p>
+<p>二元关系：设A,B是两个集合，A×B的子集R称为A,B间的一个二元关系。当<span class="math inline">\((a,b)\in
+R\)</span>时，称a与b具有关系R，记作aRb；当<span class="math inline">\((a,b)\not\in
+R\)</span>时，称a与b不具有关系R，记作aR'b。</p>
 <blockquote>
 <p>A×B中的元素可看成由A和B中的元素所张成的平面上的点。</p>
 </blockquote>
@@ -292,11 +300,13 @@
 <ol type="1">
 <li>反身性：<span class="math inline">\(\forall a\in A,aRa\)</span></li>
 <li>对称性：<span class="math inline">\(aRb\Rightarrow bRa\)</span></li>
-<li>传递性：<span class="math inline">\(aRb,bRc\Rightarrow aRc\)</span></li>
+<li>传递性：<span class="math inline">\(aRb,bRc\Rightarrow
+aRc\)</span></li>
 </ol>
 <p>则称R是一个等价关系，记为<span class="math inline">\(\sim\)</span>。</p>
 <p>设R是集合上的二元关系，如果R满足反身性、对称性和传递性，则称R为A上的等价关系，记作：<span class="math inline">\(\sim\)</span>。</p>
-<p>若<span class="math inline">\(\sim\)</span>是A上的等价关系，<span class="math inline">\(\forall a,b\in A\)</span>，若<span class="math inline">\(a\sim b\)</span>，则称a与b是等价的，称：<span class="math inline">\([a]=\{x|x\in A且x\sim a\}\)</span>为包含元素a的等价类。</p>
+<p>若<span class="math inline">\(\sim\)</span>是A上的等价关系，<span class="math inline">\(\forall a,b\in A\)</span>，若<span class="math inline">\(a\sim b\)</span>，则称a与b是等价的，称：<span class="math inline">\([a]=\{x|x\in A且x\sim
+a\}\)</span>为包含元素a的等价类。</p>
 <blockquote>
 <p>注：等价类是集合。</p>
 </blockquote>
