@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241201201351335.png">
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241122195651488.png">
 <meta property="article:published_time" content="2024-06-02T05:57:52.000Z">
-<meta property="article:modified_time" content="2025-04-20T15:39:48.156Z">
+<meta property="article:modified_time" content="2025-04-20T15:47:17.431Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信感知一体化">
 <meta property="article:tag" content="目标检测">
@@ -316,7 +316,7 @@
         
         
         
-          497 分钟
+          498 分钟
         
       </span>
     
@@ -889,14 +889,16 @@ f\frac{2R}{c})\Bigg)
 FFT方法带来的量化误差。算法如下图所示。信道信息矩阵通过发送符号矩阵与接收符号矩阵逐元素相除得到。然后，通过2D
 FFT得到第一个估计结果。如果感知精度不满足要求，则根据第一次估计结果对信道信息矩阵进行相位补偿。基于相位补偿后的信道信息矩阵得到第二次估计结果。上述过程迭代执行，直到感知精度满足要求。</p>
 <p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20250209220423603.png" srcset="/img/loading.gif" lazyload alt="迭代2D FFT方法" style="zoom: 67%;"></p>
-以距离估计为例。时延<span class="math inline">\(\tau\)</span>写为$ = _ {
-i = 1 } ^ { X } _{ i } <span class="math inline">\(。其中\)</span>_i<span class="math inline">\(为第i次迭代的估计时延，X为迭代次数。在初始时延估计的情况下，\)</span><em>i<span class="math inline">\(如下。\)</span>$ </em> { i } =
-<span class="math display">\[\begin{cases} \frac { k _ { i } - 0 . 5 } {
-\Delta f  N_c^i } , i &lt; X \\ \frac { k_i } { \Delta f  N _ c^i } , i
-= X \end{cases}\]</span>
-<p><span class="math display">\[
-其中，$k_i$是在第i次迭代中得到的峰值索引。信道信息矩阵Y中的第m行写作式(1)。根据第一次迭代得到的$\tau_1$，对Y中第m行向量的时延项进行相位补偿，得到$k&#39;_{rm}$，如(2)式所示。对$k&#39;_{rm}$的IDFT的峰值进行搜索，得到峰值指数来估计目标的距离。
-\]</span> k _ { r m } = ^ { T } (1) $$</p>
+<p>以距离估计为例。时延<span class="math inline">\(\tau\)</span>写为<span class="math inline">\(\tau
+=\displaystyle\sum_{ i = 1 }^{ X } \tau_{ i }\)</span>。其中<span class="math inline">\(\tau_i\)</span>为第i次迭代的估计时延，X为迭代次数。在初始时延估计的情况下，<span class="math inline">\(\tau_i\)</span>如下。 <span class="math display">\[
+\tau _ { i } =  \begin{cases} \frac { k _ { i } - 0 . 5 } { \Delta
+f  N_c^i } , i &lt; X \\ \frac { k_i } { \Delta f  N _ c^i } , i = X
+\end{cases}
+\]</span> 其中，<span class="math inline">\(k_i\)</span>是在第i次迭代中得到的峰值索引。信道信息矩阵Y中的第m行写作式(1)。根据第一次迭代得到的<span class="math inline">\(\tau_1\)</span>，对Y中第m行向量的时延项进行相位补偿，得到<span class="math inline">\(k&#39;_{rm}\)</span>，如(2)式所示。对<span class="math inline">\(k&#39;_{rm}\)</span>的IDFT的峰值进行搜索，得到峰值指数来估计目标的距离。
+<span class="math display">\[
+k _ { r m } = \left[ 1 , e ^ { - j 2 \pi \Delta f \tau } , \ldots , e ^
+{ - j 2 \pi ( N _ { c } - 1 ) \Delta f \tau } \right] ^ { T } \qquad(1)
+\]</span></p>
 <p><span class="math display">\[
 k _ { r m } ^ { \prime } = k _ { r m } \odot \left[ 1 , e ^ { j 2 \pi
 \Delta f \tau _ { 1 } } , \ldots , e ^ { j 2 \pi ( N _ { c } - 1 )
@@ -977,11 +979,11 @@ FFT方法测试自己生成的100组数据</h4>
 <p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20250220111703837.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="分数阶fft与cfar算法窗长选择的问题">5.分数阶FFT与CFAR算法窗长选择的问题</h2>
 <h3 id="理论分析">5.1 理论分析</h3>
-<p>根据上文，我们可以得到信道频域响应<span class="math inline">\(\bold{H}\)</span>的公式，其中<span class="math inline">\(L_p\)</span>为总的目标个数，<span class="math inline">\(p\)</span>为目标索引；<span class="math inline">\(n\)</span>为子载波索引，<span class="math inline">\(\Delta f_{scs}\)</span>为子载波间隔，<span class="math inline">\(\tau_p\)</span>为时延；<span class="math inline">\(f_{dp}\)</span>为多普勒频偏，<span class="math inline">\(m\)</span>为OFDM符号索引，<span class="math inline">\(T\)</span>为OFDM符号持续时间。 <span class="math display">\[
-\bold{H}=\displaystyle\sum_{p=1}^{L_p}e^{-j2\pi n\Delta
+<p>根据上文，我们可以得到信道频域响应<span class="math inline">\(\bf{H}\)</span>的公式，其中<span class="math inline">\(L_p\)</span>为总的目标个数，<span class="math inline">\(p\)</span>为目标索引；<span class="math inline">\(n\)</span>为子载波索引，<span class="math inline">\(\Delta f_{scs}\)</span>为子载波间隔，<span class="math inline">\(\tau_p\)</span>为时延；<span class="math inline">\(f_{dp}\)</span>为多普勒频偏，<span class="math inline">\(m\)</span>为OFDM符号索引，<span class="math inline">\(T\)</span>为OFDM符号持续时间。 <span class="math display">\[
+\bf{H}=\displaystyle\sum_{p=1}^{L_p}e^{-j2\pi n\Delta
 f_{scs}\tau_p}e^{j2\pi f_{dp}m T}
-\]</span> 对<span class="math inline">\(\bold{H}\)</span>在距离维进行IFFT，速度维进行FFT，结果如下。其中<span class="math inline">\(N\)</span>为子载波个数，<span class="math inline">\(M\)</span>为OFDM符号个数。<span class="math inline">\(q\)</span>和<span class="math inline">\(l\)</span>分别表示在RDM里速度和距离维度的索引值。<span class="math inline">\(T_s=1/(Nf_{scs})\)</span>表示采样时间间隔，<span class="math inline">\(F_s=1/(MT)\)</span>表示采样频率间隔。 <span class="math display">\[
-\begin{aligned}\bold{RDM}[q,l]&amp;=\text{FFT}(\text{IFFT}(\bold{H}))
+\]</span> 对<span class="math inline">\(\bf{H}\)</span>在距离维进行IFFT，速度维进行FFT，结果如下。其中<span class="math inline">\(N\)</span>为子载波个数，<span class="math inline">\(M\)</span>为OFDM符号个数。<span class="math inline">\(q\)</span>和<span class="math inline">\(l\)</span>分别表示在RDM里速度和距离维度的索引值。<span class="math inline">\(T_s=1/(Nf_{scs})\)</span>表示采样时间间隔，<span class="math inline">\(F_s=1/(MT)\)</span>表示采样频率间隔。 <span class="math display">\[
+\begin{aligned}\mathbf{RDM}[q,l]&amp;=\text{FFT}(\text{IFFT}(\mathbf{H}))
 \\&amp;=\displaystyle\sum_{m=0}^{M-1}\frac{1}{N}\displaystyle\sum_{n=0}^{N-1}\displaystyle\sum_{p=1}^{L_p}e^{-j2\pi
 n\Delta f_{scs}\tau_p}e^{j2\pi f_{dp}m
 T}e^{j\frac{2\pi}{N}nl}e^{-j\frac{2\pi}{M}mq}
@@ -1025,8 +1027,8 @@ f_{scs}\tau_p-l))}{sin(\frac{\pi}{N}(N\Delta f_{scs}\tau_p-l))}
 <img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%B9%B2%E6%89%B0-17293282668522.png" srcset="/img/loading.gif" lazyload alt="狄利克雷核">
 <figcaption aria-hidden="true">狄利克雷核</figcaption>
 </figure>
-<p>若进行分数阶FFT，则是在算RDM谱时调高IFFT和FFT的点数，具体操作为<mark>通过用尾随零填充<span class="math inline">\(\bold{H}\)</span>以达到目标点数</mark>。我们设置距离维的分数阶系数为<span class="math inline">\(N_a\)</span>，对应到IFFT点数为<span class="math inline">\(N×N_a\)</span>；速度维的的分数阶系数为<span class="math inline">\(M_b\)</span>，对应到FFT点数为<span class="math inline">\(M×M_b\)</span>。具体计算如下： <span class="math display">\[
-\begin{aligned}\bold{RDM}[q,l]&amp;=\text{FFT}(\text{IFFT}(\bold{H}))
+<p>若进行分数阶FFT，则是在算RDM谱时调高IFFT和FFT的点数，具体操作为<mark>通过用尾随零填充<span class="math inline">\(\mathbf{H}\)</span>以达到目标点数</mark>。我们设置距离维的分数阶系数为<span class="math inline">\(N_a\)</span>，对应到IFFT点数为<span class="math inline">\(N×N_a\)</span>；速度维的的分数阶系数为<span class="math inline">\(M_b\)</span>，对应到FFT点数为<span class="math inline">\(M×M_b\)</span>。具体计算如下： <span class="math display">\[
+\begin{aligned}\mathbf{RDM}[q,l]&amp;=\text{FFT}(\text{IFFT}(\mathbf{H}))
 \\&amp;=\displaystyle\sum_{m=0}^{M-1}\frac{1}{N×N_a}\displaystyle\sum_{n=0}^{N-1}\displaystyle\sum_{p=1}^{L_p}e^{-j2\pi
 n\Delta f_{scs}\tau_p}e^{j2\pi f_{dp}m
 T}e^{j\frac{2\pi}{N×N_a}nl}e^{-j\frac{2\pi}{M×M_b}mq}
