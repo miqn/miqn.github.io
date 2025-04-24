@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241201201351335.png">
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241122195651488.png">
 <meta property="article:published_time" content="2024-06-02T05:57:52.000Z">
-<meta property="article:modified_time" content="2025-04-20T15:47:17.431Z">
+<meta property="article:modified_time" content="2025-04-24T03:50:09.999Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信感知一体化">
 <meta property="article:tag" content="目标检测">
@@ -316,7 +316,7 @@
         
         
         
-          498 分钟
+          504 分钟
         
       </span>
     
@@ -1644,12 +1644,18 @@ t}=v_{||,n_r,l}+v_{||,n_t,l}\qquad(5)
 y _ { n _ { r } } ( n _ { c } , n _ { s } ) = \textbf{H} _ { n _ { r } }
 \textbf{s} + \textbf{w} _ { n _ { r } } ( n _ { c } , n _ { s } ) +
 \textbf{i} _ { n _ { r } } ( n _ { c } , n _ { s } ) \qquad( 7 )
-\]</span> 其中$ = [ _ { 1 } ^ { T } , _ { 2 } ^ { T } , , _ { N _ { t }
-} ^ { T } ] ^ { T } ^ { N N _ { t } }<span class="math inline">\(并且\)</span> _ { n _ { r } } = ^ { N N N _ { t }
-}<span class="math inline">\(。通过为不同的发射机设置相互正交的参考信号，并假设\)</span>
-_ { n _ { r } }<span class="math inline">\(在\)</span>N N _ { t }<span class="math inline">\(个符号周期内保持不变，我们可以将系统模型以矩阵形式写为\)</span>$
-_ { n _ { r } } = _ { n _ { r } } + _ { n _ { r } } + _ { n _ { r } } (
-8 ) $$</p>
+\]</span> 其中<span class="math inline">\(\textbf{s} = [ \textbf{s} _ {
+1 } ^ { T } , \textbf{s} _ { 2 } ^ { T } , \cdots , \textbf{s} _ { N _ {
+t } } ^ { T } ] ^ { T } \in \mathbb{C} ^ { N N _ { t } \times 1
+}\)</span>并且<span class="math inline">\(\textbf{H} _ { n _ { r } } =
+\left[ \textbf{H} _ { n_r  , 1} , \textbf{H} _ { n_r , 2 } , \cdots ,
+\textbf{H} _ { n_r , N _ { t } } \right] \in \mathbb{C} ^ { N \times N N
+_ { t }
+}\)</span>。通过为不同的发射机设置相互正交的参考信号，并假设<span class="math inline">\(\textbf{H} _ { n _ { r } }\)</span>在<span class="math inline">\(N N _ { t
+}\)</span>个符号周期内保持不变，我们可以将系统模型以矩阵形式写为 <span class="math display">\[
+\textbf{Y} _ { n _ { r } } = \textbf{H} _ { n _ { r } } \textbf{S} +
+\textbf{W} _ { n _ { r } } + \textbf{I} _ { n _ { r } } \qquad( 8 )
+\]</span></p>
 <h1 id="十一微多普勒">十一、微多普勒</h1>
 <h2 id="旋翼无人机回波建模">1.旋翼无人机回波建模</h2>
 <h3 id="单旋翼叶片单散射点回波模型">1.1 单旋翼叶片单散射点回波模型</h3>
@@ -1658,7 +1664,7 @@ _ { n _ { r } } = _ { n _ { r } } + _ { n _ { r } } + _ { n _ { r } } (
 <img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241120204713741.png" srcset="/img/loading.gif" lazyload alt="旋翼叶片示意图">
 <figcaption aria-hidden="true">旋翼叶片示意图</figcaption>
 </figure>
-首先考虑旋翼上单个散射点的回波模型。当俯仰角为 0
+<p>首先考虑旋翼上单个散射点的回波模型。当俯仰角为 0
 时,考虑叶片上的一个散射点 P，该点的坐标位置为<span class="math inline">\((x_0,y_0)\)</span>，散射点 P
 到固定在机体的坐标原点，距离为 <span class="math display">\[
 l _ { p } = \sqrt { x _ { 0 } ^ { 2 } + y _ { 0 } ^ { 2 } } \qquad(1)
@@ -1670,22 +1676,26 @@ R _ { p } ( t ) = \sqrt { R _ { 0 } ^ { 2 } + l _ { p } ^ { 2 } + ( v t
 ) ^ { 2 } + 2 l _ { p } R _ { 0 } \cos ( \varphi _ { 0 } + \Omega t ) +
 2 R _ { 0 } v t + 2 v t l _ { p } \cos ( \varphi _ { 0 } + \Omega t )
 }\qquad(3)
-\]</span> 其中<span class="math inline">\(R_0\)</span>是雷达到旋翼中心<span class="math inline">\(O\)</span>的距离。假设在远场$ ( { R _ { 0 } } ) ^
-{ 2 } <span class="math inline">\(，上式可写为\)</span>$ R _ { p } ( t )
-R _ { 0 } + v t + l _ { p } ( _ { 0 } + t )(4) <span class="math display">\[
-雷达从散射点 P 接收到的信号为
-\]</span> s _ { R } ( t ) = { - j } = { - j }(5) <span class="math display">\[
-**若仰角 β、转子叶片高度不为
-0**，雷达无人机相对位置示意图如下图所示，假设无人机相对于雷达以径向速度
-v 飞行，则 t 时刻无人机旋翼中心与雷达中心的距离为$R_t=R_0+vt$，散射点 P
-此时的旋转相位为$\varphi_t=\Omega t + \varphi _ { 0 }
-$，则在全局雷达坐标系$(X,Y,Z)$中， t 时刻旋翼中心 o 的坐标为$( R _ { t }
-\cos \beta \cos \alpha, R _ { t } \cos \beta \sin \alpha,R _ { t }
-\sin\beta)$，在目标坐标系$(x,y,z)$中，散射点 P 的坐标为$(l \cos \varphi
-_ { t } ,l \sin \varphi _ { t
-},0)$。假设目标在远场因此，在t时刻，从雷达到散射点P的距离为
-\]</span>
-<span class="math display">\[\begin{aligned}
+\]</span> 其中<span class="math inline">\(R_0\)</span>是雷达到旋翼中心<span class="math inline">\(O\)</span>的距离。假设在远场<span class="math inline">\(( \frac { l _ { p } } { R _ { 0 } } ) ^ { 2 }
+\rightarrow 0\)</span>，上式可写为 <span class="math display">\[
+R _ { p } ( t ) \cong R _ { 0 } + v t + l _ { p } \cos ( \varphi _ { 0 }
++ \Omega t )\qquad(4)
+\]</span> 雷达从散射点 P 接收到的信号为 <span class="math display">\[
+s _ { R } ( t ) = \text{exp} \left\{ - j \left[ 2 \pi f _ { 0 } t +
+\frac { 2 \pi } { \lambda }× 2R _ { p } ( t ) \right] \right\}
+=\text{exp} \left\{ - j \left[ 2 \pi f _ { 0 } t + \Phi _ { p } ( t )
+\right] \right\}\qquad(5)
+\]</span> <strong>若仰角 β、转子叶片高度不为
+0</strong>，雷达无人机相对位置示意图如下图所示，假设无人机相对于雷达以径向速度
+v 飞行，则 t 时刻无人机旋翼中心与雷达中心的距离为<span class="math inline">\(R_t=R_0+vt\)</span>，散射点 P
+此时的旋转相位为<span class="math inline">\(\varphi_t=\Omega t + \varphi
+_ { 0 }\)</span>，则在全局雷达坐标系<span class="math inline">\((X,Y,Z)\)</span>中， t 时刻旋翼中心 o
+的坐标为<span class="math inline">\(( R _ { t } \cos \beta \cos \alpha,
+R _ { t } \cos \beta \sin \alpha,R _ { t }
+\sin\beta)\)</span>，在目标坐标系<span class="math inline">\((x,y,z)\)</span>中，散射点 P 的坐标为<span class="math inline">\((l \cos \varphi _ { t } ,l \sin \varphi _ { t
+},0)\)</span>。假设目标在远场因此，在t时刻，从雷达到散射点P的距离为
+<span class="math display">\[
+\begin{aligned}
 R _ { p } ( t ) &amp;= || \overrightarrow { O P } || \\
 &amp;= | | \overrightarrow { O o } + \overrightarrow { o P } | |\\
 &amp; = \sqrt { ( R _ { t } \cos \beta \cos \alpha + l_p \cos \varphi _
@@ -1697,10 +1707,12 @@ _ { t } ) ^ { 2 } + ( R _ { t } \sin \beta ) ^ { 2 } }\\
 )\\
 &amp; = R _ { 0 } + v t + l_p  \cos \beta \cos (\Omega t + \varphi _ { 0
 } - a )
-\end{aligned}\]</span>
-<p><span class="math display">\[
-相位函数为
-\]</span> _ { p } ( t ) = { } (6) $$ <img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241127183956364.png" srcset="/img/loading.gif" lazyload alt="雷达与单旋翼无人机的运动关系示意图"></p>
+\end{aligned}
+\]</span> 相位函数为 <span class="math display">\[
+\Phi _ { p } ( t ) = \frac { 4 \pi } { \lambda } \left[ R _ { 0 } + v t
++ \cos \beta  l _ { p }\cos ( \varphi _ { 0 } + \Omega t-\alpha )
+\right]\qquad(6)
+\]</span> <img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241127183956364.png" srcset="/img/loading.gif" lazyload alt="雷达与单旋翼无人机的运动关系示意图"></p>
 <p>则 <span class="math display">\[
 s _ { R } ( t ) = \text{exp} \left\{ - j \frac { 4 \pi } { \lambda }
 \left[ R _ { 0 } + v t  \right] \right\} \text{exp} \left\{ - j 2 \pi f
@@ -1760,9 +1772,13 @@ _ { m } t + \varphi _ { 0 , m } + \frac { 2 \pi n } { N }-\alpha )
 \right] \right\}
 \text{exp} \left\{ - j \Phi _ { m , n } ( t ) \right\}
 \end{aligned}\qquad(12)
-\]</span> 式中，相位函数$_ { m , n } ( t ) <span class="math inline">\(为：\)</span>$ _ { m , n } ( t ) = { } { 2 } _ { m
-} ( _ { m } t + _ { 0 , m } + { N } -), ( m = 1 , 2 , , M ; n = 0 , 1 ,
-2 , N - 1 )(13) $$ 其中，<span class="math inline">\(R_{m}\)</span>为某时刻第 m
+\]</span> 式中，相位函数<span class="math inline">\(\Phi _ { m , n } ( t
+)\)</span>为： <span class="math display">\[
+\Phi _ { m , n } ( t ) = \frac { 4 \pi } { \lambda } \frac { L_2+L_1  }
+{ 2 } \cos \beta _ { m } \cos ( \Omega _ { m } t + \varphi _ { 0 , m } +
+\frac { 2 \pi n } { N } -\alpha), ( m = 1 , 2 , \cdots , M ; n = 0 , 1 ,
+2 \cdots , N - 1 )\qquad(13)
+\]</span> 其中，<span class="math inline">\(R_{m}\)</span>为某时刻第 m
 个旋翼到雷达的距离，<span class="math inline">\(\beta_m\)</span>为雷达与第 m
 个旋翼之间的俯仰角，<span class="math inline">\(\Omega_m\)</span>为第 m
 个旋翼的旋转角频率，<span class="math inline">\(\varphi_{0,m}\)</span>为第 m
@@ -1790,8 +1806,10 @@ RCS 公式中，有两个项：峰值 RCS <span class="math inline">\(\sigma_{Pe
 \sigma = \sigma _ { P e a k } \sigma _ { A s pect  } = \frac { 4 \pi a ^
 { 2 } b ^ { 2 } } { \lambda ^ { 2 } } ( \cos \theta \frac { \sin x _ { k
 } } { x _ { k } } \frac { \sin y _ { k } } { y _ { k } } ) ^ { 2 }
-\]</span> 其中$ _ { Peak } = 4 a ^ { 2 } b ^ { 2 } / ^ { 2 } <span class="math inline">\(，\)</span> _ { A s p e c t } = ( ( x _ { k } / x
-_ { k } ) ( y _ { k } / y _ { k } ) ) ^ { 2 }<span class="math inline">\(，\)</span>x_k=ka<span class="math inline">\(，\)</span>y_k=kb<span class="math inline">\(，并且\)</span>k=2/<span class="math inline">\(。上式与极化无关，且仅对\)</span>°$的小视角准确。</p>
+\]</span> 其中<span class="math inline">\(\sigma _ { Peak } = 4 \pi a ^
+{ 2 } b ^ { 2 } / \lambda ^ { 2 }\)</span>，<span class="math inline">\(\sigma _ { A s p e c t } = ( \cos \theta ( \sin x
+_ { k } / x _ { k } ) ( \sin y _ { k } / y _ { k } ) ) ^ { 2
+}\)</span>，<span class="math inline">\(x_k=ka\sin\theta\sin\varphi\)</span>，<span class="math inline">\(y_k=kb\sin\theta\cos\varphi\)</span>，并且<span class="math inline">\(k=2\pi/\lambda\)</span>。上式与极化无关，且仅对<span class="math inline">\(\theta\le 20°\)</span>的小视角准确。</p>
 <p>多旋翼可以由一组<span class="math inline">\(N_R\)</span>个旋翼建模，其中每个旋翼都有<span class="math inline">\(N_B\)</span>个叶片。为了计算<span class="math inline">\(N_R\)</span>× <span class="math inline">\(N_B\)</span>个旋转叶片的电磁散射，简单起见，可以将叶片建模为刚性的、均匀的、线性的矩形平板。对于完美导电的矩形平板，其
 RCS 的数学公式如上式所示。为简单起见，每个叶片的 RCS
 都可以分配到叶片的尖端。 <span class="math display">\[
