@@ -58,7 +58,7 @@
 <meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20241011144152011.png">
 <meta property="og:image" content="http://example.com/2024/06/19/%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%9A%E6%84%9F%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20241011144254087.png">
 <meta property="article:published_time" content="2024-06-19T03:24:25.000Z">
-<meta property="article:modified_time" content="2025-04-03T02:58:59.221Z">
+<meta property="article:modified_time" content="2025-04-28T10:45:58.714Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信感知一体化">
 <meta property="article:tag" content="定位">
@@ -1003,6 +1003,9 @@ w=(X^TX)^{-1}X^Ty
 \Delta v_{t,t-1}=v_t-v_{t-1}\qquad(24)
 \]</span>
 在t时刻利用TDoA测量值对待定位移动终端ｓ的位置坐标进行估计可以得到估计结果<span class="math inline">\(\xi_t=(x_t,y_t,z_t)\)</span>，<strong>该结果受环境影响较大，会产生较大波动</strong>，但是TDoA测量服从零均值高斯分布且定位过程是独立的，所以<strong>定位结果无偏的</strong>。而利用三差载波相位观测值<strong>估计待定位移动终端ｓ在相邻时刻的位置变化却非常准确</strong>，但会<strong>受到０时刻定位结果的影响而存在难以消除的偏置</strong>。因此考虑使用基于三差载波相位观测值的位置变化估计平滑基于TDoA观测值的绝对位置估计，来减小绝对位置估计的波动，进而得到较为精确的绝对位置估计。融合定位算法具体执行步骤总结如下：</p>
+<blockquote>
+<p>TDoA定位结果是无偏的意味着估计量的期望值等于被估计参数的真值。</p>
+</blockquote>
 <ol type="1">
 <li><p>初始化定位结果：在定位开始前，即０时刻，初始化载波相位定位结果<span class="math inline">\(\tilde{v}_0=\xi_0\)</span>与融合定位结果<span class="math inline">\(\hat{v}_0=\xi_0\)</span>，其中<span class="math inline">\(\xi_0\)</span>为TDoA在０时刻的定位结果；</p></li>
 <li><p>相对位置变化估计：在t（t为正整数）时刻，根据公式（23）计算得到载波相位定位结果<span class="math inline">\(\tilde{v}_t\)</span>，进一步根据公式（24）计算得到<span class="math inline">\(\Delta\tilde{v}_{t,t-1}\)</span>；（意思是根据（23）得到载波相位定位结果<span class="math inline">\(\tilde{v}_t\)</span>和<span class="math inline">\(\tilde{v}_{t-1}\)</span>，再根据（24）得到<span class="math inline">\(\Delta\tilde{v}_{t,t-1}\)</span>，步骤2都是根据载波相位定位结果计算的）</p></li>
@@ -1368,8 +1371,8 @@ sight)路径，即电磁波在做视线传播；被障碍物折射或者绕射�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96%EF%BC%88%E4%B8%8A%EF%BC%89/" title="通信感知一体化（上）">
-                        <span class="hidden-mobile">通信感知一体化（上）</span>
+                      <a href="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/" title="通信感知一体化">
+                        <span class="hidden-mobile">通信感知一体化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
