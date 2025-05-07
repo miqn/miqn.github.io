@@ -106,8 +106,17 @@
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241207171635445.png">
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241201201351335.png">
 <meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241122195651488.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241122212248299.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241122212224944.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/clip_image002.jpg">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241124113502879.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123164707539.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123164637390.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123213524336.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123213546332.png">
+<meta property="og:image" content="http://example.com/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/%E5%BE%AE%E5%A4%9A%E6%99%AE%E5%8B%92.png">
 <meta property="article:published_time" content="2024-06-02T05:57:52.000Z">
-<meta property="article:modified_time" content="2025-05-07T03:08:54.838Z">
+<meta property="article:modified_time" content="2025-05-07T03:28:35.627Z">
 <meta property="article:author" content="Faceless-person">
 <meta property="article:tag" content="通信感知一体化">
 <meta property="article:tag" content="目标检测">
@@ -305,7 +314,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          60k 字
+          64k 字
         
       </span>
     
@@ -316,7 +325,7 @@
         
         
         
-          504 分钟
+          536 分钟
         
       </span>
     
@@ -979,10 +988,10 @@ FFT方法测试自己生成的100组数据</h4>
 <p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20250220111703837.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="分数阶fft与cfar算法窗长选择的问题">5.分数阶FFT与CFAR算法窗长选择的问题</h2>
 <h3 id="理论分析">5.1 理论分析</h3>
-<p>根据上文，我们可以得到信道频域响应<span class="math inline">\(\bf{H}\)</span>的公式，其中<span class="math inline">\(L_p\)</span>为总的目标个数，<span class="math inline">\(p\)</span>为目标索引；<span class="math inline">\(n\)</span>为子载波索引，<span class="math inline">\(\Delta f_{scs}\)</span>为子载波间隔，<span class="math inline">\(\tau_p\)</span>为时延；<span class="math inline">\(f_{dp}\)</span>为多普勒频偏，<span class="math inline">\(m\)</span>为OFDM符号索引，<span class="math inline">\(T\)</span>为OFDM符号持续时间。 <span class="math display">\[
-\bf{H}=\displaystyle\sum_{p=1}^{L_p}e^{-j2\pi n\Delta
+<p>根据上文，我们可以得到信道频域响应<span class="math inline">\(\mathbf{H}\)</span>的公式，其中<span class="math inline">\(L_p\)</span>为总的目标个数，<span class="math inline">\(p\)</span>为目标索引；<span class="math inline">\(n\)</span>为子载波索引，<span class="math inline">\(\Delta f_{scs}\)</span>为子载波间隔，<span class="math inline">\(\tau_p\)</span>为时延；<span class="math inline">\(f_{dp}\)</span>为多普勒频偏，<span class="math inline">\(m\)</span>为OFDM符号索引，<span class="math inline">\(T\)</span>为OFDM符号持续时间。 <span class="math display">\[
+\mathbf{H}=\displaystyle\sum_{p=1}^{L_p}e^{-j2\pi n\Delta
 f_{scs}\tau_p}e^{j2\pi f_{dp}m T}
-\]</span> 对<span class="math inline">\(\bf{H}\)</span>在距离维进行IFFT，速度维进行FFT，结果如下。其中<span class="math inline">\(N\)</span>为子载波个数，<span class="math inline">\(M\)</span>为OFDM符号个数。<span class="math inline">\(q\)</span>和<span class="math inline">\(l\)</span>分别表示在RDM里速度和距离维度的索引值。<span class="math inline">\(T_s=1/(Nf_{scs})\)</span>表示采样时间间隔，<span class="math inline">\(F_s=1/(MT)\)</span>表示采样频率间隔。 <span class="math display">\[
+\]</span> 对<span class="math inline">\(\mathbf{H}\)</span>在距离维进行IFFT，速度维进行FFT，结果如下。其中<span class="math inline">\(N\)</span>为子载波个数，<span class="math inline">\(M\)</span>为OFDM符号个数。<span class="math inline">\(q\)</span>和<span class="math inline">\(l\)</span>分别表示在RDM里速度和距离维度的索引值。<span class="math inline">\(T_s=1/(Nf_{scs})\)</span>表示采样时间间隔，<span class="math inline">\(F_s=1/(MT)\)</span>表示采样频率间隔。 <span class="math display">\[
 \begin{aligned}\mathbf{RDM}[q,l]&amp;=\text{FFT}(\text{IFFT}(\mathbf{H}))
 \\&amp;=\displaystyle\sum_{m=0}^{M-1}\frac{1}{N}\displaystyle\sum_{n=0}^{N-1}\displaystyle\sum_{p=1}^{L_p}e^{-j2\pi
 n\Delta f_{scs}\tau_p}e^{j2\pi f_{dp}m
@@ -1852,10 +1861,170 @@ l_p  (\cos\beta\cos\alpha\cos\phi_t+\sin\beta\sin\phi_t) ) } * e ^ { - j
 \end{aligned}
 \]</span> 式中，<span class="math inline">\(f_{bd}=2v/\lambda\)</span>是飞鸟由于平动产生的多普勒频率，*前面部分则是由于飞鸟翅膀震动产生的微多普勒特性。</p>
 <p>对单散射点 P
-在飞鸟翅膀的有效区间[L1,L2]上进行积分，则可得飞鸟单个翅膀的回波模型为 $$
-\begin{aligned} S _ { L } ( t ) &amp;= _ { L _ { 1 } } ^ { L _ { 2 } } S
-_ { P } ( t ) d l_p\ &amp; = ( L _ { 2 } - L _ { 1 } ) c ( { } ( L _ { 2
-} - L _ { 1 } ) (_t+_t)) \ &amp; e ^</p>
+在飞鸟翅膀的有效区间[L1,L2]上进行积分，则可得飞鸟单个翅膀的回波模型为
+<span class="math display">\[
+\begin{aligned}
+S _ { L } ( t ) &amp;= \int _ { L _ { 1 } } ^ { L _ { 2 } } S _ { P } (
+t ) d l_p\\
+&amp;  = \sigma ( L _ { 2 } - L _ { 1 } ) \sin c ( \frac { 2 \pi } {
+\lambda } ( L _ { 2 } - L _ { 1 } )
+(\cos\beta\cos\alpha\cos\phi_t+\sin\beta\sin\phi_t)) \cdot \\&amp;e^{ -
+j \frac { 4 \pi } { \lambda  } ( R _ { 0 } + \frac { L 2 + L 1 } { 2
+}(\cos\beta\cos\alpha\cos\phi_t+\sin\beta\sin\phi_t))} · e ^ { - j 2 \pi
+f _ { b d } t}
+\end{aligned}
+\]</span> 式中，L2、L1 分别表示飞鸟翅膀根部和尖部到飞鸟中心 o
+的距离。</p>
+<p>相位函数为 <span class="math display">\[
+\Phi ( t ) = \frac { 4 \pi } { \lambda } \frac { L_2+L_1  } { 2 }
+(\cos\beta\cos\alpha\cos\phi_t+\sin\beta\sin\phi_t)
+\]</span> 微多普勒频率为 <span class="math display">\[
+f(t)=\frac { 2\phi_{max}\omega\cos\omega(t-\Delta t) } { \lambda } \frac
+{ L_2+L_1  } { 2 } (-\cos\beta\cos\alpha\sin\phi_t+\sin\beta\cos\phi_t)
+\]</span> 参考文献：</p>
+<p>[1]何彬宇.基于深度学习的无人机目标微多普勒谱图识别研究[D].电子科技大学,2023.DOI:10.27005/d.cnki.gdzku.2023.002942.</p>
+<p>[2]徐泽颖.基于流形学习的多旋翼无人机目标识别方法研究[D].电子科技大学,2024.DOI:10.27005/d.cnki.gdzku.2024.003895.</p>
+<h2 id="微多普勒识别算法">3.微多普勒识别算法</h2>
+<h3 id="短时傅里叶变换stft">3.1 短时傅里叶变换（STFT）</h3>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241122212248299.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241122212224944.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>短时傅立叶变换方法在利用长窗口时,频率分辨率较高,但时间分辨率低；短窗口时,时间分辨率较高,但频率分辨率低</strong>，因此如何选用合理的窗口长度是应用的关键。短时傅里叶变换虽然有着分辨率不高等明显缺陷，<strong>但由于其算法简单，实现容易</strong>，所以在很长一段时间里成为非平稳信号的分析标准和有力的工具。</p>
+<p>对单旋翼无人机(2个叶片，N=2)仿真得到的雷达回波做 STFT
+得到其微多普勒谱图如下图所示,其中的 X、Y、Z
+轴分别代表时频图的时间、频率和幅度。</p>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/clip_image002.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>由式(11)可知单旋翼无人机雷达回波的时域特征会受到 sinc 函数的调制,当
+sinc 函数最大,回波达到峰值。因此雷达回波信号在时域 X
+轴上呈现出周期性的闪烁。在频域上,上下边带关于零频对称，最大值为±最大微多普勒频偏。此外,还可以看出时频图中含有两条正弦变化的曲线,分别对应两个桨叶的时频变化曲线,这与公式(14)相符。根据该图我们便能了解到旋翼无人机的微多普勒信息。</p>
+<p>[1]徐泽颖.基于流形学习的多旋翼无人机目标识别方法研究[D].电子科技大学,2024.DOI:10.27005/d.cnki.gdzku.2024.003895.</p>
+<h3 id="gabor变换">3.2 Gabor变换</h3>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241124113502879.png" srcset="/img/loading.gif" lazyload></p>
+<p>[1]胡晓龙.基于微多普勒特性的人体动作识别研究[D].电子科技大学,2021.DOI:10.27005/d.cnki.gdzku.2021.001463.</p>
+<h3 id="连续小波变换">3.3 连续小波变换</h3>
+<p><strong>与短时傅里叶变换不同,小波变换能较好地解决时间和频率分辨力的矛盾:小波变换的窗是可调时频窗,在高频时使用短窗口,在低频时则用宽窗口,即以不同的尺度观察信号,以不同的分辨力分析信号。因此，连续小波变换能够能够在信号高频段提供较高的时间分辨率，在信号低频段提供较高的频率分辨率，具有短时傅立叶变换不可比拟的优点。</strong></p>
+<p>连续小波变换，不同于短时傅里叶变换对信号处理时窗函数长度固定，小波变换可以分析不同尺度上的频率成分。<strong>它通过对信号应用一系列的小波基函数来实现对信号的时频分析，这些小波基函数通过平移和缩放母小波得到，然后再将原始信号与这些小波基函数进行卷积来实现。</strong>在小波变换中，所使用的母小波必须满足
+<span class="math display">\[
+0 &lt; C _ { \Phi } = \int _ { - \infty } ^ { + \infty } \frac { | \Phi
+( \omega ) | ^ { 2 } } { | \omega | } d \omega &lt; \infty
+\]</span> 式中，<span class="math inline">\(\Phi ( \omega
+)\)</span>为母小波的傅里叶变换。</p>
+<p>通过调整母小波的时移和尺度，可以得到一组具有不同时频特性的<strong>小波基</strong>，表达式为
+<span class="math display">\[
+\psi _ { a , b } = \frac { 1 } { \sqrt { a } } \psi ( \frac { t - b } {
+a } ) , a , b \in R , a \neq 0
+\]</span> 式中，<span class="math inline">\(\psi ( t
+)\)</span>为母小波函数，a 是一个与频率成反比的尺度参数,通常被选择为
+32，b 是时间平移参数。</p>
+<p>给定信号<span class="math inline">\(x ( t ) \in L ^ { 2 } ( R
+)\)</span>（能量信号空间），其小波变换定义为 <span class="math display">\[
+W T _ { x } ( a , b ) = \int _ { - \infty } ^ { + \infty } x ( t ) \psi
+_ { a , b } ^ { * } ( t ) d t  = \frac { 1 } { \sqrt { a } } \int _ { -
+\infty } ^ { + \infty } x ( t ) \psi ^ { * } ( \frac { t - b } { a } ) d
+t
+\]</span> <strong>根据定义，小波变换通过调整 a 和 b
+这两个参数，得到一组函数<span class="math inline">\(\psi _ { a , b } ^ {
+* } ( t )\)</span>，通过与原始信号 x(t)
+进行内积运算，得到小波变换。</strong>同样满足线性叠加原理，表达式为
+<span class="math display">\[
+W T _ {  mx ( t ) + n y ( t ) } ( a , b ) = m W T _ { x } ( a , b ) + n
+W T _ { y } ( a , b )
+\]</span>
+小波变换具有线性叠加性，但不具有频率偏移不变的特性，导致了信号相位信息的丢失。在利用小波变换重构信号时，母小波必须满足特定的容许性条件。对于相同的信号，小波变换选取不同的母小波对其进行分析，结果有所不同。</p>
+<p>[1]李思维.基于微多普勒特性的低慢小目标识别方法研究[D].电子科技大学,2024.DOI:10.27005/d.cnki.gdzku.2024.000875.</p>
+<p>[2]彭丽.基于人体微多普勒特征的动作识别研究[D].石家庄铁道大学,2024.DOI:10.27334/d.cnki.gstdy.2024.001082.</p>
+<h3 id="经验模态分解-empirical-mode-decompositionemd">3.4 经验模态分解
+(Empirical Mode Decomposition,EMD)</h3>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123164707539.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123164637390.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>在第四步得到<span class="math inline">\(Imf_1\)</span>后，分离原始信号中的<span class="math inline">\(Imf_1\)</span>，即将原始信号<span class="math inline">\(u(t)\)</span>减去<span class="math inline">\(Imf_1\)</span>后重复步骤1-4，直到得到<span class="math inline">\(Imf_2\)</span>。依次类推得到所有得<span class="math inline">\(Imf\)</span>。</p>
+</blockquote>
+<p>[1]李明哲,饶烜.一种基于转速补偿的悬停无人机时频域积累检测算法[J/OL].雷达科学与技术,1-18[2024-11-21].http://kns.cnki.net/kcms/detail/34.1264.tn.20241101.1518.002.html.</p>
+<h3 id="winger-ville-分布">3.5 Winger-Ville 分布</h3>
+<p>STFT
+在时频分辨率上的表现受到窗函数参数和不确定准则的制约，难以达到最优的时频分布效果。</p>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123213524336.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/image-20241123213546332.png" srcset="/img/loading.gif" lazyload></p>
+<p>[1]王雨.
+基于解析解混沌的目标微动参数估计方法[D].西安工业大学,2024.DOI:10.27391/d.cnki.gxagu.2024.000723.</p>
+<h2 id="uav微多普勒信号生成短时傅里叶变换处理">4.UAV微多普勒信号生成+短时傅里叶变换处理</h2>
+<p>根据第k个桨叶上任意一点散射点 P 的相位函数： <span class="math display">\[
+\Phi _ { p } ( t ) = \frac { 4 \pi } { \lambda } \left[ R _ { 0 } + v t
++ \cos \beta  l _ { p }\cos ( \varphi _ { 0 }+\frac { 2 \pi k } { N } +
+\Omega t-\alpha ) \right]\qquad(1)
+\]</span> 对t求微分可得到P点处的多普勒频率： <span class="math display">\[
+f=\frac{2v}{\lambda}- \frac { 2 \Omega l_p} { \lambda } \cos \beta  \sin
+( \Omega  t + \varphi _ { 0 } + \frac { 2 \pi k } { N }-\alpha
+)\qquad(2)
+\]</span> 其中前半部分是径向速度产生的多普勒频率<span class="math inline">\(f_d\)</span>： <span class="math display">\[
+f_d=\frac{2v}{\lambda}\qquad(3)
+\]</span> 后半部分是 P 点的瞬时微多普勒频率<span class="math inline">\(f_{kP}\)</span>： <span class="math display">\[
+f _ {kP} ( t ) = - \frac { 2 \Omega l_p} { \lambda } \cos \beta  \sin (
+\Omega  t + \varphi _ { 0 } + \frac { 2 \pi k } { N }-\alpha )\qquad(4)
+\]</span> 则当散射点位于叶尖，即<span class="math inline">\(l_p=L_2\)</span>时， <span class="math inline">\(f_{kP}\)</span>取得最大值。叶尖的产生最大微多普勒频率：
+<span class="math display">\[
+f_{max}=\frac{2 \Omega L_2}{\lambda}\cos\beta\qquad(5)
+\]</span> <strong>无人机仿真参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">仿真参数</th>
+<th style="text-align: center;">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">载频 <span class="math inline">\(f_c\)</span></td>
+<td style="text-align: center;">34.6 GHz</td>
+</tr>
+<tr>
+<td style="text-align: center;">无人机桨叶个数 <span class="math inline">\(N\)</span></td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">无人机桨叶长度</td>
+<td style="text-align: center;">0.4 m</td>
+</tr>
+<tr>
+<td style="text-align: center;">雷达到旋翼中心距离 <span class="math inline">\(R\)</span></td>
+<td style="text-align: center;">300 m</td>
+</tr>
+<tr>
+<td style="text-align: center;">无人机径向速度 <span class="math inline">\(v\)</span></td>
+<td style="text-align: center;">30 m/s</td>
+</tr>
+<tr>
+<td style="text-align: center;">仰角 <span class="math inline">\(\beta\)</span></td>
+<td style="text-align: center;">45°</td>
+</tr>
+<tr>
+<td style="text-align: center;">方位角 <span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;">0°</td>
+</tr>
+<tr>
+<td style="text-align: center;">无人机旋翼转速 <span class="math inline">\(f_r\)</span></td>
+<td style="text-align: center;">30 r/s</td>
+</tr>
+<tr>
+<td style="text-align: center;">无人机旋翼旋转角速度 <span class="math inline">\(\Omega\)</span></td>
+<td style="text-align: center;">60<span class="math inline">\(\pi\)</span> rad/s</td>
+</tr>
+<tr>
+<td style="text-align: center;">观测时间</td>
+<td style="text-align: center;">0.1 s</td>
+</tr>
+<tr>
+<td style="text-align: center;">采样率</td>
+<td style="text-align: center;">50 KHz</td>
+</tr>
+</tbody>
+</table>
+<p>经过短时傅里叶变换得到的结果图如下：</p>
+<p><img src="/2024/06/02/%E9%80%9A%E4%BF%A1%E6%84%9F%E7%9F%A5%E4%B8%80%E4%BD%93%E5%8C%96/%E5%BE%AE%E5%A4%9A%E6%99%AE%E5%8B%92.png" srcset="/img/loading.gif" lazyload></p>
+<p>微多普勒图像的频带搬移是由无人机的径向速度导致的，根距频谱中心位置处的Y坐标，可以得到无人机径向速度产生的多普勒频率为6996.09
+Hz。根据式(3)可以求得无人机的径向速度为30.3299 m/s，与实际速度对应。</p>
+<p>图中可以得到最大微多普勒频率为19129.2-6996.09=12133.11
+Hz。根据式(5)可以求得无人机旋翼转速为29.5980 r/s，与实际转速对应。</p>
 
                 
               </div>
